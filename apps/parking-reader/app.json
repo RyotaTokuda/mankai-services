@@ -1,0 +1,55 @@
+{
+  "expo": {
+    "name": "駐車料金リーダー",
+    "slug": "parking-reader",
+    "scheme": "parking-reader",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.mankaisoftware.parkingreader",
+      "buildNumber": "1"
+    },
+    "android": {
+      "package": "com.mankaisoftware.parkingreader",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "駐車場の看板画像を選択するために写真へのアクセスが必要です",
+          "cameraPermission": "駐車場の看板を撮影するためにカメラへのアクセスが必要です"
+        }
+      ]
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "8228bcc8-78fd-4fef-a812-09d36483ac6c"
+      }
+    },
+    "owner": "ryotatokuda"
+  }
+}

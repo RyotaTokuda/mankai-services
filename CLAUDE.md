@@ -6,13 +6,16 @@ Mankai Software の全アプリを収めるモノレポ。
 
 ```
 apps/
-  file-converter/   画像・動画変換サービス
-  api/              Webhook 専用サーバー（課金イベント受信）
+  file-converter/          画像・動画変換サービス（Next.js / Vercel）
+  parking-fee-calculator/  駐車料金看板読取サービス（Next.js / Vercel）
+  parking-reader/          駐車料金リーダー モバイルアプリ（Expo / EAS Build）
+  api/                     Webhook 専用サーバー（Next.js / Vercel）
 packages/
-  auth/             @mankai/auth — Supabase 認証一式
-  billing/          @mankai/billing — Lemon Squeezy 課金一式
+  auth/                    @mankai/auth — Supabase 認証一式
+  billing/                 @mankai/billing — Lemon Squeezy 課金一式
+  parking-shared/          @mankai/parking-shared — 駐車料金計算ロジック・型定義
 supabase/
-  migrations/       Supabase DB スキーマ定義（SQL）
+  migrations/              Supabase DB スキーマ定義（SQL）
 ```
 
 ## 新しいアプリを追加するとき

@@ -1,0 +1,6 @@
+{
+  "name": "budget-alert",
+  "version": "1.0.0",
+  "description": "Google Cloud Budget Alert → Vercel OCR kill switch",
+  "main": "index.js"
+}
