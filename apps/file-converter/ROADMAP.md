@@ -27,17 +27,18 @@
 
 ---
 
-## Phase 2 · 認証 🚧
+## Phase 2 · 認証 ✅
 
 目的： ユーザー識別の基盤を作る
 
-- [ ] Supabase プロジェクト作成（Dashboard + Google Cloud Console 設定）
-- [x] Google OAuth + メール OTP 認証（コード実装済み）
+- [x] Supabase プロジェクト作成（mankai-shared・東京リージョン）
+- [x] Google OAuth + メール OTP 認証
 - [x] ログイン状態をヘッダーに表示（AuthButton）
 - [x] 未ログインでも変換は使える
-- [ ] Supabase の URL Configuration・Redirect URL 設定
-- [ ] Vercel 環境変数設定（NEXT_PUBLIC_SUPABASE_URL / ANON_KEY）
-- [ ] 本番動作確認（Google OAuth + OTP）
+- [x] Supabase の URL Configuration・Redirect URL 設定
+- [x] Vercel 環境変数設定（NEXT_PUBLIC_SUPABASE_URL / ANON_KEY）
+- [x] Google Cloud Console OAuth クライアント設定
+- [x] モノレポ移行（mankai-apps）・共有パッケージ（@mankai/auth）
 
 ---
 
@@ -54,15 +55,16 @@
 
 ---
 
-## Phase 4 · 課金（Stripe）
+## Phase 4 · 課金（Lemon Squeezy）
 
 目的： 収益化と有料特典の提供
 
-- [ ] Stripe Checkout 導入
-- [ ] 月額プラン導入
-- [ ] Webhook で Supabase のサブスク状態を更新
+- [x] 課金基盤設計（@mankai/billing パッケージ・Webhook ハンドラー）
+- [x] DB スキーマ作成（subscriptions・webhook_events テーブル + RLS）
+- [x] apps/api Webhook サーバーデプロイ
+- [ ] Lemon Squeezy ストア・商品作成
+- [ ] Webhook URL 設定・本番動作確認
 - [ ] 有料プラン：回数大幅緩和または無制限・広告なし
-- [ ] 一定期間のオフライン利用権を端末に保存する仕組みを追加
 
 ---
 
@@ -73,7 +75,7 @@
 - [ ] 契約状況（未ログイン / 無料 / 有料）
 - [ ] 今日の残り回数
 - [ ] 保存プリセット
-- [ ] Stripe Customer Portal へのリンク
+- [ ] Lemon Squeezy Customer Portal へのリンク
 
 ---
 

@@ -30,3 +30,6 @@ npm-debug.log*
 
 # Turbo
 .turbo
+
+# Supabase CLI temp files
+supabase/.temp/
