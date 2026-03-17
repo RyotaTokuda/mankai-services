@@ -38,7 +38,7 @@
 - [x] Supabase の URL Configuration・Redirect URL 設定
 - [x] Vercel 環境変数設定（NEXT_PUBLIC_SUPABASE_URL / ANON_KEY）
 - [x] Google Cloud Console OAuth クライアント設定
-- [x] モノレポ移行（mankai-apps）・共有パッケージ（@mankai/auth）
+- [x] モノレポ移行（mankai-services）・共有パッケージ（@mankai/auth）
 
 ---
 

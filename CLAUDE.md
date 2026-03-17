@@ -1,4 +1,4 @@
-# CLAUDE.md — mankai-apps
+# CLAUDE.md — mankai-services
 
 Mankai Software の全アプリを収めるモノレポ。
 

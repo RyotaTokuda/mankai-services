@@ -1,5 +1,5 @@
 {
-  "name": "mankai-apps",
+  "name": "mankai-services",
   "private": true,
   "workspaces": [
     "apps/*",
