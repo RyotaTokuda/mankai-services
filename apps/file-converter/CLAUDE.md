@@ -1,18 +1,20 @@
-# CLAUDE.md
+# CLAUDE.md — file-converter
 
-## Project
+> モノレポ全体のルール → `/CLAUDE.md`（必ず先に読む）
+
+## このアプリについて
 
 ブラウザ内だけで動作する完全ローカル処理のファイル変換サービス。
 **ファイルの内容はサーバーに送らない**がこのサービスの核。設計上の制約でもある。
 
-ロードマップ → ROADMAP.md
+ロードマップ → `ROADMAP.md`
 
 ## Stack
 
 - Next.js 16 / Tailwind CSS v4 / TypeScript
 - ffmpeg.wasm（動画変換）・heic2any（HEIC変換）・Canvas API（画像変換）
-- Vercel デプロイ
-- 将来：Supabase Auth・Stripe・PWA
+- `@mankai/auth`（認証）・`@mankai/billing`（課金）← packages/ から import する
+- Vercel デプロイ（Root Directory: `apps/file-converter`）
 
 ## 環境
 
@@ -21,11 +23,6 @@ Node v20 必須（システムデフォルトは v16）。
 ```bash
 source ~/.nvm/nvm.sh && nvm use 20
 ```
-
-## ブランチ・コミット
-
-- main 直接 push 禁止。feature / fix / chore ブランチで作業
-- conventional commits（`feat:` `fix:` `chore:` など）
 
 ## 判断基準
 
@@ -36,26 +33,11 @@ source ~/.nvm/nvm.sh && nvm use 20
 
 **確認せず進めてよい**
 - 軽微な UI 調整・文言修正・命名改善
-- README / ROADMAP の更新
+- ROADMAP.md の更新
 
-## セキュリティ
+## このアプリ固有のセキュリティ制約
 
-### 全般
-- ファイルのバイナリをサーバーに送らない
-- 新ライブラリ追加時はライセンスを確認（GPL系は CI で禁止）
-- `npm audit --audit-level=high` を CI で実行
-- シークレットスキャン（Gitleaks）を CI で実行 → 環境変数・APIキーをコードに書かない
-
-### 認証（Supabase Auth）
-- `user.email` を `console.log` やカスタム DB テーブルに書かない
-  → 必ず `user.id`（UUID）だけを使う
-- セッショントークンは `localStorage` に保存しない
-  → `@supabase/ssr` が httpOnly Cookie で管理する（変更禁止）
-- `getSession()` を信頼しない → `getUser()` でサーバー検証済みデータを取得する
-- 全 Supabase テーブルに RLS（Row Level Security）を必ず有効化
-- OAuth コールバックのリダイレクト先は相対パス（`/` 始まり）のみ許可
-  → `app/auth/callback/route.ts` で検証済み
-
-### セキュリティヘッダー（next.config.ts）
-- HSTS・X-Frame-Options・X-Content-Type-Options・Referrer-Policy・Permissions-Policy を全ルートに適用
-- COOP/COEP は ffmpeg.wasm の SharedArrayBuffer に必要 → 削除しない
+- ファイルのバイナリをサーバーに送らない（このアプリの根幹）
+- `next.config.ts` の COOP/COEP ヘッダーを削除しない（ffmpeg.wasm の SharedArrayBuffer に必須）
+- `app/auth/callback/route.ts` は `@mankai/auth/callback` の1行 re-export のみ。独自ロジックを書かない
+- `middleware.ts` の `config` は静的解析のため各アプリで直接定義する（パッケージから import しない）
