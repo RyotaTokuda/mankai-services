@@ -89,14 +89,14 @@ export default function AuthModal({ onClose }: Props) {
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40"
       onClick={(e) => {
         if (e.target === overlayRef.current) onClose();
       }}
     >
-      <div className="w-full max-w-sm rounded-2xl bg-white shadow-xl">
-        <div className="flex items-center justify-between border-b border-gray-100 px-6 py-4">
-          <h2 className="text-base font-bold text-gray-900">
+      <div className="w-full sm:max-w-sm rounded-t-2xl sm:rounded-2xl bg-white shadow-xl max-h-[85vh] overflow-y-auto">
+        <div className="flex items-center justify-between border-b border-gray-100 px-5 py-3">
+          <h2 className="text-sm font-bold text-gray-900">
             ログイン / 新規登録
           </h2>
           <button
@@ -108,13 +108,13 @@ export default function AuthModal({ onClose }: Props) {
           </button>
         </div>
 
-        <div className="px-6 py-6 space-y-4">
+        <div className="px-5 py-4 space-y-3">
           {step === "input" && (
             <>
               <button
                 onClick={handleGoogleLogin}
                 disabled={loading}
-                className="flex w-full items-center justify-center gap-3 rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-700 shadow-sm hover:bg-gray-50 transition-colors disabled:opacity-50"
+                className="flex w-full items-center justify-center gap-3 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 shadow-sm hover:bg-gray-50 transition-colors disabled:opacity-50"
               >
                 <GoogleIcon />
                 Googleでログイン
@@ -134,12 +134,12 @@ export default function AuthModal({ onClose }: Props) {
                   placeholder="メールアドレス"
                   required
                   autoComplete="email"
-                  className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 transition-all"
+                  className="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 transition-all"
                 />
                 <button
                   type="submit"
                   disabled={loading || !email.trim()}
-                  className="w-full rounded-xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white hover:bg-emerald-700 transition-colors disabled:opacity-50"
+                  className="w-full rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-emerald-700 transition-colors disabled:opacity-50"
                 >
                   {loading ? "送信中..." : "確認コードを送る"}
                 </button>
@@ -168,12 +168,12 @@ export default function AuthModal({ onClose }: Props) {
                   maxLength={6}
                   required
                   autoFocus
-                  className="w-full rounded-xl border border-gray-200 px-4 py-3 text-center text-2xl font-mono tracking-[0.5em] outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 transition-all"
+                  className="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-center text-xl font-mono tracking-[0.4em] outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 transition-all"
                 />
                 <button
                   type="submit"
                   disabled={loading || otp.length !== 6}
-                  className="w-full rounded-xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white hover:bg-emerald-700 transition-colors disabled:opacity-50"
+                  className="w-full rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-emerald-700 transition-colors disabled:opacity-50"
                 >
                   {loading ? "確認中..." : "ログイン"}
                 </button>
@@ -193,12 +193,12 @@ export default function AuthModal({ onClose }: Props) {
           )}
 
           {error && (
-            <p className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">
+            <p className="rounded-xl bg-red-50 px-4 py-2.5 text-sm text-red-700">
               {error}
             </p>
           )}
 
-          <p className="text-center text-xs text-gray-400 leading-relaxed">
+          <p className="text-center text-[11px] text-gray-400 leading-relaxed">
             続けることで{" "}
             <a href="/privacy" className="underline hover:text-gray-600">
               プライバシーポリシー
