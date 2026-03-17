@@ -1,0 +1,22 @@
+{
+  "name": "@mankai/billing",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "exports": {
+    ".":                  "./src/index.ts",
+    "./plans":            "./src/plans.ts",
+    "./status":           "./src/status.ts",
+    "./lemon-checkout":   "./src/lemon/checkout.ts",
+    "./lemon-webhook":    "./src/lemon/webhook.ts",
+    "./lemon-types":      "./src/lemon/types.ts"
+  },
+  "dependencies": {
+    "@mankai/auth": "*"
+  },
+  "peerDependencies": {
+    "@supabase/supabase-js": "*"
+  }
+}

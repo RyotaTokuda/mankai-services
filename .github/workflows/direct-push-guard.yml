@@ -1,0 +1,28 @@
+name: main 直接 push ガード
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  check-direct-push:
+    name: 直接 push チェック
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: PR を経由しているか確認
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+        run: |
+          PR_COUNT=$(gh api repos/$REPO/commits/$SHA/pulls \
+            --header "Accept: application/vnd.github+json" \
+            --jq 'length')
+
+          if [ "$PR_COUNT" = "0" ]; then
+            echo "::warning::⚠️ main ブランチへの直接 push が検知されました。"
+            echo "::warning::PR を経由してマージするようにしてください（CLAUDE.md の Branch Rules 参照）。"
+          else
+            echo "✅ PR を経由したマージです（PR 数: $PR_COUNT）"
+          fi

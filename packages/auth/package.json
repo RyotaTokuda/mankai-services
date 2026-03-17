@@ -1,0 +1,24 @@
+{
+  "name": "@mankai/auth",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "exports": {
+    "./client":     "./src/client.ts",
+    "./server":     "./src/server.ts",
+    "./middleware": "./src/middleware.ts",
+    "./callback":   "./src/callback.ts",
+    "./context":    "./src/context.tsx",
+    "./modal":      "./src/modal.tsx",
+    "./button":     "./src/button.tsx",
+    "./admin":      "./src/admin.ts"
+  },
+  "peerDependencies": {
+    "@supabase/ssr": "*",
+    "@supabase/supabase-js": "*",
+    "next": "*",
+    "react": "*"
+  }
+}

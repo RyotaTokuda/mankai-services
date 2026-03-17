@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- 背景 -->
+  <rect width="512" height="512" rx="112" fill="#059669"/>
+
+  <!-- ファイルアイコン（左） -->
+  <rect x="100" y="156" width="110" height="140" rx="12" fill="white" opacity="0.25"/>
+  <rect x="100" y="156" width="110" height="140" rx="12" fill="none" stroke="white" stroke-width="10"/>
+  <polyline points="170,156 210,196 210,156" fill="white" opacity="0.5"/>
+  <line x1="120" y1="236" x2="190" y2="236" stroke="white" stroke-width="10" stroke-linecap="round"/>
+  <line x1="120" y1="260" x2="170" y2="260" stroke="white" stroke-width="10" stroke-linecap="round"/>
+
+  <!-- 変換矢印（中央） -->
+  <path d="M230 230 L282 230" stroke="white" stroke-width="14" stroke-linecap="round"/>
+  <polyline points="264,210 288,230 264,250" fill="none" stroke="white" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- ファイルアイコン（右・変換後） -->
+  <rect x="302" y="156" width="110" height="140" rx="12" fill="white" opacity="0.9"/>
+  <polyline points="372,156 412,196 412,156" fill="#059669" opacity="0.6"/>
+  <line x1="322" y1="236" x2="392" y2="236" stroke="#059669" stroke-width="10" stroke-linecap="round"/>
+  <line x1="322" y1="260" x2="372" y2="260" stroke="#059669" stroke-width="10" stroke-linecap="round"/>
+
+  <!-- 端末アイコン（ローカル処理を表す） -->
+  <rect x="176" y="326" width="160" height="30" rx="6" fill="white" opacity="0.3"/>
+  <rect x="216" y="356" width="80" height="8" rx="4" fill="white" opacity="0.4"/>
+  <text x="256" y="346" font-size="13" font-family="system-ui, sans-serif" font-weight="700" fill="white" text-anchor="middle" opacity="0.9">LOCAL</text>
+</svg>

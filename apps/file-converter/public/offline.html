@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#059669">
+  <title>オフライン | ローカルファイル変換</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #f9fafb;
+      color: #374151;
+      text-align: center;
+      padding: 2rem;
+    }
+    .icon { font-size: 3rem; margin-bottom: 1.5rem; }
+    h1 { font-size: 1.125rem; font-weight: 700; margin-bottom: 0.75rem; }
+    p { font-size: 0.875rem; color: #6b7280; line-height: 1.7; }
+    .note {
+      margin-top: 1.5rem;
+      padding: 1rem 1.25rem;
+      background: #ecfdf5;
+      border: 1px solid #d1fae5;
+      border-radius: 1rem;
+      font-size: 0.8rem;
+      color: #065f46;
+      line-height: 1.6;
+    }
+    a {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.625rem 1.5rem;
+      background: #059669;
+      color: white;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <div class="icon">📡</div>
+    <h1>オフラインです</h1>
+    <p>ネットワークに接続されていないため<br>ページを読み込めません。</p>
+    <div class="note">
+      ホーム画面から追加したアプリは、<br>
+      <strong>一度オンラインで開く</strong>とキャッシュが作成され、<br>
+      次回からオフラインでも利用できます。
+    </div>
+    <a href="/">再試行する</a>
+  </div>
+</body>
+</html>

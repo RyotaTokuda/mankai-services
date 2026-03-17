@@ -1,0 +1,15 @@
+# Gitleaks 設定ファイル
+# デフォルトルールを使用し、テンプレートファイルのみ除外する
+
+[extend]
+# Gitleaks 組み込みルールをすべて有効化
+useDefault = true
+
+[allowlist]
+description = "テンプレート・サンプルファイルを除外"
+paths = [
+  # .env.example 系ファイルはプレースホルダーを含むため除外
+  '''\.env\.local\.example$''',
+  '''\.env\.example$''',
+  '''\.env\.sample$''',
+]

@@ -1,0 +1,42 @@
+name: ライセンスチェック
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  license-check:
+    name: ライセンス検査
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: Node.js をセットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: 依存パッケージをインストール
+        run: npm ci
+
+      - name: license-checker をインストール
+        run: npm install -g license-checker
+
+      - name: ライセンス検査を実行
+        # サブスク課金製品として商用利用できないライセンスを禁止する
+        # GPL・AGPL・LGPL・CC-BY-NC は商用製品での使用に制限がある
+        #
+        # 除外:
+        # @img/sharp-libvips-* — Next.js の optional dependency (sharp)。
+        #   バイナリとして利用するだけのため LGPL のコピーレフトは伝播しない。
+        run: |
+          license-checker \
+            --excludePrivatePackages \
+            --excludePackages "@img/sharp-libvips-darwin-x64;@img/sharp-libvips-linux-x64;@img/sharp-libvips-linuxmusl-x64;@img/sharp-libvips-darwin-arm64;@img/sharp-libvips-linux-arm64;@img/sharp-libvips-linuxmusl-arm64" \
+            --failOn "GPL;AGPL;LGPL;CC-BY-NC" \
+            --summary

@@ -1,0 +1,29 @@
+name: Dependency Review
+
+# PR で追加・更新されたパッケージに既知の脆弱性がないかチェックする
+# npm audit と異なり、「変更分」だけをスキャンするため高速
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  dependency-review:
+    name: Scan new dependencies for vulnerabilities
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Dependency Review
+        uses: actions/dependency-review-action@v4
+        with:
+          # high 以上の脆弱性を含む依存を PR でブロック
+          fail-on-severity: high
+          # GPL 系ライセンスを含む依存を PR でブロック
+          deny-licenses: GPL-2.0, GPL-3.0, AGPL-3.0, LGPL-2.0, LGPL-2.1, LGPL-3.0
+          # PR にコメントで報告
+          comment-summary-in-pr: always

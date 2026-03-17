@@ -1,0 +1,17 @@
+{
+  "name": "mankai-apps",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:file-converter": "npm run dev --workspace=apps/file-converter",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck"
+  },
+  "devDependencies": {
+    "turbo": "^2"
+  }
+}

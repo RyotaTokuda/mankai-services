@@ -1,0 +1,36 @@
+name: バンドルサイズチェック
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  bundle-size:
+    name: バンドルサイズ確認
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: Node.js をセットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: 依存パッケージをインストール
+        run: npm ci
+
+      - name: ビルドを実行（全ワークスペース）
+        run: npm run build --workspaces --if-present
+
+      - name: バンドルサイズを計測・表示
+        run: |
+          for app in apps/*/; do
+            if [ -d "${app}.next" ]; then
+              echo "=== ${app} ==="
+              du -sh "${app}.next/static/chunks/"*.js 2>/dev/null | sort -rh || true
+              du -sh "${app}.next/"
+            fi
+          done
