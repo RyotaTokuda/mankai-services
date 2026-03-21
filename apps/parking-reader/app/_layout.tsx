@@ -53,7 +53,6 @@ export default function RootLayout() {
       <AuthProvider>
         <AppProviders>
           {POSTHOG_KEY ? (
-            // @ts-expect-error — PostHog の型定義が React 19 に未対応
             <PostHogProvider
               apiKey={POSTHOG_KEY}
               options={{ host: "https://us.i.posthog.com" }}
