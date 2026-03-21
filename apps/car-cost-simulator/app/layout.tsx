@@ -19,12 +19,21 @@ export const metadata: Metadata = {
     siteName: "くらべるラボ",
     type: "website",
     locale: "ja_JP",
+    images: [
+      {
+        url: "https://kuraberu-lab.com/tools/car-cost/opengraph-image.svg",
+        width: 1200,
+        height: 630,
+        alt: "車の維持費シミュレーター",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "車の維持費シミュレーター | くらべるラボ",
     description:
       "ローン・保険・駐車場・燃料・車検をまとめて入力。月額・年額・5年総額を即座に試算。",
+    images: ["https://kuraberu-lab.com/tools/car-cost/opengraph-image.svg"],
   },
 };
 
