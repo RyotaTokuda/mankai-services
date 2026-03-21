@@ -321,7 +321,7 @@ function DetailAnalysis({
 
   return (
     <section className="space-y-4">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center gap-3 flex-wrap">
         <h2 className="text-lg font-bold">詳細分析</h2>
         {results.length > 1 && (
           <div className="flex gap-1.5">
