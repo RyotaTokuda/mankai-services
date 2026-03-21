@@ -21,13 +21,14 @@ const COLORS = [
 ];
 
 const CHART_W = 600;
-const CHART_H = 250;
-const PAD = { top: 20, right: 20, bottom: 30, left: 70 };
+const CHART_H = 260;
+const PAD = { top: 15, right: 20, bottom: 30, left: 70 };
 
 export default function YearlyCostChart({ results }: Props) {
   if (results.length < 2) return null;
 
-  const years = [0, 1, 2, 3, 4, 5];
+  const years = [1, 2, 3, 4, 5];
+  const carCount = results.length;
   const cumulativeData = results.map((r) =>
     years.map((y) => r.costs.totalAnnual * y)
   );
@@ -37,21 +38,30 @@ export default function YearlyCostChart({ results }: Props) {
   const plotW = CHART_W - PAD.left - PAD.right;
   const plotH = CHART_H - PAD.top - PAD.bottom;
 
-  function x(year: number) {
-    return PAD.left + (year / 5) * plotW;
+  // 年ごとのグループ幅とバー幅
+  const groupW = plotW / years.length;
+  const barGap = 2;
+  const barW = Math.min((groupW - barGap * (carCount + 1)) / carCount, 30);
+
+  function xBar(yearIdx: number, carIdx: number) {
+    const groupStart = PAD.left + yearIdx * groupW;
+    const barsWidth = carCount * barW + (carCount - 1) * barGap;
+    const offset = (groupW - barsWidth) / 2;
+    return groupStart + offset + carIdx * (barW + barGap);
   }
+
   function y(val: number) {
     return PAD.top + plotH - (val / yMax) * plotH;
   }
 
-  // Y軸ラベル（万円単位）
+  // Y軸ラベル
   const yTicks: number[] = [];
   const tickStep = yMax <= 3000000 ? 500000 : yMax <= 10000000 ? 1000000 : 2000000;
   for (let v = 0; v <= yMax; v += tickStep) yTicks.push(v);
 
   const diff5yr =
-    Math.max(...cumulativeData.map((d) => d[5])) -
-    Math.min(...cumulativeData.map((d) => d[5]));
+    Math.max(...cumulativeData.map((d) => d[4])) -
+    Math.min(...cumulativeData.map((d) => d[4]));
 
   return (
     <div className="mt-6 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/60 shadow-sm p-5">
@@ -60,7 +70,7 @@ export default function YearlyCostChart({ results }: Props) {
       <svg
         viewBox={`0 0 ${CHART_W} ${CHART_H}`}
         className="w-full h-auto"
-        aria-label="年ごとの累積コスト折れ線グラフ"
+        aria-label="年ごとの累積コスト棒グラフ"
       >
         {/* Y軸グリッド+ラベル */}
         {yTicks.map((v) => (
@@ -86,55 +96,54 @@ export default function YearlyCostChart({ results }: Props) {
         ))}
 
         {/* X軸ラベル */}
-        {years.map((yr) => (
+        {years.map((yr, yi) => (
           <text
             key={yr}
-            x={x(yr)}
+            x={PAD.left + yi * groupW + groupW / 2}
             y={CHART_H - 6}
             textAnchor="middle"
             fontSize={11}
             fill="#94a3b8"
           >
-            {yr}年
+            {yr}年目
           </text>
         ))}
 
-        {/* 折れ線 */}
-        {results.map((r, ri) => {
-          const points = years
-            .map((yr) => `${x(yr)},${y(cumulativeData[ri][yr])}`)
-            .join(" ");
-          return (
-            <g key={r.name}>
-              <polyline
-                points={points}
-                fill="none"
-                stroke={COLORS[ri % COLORS.length]}
-                strokeWidth={2.5}
-                strokeLinejoin="round"
-              />
-              {years.map((yr) => (
-                <circle
-                  key={yr}
-                  cx={x(yr)}
-                  cy={y(cumulativeData[ri][yr])}
-                  r={3}
+        {/* 棒グラフ */}
+        {results.map((r, ri) =>
+          years.map((_, yi) => {
+            const val = cumulativeData[ri][yi];
+            const barH = (val / yMax) * plotH;
+            const bx = xBar(yi, ri);
+            const by = y(val);
+            return (
+              <g key={`${r.name}-${yi}`}>
+                <rect
+                  x={bx}
+                  y={by}
+                  width={barW}
+                  height={barH}
+                  rx={2}
                   fill={COLORS[ri % COLORS.length]}
+                  opacity={0.85}
                 />
-              ))}
-              {/* 5年目の値ラベル */}
-              <text
-                x={x(5) + 4}
-                y={y(cumulativeData[ri][5]) + (ri === 0 ? -6 : 12)}
-                fontSize={10}
-                fill={COLORS[ri % COLORS.length]}
-                fontWeight="bold"
-              >
-                {formatYen(cumulativeData[ri][5])}円
-              </text>
-            </g>
-          );
-        })}
+                {/* 5年目のみ値ラベル */}
+                {yi === 4 && (
+                  <text
+                    x={bx + barW / 2}
+                    y={by - 4}
+                    textAnchor="middle"
+                    fontSize={9}
+                    fill={COLORS[ri % COLORS.length]}
+                    fontWeight="bold"
+                  >
+                    {formatYen(val)}円
+                  </text>
+                )}
+              </g>
+            );
+          })
+        )}
       </svg>
 
       {/* 凡例 */}
