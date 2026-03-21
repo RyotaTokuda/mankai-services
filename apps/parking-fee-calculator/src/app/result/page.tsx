@@ -27,12 +27,12 @@ const FALLBACK_RULES: ParkingRules = {
 };
 
 // 旧フォーマット対応マイグレーション
-function migrateRules(raw: any): ParkingRules {
+function migrateRules(raw: Partial<ParkingRules> & Record<string, unknown>): ParkingRules {
   if (raw?.zones) return raw as ParkingRules;
   return {
-    name: raw?.name ?? "駐車場",
-    zones: [{ name: "全車種", slots: raw?.slots ?? [], maxPrices: raw?.maxPrice ? [raw.maxPrice] : [] }],
-    notes: raw?.notes ?? [],
+    name: (raw?.name as string) ?? "駐車場",
+    zones: [{ name: "全車種", slots: (raw?.slots as ParkingRules["zones"][0]["slots"]) ?? [], maxPrices: raw?.maxPrice ? [raw.maxPrice as ParkingRules["zones"][0]["maxPrices"][0]] : [] }],
+    notes: (raw?.notes as ParkingRules["notes"]) ?? [],
   };
 }
 
@@ -127,7 +127,10 @@ export default function ResultPage() {
   }, []);
 
   // 先頭ゾーンで計算（Web版は1ゾーン表示）
-  const zone = rules.zones[0] ?? { name: "全車種", slots: [], maxPrices: [] };
+  const zone = useMemo(
+    () => rules.zones[0] ?? { name: "全車種", slots: [], maxPrices: [] },
+    [rules.zones]
+  );
 
   const result = useMemo(() => {
     const entry = combineDateTime(entryDate, entryTime);

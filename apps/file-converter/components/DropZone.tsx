@@ -103,6 +103,7 @@ export default function DropZone({
               <div key={p.key} className="flex flex-col items-center gap-1" style={{ width: 72 }}>
                 <div className="w-[72px] h-[72px] rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center border border-gray-200 shrink-0">
                   {p.url ? (
+                    /* eslint-disable-next-line @next/next/no-img-element -- blob URL; next/image cannot optimize it */
                     <img src={p.url} alt={p.name} className="w-full h-full object-cover" />
                   ) : (
                     <span className="text-2xl">{getFileIcon(p.name)}</span>

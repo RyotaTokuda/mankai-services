@@ -14,6 +14,7 @@
  *   NOTIFY_EMAIL        — 通知先メールアドレス
  */
 
+// eslint-disable-next-line @typescript-eslint/no-require-imports -- Cloud Functions CommonJS entrypoint
 const https = require("https");
 
 function httpPost(hostname, path, body, headers) {
@@ -102,7 +103,8 @@ async function sendEmail(to, subject, body) {
   console.log(`Email sent to ${to}: status=${res.status}`);
 }
 
-exports.budgetAlert = async (message, context) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars -- GCP Pub/Sub function signature requires (message, context)
+exports.budgetAlert = async (message, _context) => {
   // Pub/Sub メッセージをデコード
   const payload = message.data
     ? JSON.parse(Buffer.from(message.data, "base64").toString())
