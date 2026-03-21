@@ -1,3 +1,4 @@
 export { PLANS } from "./plans";
-export { getPlanStatus, isPro } from "./status";
-export type { PlanStatus } from "./status";
+export type { PlanId, BillingPlatform, Plan } from "./plans";
+export { getPlanStatus, isPro, isPlusOrAbove, getSubscriptionPlatform } from "./status";
+export type { PlanStatus, PlanResolverOptions } from "./status";

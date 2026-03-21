@@ -53,7 +53,7 @@ export default function CarModelPicker({ onSelect }: Props) {
             <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
 
             {/* モーダル */}
-            <div className="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-2xl max-h-[80vh] flex flex-col overflow-hidden border border-slate-200 dark:border-slate-700">
+            <div className="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-2xl h-[70vh] flex flex-col overflow-hidden border border-slate-200 dark:border-slate-700">
               {/* ヘッダー */}
               <div className="flex items-center justify-between px-5 py-4 border-b border-slate-200 dark:border-slate-700">
                 <h2 className="text-lg font-bold">車種から選ぶ</h2>

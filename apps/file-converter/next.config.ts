@@ -1,21 +1,20 @@
 import type { NextConfig } from "next";
 
-const SECURITY_HEADERS = [
-  // ─── SharedArrayBuffer に必要（ffmpeg.wasm） ─────────────────────────────
+// ─── 全ページ共通のセキュリティヘッダー ──────────────────────────────────
+const BASE_SECURITY_HEADERS = [
+  { key: "Strict-Transport-Security",    value: "max-age=63072000; includeSubDomains; preload" },
+  { key: "X-Content-Type-Options",       value: "nosniff" },
+  { key: "X-Frame-Options",              value: "DENY" },
+  { key: "Referrer-Policy",              value: "strict-origin-when-cross-origin" },
+  { key: "Permissions-Policy",           value: "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
+];
+
+// ─── SharedArrayBuffer に必要（ffmpeg.wasm）─────────────────────────────
+// COOP: same-origin は OAuth リダイレクトと干渉するため、
+// ffmpeg.wasm を使うワークスペースのみに適用する。
+const COOP_COEP_HEADERS = [
   { key: "Cross-Origin-Opener-Policy",   value: "same-origin" },
   { key: "Cross-Origin-Embedder-Policy", value: "require-corp" },
-
-  // ─── 一般的なセキュリティヘッダー ──────────────────────────────────────
-  // HTTPS を強制（Vercel は常に HTTPS）
-  { key: "Strict-Transport-Security",    value: "max-age=63072000; includeSubDomains; preload" },
-  // MIME スニッフィング防止
-  { key: "X-Content-Type-Options",       value: "nosniff" },
-  // クリックジャッキング防止
-  { key: "X-Frame-Options",              value: "DENY" },
-  // リファラー情報を最小化
-  { key: "Referrer-Policy",              value: "strict-origin-when-cross-origin" },
-  // 不要なブラウザ機能を無効化
-  { key: "Permissions-Policy",           value: "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
 ];
 
 const nextConfig: NextConfig = {
@@ -23,7 +22,15 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/(.*)",
-        headers: SECURITY_HEADERS,
+        headers: BASE_SECURITY_HEADERS,
+      },
+      {
+        source: "/workspace",
+        headers: COOP_COEP_HEADERS,
+      },
+      {
+        source: "/workspace/(.*)",
+        headers: COOP_COEP_HEADERS,
       },
     ];
   },

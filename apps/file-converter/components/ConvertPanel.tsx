@@ -1,6 +1,6 @@
 "use client";
 
-import { formatBytes } from "@/lib/imageConverter";
+import { formatBytes } from "@/lib/tools/image-convert";
 
 interface FileItem {
   file: File;

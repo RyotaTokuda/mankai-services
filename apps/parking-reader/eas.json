@@ -25,6 +25,18 @@
     }
   },
   "submit": {
-    "production": {}
+    "production": {
+      "ios": {
+        "appleId": "ryouta.tokuda@icloud.com",
+        "ascAppId": "",
+        "appleTeamId": "",
+        "language": "ja-JP"
+      },
+      "android": {
+        "serviceAccountKeyPath": "",
+        "track": "internal",
+        "releaseStatus": "draft"
+      }
+    }
   }
 }

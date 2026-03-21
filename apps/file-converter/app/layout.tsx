@@ -7,8 +7,9 @@ import "./globals.css";
 const geist = Geist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "ローカルファイル変換 | Mankai Software",
-  description: "HEIC・WebP・動画などをブラウザ内だけで変換。ファイルはサーバーに送られません。",
+  title: "ローカルファイル変換 — ブラウザ内で画像・PDF処理 | Mankai Software",
+  description:
+    "画像変換・圧縮・リサイズ、PDF結合・分割をブラウザ内だけで処理。ファイルはサーバーに送信されません。",
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,

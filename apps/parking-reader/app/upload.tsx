@@ -16,6 +16,8 @@ import { Ionicons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ParkingRules, MaxPriceRule } from "@mankai/parking-shared";
 import { useAnalytics } from "../lib/analytics";
+import { usePlan } from "../lib/SubscriptionContext";
+import { LimitReachedModal } from "../components/LimitReachedModal";
 
 // 旧フォーマット（slots + maxPrice）→ 新フォーマット（zones）へのマイグレーション
 function migrateRules(raw: any): ParkingRules {
@@ -66,11 +68,13 @@ export default function UploadScreen() {
   const insets = useSafeAreaInsets();
   const abortRef = useRef<AbortController | null>(null);
   const { track } = useAnalytics();
+  const { isLimitReached, incrementReadCount } = usePlan();
 
   const [imageUri, setImageUri] = useState<string | null>(null);
   const [imageBase64, setImageBase64] = useState<string | null>(null);
   const [analyzeState, setAnalyzeState] = useState<AnalyzeState>("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [showLimitModal, setShowLimitModal] = useState(false);
 
   // プログレスバー
   const progressAnim = useRef(new Animated.Value(0)).current;
@@ -152,6 +156,13 @@ export default function UploadScreen() {
   async function handleAnalyze() {
     if (!imageBase64) return;
 
+    // 上限チェック
+    if (isLimitReached) {
+      track({ name: "limit_reached_modal_shown" });
+      setShowLimitModal(true);
+      return;
+    }
+
     setAnalyzeState("loading");
     setErrorMessage(null);
 
@@ -202,6 +213,9 @@ export default function UploadScreen() {
       const rules: ParkingRules = migrateRules(data.rules);
       await AsyncStorage.setItem("parkingRules", JSON.stringify(rules));
       await AsyncStorage.setItem("uploadedImageUri", imageUri ?? "");
+
+      // 読取カウントをインクリメント
+      await incrementReadCount();
 
       // 履歴に追加（保存件数は設定から読む、デフォルト20件）
       const [historyRaw, limitRaw] = await Promise.all([
@@ -255,6 +269,11 @@ export default function UploadScreen() {
 
   return (
     <View className="flex-1 bg-slate-50" style={{ paddingTop: insets.top }}>
+      <LimitReachedModal
+        visible={showLimitModal}
+        onClose={() => setShowLimitModal(false)}
+      />
+
       {/* ヘッダー */}
       <View className="flex-row items-center justify-between px-4 py-3">
         <Text className="text-xl font-bold text-slate-900">看板を読み取る</Text>

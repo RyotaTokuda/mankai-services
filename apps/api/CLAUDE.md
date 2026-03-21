@@ -4,7 +4,7 @@
 
 ## このアプリについて
 
-Lemon Squeezy の Webhook を受信し、Supabase のサブスクリプション状態を更新する専用サーバー。
+Lemon Squeezy / Stripe の Webhook を受信し、Supabase のサブスクリプション状態を更新する専用サーバー。
 UI は一切持たない。API エンドポイントのみ。
 
 ## Stack
@@ -26,3 +26,4 @@ UI は一切持たない。API エンドポイントのみ。
 | Method | Path | 説明 |
 |---|---|---|
 | POST | `/api/webhooks/lemon` | Lemon Squeezy Webhook 受信 |
+| POST | `/api/webhooks/stripe` | Stripe Webhook 受信 |

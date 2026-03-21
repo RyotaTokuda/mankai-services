@@ -2,6 +2,8 @@ import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
+import { usePlan } from "../../lib/SubscriptionContext";
+import { UsageBanner } from "../../components/UsageBanner";
 
 const STEPS = [
   { step: "1", title: "看板を撮影", desc: "駐車場の料金看板をカメラで撮影" },
@@ -12,6 +14,7 @@ const STEPS = [
 export default function HomeScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
+  const { state, limits, remainingReads } = usePlan();
 
   return (
     <ScrollView
@@ -20,16 +23,31 @@ export default function HomeScreen() {
     >
       {/* ヘッダー */}
       <View className="px-5 pb-6">
-        <Text className="text-xs font-semibold tracking-widest text-blue-600 uppercase">
-          Parking Reader
-        </Text>
-        <Text className="mt-1 text-2xl font-bold text-slate-900">
-          駐車料金リーダー
-        </Text>
+        <View className="flex-row items-center justify-between">
+          <View>
+            <Text className="text-xs font-semibold tracking-widest text-blue-600 uppercase">
+              Parking Reader
+            </Text>
+            <Text className="mt-1 text-2xl font-bold text-slate-900">
+              駐車料金リーダー
+            </Text>
+          </View>
+          {/* 残回数バッジ */}
+          {state.planType === "free" && (
+            <View className="rounded-xl bg-slate-100 px-3 py-1.5">
+              <Text className="text-xs font-semibold text-slate-500">
+                残り {remainingReads}/{limits.monthlyReadLimit} 回
+              </Text>
+            </View>
+          )}
+        </View>
         <Text className="mt-1 text-sm text-slate-500">
           看板を撮るだけで料金をすぐ確認
         </Text>
       </View>
+
+      {/* 上限警告バナー */}
+      <UsageBanner />
 
       {/* メインCTAカード（elevation付き） */}
       <View className="px-4">
@@ -78,6 +96,13 @@ export default function HomeScreen() {
           ))}
         </View>
       </View>
+
+      {/* 広告エリア（ダミー） */}
+      {!limits.isAdFree && (
+        <View className="mx-4 mt-4 rounded-2xl bg-slate-100 border border-dashed border-slate-300 p-4 items-center">
+          <Text className="text-xs text-slate-400">広告エリア（実装予定）</Text>
+        </View>
+      )}
     </ScrollView>
   );
 }

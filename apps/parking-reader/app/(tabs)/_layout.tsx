@@ -38,6 +38,15 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="saved"
+        options={{
+          title: "保存済み",
+          tabBarIcon: ({ color, focused }) => (
+            <TabIcon name={focused ? "bookmark" : "bookmark-outline"} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="history"
         options={{
           title: "履歴",

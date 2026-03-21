@@ -1,6 +1,6 @@
 "use client";
 
-import { OutputFormat } from "@/lib/imageConverter";
+import { OutputFormat } from "@/lib/tools/image-convert";
 
 interface Props {
   outputFormat: OutputFormat;

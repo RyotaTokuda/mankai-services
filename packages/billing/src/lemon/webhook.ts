@@ -105,15 +105,16 @@ async function upsertSubscription(
   const { error } = await supabase.from("subscriptions").upsert(
     {
       user_id: userId,
-      lemon_subscription_id: lemonSubscriptionId,
-      lemon_customer_id: String(attrs.customer_id),
-      lemon_variant_id: String(attrs.variant_id),
+      platform: "lemon",
+      platform_subscription_id: lemonSubscriptionId,
+      platform_customer_id: String(attrs.customer_id),
+      platform_product_id: String(attrs.variant_id),
       status,
       renews_at: attrs.renews_at ?? null,
       ends_at: attrs.ends_at ?? null,
       updated_at: new Date().toISOString(),
     },
-    { onConflict: "lemon_subscription_id" }
+    { onConflict: "platform_subscription_id" }
   );
 
   if (error) {

@@ -15,7 +15,10 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.mankaisoftware.parkingreader",
-      "buildNumber": "1"
+      "buildNumber": "1",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "package": "com.mankaisoftware.parkingreader",
@@ -26,10 +29,7 @@
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false,
-      "permissions": [
-        "android.permission.RECORD_AUDIO"
-      ]
+      "predictiveBackGestureEnabled": false
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -45,7 +45,9 @@
       ]
     ],
     "extra": {
-      "router": {},
+      "router": {
+        "root": "./app"
+      },
       "eas": {
         "projectId": "8228bcc8-78fd-4fef-a812-09d36483ac6c"
       }

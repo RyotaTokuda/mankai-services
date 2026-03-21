@@ -1,8 +1,16 @@
 // Service Worker - ローカルファイル変換
 // アプリシェルをキャッシュし、オフライン時は offline.html を表示する。
+// CDN 依存ツール（ffmpeg.wasm, pdfjs-dist）も初回読み込み時にキャッシュする。
 
-const CACHE_NAME = "file-converter-v2";
+const CACHE_NAME = "file-converter-v3";
+const CDN_CACHE_NAME = "file-converter-cdn-v1";
 const OFFLINE_URL = "/offline.html";
+
+// CDN からキャッシュすべきパターン
+const CDN_CACHE_PATTERNS = [
+  /unpkg\.com\/@ffmpeg\/core/,       // ffmpeg.wasm core + wasm
+  /unpkg\.com\/pdfjs-dist/,          // pdfjs-dist worker
+];
 
 // インストール時：オフラインフォールバックページだけは確実に事前キャッシュ
 self.addEventListener("install", (event) => {
@@ -12,12 +20,13 @@ self.addEventListener("install", (event) => {
   self.skipWaiting();
 });
 
-// アクティベート時：古いキャッシュを削除
+// アクティベート時：古いキャッシュを削除（現行バージョン以外）
 self.addEventListener("activate", (event) => {
+  const keepCaches = new Set([CACHE_NAME, CDN_CACHE_NAME]);
   event.waitUntil(
     caches.keys().then((keys) =>
       Promise.all(
-        keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k))
+        keys.filter((k) => !keepCaches.has(k)).map((k) => caches.delete(k))
       )
     )
   );
@@ -28,7 +37,24 @@ self.addEventListener("fetch", (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // 別オリジン（CDN・外部API等）はキャッシュしない
+  // CDN リクエスト：キャッシュ優先 → なければネットワーク → キャッシュに保存
+  if (url.origin !== self.location.origin && isCdnCacheable(url.href)) {
+    event.respondWith(
+      caches.open(CDN_CACHE_NAME).then(async (cache) => {
+        const cached = await cache.match(request);
+        if (cached) return cached;
+
+        const response = await fetch(request);
+        if (response.ok) {
+          cache.put(request, response.clone());
+        }
+        return response;
+      })
+    );
+    return;
+  }
+
+  // 別オリジン（CDN キャッシュ対象外）はスルー
   if (url.origin !== self.location.origin) return;
 
   if (request.mode === "navigate") {
@@ -62,3 +88,7 @@ self.addEventListener("fetch", (event) => {
     );
   }
 });
+
+function isCdnCacheable(href) {
+  return CDN_CACHE_PATTERNS.some((pattern) => pattern.test(href));
+}

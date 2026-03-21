@@ -329,7 +329,7 @@ Claude must ask before deciding:
 
 ## Documentation Rules
 - セットアップ手順が変わったら README を更新する
-- 環境変数を追加したら .env.example も更新する
+- 環境変数を追加したら .env.local.example も更新する
 - MVPの範囲や方針が変わったら CLAUDE.md を更新する
 - 新しい依存や採用理由は必要に応じて記録する
 - セットアップで詰まりやすい点は README に残す

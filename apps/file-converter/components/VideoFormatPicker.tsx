@@ -1,6 +1,8 @@
 "use client";
 
-import { VideoConvertOptions, VideoOutputFormat } from "@/lib/videoConverter";
+import { useEffect, useState } from "react";
+import { VideoConvertOptions, VideoOutputFormat } from "@/lib/tools/video-convert";
+import { detectDeviceCapability, deviceTierMessage, type DeviceCapability } from "@/lib/browser-compat";
 
 export type { VideoConvertOptions };
 
@@ -31,11 +33,36 @@ const BITRATE_OPTIONS = [
 ];
 
 export default function VideoFormatPicker({ options, onChange }: Props) {
+  const [deviceCap, setDeviceCap] = useState<DeviceCapability | null>(null);
+
+  useEffect(() => {
+    setDeviceCap(detectDeviceCapability());
+  }, []);
+
   const set = (patch: Partial<VideoConvertOptions>) =>
     onChange({ ...options, ...patch });
 
+  if (deviceCap?.tier === "unsupported") {
+    return (
+      <div className="rounded-2xl bg-red-50 border border-red-200 p-5">
+        <p className="text-sm font-bold text-red-800">お使いの環境では動画変換を利用できません</p>
+        <p className="text-xs text-red-600 mt-1">動画変換には SharedArrayBuffer が必要です。Chrome / Edge / Firefox の最新版をお使いください。</p>
+      </div>
+    );
+  }
+
   return (
     <div className="rounded-2xl bg-white p-5 space-y-5 shadow-sm">
+      {/* 端末スペック表示 */}
+      {deviceCap && (
+        <div className={`rounded-xl px-4 py-2.5 text-xs font-semibold ${
+          deviceCap.tier === "high" ? "bg-emerald-50 text-emerald-700" :
+          deviceCap.tier === "medium" ? "bg-blue-50 text-blue-700" :
+          "bg-amber-50 text-amber-700"
+        }`}>
+          {deviceTierMessage(deviceCap)}
+        </div>
+      )}
       {/* 出力形式 */}
       <div>
         <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">出力形式</p>
@@ -131,7 +158,10 @@ export default function VideoFormatPicker({ options, onChange }: Props) {
 
       {/* 注意書き */}
       <p className="text-xs text-gray-400 leading-relaxed">
-        ⚠️ 初回変換時に ffmpeg エンジン（約30MB）を読み込みます。動画サイズは100MB以下・短尺（目安5分以内）を推奨します。
+        初回変換時に ffmpeg エンジン（約30MB）を読み込みます。
+        {deviceCap && (
+          <> {deviceCap.maxFileSizeMB}MB以下・{deviceCap.maxDurationSec / 60}分以内を推奨します。</>
+        )}
       </p>
     </div>
   );

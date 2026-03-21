@@ -1,3 +1,10 @@
+/**
+ * 解析履歴画面
+ *
+ * 無料プラン: 直近の履歴のみ表示（古い履歴はロック表示）
+ * プレミアム: 全履歴にアクセス可能
+ */
+
 import { useState, useCallback } from "react";
 import { View, Text, TouchableOpacity, ScrollView, Image } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -6,6 +13,7 @@ import { Ionicons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ParkingRules } from "@mankai/parking-shared";
 import { useAnalytics } from "../../lib/analytics";
+import { usePlan } from "../../lib/SubscriptionContext";
 
 type HistoryItem = {
   id: number;
@@ -14,16 +22,27 @@ type HistoryItem = {
   analyzedAt: string;
 };
 
+const FREE_VISIBLE_COUNT = 5;
+
 function formatDate(iso: string) {
   const d = new Date(iso);
   const pad = (n: number) => String(n).padStart(2, "0");
   return `${d.getFullYear()}/${pad(d.getMonth() + 1)}/${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
 }
 
+const cardStyle = {
+  shadowColor: "#000",
+  shadowOffset: { width: 0, height: 1 },
+  shadowOpacity: 0.06,
+  shadowRadius: 4,
+  elevation: 2,
+};
+
 export default function HistoryScreen() {
   const insets = useSafeAreaInsets();
   const router = useRouter();
   const { track } = useAnalytics();
+  const { limits } = usePlan();
   const [history, setHistory] = useState<HistoryItem[]>([]);
 
   useFocusEffect(
@@ -45,10 +64,21 @@ export default function HistoryScreen() {
     router.push("/result");
   }
 
+  const canAccessAll = limits.canAccessHistory;
+  const visibleItems = canAccessAll ? history : history.slice(0, FREE_VISIBLE_COUNT);
+  const lockedCount = canAccessAll ? 0 : Math.max(0, history.length - FREE_VISIBLE_COUNT);
+
   return (
     <View className="flex-1 bg-slate-50" style={{ paddingTop: insets.top + 16 }}>
-      <View className="px-5 pb-4">
+      <View className="px-5 pb-4 flex-row items-center justify-between">
         <Text className="text-2xl font-bold text-slate-900">履歴</Text>
+        {!canAccessAll && history.length > 0 && (
+          <View className="rounded-xl bg-slate-100 px-3 py-1.5">
+            <Text className="text-xs font-semibold text-slate-500">
+              直近{FREE_VISIBLE_COUNT}件まで表示
+            </Text>
+          </View>
+        )}
       </View>
 
       {history.length === 0 ? (
@@ -74,13 +104,13 @@ export default function HistoryScreen() {
         </View>
       ) : (
         <ScrollView className="flex-1 px-4" contentContainerStyle={{ gap: 8, paddingBottom: 24 }}>
-          {history.map((item) => (
+          {visibleItems.map((item) => (
             <TouchableOpacity
               key={item.id}
               onPress={() => handleSelect(item)}
               activeOpacity={0.75}
               className="flex-row items-center bg-white rounded-2xl p-3 gap-3"
-              style={{ shadowColor: "#000", shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.06, shadowRadius: 4, elevation: 2 }}
+              style={cardStyle}
             >
               {item.imageUri ? (
                 <Image
@@ -98,7 +128,6 @@ export default function HistoryScreen() {
                   {item.rules.name}
                 </Text>
                 {(() => {
-                  // 旧フォーマット(maxPrice)と新フォーマット(zones)の両方に対応
                   const raw = item.rules as any;
                   const firstMaxPrice = raw.zones?.[0]?.maxPrices?.[0] ?? raw.maxPrice;
                   return firstMaxPrice ? (
@@ -115,6 +144,28 @@ export default function HistoryScreen() {
               <Ionicons name="chevron-forward" size={18} color="#CBD5E1" />
             </TouchableOpacity>
           ))}
+
+          {/* ロックされた履歴の表示 */}
+          {lockedCount > 0 && (
+            <View className="rounded-2xl bg-slate-50 border border-slate-200 p-5 items-center mt-2">
+              <View className="h-12 w-12 rounded-full bg-slate-200 items-center justify-center mb-3">
+                <Ionicons name="lock-closed" size={24} color="#94A3B8" />
+              </View>
+              <Text className="text-base font-bold text-slate-700 mb-1">
+                他 {lockedCount}件の履歴
+              </Text>
+              <Text className="text-sm text-slate-400 text-center mb-4">
+                プレミアムで全ての履歴にアクセスできます
+              </Text>
+              <TouchableOpacity
+                onPress={() => router.push("/paywall?highlight=premium")}
+                className="rounded-xl bg-blue-600 px-6 py-3"
+                activeOpacity={0.85}
+              >
+                <Text className="text-sm font-bold text-white">プレミアムで解放</Text>
+              </TouchableOpacity>
+            </View>
+          )}
         </ScrollView>
       )}
     </View>

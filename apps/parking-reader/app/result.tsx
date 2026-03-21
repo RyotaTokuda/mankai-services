@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   ScrollView,
   TextInput,
+  Alert,
 } from "react-native";
 import { useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -20,6 +21,9 @@ import {
   calculateFee,
 } from "@mankai/parking-shared";
 import { useAnalytics } from "../lib/analytics";
+import { usePlan } from "../lib/SubscriptionContext";
+import { FeatureLockCard } from "../components/FeatureLockCard";
+import { saveParking, getSavedCount } from "../lib/savedParking";
 
 // ── 旧フォーマット（slots + maxPrice）→ 新フォーマット（zones）へのマイグレーション ──
 function migrateRules(raw: any): ParkingRules {
@@ -120,6 +124,7 @@ export default function ResultScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const { track } = useAnalytics();
+  const { limits } = usePlan();
 
   const now = roundTo10(new Date());
   const later = roundTo10(new Date(Date.now() + 2 * 3600000));
@@ -132,9 +137,14 @@ export default function ResultScreen() {
   const [selectedZoneIdx, setSelectedZoneIdx] = useState(0);
   const [editingRules, setEditingRules] = useState(false);
   const [isSample, setIsSample] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+  const [imageUri, setImageUri] = useState("");
 
   useEffect(() => {
-    AsyncStorage.getItem("parkingRules").then((stored) => {
+    Promise.all([
+      AsyncStorage.getItem("parkingRules"),
+      AsyncStorage.getItem("uploadedImageUri"),
+    ]).then(([stored, uri]) => {
       if (stored) {
         try {
           setRules(migrateRules(JSON.parse(stored)));
@@ -144,6 +154,7 @@ export default function ResultScreen() {
       } else {
         setIsSample(true);
       }
+      setImageUri(uri ?? "");
     });
     track({ name: "result_viewed" });
   }, []);
@@ -644,6 +655,141 @@ export default function ResultScreen() {
             </View>
           )}
         </View>
+
+        {/* 保存・比較・詳細シミュレーションの有料機能セクション */}
+        <View className="gap-3">
+          {/* 保存ボタン */}
+          <TouchableOpacity
+            onPress={async () => {
+              if (isSaved) return;
+              const count = await getSavedCount();
+              if (count >= limits.saveLimit) {
+                track({ name: "parking_save_limit_hit", properties: { limit: limits.saveLimit } });
+                Alert.alert(
+                  "保存上限に達しています",
+                  `現在のプランでは${limits.saveLimit}件まで保存できます。\nプランをアップグレードすると、より多くの駐車場を保存できます。`,
+                  [
+                    { text: "閉じる", style: "cancel" },
+                    { text: "プランを見る", onPress: () => router.push("/paywall?highlight=premium") },
+                  ],
+                );
+                return;
+              }
+              await saveParking(rules, imageUri);
+              track({ name: "parking_saved", properties: { count: count + 1 } });
+              setIsSaved(true);
+            }}
+            className={`rounded-2xl p-4 flex-row items-center justify-between ${
+              isSaved ? "bg-green-50 border border-green-200" : "bg-white"
+            }`}
+            style={isSaved ? {} : cardStyle}
+            activeOpacity={isSaved ? 1 : 0.75}
+          >
+            <View className="flex-row items-center gap-3">
+              <View className={`h-10 w-10 rounded-full items-center justify-center ${
+                isSaved ? "bg-green-100" : "bg-blue-50"
+              }`}>
+                <Ionicons
+                  name={isSaved ? "checkmark-circle" : "bookmark-outline"}
+                  size={20}
+                  color={isSaved ? "#22C55E" : "#2563EB"}
+                />
+              </View>
+              <View>
+                <Text className={`text-base font-medium ${isSaved ? "text-green-800" : "text-slate-800"}`}>
+                  {isSaved ? "保存しました" : "この駐車場を保存"}
+                </Text>
+                <Text className="text-xs text-slate-400">
+                  {isSaved ? "「保存済み」タブで確認できます" : `次回すぐ見返せます（${limits.saveLimit}件まで）`}
+                </Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+
+          {/* 比較ボタン */}
+          <TouchableOpacity
+            onPress={() => {
+              if (limits.compareLimit <= 2) {
+                router.push("/paywall?highlight=pass_24h");
+              } else {
+                router.push("/compare");
+              }
+            }}
+            className="rounded-2xl bg-white p-4 flex-row items-center justify-between"
+            style={cardStyle}
+            activeOpacity={0.75}
+          >
+            <View className="flex-row items-center gap-3">
+              <View className="h-10 w-10 rounded-full bg-blue-50 items-center justify-center">
+                <Ionicons name="git-compare-outline" size={20} color="#2563EB" />
+              </View>
+              <View>
+                <Text className="text-base font-medium text-slate-800">他の駐車場と比較</Text>
+                <Text className="text-xs text-slate-400">
+                  {limits.compareLimit <= 2
+                    ? "複数候補をその場で比較できます"
+                    : `${limits.compareLimit}件まで比較可能`}
+                </Text>
+              </View>
+            </View>
+            {limits.compareLimit <= 2 && (
+              <View className="rounded-lg bg-amber-100 px-2 py-1">
+                <Text className="text-[10px] font-bold text-amber-600">PRO</Text>
+              </View>
+            )}
+          </TouchableOpacity>
+
+          {/* 詳細シミュレーション */}
+          {limits.canUseAdvancedSimulation ? (
+            <TouchableOpacity
+              onPress={() => router.push("/simulation")}
+              className="rounded-2xl bg-white p-5"
+              style={cardStyle}
+              activeOpacity={0.75}
+            >
+              <View className="flex-row items-center justify-between mb-3">
+                <Text className="text-sm font-semibold uppercase tracking-widest text-slate-400">
+                  詳細シミュレーション
+                </Text>
+                <Ionicons name="chevron-forward" size={18} color="#94A3B8" />
+              </View>
+              <View className="gap-2">
+                <View className="flex-row items-center gap-2">
+                  <Ionicons name="time-outline" size={16} color="#2563EB" />
+                  <Text className="text-sm text-slate-600">
+                    あと何分で料金が加算されるか
+                  </Text>
+                </View>
+                <View className="flex-row items-center gap-2">
+                  <Ionicons name="trending-up-outline" size={16} color="#2563EB" />
+                  <Text className="text-sm text-slate-600">
+                    最大料金到達タイミング
+                  </Text>
+                </View>
+                <View className="flex-row items-center gap-2">
+                  <Ionicons name="moon-outline" size={16} color="#2563EB" />
+                  <Text className="text-sm text-slate-600">
+                    昼夜跨ぎの料金変動
+                  </Text>
+                </View>
+              </View>
+            </TouchableOpacity>
+          ) : (
+            <FeatureLockCard
+              feature="詳細シミュレーション"
+              message="あと何分で料金が上がるか確認"
+              subMessage="最大料金到達タイミングも分かります"
+              unlockWith="both"
+            />
+          )}
+        </View>
+
+        {/* 広告エリア（ダミー） */}
+        {!limits.isAdFree && (
+          <View className="rounded-2xl bg-slate-100 border border-dashed border-slate-300 p-4 items-center">
+            <Text className="text-xs text-slate-400">広告エリア（実装予定）</Text>
+          </View>
+        )}
 
         {/* 注意事項 */}
         {sortedNotes.length > 0 && (

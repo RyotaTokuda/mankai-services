@@ -1,5 +1,8 @@
 const { getDefaultConfig } = require("expo/metro-config");
 const { withNativeWind } = require("nativewind/metro");
+const {
+  getRewriteRequestUrl,
+} = require("@expo/metro-config/build/rewriteRequestUrl");
 const path = require("path");
 
 const projectRoot = __dirname;
@@ -15,5 +18,9 @@ config.resolver.nodeModulesPaths = [
   path.resolve(projectRoot, "node_modules"),
   path.resolve(workspaceRoot, "node_modules"),
 ];
+
+// モノレポ対応: serverRoot がモノレポルートになるため、
+// rewriteRequestUrl を projectRoot ベースで再設定
+config.server.rewriteRequestUrl = getRewriteRequestUrl(projectRoot);
 
 module.exports = withNativeWind(config, { input: "./global.css" });

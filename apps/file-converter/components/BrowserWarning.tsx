@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { checkBrowserCompat, SUPPORTED_BROWSERS, BrowserCompat } from "@/lib/browserCompat";
+import { checkBrowserCompat, SUPPORTED_BROWSERS, BrowserCompat } from "@/lib/browser-compat";
 
 export default function BrowserWarning() {
   const [compat, setCompat] = useState<BrowserCompat | null>(null);

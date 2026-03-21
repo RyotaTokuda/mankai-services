@@ -9,7 +9,22 @@ export type AnalyticsEvent =
   | { name: "result_viewed" }
   | { name: "result_closed" }
   | { name: "history_item_opened" }
-  | { name: "settings_opened" };
+  | { name: "settings_opened" }
+  // 課金関連
+  | { name: "paywall_viewed"; properties: { source: string } }
+  | { name: "paywall_plan_selected"; properties: { plan: "pass_24h" | "premium" } }
+  | { name: "purchase_started"; properties: { plan: "pass_24h" | "premium" } }
+  | { name: "purchase_success"; properties: { plan: "pass_24h" | "premium" } }
+  | { name: "purchase_failed"; properties: { plan: "pass_24h" | "premium"; error?: string } }
+  | { name: "purchase_restore_attempted" }
+  | { name: "purchase_restore_success" }
+  | { name: "limit_warning_shown"; properties: { remaining: number } }
+  | { name: "limit_reached_modal_shown" }
+  // 保存・比較
+  | { name: "parking_saved"; properties: { count: number } }
+  | { name: "parking_save_limit_hit"; properties: { limit: number } }
+  | { name: "compare_started"; properties: { count: number } }
+  | { name: "simulation_viewed" };
 
 export function useAnalytics() {
   const posthog = usePostHog();

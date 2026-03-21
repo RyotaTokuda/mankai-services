@@ -11,7 +11,11 @@
     "./status":           "./src/status.ts",
     "./lemon-checkout":   "./src/lemon/checkout.ts",
     "./lemon-webhook":    "./src/lemon/webhook.ts",
-    "./lemon-types":      "./src/lemon/types.ts"
+    "./lemon-types":      "./src/lemon/types.ts",
+    "./stripe-webhook":   "./src/stripe/webhook.ts",
+    "./stripe-types":     "./src/stripe/types.ts",
+    "./apple-types":      "./src/apple/types.ts",
+    "./google-types":     "./src/google/types.ts"
   },
   "dependencies": {
     "@mankai/auth": "*"
