@@ -1,0 +1,54 @@
+name: Update Car Cost Master Data
+
+on:
+  schedule:
+    # 1月1日と7月1日の9:00 JST（0:00 UTC）に実行
+    - cron: '0 0 1 1,7 *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Update fuel prices
+        run: npx tsx apps/car-cost-simulator/scripts/update-fuel-price.ts
+
+      - name: Rebuild car models from CSV
+        run: npx tsx apps/car-cost-simulator/scripts/build-car-models.ts
+
+      - name: Check for changes
+        id: diff
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create PR if changed
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          BRANCH="chore/update-car-cost-data-$(date +%Y%m)"
+          git checkout -b "$BRANCH"
+          git add apps/car-cost-simulator/data/ apps/car-cost-simulator/master/
+          git commit -m "chore: 車の維持費マスターデータ更新（$(date +%Y-%m)）"
+          git push origin "$BRANCH"
+          gh pr create \
+            --title "chore: 車の維持費マスターデータ更新（$(date +%Y-%m)）" \
+            --body "半年ごとの自動更新。ガソリン価格・車種データを最新化。手動で内容を確認してからマージしてください。" \
+            --base main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

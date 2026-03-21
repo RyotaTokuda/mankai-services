@@ -4,3 +4,18 @@
 /* packages/ の TSX ファイルも Tailwind クラスのスキャン対象に含める */
 @source "../../packages/auth/src/**/*.tsx";
 @source "../../packages/ui/src/**/*.tsx";
+
+/* ボタン・リンクのホバーカーソル */
+button,
+[role="button"],
+a,
+summary,
+input[type="submit"] {
+  cursor: pointer;
+}
+
+/* ボタンのホバーエフェクト強化 */
+button:hover:not(:disabled),
+[role="button"]:hover {
+  filter: brightness(0.97);
+}
