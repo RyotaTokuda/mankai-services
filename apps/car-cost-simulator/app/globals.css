@@ -1,9 +1,7 @@
 @import "tailwindcss";
-@import "@mankai/ui/tokens.css";
 
 /* packages/ の TSX ファイルも Tailwind クラスのスキャン対象に含める */
 @source "../../packages/auth/src/**/*.tsx";
-@source "../../packages/ui/src/**/*.tsx";
 
 /* ボタン・リンクのホバーカーソル */
 button,
