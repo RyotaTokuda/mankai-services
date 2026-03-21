@@ -11,6 +11,7 @@ import CostSummary from "./CostSummary";
 import CostChart from "./CostChart";
 import CarModelPicker from "./CarModelPicker";
 import AffiliateCta from "./AffiliateCta";
+import YearlyCostChart from "./YearlyCostChart";
 
 function createScenario(index: number): CarScenario {
   return {
@@ -18,6 +19,16 @@ function createScenario(index: number): CarScenario {
     id: crypto.randomUUID(),
     name: `車種 ${index}`,
   };
+}
+
+/** デフォルトの「車種 1」が未編集かどうか */
+function isUntouchedDefault(s: CarScenario): boolean {
+  return (
+    s.name.startsWith("車種 ") &&
+    s.vehiclePrice === DEFAULT_SCENARIO.vehiclePrice &&
+    s.downPayment === DEFAULT_SCENARIO.downPayment &&
+    s.loanYears === DEFAULT_SCENARIO.loanYears
+  );
 }
 
 export default function Simulator() {
@@ -33,19 +44,23 @@ export default function Simulator() {
     setScenarios((prev) => [...prev, createScenario(prev.length + 1)]);
   }
 
+  /** テンプレート/車種追加時、未編集のデフォルトがあれば置き換える */
+  function addOrReplace(newScenario: CarScenario) {
+    setScenarios((prev) => {
+      if (prev.length === 1 && isUntouchedDefault(prev[0])) {
+        return [newScenario];
+      }
+      return [...prev, newScenario];
+    });
+  }
+
   function addFromTemplate(templateIndex: number) {
     const t = TEMPLATES[templateIndex];
-    setScenarios((prev) => [
-      ...prev,
-      { ...t.values, id: crypto.randomUUID(), name: t.name },
-    ]);
+    addOrReplace({ ...t.values, id: crypto.randomUUID(), name: t.name });
   }
 
   function addFromCarModel(model: CarModel) {
-    setScenarios((prev) => [
-      ...prev,
-      { ...model.values, id: crypto.randomUUID() },
-    ]);
+    addOrReplace({ ...model.values, id: crypto.randomUUID() });
   }
 
   function removeScenario(id: string) {
@@ -188,6 +203,16 @@ export default function Simulator() {
               </tbody>
             </table>
           </div>
+        )}
+
+        {/* 年ごとの累積コスト比較 */}
+        {results.length > 1 && (
+          <YearlyCostChart
+            results={results.map(({ scenario, costs }) => ({
+              name: scenario.name,
+              costs,
+            }))}
+          />
         )}
       </section>
 

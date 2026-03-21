@@ -6,6 +6,7 @@ import { HELP } from "../lib/help-texts";
 import HelpTip from "./HelpTip";
 import MaintenanceBreakdown from "./MaintenanceBreakdown";
 import TirePicker from "./TirePicker";
+import { calculateCosts, formatYen } from "../lib/calc";
 
 interface Props {
   scenario: CarScenario;
@@ -87,6 +88,8 @@ export default function ScenarioForm({
 }: Props) {
   const [detailed, setDetailed] = useState(false);
 
+  const costs = calculateCosts({ ...scenario, id: "" });
+
   function update<K extends keyof CarScenario>(key: K, value: CarScenario[K]) {
     onChange({ ...scenario, [key]: value });
   }
@@ -116,32 +119,34 @@ export default function ScenarioForm({
       </div>
 
       {/* モード切替 */}
-      <div className="px-5 py-2.5 border-b border-slate-100 dark:border-slate-700/50 flex items-center gap-2">
-        <button
-          onClick={() => setDetailed(false)}
-          className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
-            !detailed
-              ? "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300"
-              : "text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"
-          }`}
-        >
-          簡易
-        </button>
-        <button
-          onClick={() => setDetailed(true)}
-          className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
-            detailed
-              ? "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300"
-              : "text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"
-          }`}
-        >
-          詳細
-        </button>
-        <span className="text-[11px] text-slate-400 ml-1">
+      <div className="px-5 py-2.5 border-b border-slate-100 dark:border-slate-700/50">
+        <div className="flex items-center gap-1">
+          <button
+            onClick={() => setDetailed(false)}
+            className={`rounded-full px-3.5 py-1.5 text-xs font-medium transition-colors border ${
+              !detailed
+                ? "bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-900 dark:text-blue-300 dark:border-blue-700"
+                : "bg-slate-100 text-slate-500 border-slate-200 hover:bg-slate-200 hover:text-slate-700 dark:bg-slate-800 dark:text-slate-400 dark:border-slate-600 dark:hover:bg-slate-700"
+            }`}
+          >
+            簡易
+          </button>
+          <button
+            onClick={() => setDetailed(true)}
+            className={`rounded-full px-3.5 py-1.5 text-xs font-medium transition-colors border ${
+              detailed
+                ? "bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-900 dark:text-blue-300 dark:border-blue-700"
+                : "bg-slate-100 text-slate-500 border-slate-200 hover:bg-slate-200 hover:text-slate-700 dark:bg-slate-800 dark:text-slate-400 dark:border-slate-600 dark:hover:bg-slate-700"
+            }`}
+          >
+            詳細
+          </button>
+        </div>
+        <p className="text-[11px] text-slate-400 mt-1.5">
           {detailed
-            ? "全項目を細かく設定"
-            : "主要な項目だけサクッと入力"}
-        </span>
+            ? "全項目を細かく設定できます"
+            : "主要な項目だけサクッと入力できます"}
+        </p>
       </div>
 
       <div className="divide-y divide-slate-100 dark:divide-slate-700/50">
@@ -152,6 +157,7 @@ export default function ScenarioForm({
               <NumberField label="車両価格" value={scenario.vehiclePrice} onChange={(v) => update("vehiclePrice", v)} unit="円" step={10000} helpKey="vehiclePrice" />
               <NumberField label="頭金" value={scenario.downPayment} onChange={(v) => update("downPayment", v)} unit="円" step={10000} helpKey="downPayment" />
               <NumberField label="ローン年数" value={scenario.loanYears} onChange={(v) => update("loanYears", v)} unit="年" step={1} helpKey="loanYears" />
+              <LoanResult monthly={costs.loanMonthly} total={costs.loanTotal} />
             </Section>
 
             <Section icon="🏠" title="毎月の固定費">
@@ -183,6 +189,7 @@ export default function ScenarioForm({
               <NumberField label="頭金" value={scenario.downPayment} onChange={(v) => update("downPayment", v)} unit="円" step={10000} helpKey="downPayment" />
               <NumberField label="金利" value={scenario.interestRate} onChange={(v) => update("interestRate", v)} unit="%" step={0.1} helpKey="interestRate" />
               <NumberField label="ローン年数" value={scenario.loanYears} onChange={(v) => update("loanYears", v)} unit="年" step={1} helpKey="loanYears" />
+              <LoanResult monthly={costs.loanMonthly} total={costs.loanTotal} />
             </Section>
 
             <Section icon="🏠" title="毎月の固定費">
@@ -220,6 +227,39 @@ export default function ScenarioForm({
             </Section>
           </>
         )}
+      </div>
+    </div>
+  );
+}
+
+function LoanResult({ monthly, total }: { monthly: number; total: number }) {
+  if (monthly === 0) return null;
+  return (
+    <div className="mt-1 mb-1 rounded-lg bg-blue-50/70 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 px-3 py-2.5">
+      <div className="flex items-center gap-1.5 mb-1.5">
+        <span className="text-[10px] font-bold text-blue-500 dark:text-blue-400 bg-blue-100 dark:bg-blue-900 rounded px-1.5 py-0.5">
+          試算結果
+        </span>
+      </div>
+      <div className="flex gap-4">
+        <div>
+          <div className="text-[11px] text-slate-400">毎月の返済額</div>
+          <div className="text-sm font-bold text-blue-700 dark:text-blue-300 tabular-nums">
+            {formatYen(monthly)}<span className="text-[11px] font-normal ml-0.5">円</span>
+          </div>
+        </div>
+        <div>
+          <div className="text-[11px] text-slate-400">年間の返済額</div>
+          <div className="text-sm font-bold text-blue-700 dark:text-blue-300 tabular-nums">
+            {formatYen(monthly * 12)}<span className="text-[11px] font-normal ml-0.5">円</span>
+          </div>
+        </div>
+        <div>
+          <div className="text-[11px] text-slate-400">返済総額</div>
+          <div className="text-sm font-bold text-slate-600 dark:text-slate-300 tabular-nums">
+            {formatYen(total)}<span className="text-[11px] font-normal ml-0.5">円</span>
+          </div>
+        </div>
       </div>
     </div>
   );

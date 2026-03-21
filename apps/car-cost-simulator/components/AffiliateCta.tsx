@@ -2,9 +2,20 @@
 
 import type { CostBreakdown } from "../lib/types";
 import { formatYen } from "../lib/calc";
+import { AFFILIATE_LINKS } from "../data/affiliate-links";
 
 interface Props {
   costs: CostBreakdown;
+}
+
+interface CtaItem {
+  icon: string;
+  title: string;
+  description: string;
+  ctaText: string;
+  href: string;
+  note: string;
+  show: boolean;
 }
 
 /**
@@ -15,54 +26,67 @@ interface Props {
  * - rel="nofollow sponsored" を付与
  * - クリック誘導文言を使わない
  * - 虚偽・誇大表現を使わない
- *
- * リンク先は提携審査通過後に実際のアフィリエイトURLに差し替える
- * TODO: A8/もしもの提携完了後にURLを設定
  */
 export default function AffiliateCta({ costs }: Props) {
   const insuranceMonthly = Math.round(costs.insuranceAnnual / 12);
 
+  const items: CtaItem[] = [
+    {
+      icon: "🛡️",
+      title: "保険料が適正か相談してみる",
+      description: `現在の保険料 月${formatYen(insuranceMonthly)}円。FP（ファイナンシャルプランナー）に無料で相談すると、同じ補償内容でも保険料を抑えられることがあります。`,
+      ctaText: AFFILIATE_LINKS.carInsurance.label,
+      href: AFFILIATE_LINKS.carInsurance.href,
+      note: "何度でも無料。強引な勧誘なし",
+      show: !!AFFILIATE_LINKS.carInsurance.href,
+    },
+    {
+      icon: "🏦",
+      title: "カーローンの金利を比較",
+      description: `ローン返済額 月${formatYen(costs.loanMonthly)}円。銀行のマイカーローンならディーラーローンより金利が低いことが多く、総返済額を抑えられます。`,
+      ctaText: AFFILIATE_LINKS.carLoan.label,
+      href: AFFILIATE_LINKS.carLoan.href,
+      note: "ネット銀行なら年1〜3%台の低金利も",
+      show: !!AFFILIATE_LINKS.carLoan.href && costs.loanMonthly > 0,
+    },
+    {
+      icon: "🔑",
+      title: "カーリースという選択肢",
+      description:
+        "月々定額で頭金・車検・税金がコミコミ。維持費の管理がシンプルになります。購入との総額比較もしてみましょう。",
+      ctaText: AFFILIATE_LINKS.carLease.label,
+      href: AFFILIATE_LINKS.carLease.href,
+      note: "月々1万円台から新車に乗れるプランも",
+      show: !!AFFILIATE_LINKS.carLease.href,
+    },
+  ];
+
+  const visibleItems = items.filter((item) => item.show);
+
+  // リンクが1つも設定されていなければセクション自体を非表示
+  if (visibleItems.length === 0) return null;
+
   return (
     <section className="space-y-4">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center gap-2">
         <h2 className="text-lg font-bold">維持費を節約するには</h2>
         <span className="text-[10px] text-slate-400 border border-slate-200 dark:border-slate-600 rounded px-1.5 py-0.5">
           PR
         </span>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {/* 自動車保険一括見積り */}
-        <CtaCard
-          icon="🛡️"
-          title="自動車保険を見直す"
-          description={`現在の保険料 月${formatYen(insuranceMonthly)}円。複数社の見積りを比較すると、同じ補償内容でも年間数万円安くなることがあります。`}
-          ctaText="無料で一括見積りしてみる"
-          href="#" // TODO: アフィリエイトURL
-          note="最大20社の見積りを一度に比較できます"
-        />
-
-        {/* カーローン比較 */}
-        {costs.loanMonthly > 0 && (
-          <CtaCard
-            icon="🏦"
-            title="カーローンの金利を比較"
-            description={`ローン返済額 月${formatYen(costs.loanMonthly)}円。銀行のマイカーローンならディーラーローンより金利が低いことが多く、総返済額を抑えられます。`}
-            ctaText="銀行ローンの金利を比べる"
-            href="#" // TODO: アフィリエイトURL
-            note="ネット銀行なら年1〜3%台の低金利も"
-          />
-        )}
-
-        {/* カーリース */}
-        <CtaCard
-          icon="🔑"
-          title="カーリースという選択肢"
-          description="月々定額で頭金・車検・税金がコミコミ。維持費の管理がシンプルになります。購入との総額比較もしてみましょう。"
-          ctaText="月額料金をシミュレーション"
-          href="#" // TODO: アフィリエイトURL
-          note="月々1万円台から新車に乗れるプランも"
-        />
+      <div
+        className={`grid gap-4 ${
+          visibleItems.length >= 3
+            ? "sm:grid-cols-2 lg:grid-cols-3"
+            : visibleItems.length === 2
+              ? "sm:grid-cols-2"
+              : ""
+        }`}
+      >
+        {visibleItems.map((item) => (
+          <CtaCard key={item.title} {...item} />
+        ))}
       </div>
 
       <p className="text-[10px] text-slate-400 text-center">
@@ -79,14 +103,7 @@ function CtaCard({
   ctaText,
   href,
   note,
-}: {
-  icon: string;
-  title: string;
-  description: string;
-  ctaText: string;
-  href: string;
-  note: string;
-}) {
+}: Omit<CtaItem, "show">) {
   return (
     <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/60 shadow-sm p-5 flex flex-col">
       <div className="flex items-start gap-3 mb-3">
