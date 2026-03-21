@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { VideoConvertOptions, VideoOutputFormat } from "@/lib/tools/video-convert";
 import { detectDeviceCapability, deviceTierMessage, type DeviceCapability } from "@/lib/browser-compat";
 
@@ -33,11 +33,9 @@ const BITRATE_OPTIONS = [
 ];
 
 export default function VideoFormatPicker({ options, onChange }: Props) {
-  const [deviceCap, setDeviceCap] = useState<DeviceCapability | null>(null);
-
-  useEffect(() => {
-    setDeviceCap(detectDeviceCapability());
-  }, []);
+  const [deviceCap] = useState<DeviceCapability | null>(() =>
+    typeof window === "undefined" ? null : detectDeviceCapability()
+  );
 
   const set = (patch: Partial<VideoConvertOptions>) =>
     onChange({ ...options, ...patch });

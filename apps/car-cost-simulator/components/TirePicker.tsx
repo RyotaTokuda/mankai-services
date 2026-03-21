@@ -1,10 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  TIRE_OPTIONS,
-  suggestTireSizeIndex,
-} from "../data/tire-options";
+import { TIRE_OPTIONS } from "../data/tire-options";
 import type { TireGrade } from "../data/tire-options";
 
 interface Props {

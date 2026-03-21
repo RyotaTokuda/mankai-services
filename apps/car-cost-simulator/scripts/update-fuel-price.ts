@@ -25,7 +25,7 @@ async function fetchLatestPrices(): Promise<{
     const res = await fetch(
       "https://www.enecho.meti.go.jp/statistics/petroleum_and_lpgas/pl007/results.html"
     );
-    const html = await res.text();
+    await res.text();
 
     // ページからレギュラー・ハイオク・軽油の価格を抽出（簡易パース）
     // 実際の値はHTMLの構造に依存するため、フォールバックを用意

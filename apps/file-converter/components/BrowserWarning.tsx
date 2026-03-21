@@ -1,14 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { checkBrowserCompat, SUPPORTED_BROWSERS, BrowserCompat } from "@/lib/browser-compat";
 
 export default function BrowserWarning() {
-  const [compat, setCompat] = useState<BrowserCompat | null>(null);
-
-  useEffect(() => {
-    setCompat(checkBrowserCompat());
-  }, []);
+  const [compat] = useState<BrowserCompat | null>(() =>
+    typeof window === "undefined" ? null : checkBrowserCompat()
+  );
 
   if (!compat) return null;
 

@@ -8,7 +8,7 @@
  */
 
 import type { CarScenario } from "../lib/types";
-import { DEFAULT_FUEL_PRICE, FUEL_PRICES } from "./fuel-price";
+import { DEFAULT_FUEL_PRICE } from "./fuel-price";
 
 export interface Template {
   name: string;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { ParkingRules } from "@mankai/parking-shared";
@@ -20,7 +20,7 @@ export default function UploadPage() {
   // クライアント側でも上限チェック（サーバー側と同じ 10MB）
   const MAX_FILE_BYTES = 10 * 1024 * 1024;
 
-  function setImage(url: string, file?: File) {
+  const setImage = useCallback((url: string, file?: File) => {
     if (file && file.size > MAX_FILE_BYTES) {
       setPasteError(`画像サイズが大きすぎます（上限10MB、現在約${Math.round(file.size / 1024 / 1024)}MB）`);
       return;
@@ -32,7 +32,7 @@ export default function UploadPage() {
     setErrorMessage(null);
     // result ページに画像を渡すために sessionStorage に保存
     sessionStorage.setItem("uploadedImageUrl", url);
-  }
+  }, [MAX_FILE_BYTES]);
 
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -76,7 +76,7 @@ export default function UploadPage() {
     }
     document.addEventListener("paste", handlePaste);
     return () => document.removeEventListener("paste", handlePaste);
-  }, []);
+  }, [setImage]);
 
   async function handleAnalyze() {
     if (!imageFile && !previewUrl) return;
