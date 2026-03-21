@@ -39,7 +39,6 @@ export interface CostBreakdown {
 }
 
 // DEFAULT_FUEL_PRICE は data/fuel-price.ts で一元管理
-// eslint-disable-next-line @typescript-eslint/no-require-imports
 import { DEFAULT_FUEL_PRICE } from "../data/fuel-price";
 
 export const DEFAULT_SCENARIO: Omit<CarScenario, "id"> = {

@@ -41,10 +41,7 @@ export default function HelpTip({ text }: Props) {
   }, []);
 
   useEffect(() => {
-    if (!open) {
-      setPositioned(false);
-      return;
-    }
+    if (!open) return;
     // requestAnimationFrame で確実にレイアウト後に位置計算
     requestAnimationFrame(() => {
       updatePosition();
@@ -56,6 +53,7 @@ export default function HelpTip({ text }: Props) {
       )
         return;
       setOpen(false);
+      setPositioned(false);
     }
     function handleScroll() {
       updatePosition();
@@ -75,7 +73,12 @@ export default function HelpTip({ text }: Props) {
       <button
         ref={btnRef}
         type="button"
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => {
+          setOpen((v) => {
+            if (v) setPositioned(false);
+            return !v;
+          });
+        }}
         className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-slate-200 dark:bg-slate-700 text-[10px] font-bold text-slate-500 dark:text-slate-400 hover:bg-blue-100 hover:text-blue-600 dark:hover:bg-blue-900 dark:hover:text-blue-400 transition-colors shrink-0"
         aria-label="ヘルプ"
       >
