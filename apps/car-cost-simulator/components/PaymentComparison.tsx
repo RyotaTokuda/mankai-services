@@ -57,7 +57,7 @@ export default function PaymentComparison({ scenario }: Props) {
       monthly: 0,
       totalCost: cashTotal,
       note: "利息なし。まとまった資金が必要",
-      highlight: cashTotal <= loanTotal,
+      highlight: false,
     },
     {
       name: `通常ローン（${years}年）`,
