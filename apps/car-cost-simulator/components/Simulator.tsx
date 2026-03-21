@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { CarScenario } from "../lib/types";
 import { DEFAULT_SCENARIO } from "../lib/types";
+import { decodeScenarios, buildShareUrl } from "../lib/url-share";
 import { TEMPLATES } from "../data/templates";
 import type { CarModel } from "../data/car-models";
 import { calculateCosts, formatYen } from "../lib/calc";
@@ -12,6 +13,9 @@ import CostChart from "./CostChart";
 import CarModelPicker from "./CarModelPicker";
 import AffiliateCta from "./AffiliateCta";
 import YearlyCostChart from "./YearlyCostChart";
+import AffordabilitySignal from "./AffordabilitySignal";
+import PaymentComparison from "./PaymentComparison";
+import ResaleComparison from "./ResaleComparison";
 
 function createScenario(index: number): CarScenario {
   return {
@@ -35,6 +39,29 @@ export default function Simulator() {
   const [scenarios, setScenarios] = useState<CarScenario[]>([
     createScenario(1),
   ]);
+  const [copied, setCopied] = useState(false);
+
+  // URLからシナリオ復元
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const encoded = params.get("s");
+    if (encoded) {
+      const restored = decodeScenarios(encoded);
+      if (restored && restored.length > 0) setScenarios(restored);
+    }
+  }, []);
+
+  function handlePdf() {
+    import("../lib/pdf-export").then(({ exportPdf }) => exportPdf(results));
+  }
+
+  function handleShare() {
+    const url = buildShareUrl(scenarios);
+    navigator.clipboard.writeText(url).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  }
 
   function updateScenario(id: string, updated: CarScenario) {
     setScenarios((prev) => prev.map((s) => (s.id === id ? updated : s)));
@@ -142,7 +169,23 @@ export default function Simulator() {
 
       {/* 結果エリア */}
       <section>
-        <h2 className="text-lg font-bold mb-4">試算結果</h2>
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-lg font-bold">試算結果</h2>
+          <div className="flex gap-2">
+            <button
+              onClick={handlePdf}
+              className="rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-1.5 text-xs text-slate-500 hover:text-blue-600 hover:border-blue-400 transition-colors"
+            >
+              PDFで保存
+            </button>
+            <button
+              onClick={handleShare}
+              className="rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-1.5 text-xs text-slate-500 hover:text-blue-600 hover:border-blue-400 transition-colors"
+            >
+              {copied ? "コピーしました" : "URLで共有"}
+            </button>
+          </div>
+        </div>
 
         <div
           className={`grid gap-6 ${
@@ -215,6 +258,15 @@ export default function Simulator() {
           />
         )}
       </section>
+
+      {/* 支払方法の比較 */}
+      <PaymentComparison scenario={results[0].scenario} />
+
+      {/* リセール率による実質コスト比較 */}
+      <ResaleComparison scenario={results[0].scenario} costs={results[0].costs} />
+
+      {/* 年収チェック */}
+      <AffordabilitySignal totalAnnual={results[0].costs.totalAnnual} />
 
       {/* アフィリエイト導線 */}
       <AffiliateCta costs={results[0].costs} />
