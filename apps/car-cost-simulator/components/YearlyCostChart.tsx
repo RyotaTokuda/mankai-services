@@ -160,41 +160,46 @@ export default function YearlyCostChart({ results }: Props) {
           )}
 
           {/* ホバーツールチップ（SVG内） */}
-          {hover && (
-            <g>
-              {/* 背景 */}
-              <rect
-                x={Math.min(hover.x - 60, CHART_W - PAD.right - 120)}
-                y={Math.max(hover.y - 38, PAD.top)}
-                width={120}
-                height={30}
-                rx={6}
-                fill="white"
-                stroke="#e2e8f0"
-                strokeWidth={1}
-              />
-              {/* テキスト */}
-              <text
-                x={Math.min(hover.x, CHART_W - PAD.right - 60)}
-                y={Math.max(hover.y - 26, PAD.top + 12)}
-                textAnchor="middle"
-                fontSize={9}
-                fill="#64748b"
-              >
-                {hover.carName} {hover.year}年目
-              </text>
-              <text
-                x={Math.min(hover.x, CHART_W - PAD.right - 60)}
-                y={Math.max(hover.y - 14, PAD.top + 24)}
-                textAnchor="middle"
-                fontSize={11}
-                fill={hover.color}
-                fontWeight="bold"
-              >
-                {formatYen(hover.value)}円
-              </text>
-            </g>
-          )}
+          {hover && (() => {
+            const tw = 130;
+            const th = 38;
+            const tx = Math.max(PAD.left, Math.min(hover.x - tw / 2, CHART_W - PAD.right - tw));
+            const ty = Math.max(PAD.top, hover.y - th - 6);
+            return (
+              <g>
+                <rect
+                  x={tx}
+                  y={ty}
+                  width={tw}
+                  height={th}
+                  rx={6}
+                  fill="white"
+                  stroke="#e2e8f0"
+                  strokeWidth={1}
+                  filter="drop-shadow(0 1px 2px rgba(0,0,0,0.08))"
+                />
+                <text
+                  x={tx + tw / 2}
+                  y={ty + 15}
+                  textAnchor="middle"
+                  fontSize={9}
+                  fill="#64748b"
+                >
+                  {hover.carName} {hover.year}年目
+                </text>
+                <text
+                  x={tx + tw / 2}
+                  y={ty + 30}
+                  textAnchor="middle"
+                  fontSize={11}
+                  fill={hover.color}
+                  fontWeight="bold"
+                >
+                  {formatYen(hover.value)}円
+                </text>
+              </g>
+            );
+          })()}
         </svg>
       </div>
 
