@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import type { CostBreakdown } from "../lib/types";
 import { formatYen } from "../lib/calc";
 
@@ -24,7 +25,18 @@ const CHART_W = 600;
 const CHART_H = 260;
 const PAD = { top: 15, right: 20, bottom: 30, left: 70 };
 
+interface Hover {
+  carName: string;
+  year: number;
+  value: number;
+  x: number;
+  y: number;
+  color: string;
+}
+
 export default function YearlyCostChart({ results }: Props) {
+  const [hover, setHover] = useState<Hover | null>(null);
+
   if (results.length < 2) return null;
 
   const years = [1, 2, 3, 4, 5];
@@ -38,7 +50,6 @@ export default function YearlyCostChart({ results }: Props) {
   const plotW = CHART_W - PAD.left - PAD.right;
   const plotH = CHART_H - PAD.top - PAD.bottom;
 
-  // 年ごとのグループ幅とバー幅
   const groupW = plotW / years.length;
   const barGap = 2;
   const barW = Math.min((groupW - barGap * (carCount + 1)) / carCount, 30);
@@ -54,9 +65,9 @@ export default function YearlyCostChart({ results }: Props) {
     return PAD.top + plotH - (val / yMax) * plotH;
   }
 
-  // Y軸ラベル
   const yTicks: number[] = [];
-  const tickStep = yMax <= 3000000 ? 500000 : yMax <= 10000000 ? 1000000 : 2000000;
+  const tickStep =
+    yMax <= 3000000 ? 500000 : yMax <= 10000000 ? 1000000 : 2000000;
   for (let v = 0; v <= yMax; v += tickStep) yTicks.push(v);
 
   const diff5yr =
@@ -67,84 +78,125 @@ export default function YearlyCostChart({ results }: Props) {
     <div className="mt-6 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/60 shadow-sm p-5">
       <h3 className="text-base font-bold mb-4">年ごとの累積コスト比較</h3>
 
-      <svg
-        viewBox={`0 0 ${CHART_W} ${CHART_H}`}
-        className="w-full h-auto"
-        aria-label="年ごとの累積コスト棒グラフ"
-      >
-        {/* Y軸グリッド+ラベル */}
-        {yTicks.map((v) => (
-          <g key={v}>
-            <line
-              x1={PAD.left}
-              y1={y(v)}
-              x2={CHART_W - PAD.right}
-              y2={y(v)}
-              stroke="#e5e7eb"
-              strokeWidth={0.5}
-            />
+      <div className="relative">
+        <svg
+          viewBox={`0 0 ${CHART_W} ${CHART_H}`}
+          className="w-full h-auto"
+          aria-label="年ごとの累積コスト棒グラフ"
+          onMouseLeave={() => setHover(null)}
+        >
+          {/* Y軸グリッド+ラベル */}
+          {yTicks.map((v) => (
+            <g key={v}>
+              <line
+                x1={PAD.left}
+                y1={y(v)}
+                x2={CHART_W - PAD.right}
+                y2={y(v)}
+                stroke="#e5e7eb"
+                strokeWidth={0.5}
+              />
+              <text
+                x={PAD.left - 6}
+                y={y(v) + 3}
+                textAnchor="end"
+                fontSize={10}
+                fill="#94a3b8"
+              >
+                {v >= 10000 ? `${(v / 10000).toLocaleString()}万` : "0"}
+              </text>
+            </g>
+          ))}
+
+          {/* X軸ラベル */}
+          {years.map((yr, yi) => (
             <text
-              x={PAD.left - 6}
-              y={y(v) + 3}
-              textAnchor="end"
-              fontSize={10}
+              key={yr}
+              x={PAD.left + yi * groupW + groupW / 2}
+              y={CHART_H - 6}
+              textAnchor="middle"
+              fontSize={11}
               fill="#94a3b8"
             >
-              {v >= 10000 ? `${(v / 10000).toLocaleString()}万` : "0"}
+              {yr}年目
             </text>
-          </g>
-        ))}
+          ))}
 
-        {/* X軸ラベル */}
-        {years.map((yr, yi) => (
-          <text
-            key={yr}
-            x={PAD.left + yi * groupW + groupW / 2}
-            y={CHART_H - 6}
-            textAnchor="middle"
-            fontSize={11}
-            fill="#94a3b8"
-          >
-            {yr}年目
-          </text>
-        ))}
-
-        {/* 棒グラフ */}
-        {results.map((r, ri) =>
-          years.map((_, yi) => {
-            const val = cumulativeData[ri][yi];
-            const barH = (val / yMax) * plotH;
-            const bx = xBar(yi, ri);
-            const by = y(val);
-            return (
-              <g key={`${r.name}-${yi}`}>
+          {/* 棒グラフ */}
+          {results.map((r, ri) =>
+            years.map((yr, yi) => {
+              const val = cumulativeData[ri][yi];
+              const barH = (val / yMax) * plotH;
+              const bx = xBar(yi, ri);
+              const by = y(val);
+              const isHovered =
+                hover?.carName === r.name && hover?.year === yr;
+              return (
                 <rect
+                  key={`${r.name}-${yi}`}
                   x={bx}
                   y={by}
                   width={barW}
                   height={barH}
                   rx={2}
                   fill={COLORS[ri % COLORS.length]}
-                  opacity={0.85}
+                  opacity={isHovered ? 1 : 0.8}
+                  stroke={isHovered ? COLORS[ri % COLORS.length] : "none"}
+                  strokeWidth={isHovered ? 2 : 0}
+                  style={{ cursor: "pointer" }}
+                  onMouseEnter={() =>
+                    setHover({
+                      carName: r.name,
+                      year: yr,
+                      value: val,
+                      x: bx + barW / 2,
+                      y: by,
+                      color: COLORS[ri % COLORS.length],
+                    })
+                  }
                 />
-                {/* 5年目のみ値ラベル */}
-                {yi === 4 && (
-                  <text
-                    x={bx + barW / 2}
-                    y={by - 4}
-                    textAnchor="middle"
-                    fontSize={9}
-                    fill={COLORS[ri % COLORS.length]}
-                    fontWeight="bold"
-                  >
-                    {formatYen(val)}円
-                  </text>
-                )}
-              </g>
-            );
-          })
-        )}
-      </svg>
+              );
+            })
+          )}
+
+          {/* ホバーツールチップ（SVG内） */}
+          {hover && (
+            <g>
+              {/* 背景 */}
+              <rect
+                x={Math.min(hover.x - 60, CHART_W - PAD.right - 120)}
+                y={Math.max(hover.y - 38, PAD.top)}
+                width={120}
+                height={30}
+                rx={6}
+                fill="white"
+                stroke="#e2e8f0"
+                strokeWidth={1}
+              />
+              {/* テキスト */}
+              <text
+                x={Math.min(hover.x, CHART_W - PAD.right - 60)}
+                y={Math.max(hover.y - 26, PAD.top + 12)}
+                textAnchor="middle"
+                fontSize={9}
+                fill="#64748b"
+              >
+                {hover.carName} {hover.year}年目
+              </text>
+              <text
+                x={Math.min(hover.x, CHART_W - PAD.right - 60)}
+                y={Math.max(hover.y - 14, PAD.top + 24)}
+                textAnchor="middle"
+                fontSize={11}
+                fill={hover.color}
+                fontWeight="bold"
+              >
+                {formatYen(hover.value)}円
+              </text>
+            </g>
+          )}
+        </svg>
+      </div>
 
       {/* 凡例 */}
       <div className="flex flex-wrap gap-3 mt-3 pt-3 border-t border-slate-100 dark:border-slate-700">
@@ -154,7 +206,12 @@ export default function YearlyCostChart({ results }: Props) {
               className="inline-block w-3 h-3 rounded-sm"
               style={{ backgroundColor: COLORS[ri % COLORS.length] }}
             />
-            <span className="text-xs text-slate-500">{r.name}</span>
+            <span className="text-xs text-slate-500">
+              {r.name}
+              <span className="ml-1 text-slate-400 tabular-nums">
+                （5年: {formatYen(cumulativeData[ri][4])}円）
+              </span>
+            </span>
           </div>
         ))}
       </div>
