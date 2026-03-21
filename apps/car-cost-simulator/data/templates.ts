@@ -36,7 +36,7 @@ export const TEMPLATES: Template[] = [
       fuelPrice: DEFAULT_FUEL_PRICE,
       annualMileage: 8000,
       tireFee: 7000, // 155/65R14 4本28,000円/4年
-      maintenanceFee: 18000,
+      maintenanceFee: 18000, resaleRate: 40,
     },
   },
   {
@@ -57,7 +57,7 @@ export const TEMPLATES: Template[] = [
       fuelPrice: DEFAULT_FUEL_PRICE,
       annualMileage: 10000,
       tireFee: 10000, // 175/70R14 4本40,000円/4年
-      maintenanceFee: 22000,
+      maintenanceFee: 22000, resaleRate: 40,
     },
   },
   {
@@ -78,7 +78,7 @@ export const TEMPLATES: Template[] = [
       fuelPrice: DEFAULT_FUEL_PRICE,
       annualMileage: 10000,
       tireFee: 13000, // 195/65R15
-      maintenanceFee: 28000,
+      maintenanceFee: 28000, resaleRate: 40,
     },
   },
   {
@@ -99,7 +99,7 @@ export const TEMPLATES: Template[] = [
       fuelPrice: DEFAULT_FUEL_PRICE,
       annualMileage: 10000,
       tireFee: 15000, // 205/60R16
-      maintenanceFee: 32000,
+      maintenanceFee: 32000, resaleRate: 40,
     },
   },
   {
@@ -120,7 +120,7 @@ export const TEMPLATES: Template[] = [
       fuelPrice: DEFAULT_FUEL_PRICE,
       annualMileage: 10000,
       tireFee: 18000, // 225/60R18
-      maintenanceFee: 30000,
+      maintenanceFee: 30000, resaleRate: 40,
     },
   },
   {
@@ -141,7 +141,7 @@ export const TEMPLATES: Template[] = [
       fuelPrice: DEFAULT_FUEL_PRICE,
       annualMileage: 10000,
       tireFee: 25000,
-      maintenanceFee: 40000,
+      maintenanceFee: 40000, resaleRate: 40,
     },
   },
   {
@@ -162,7 +162,7 @@ export const TEMPLATES: Template[] = [
       fuelPrice: DEFAULT_FUEL_PRICE,
       annualMileage: 10000,
       tireFee: 13000,
-      maintenanceFee: 25000,
+      maintenanceFee: 25000, resaleRate: 40,
     },
   },
   {
@@ -183,7 +183,7 @@ export const TEMPLATES: Template[] = [
       fuelPrice: DEFAULT_FUEL_PRICE,
       annualMileage: 12000,
       tireFee: 5000, // 145R12 商用タイヤ安価
-      maintenanceFee: 18000,
+      maintenanceFee: 18000, resaleRate: 40,
     },
   },
 ];

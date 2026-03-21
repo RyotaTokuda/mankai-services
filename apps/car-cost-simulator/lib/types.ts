@@ -20,6 +20,7 @@ export interface CarScenario {
   // その他（年額）
   tireFee: number; // タイヤ交換（年あたり按分）
   maintenanceFee: number; // 消耗品・整備（年あたり）
+  resaleRate: number; // 5年後リセール率（%）
 }
 
 export interface CostBreakdown {
@@ -56,4 +57,5 @@ export const DEFAULT_SCENARIO: Omit<CarScenario, "id"> = {
   annualMileage: 10000,
   tireFee: 10000,
   maintenanceFee: 22000,
+  resaleRate: 40,
 };

@@ -17,6 +17,7 @@ export function encodeScenarios(scenarios: CarScenario[]): string {
     am: s.annualMileage,
     tf: s.tireFee,
     mf: s.maintenanceFee,
+    rr: s.resaleRate,
   }));
   return btoa(encodeURIComponent(JSON.stringify(data)));
 }
@@ -42,6 +43,7 @@ export function decodeScenarios(encoded: string): CarScenario[] | null {
       annualMileage: Number(d.am) || 10000,
       tireFee: Number(d.tf) || 0,
       maintenanceFee: Number(d.mf) || 0,
+      resaleRate: Number(d.rr) || 40,
     }));
   } catch {
     return null;

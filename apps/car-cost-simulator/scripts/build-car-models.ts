@@ -34,6 +34,7 @@ interface RawRow {
   annual_mileage: number;
   tire_fee: number;
   maintenance_fee: number;
+  resale_rate: number;
 }
 
 function parseCSV(text: string): RawRow[] {
@@ -59,6 +60,7 @@ function parseCSV(text: string): RawRow[] {
           "annual_mileage",
           "tire_fee",
           "maintenance_fee",
+          "resale_rate",
         ].includes(h)
       ) {
         row[h] = Number(v) || 0;
@@ -162,6 +164,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [\n`;
       code += `          annualMileage: ${m.annual_mileage},\n`;
       code += `          tireFee: ${m.tire_fee},\n`;
       code += `          maintenanceFee: ${m.maintenance_fee},\n`;
+      code += `          resaleRate: ${m.resale_rate || 40},\n`;
       code += `        },\n`;
       code += `      },\n`;
     }

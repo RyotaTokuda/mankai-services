@@ -56,6 +56,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 7000,
           maintenanceFee: 18000,
+          resaleRate: 50,
         },
       },
       {
@@ -79,6 +80,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 7000,
           maintenanceFee: 18000,
+          resaleRate: 40,
         },
       },
       {
@@ -102,6 +104,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 7000,
           maintenanceFee: 18000,
+          resaleRate: 40,
         },
       },
       {
@@ -125,6 +128,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 7000,
           maintenanceFee: 18000,
+          resaleRate: 40,
         },
       },
       {
@@ -148,6 +152,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 10000,
           maintenanceFee: 22000,
+          resaleRate: 55,
         },
       },
       {
@@ -171,6 +176,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 7000,
           maintenanceFee: 18000,
+          resaleRate: 40,
         },
       },
       {
@@ -194,6 +200,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 7000,
           maintenanceFee: 18000,
+          resaleRate: 40,
         },
       },
       {
@@ -217,6 +224,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 7000,
           maintenanceFee: 18000,
+          resaleRate: 40,
         },
       },
       {
@@ -240,6 +248,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 7000,
           maintenanceFee: 18000,
+          resaleRate: 40,
         },
       },
       {
@@ -263,6 +272,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 7000,
           maintenanceFee: 18000,
+          resaleRate: 40,
         },
       },
       {
@@ -286,6 +296,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 6000,
           maintenanceFee: 16000,
+          resaleRate: 30,
         },
       },
       {
@@ -309,6 +320,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 6000,
           maintenanceFee: 16000,
+          resaleRate: 30,
         },
       },
       {
@@ -332,6 +344,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 8000,
           maintenanceFee: 20000,
+          resaleRate: 40,
         },
       },
       {
@@ -355,6 +368,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 7000,
           maintenanceFee: 18000,
+          resaleRate: 40,
         },
       },
       {
@@ -378,6 +392,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 7000,
           maintenanceFee: 18000,
+          resaleRate: 40,
         },
       },
       {
@@ -401,6 +416,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 7000,
           maintenanceFee: 18000,
+          resaleRate: 40,
         },
       },
       {
@@ -424,6 +440,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 6000,
           tireFee: 8000,
           maintenanceFee: 20000,
+          resaleRate: 40,
         },
       },
     ],
@@ -453,6 +470,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 10000,
           maintenanceFee: 22000,
+          resaleRate: 45,
         },
       },
       {
@@ -476,6 +494,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 10000,
           maintenanceFee: 22000,
+          resaleRate: 45,
         },
       },
       {
@@ -499,6 +518,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 10000,
           maintenanceFee: 22000,
+          resaleRate: 40,
         },
       },
       {
@@ -522,6 +542,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 10000,
           maintenanceFee: 22000,
+          resaleRate: 40,
         },
       },
       {
@@ -545,6 +566,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 10000,
           maintenanceFee: 22000,
+          resaleRate: 30,
         },
       },
       {
@@ -568,6 +590,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 10000,
           maintenanceFee: 22000,
+          resaleRate: 40,
         },
       },
       {
@@ -591,6 +614,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 10000,
           maintenanceFee: 22000,
+          resaleRate: 40,
         },
       },
       {
@@ -614,6 +638,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 10000,
           maintenanceFee: 22000,
+          resaleRate: 40,
         },
       },
       {
@@ -637,6 +662,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 11000,
           maintenanceFee: 22000,
+          resaleRate: 40,
         },
       },
       {
@@ -660,6 +686,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 11000,
           maintenanceFee: 22000,
+          resaleRate: 40,
         },
       },
       {
@@ -683,6 +710,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 12000,
           maintenanceFee: 22000,
+          resaleRate: 40,
         },
       },
     ],
@@ -712,6 +740,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 13000,
           maintenanceFee: 28000,
+          resaleRate: 45,
         },
       },
       {
@@ -735,6 +764,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 15000,
           maintenanceFee: 28000,
+          resaleRate: 50,
         },
       },
       {
@@ -758,6 +788,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 14000,
           maintenanceFee: 28000,
+          resaleRate: 40,
         },
       },
       {
@@ -781,6 +812,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 25000,
           maintenanceFee: 40000,
+          resaleRate: 35,
         },
       },
       {
@@ -804,6 +836,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 14000,
           maintenanceFee: 28000,
+          resaleRate: 40,
         },
       },
       {
@@ -827,6 +860,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 14000,
           maintenanceFee: 28000,
+          resaleRate: 40,
         },
       },
       {
@@ -850,6 +884,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 25000,
           maintenanceFee: 45000,
+          resaleRate: 35,
         },
       },
       {
@@ -873,6 +908,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 20000,
           maintenanceFee: 35000,
+          resaleRate: 35,
         },
       },
       {
@@ -896,6 +932,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 16000,
           maintenanceFee: 30000,
+          resaleRate: 35,
         },
       },
     ],
@@ -925,6 +962,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 12000,
           maintenanceFee: 28000,
+          resaleRate: 45,
         },
       },
       {
@@ -948,6 +986,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 12000,
           maintenanceFee: 28000,
+          resaleRate: 45,
         },
       },
       {
@@ -971,6 +1010,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 15000,
           maintenanceFee: 32000,
+          resaleRate: 50,
         },
       },
       {
@@ -994,6 +1034,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 15000,
           maintenanceFee: 32000,
+          resaleRate: 45,
         },
       },
       {
@@ -1017,6 +1058,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 15000,
           maintenanceFee: 32000,
+          resaleRate: 45,
         },
       },
       {
@@ -1040,6 +1082,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 22000,
           maintenanceFee: 40000,
+          resaleRate: 55,
         },
       },
       {
@@ -1063,6 +1106,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 15000,
           maintenanceFee: 32000,
+          resaleRate: 40,
         },
       },
       {
@@ -1086,6 +1130,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 20000,
           maintenanceFee: 35000,
+          resaleRate: 50,
         },
       },
       {
@@ -1109,6 +1154,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 20000,
           maintenanceFee: 38000,
+          resaleRate: 50,
         },
       },
       {
@@ -1132,6 +1178,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 18000,
           maintenanceFee: 35000,
+          resaleRate: 35,
         },
       },
     ],
@@ -1161,6 +1208,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 13000,
           maintenanceFee: 25000,
+          resaleRate: 45,
         },
       },
       {
@@ -1184,6 +1232,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 15000,
           maintenanceFee: 28000,
+          resaleRate: 45,
         },
       },
       {
@@ -1207,6 +1256,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 15000,
           maintenanceFee: 28000,
+          resaleRate: 45,
         },
       },
       {
@@ -1230,6 +1280,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 18000,
           maintenanceFee: 30000,
+          resaleRate: 50,
         },
       },
       {
@@ -1253,6 +1304,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 20000,
           maintenanceFee: 32000,
+          resaleRate: 55,
         },
       },
       {
@@ -1276,6 +1328,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 18000,
           maintenanceFee: 30000,
+          resaleRate: 45,
         },
       },
       {
@@ -1299,6 +1352,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 30000,
           maintenanceFee: 45000,
+          resaleRate: 55,
         },
       },
       {
@@ -1322,6 +1376,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 22000,
           maintenanceFee: 35000,
+          resaleRate: 45,
         },
       },
       {
@@ -1345,6 +1400,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 15000,
           maintenanceFee: 28000,
+          resaleRate: 40,
         },
       },
       {
@@ -1368,6 +1424,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 18000,
           maintenanceFee: 30000,
+          resaleRate: 50,
         },
       },
       {
@@ -1391,6 +1448,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 16000,
           maintenanceFee: 28000,
+          resaleRate: 40,
         },
       },
       {
@@ -1414,6 +1472,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 18000,
           maintenanceFee: 30000,
+          resaleRate: 45,
         },
       },
       {
@@ -1437,6 +1496,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 13000,
           maintenanceFee: 25000,
+          resaleRate: 40,
         },
       },
       {
@@ -1460,6 +1520,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 16000,
           maintenanceFee: 30000,
+          resaleRate: 40,
         },
       },
       {
@@ -1483,6 +1544,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 20000,
           maintenanceFee: 30000,
+          resaleRate: 45,
         },
       },
       {
@@ -1506,6 +1568,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 25000,
           maintenanceFee: 38000,
+          resaleRate: 40,
         },
       },
       {
@@ -1529,6 +1592,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 13000,
           maintenanceFee: 25000,
+          resaleRate: 40,
         },
       },
     ],
@@ -1558,6 +1622,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 18000,
           maintenanceFee: 30000,
+          resaleRate: 50,
         },
       },
       {
@@ -1581,6 +1646,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 18000,
           maintenanceFee: 30000,
+          resaleRate: 50,
         },
       },
       {
@@ -1604,6 +1670,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 6000,
           tireFee: 15000,
           maintenanceFee: 28000,
+          resaleRate: 50,
         },
       },
       {
@@ -1627,6 +1694,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 6000,
           tireFee: 16000,
           maintenanceFee: 30000,
+          resaleRate: 50,
         },
       },
       {
@@ -1650,6 +1718,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 6000,
           tireFee: 30000,
           maintenanceFee: 45000,
+          resaleRate: 55,
         },
       },
       {
@@ -1673,6 +1742,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 6000,
           tireFee: 28000,
           maintenanceFee: 40000,
+          resaleRate: 50,
         },
       },
       {
@@ -1696,6 +1766,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 25000,
           maintenanceFee: 35000,
+          resaleRate: 55,
         },
       },
       {
@@ -1719,6 +1790,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 22000,
           maintenanceFee: 32000,
+          resaleRate: 55,
         },
       },
       {
@@ -1742,6 +1814,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 22000,
           maintenanceFee: 35000,
+          resaleRate: 50,
         },
       },
       {
@@ -1765,6 +1838,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 24000,
           maintenanceFee: 35000,
+          resaleRate: 55,
         },
       },
       {
@@ -1788,6 +1862,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 5000,
           tireFee: 40000,
           maintenanceFee: 60000,
+          resaleRate: 55,
         },
       },
     ],
@@ -1817,6 +1892,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 18000,
           maintenanceFee: 40000,
+          resaleRate: 30,
         },
       },
       {
@@ -1840,6 +1916,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 15000,
           maintenanceFee: 35000,
+          resaleRate: 30,
         },
       },
       {
@@ -1863,6 +1940,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 16000,
           maintenanceFee: 38000,
+          resaleRate: 30,
         },
       },
       {
@@ -1886,6 +1964,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 20000,
           maintenanceFee: 45000,
+          resaleRate: 30,
         },
       },
       {
@@ -1909,6 +1988,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 22000,
           maintenanceFee: 48000,
+          resaleRate: 30,
         },
       },
       {
@@ -1932,6 +2012,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 25000,
           maintenanceFee: 50000,
+          resaleRate: 30,
         },
       },
       {
@@ -1955,6 +2036,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 22000,
           maintenanceFee: 48000,
+          resaleRate: 30,
         },
       },
       {
@@ -1978,6 +2060,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 22000,
           maintenanceFee: 48000,
+          resaleRate: 30,
         },
       },
       {
@@ -2001,6 +2084,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 28000,
           maintenanceFee: 55000,
+          resaleRate: 30,
         },
       },
       {
@@ -2024,6 +2108,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 22000,
           maintenanceFee: 48000,
+          resaleRate: 30,
         },
       },
       {
@@ -2047,6 +2132,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 28000,
           maintenanceFee: 55000,
+          resaleRate: 30,
         },
       },
       {
@@ -2070,6 +2156,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 18000,
           maintenanceFee: 42000,
+          resaleRate: 30,
         },
       },
       {
@@ -2093,6 +2180,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 22000,
           maintenanceFee: 48000,
+          resaleRate: 30,
         },
       },
     ],
@@ -2122,6 +2210,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 25000,
           maintenanceFee: 45000,
+          resaleRate: 45,
         },
       },
       {
@@ -2145,6 +2234,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 30000,
           maintenanceFee: 50000,
+          resaleRate: 45,
         },
       },
       {
@@ -2168,6 +2258,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 25000,
           maintenanceFee: 42000,
+          resaleRate: 45,
         },
       },
       {
@@ -2191,6 +2282,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 18000,
           maintenanceFee: 38000,
+          resaleRate: 45,
         },
       },
       {
@@ -2214,6 +2306,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 20000,
           maintenanceFee: 40000,
+          resaleRate: 45,
         },
       },
       {
@@ -2237,6 +2330,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 25000,
           maintenanceFee: 45000,
+          resaleRate: 45,
         },
       },
       {
@@ -2260,6 +2354,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 28000,
           maintenanceFee: 20000,
+          resaleRate: 25,
         },
       },
       {
@@ -2283,6 +2378,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 6000,
           tireFee: 35000,
           maintenanceFee: 60000,
+          resaleRate: 55,
         },
       },
     ],
@@ -2312,6 +2408,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 6000,
           tireFee: 7000,
           maintenanceFee: 12000,
+          resaleRate: 25,
         },
       },
       {
@@ -2335,6 +2432,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 12000,
           maintenanceFee: 15000,
+          resaleRate: 25,
         },
       },
       {
@@ -2358,6 +2456,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 20000,
           maintenanceFee: 18000,
+          resaleRate: 25,
         },
       },
       {
@@ -2381,6 +2480,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 12000,
           tireFee: 22000,
           maintenanceFee: 15000,
+          resaleRate: 35,
         },
       },
       {
@@ -2404,6 +2504,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 12000,
           tireFee: 24000,
           maintenanceFee: 15000,
+          resaleRate: 35,
         },
       },
       {
@@ -2427,6 +2528,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 22000,
           maintenanceFee: 18000,
+          resaleRate: 25,
         },
       },
       {
@@ -2450,6 +2552,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 6000,
           tireFee: 7000,
           maintenanceFee: 12000,
+          resaleRate: 25,
         },
       },
       {
@@ -2473,6 +2576,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 22000,
           maintenanceFee: 18000,
+          resaleRate: 25,
         },
       },
       {
@@ -2496,6 +2600,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 22000,
           maintenanceFee: 20000,
+          resaleRate: 25,
         },
       },
       {
@@ -2519,6 +2624,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 18000,
           maintenanceFee: 18000,
+          resaleRate: 25,
         },
       },
     ],
@@ -2548,6 +2654,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 25000,
           maintenanceFee: 35000,
+          resaleRate: 55,
         },
       },
       {
@@ -2571,6 +2678,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 12000,
           maintenanceFee: 25000,
+          resaleRate: 55,
         },
       },
       {
@@ -2594,6 +2702,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 8000,
           tireFee: 13000,
           maintenanceFee: 25000,
+          resaleRate: 55,
         },
       },
       {
@@ -2617,6 +2726,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 14000,
           maintenanceFee: 25000,
+          resaleRate: 40,
         },
       },
     ],
@@ -2646,6 +2756,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 12000,
           tireFee: 5000,
           maintenanceFee: 18000,
+          resaleRate: 45,
         },
       },
       {
@@ -2669,6 +2780,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 12000,
           tireFee: 5000,
           maintenanceFee: 18000,
+          resaleRate: 45,
         },
       },
       {
@@ -2692,6 +2804,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 6000,
           maintenanceFee: 18000,
+          resaleRate: 45,
         },
       },
       {
@@ -2715,6 +2828,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 6000,
           maintenanceFee: 18000,
+          resaleRate: 45,
         },
       },
       {
@@ -2738,6 +2852,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 10000,
           tireFee: 6000,
           maintenanceFee: 18000,
+          resaleRate: 45,
         },
       },
     ],
@@ -2767,29 +2882,7 @@ export const CAR_MODEL_CATEGORIES: CarModelCategory[] = [
           annualMileage: 15000,
           tireFee: 20000,
           maintenanceFee: 35000,
-        },
-      },
-      {
-        name: "キャラバン",
-        maker: "日産",
-        category: "商用車",
-        displacementCc: 2488,
-        fuelType: "diesel",
-        values: {
-          name: "キャラバン (日産)",
-          vehiclePrice: 3700000,
-          downPayment: 0,
-          interestRate: 3,
-          loanYears: 5,
-          parkingFee: 15000,
-          insuranceFee: 7000,
-          autoTax: 16000,
-          inspectionFee: 90000,
-          fuelEfficiency: 10,
-          fuelPrice: FUEL_PRICES.diesel,
-          annualMileage: 15000,
-          tireFee: 20000,
-          maintenanceFee: 35000,
+          resaleRate: 45,
         },
       },
     ],

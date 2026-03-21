@@ -15,6 +15,7 @@ import AffiliateCta from "./AffiliateCta";
 import YearlyCostChart from "./YearlyCostChart";
 import AffordabilitySignal from "./AffordabilitySignal";
 import PaymentComparison from "./PaymentComparison";
+import ResaleComparison from "./ResaleComparison";
 
 function createScenario(index: number): CarScenario {
   return {
@@ -260,6 +261,9 @@ export default function Simulator() {
 
       {/* 支払方法の比較 */}
       <PaymentComparison scenario={results[0].scenario} />
+
+      {/* リセール率による実質コスト比較 */}
+      <ResaleComparison scenario={results[0].scenario} costs={results[0].costs} />
 
       {/* 年収チェック */}
       <AffordabilitySignal totalAnnual={results[0].costs.totalAnnual} />
