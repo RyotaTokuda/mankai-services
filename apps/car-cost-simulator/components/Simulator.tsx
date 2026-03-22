@@ -6,16 +6,16 @@ import { DEFAULT_SCENARIO } from "../lib/types";
 import { decodeScenarios, buildShareUrl } from "../lib/url-share";
 import { TEMPLATES } from "../data/templates";
 import type { CarModel } from "../data/car-models";
-import { calculateCosts, formatYen } from "../lib/calc";
+import { calculateCosts } from "../lib/calc";
 import ScenarioForm from "./ScenarioForm";
 import CostSummary from "./CostSummary";
 import CostChart from "./CostChart";
 import CarModelPicker from "./CarModelPicker";
+import CompareRow from "./CompareRow";
+import DetailAnalysis from "./DetailAnalysis";
 import AffiliateCta from "./AffiliateCta";
 import YearlyCostChart from "./YearlyCostChart";
 import AffordabilitySignal from "./AffordabilitySignal";
-import PaymentComparison from "./PaymentComparison";
-import ResaleComparison from "./ResaleComparison";
 
 function createScenario(index: number): CarScenario {
   return {
@@ -40,6 +40,7 @@ export default function Simulator() {
     createScenario(1),
   ]);
   const [copied, setCopied] = useState(false);
+  const [activeIdx, setActiveIdx] = useState(0);
 
   // URLからシナリオ復元
   useEffect(() => {
@@ -140,21 +141,9 @@ export default function Simulator() {
 
       {/* 入力エリア */}
       <section>
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-bold">試算条件</h2>
-          <button
-            onClick={addScenario}
-            className="rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 px-5 py-2 text-sm font-medium text-white hover:from-blue-700 hover:to-cyan-700 transition-all shadow-md shadow-blue-200 dark:shadow-blue-900/30"
-          >
-            + 車種を追加
-          </button>
-        </div>
+        <h2 className="text-lg font-bold mb-4">試算条件</h2>
 
-        <div
-          className={`grid gap-6 ${
-            scenarios.length > 1 ? "lg:grid-cols-2" : "max-w-2xl"
-          }`}
-        >
+        <div className="grid gap-6 lg:grid-cols-2">
           {scenarios.map((s) => (
             <ScenarioForm
               key={s.id}
@@ -164,12 +153,18 @@ export default function Simulator() {
               canRemove={scenarios.length > 1}
             />
           ))}
+          <button
+            onClick={addScenario}
+            className="self-start rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 px-8 py-3 text-base font-medium text-white hover:from-blue-700 hover:to-cyan-700 transition-all shadow-md shadow-blue-200 dark:shadow-blue-900/30"
+          >
+            + 車種を追加
+          </button>
         </div>
       </section>
 
       {/* 結果エリア */}
       <section>
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-3 mb-4">
           <h2 className="text-lg font-bold">試算結果</h2>
           <div className="flex gap-2">
             <button
@@ -262,88 +257,27 @@ export default function Simulator() {
       {/* 詳細分析（車種切替） */}
       <DetailAnalysis results={results} />
 
-      {/* 年収チェック（選択中の車種） */}
-      <AffordabilitySignal totalAnnual={results[0].costs.totalAnnual} />
+      {/* 年収チェック・アフィリエイト（選択中の車種に連動） */}
+      {results.length > 1 && (
+        <div className="flex gap-1.5">
+          {results.map(({ scenario }, i) => (
+            <button
+              key={scenario.id}
+              onClick={() => setActiveIdx(i)}
+              className={`rounded-full px-3.5 py-1.5 text-xs font-medium transition-colors border ${
+                i === activeIdx
+                  ? "bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-900 dark:text-blue-300 dark:border-blue-700"
+                  : "bg-slate-100 text-slate-500 border-slate-200 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-400 dark:border-slate-600"
+              }`}
+            >
+              {scenario.name}
+            </button>
+          ))}
+        </div>
+      )}
 
-      {/* アフィリエイト導線 */}
-      <AffiliateCta costs={results[0].costs} />
+      <AffordabilitySignal totalAnnual={results[Math.min(activeIdx, results.length - 1)].costs.totalAnnual} />
+      <AffiliateCta costs={results[Math.min(activeIdx, results.length - 1)].costs} />
     </div>
-  );
-}
-
-function CompareRow({
-  label,
-  values,
-  highlight,
-}: {
-  label: string;
-  values: number[];
-  highlight?: boolean;
-}) {
-  const min = Math.min(...values);
-  const max = Math.max(...values);
-  const diff = max - min;
-
-  return (
-    <tr
-      className={`border-b border-slate-100 dark:border-slate-700 ${
-        highlight ? "font-bold bg-amber-50/50 dark:bg-amber-950/20" : ""
-      }`}
-    >
-      <td className="py-2.5 pr-4 text-slate-500">{label}</td>
-      {values.map((v, i) => (
-        <td
-          key={i}
-          className={`text-right py-2.5 px-3 tabular-nums ${
-            values.length > 1 && v === min
-              ? "text-green-600 dark:text-green-400"
-              : ""
-          }`}
-        >
-          {formatYen(v)} 円
-        </td>
-      ))}
-      <td className="text-right py-2.5 pl-3 text-slate-400 tabular-nums">
-        {values.length > 1 ? `${formatYen(diff)} 円` : "-"}
-      </td>
-    </tr>
-  );
-}
-
-function DetailAnalysis({
-  results,
-}: {
-  results: { scenario: CarScenario; costs: ReturnType<typeof calculateCosts> }[];
-}) {
-  const [selectedIdx, setSelectedIdx] = useState(0);
-  const selected = results[selectedIdx];
-  if (!selected) return null;
-
-  return (
-    <section className="space-y-4">
-      <div className="flex items-center gap-3 flex-wrap">
-        <h2 className="text-lg font-bold">詳細分析</h2>
-        {results.length > 1 && (
-          <div className="flex gap-1.5">
-            {results.map(({ scenario }, i) => (
-              <button
-                key={scenario.id}
-                onClick={() => setSelectedIdx(i)}
-                className={`rounded-full px-3.5 py-1.5 text-xs font-medium transition-colors border ${
-                  i === selectedIdx
-                    ? "bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-900 dark:text-blue-300 dark:border-blue-700"
-                    : "bg-slate-100 text-slate-500 border-slate-200 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-400 dark:border-slate-600"
-                }`}
-              >
-                {scenario.name}
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
-
-      <PaymentComparison scenario={selected.scenario} />
-      <ResaleComparison scenario={selected.scenario} costs={selected.costs} />
-    </section>
   );
 }
