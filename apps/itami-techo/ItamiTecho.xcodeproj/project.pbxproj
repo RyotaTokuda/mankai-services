@@ -1,0 +1,1141 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00F6CC2C98BACAE555199B00 /* CustomMedication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2D5FE7B40C9881593D2FED /* CustomMedication.swift */; };
+		02A24641AE82B2D361179A0E /* ItamiTechoWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B147764F021F5BABF149E09F /* ItamiTechoWidget.swift */; };
+		02B83067095651730E5D25DF /* SymptomRecord+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B73A3C17D5A33266222D9BB /* SymptomRecord+Display.swift */; };
+		0536C2722685DF9A7C407CB6 /* CustomSymptomStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243B0D68697EC3DB42DE9736 /* CustomSymptomStore.swift */; };
+		0AE6158D2CD38EBFA7C56072 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB982CC831F3209858A7511 /* LocationService.swift */; };
+		0BD256B2DB7B9D6F694B2BEB /* RecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2A8923E253022443282FF3 /* RecordStore.swift */; };
+		13A1DA3B483FD1E22381D763 /* ItamiTechoWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7F1A9DD46C6086D3977A3576 /* ItamiTechoWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		154A9E092CF3C6CB249AA18D /* EnvironmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F8309642423352DA3279D9 /* EnvironmentService.swift */; };
+		1D2EC95F795A128617D77FCE /* CustomMedication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2D5FE7B40C9881593D2FED /* CustomMedication.swift */; };
+		216FD1804609B5788FC277F3 /* AnalysisHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15543C82C90EEE37278B6DF8 /* AnalysisHelper.swift */; };
+		23420ABC8C641BC20AECECFB /* EnvironmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F8309642423352DA3279D9 /* EnvironmentService.swift */; };
+		247286CD3941D4A45F360CF6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5F1247B4463A6551FC07D1 /* SettingsView.swift */; };
+		2485D8FEAD080256D88E6A63 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C1F622D59A2ECD6E06AC12 /* CalendarView.swift */; };
+		2574B2F6E9F9136AF14DE3FF /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCDC9A8350090177505740B /* HistoryView.swift */; };
+		290A033826F7F338FAF975D2 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A8CAD197034E7E3D783C8B /* WeatherService.swift */; };
+		2DBCE8E47398D18356EF18D4 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102BCA0F9545A2867BA014E /* Strings.swift */; };
+		2EAE8ABC24EFED88B95D46D2 /* TrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340DBA6B750F784A8085DFBE /* TrendsView.swift */; };
+		319D5AED25CC07AE05EA08F2 /* SymptomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCADA2A117520BB839906A2 /* SymptomType.swift */; };
+		31FA088224F5E8932EC7B2D1 /* RecordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F3D046722A07343067260 /* RecordDetailView.swift */; };
+		32D8D8CCD100155EE3FB4431 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8876DF83E78487A49E75F2F /* Constants.swift */; };
+		36DF3016C9B54B58664C1199 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987C1F880A3AB803929D3A1 /* RecordViewModel.swift */; };
+		385092E856D86D0CB339A188 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193ADF2324508AEA30BD1EFA /* AboutView.swift */; };
+		38A3CC6067429C033E04C239 /* HealthSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252131398E2F4E994C5CFD1 /* HealthSnapshot.swift */; };
+		3D0B60956E6B2CC78A5621E5 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E078E9E89660F69A40DDC3E /* NotificationService.swift */; };
+		3DC59523E75B4B2A96021066 /* CustomSymptomStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243B0D68697EC3DB42DE9736 /* CustomSymptomStore.swift */; };
+		3F0FE7D902C2D959EC722C80 /* WatchRecordCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D824D2DE4563C639201AEEE3 /* WatchRecordCompleteView.swift */; };
+		42584CB90A4D3366339A0C94 /* HealthSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252131398E2F4E994C5CFD1 /* HealthSnapshot.swift */; };
+		42BCC565796949B9E013E8A3 /* SymptomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCADA2A117520BB839906A2 /* SymptomType.swift */; };
+		42D206E730ABB0D28C8BA915 /* WatchSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E955D599AAD32E058DA9E18 /* WatchSyncService.swift */; };
+		490829C7FA8F83BA1EBB6EB0 /* SymptomRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A535D66EAC5B6D4993ECC6 /* SymptomRecord.swift */; };
+		49F8B19D78DDC87234905474 /* PressureHistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E56852F3F8554D49B516A4 /* PressureHistoryStore.swift */; };
+		4ADA93169528D66B0155AFE3 /* CustomSymptomStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243B0D68697EC3DB42DE9736 /* CustomSymptomStore.swift */; };
+		4C2ABE183BD24DC5F7763D3F /* WatchSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E955D599AAD32E058DA9E18 /* WatchSyncService.swift */; };
+		4C7F87C4A78BFF8089018366 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8876DF83E78487A49E75F2F /* Constants.swift */; };
+		4CB181136F75684F279AD219 /* CustomSymptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE92063302087082890758C9 /* CustomSymptom.swift */; };
+		4D070095C5C3DE1578B5885C /* SourceDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F53DB6661EE5F379370BA /* SourceDevice.swift */; };
+		4EA5F153F08FA90F6EAE6BB7 /* AnalysisHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15543C82C90EEE37278B6DF8 /* AnalysisHelper.swift */; };
+		503B02E240483CE52477B312 /* SymptomRecord+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B73A3C17D5A33266222D9BB /* SymptomRecord+Display.swift */; };
+		510E4893007279B627770C00 /* PressureHistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E56852F3F8554D49B516A4 /* PressureHistoryStore.swift */; };
+		516BC9499CC631A48ADDF447 /* StoreKitConfiguration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 00294B54167FBA76BB0A7E3A /* StoreKitConfiguration.storekit */; };
+		518E696DAAD45FEADC1DC32C /* AnalysisHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15543C82C90EEE37278B6DF8 /* AnalysisHelper.swift */; };
+		51B7458E26102912DAE8464D /* PlanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5038A95AD0D6CF2A20ABD /* PlanService.swift */; };
+		541C8524BA5E76217CDFF457 /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3149AD38AC8342560EAF6901 /* HealthService.swift */; };
+		5973CE7635E185EC46944FB4 /* CustomSymptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE92063302087082890758C9 /* CustomSymptom.swift */; };
+		5E7C916748E736C7F78F90D0 /* WatchHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C5DE67A7BD52DD3074D40C /* WatchHomeView.swift */; };
+		6037EB2F6700BD68A010DA86 /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3149AD38AC8342560EAF6901 /* HealthService.swift */; };
+		65601D14CCA4B3D870C461A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEBE4D9BC1BD270286AACDA /* ContentView.swift */; };
+		699287ADB1B414C8AD4F656C /* SourceDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F53DB6661EE5F379370BA /* SourceDevice.swift */; };
+		6B5D92F1A901395936A96A83 /* AppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5D0028D1E1A03173B47879 /* AppIntents.swift */; };
+		6B93B5B6EA16F50B773CB88C /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E078E9E89660F69A40DDC3E /* NotificationService.swift */; };
+		746EE46E0BD0F1B90BD30525 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E078E9E89660F69A40DDC3E /* NotificationService.swift */; };
+		750F7B1BFF71F55C5DACE6F6 /* PlanLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3431A605F28F3BC28482F999 /* PlanLimits.swift */; };
+		75A6D81102DFEDB53061DDCC /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3149AD38AC8342560EAF6901 /* HealthService.swift */; };
+		767035051ECD6436FF14825A /* SymptomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCADA2A117520BB839906A2 /* SymptomType.swift */; };
+		7962B42D2934A5B5EDD4FFB6 /* AddCustomSymptomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28265EB0059A902A798F4848 /* AddCustomSymptomView.swift */; };
+		7BE3575498A7CEC95B94F614 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8876DF83E78487A49E75F2F /* Constants.swift */; };
+		7F59987F4B8A61D07DE7F44C /* PlanLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3431A605F28F3BC28482F999 /* PlanLimits.swift */; };
+		7FC90D037D2271237172BD01 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB982CC831F3209858A7511 /* LocationService.swift */; };
+		807A00E9EEA163FF18DEBA0D /* HealthAnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A25D2B9A872F7CF1A582B1 /* HealthAnalysisView.swift */; };
+		81CB230AEE619242979E3D47 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102BCA0F9545A2867BA014E /* Strings.swift */; };
+		82509191510D4D63B0D750D6 /* WatchSeveritySelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BBDF18B249F6EE5FBFA242 /* WatchSeveritySelectView.swift */; };
+		87090D0AF4207FD44A9588BB /* EnvironmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F8309642423352DA3279D9 /* EnvironmentService.swift */; };
+		875764CD548868A3B9190C19 /* CustomSymptomStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243B0D68697EC3DB42DE9736 /* CustomSymptomStore.swift */; };
+		89C7A30DDB76EA1115904CE5 /* ReportPDFRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3693FED76691693DB319B50 /* ReportPDFRenderer.swift */; };
+		8B4E188D80457D56DC3D1872 /* RecordCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD92B1EC9806B59B1E1F6F93 /* RecordCompleteView.swift */; };
+		8DF548CD2113533191250DAE /* PlanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5038A95AD0D6CF2A20ABD /* PlanService.swift */; };
+		8FD339EA3EFE45E1DB2C49B3 /* EnvironmentSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F964FC569EC533BE5AFF458B /* EnvironmentSnapshot.swift */; };
+		924E72B50760B11AE49BF561 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102BCA0F9545A2867BA014E /* Strings.swift */; };
+		9439D57339B6D66A2E0567C9 /* PressureHistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E56852F3F8554D49B516A4 /* PressureHistoryStore.swift */; };
+		958CDDF7DD9A5BB6E078BCAC /* SourceDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F53DB6661EE5F379370BA /* SourceDevice.swift */; };
+		97083DEFDB3FAE59BEE9070E /* WatchSymptomSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982CA405CA16A14D35C84252 /* WatchSymptomSelectView.swift */; };
+		99C566FAE7B4AB0DCD099353 /* PlanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5038A95AD0D6CF2A20ABD /* PlanService.swift */; };
+		9AA86139E2FF36DB3EDED652 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8876DF83E78487A49E75F2F /* Constants.swift */; };
+		9E4F2260B1EC00C875AE5245 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8E1D1F50E99C46DE0B8E1DA /* Assets.xcassets */; };
+		A237363D26FB70C622D8DD1C /* ItamiTechoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB226EB3961D03CEF96084D6 /* ItamiTechoTests.swift */; };
+		A659A60C78AD14B3E33DF291 /* ReportCSVGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC21945180E1D6E37E254C35 /* ReportCSVGenerator.swift */; };
+		A7CA453C0724C131F20273C7 /* CustomSymptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE92063302087082890758C9 /* CustomSymptom.swift */; };
+		A879D3D2B0E375DB99663674 /* RecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2A8923E253022443282FF3 /* RecordStore.swift */; };
+		AA1618B25730D36D68D2027A /* EnvironmentSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F964FC569EC533BE5AFF458B /* EnvironmentSnapshot.swift */; };
+		ABB508AAA1D16585406C58F4 /* LocationPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91536D3EA4BF9A34E364A7 /* LocationPermissionView.swift */; };
+		ACAD608409BD469117E8A50B /* SymptomRecord+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B73A3C17D5A33266222D9BB /* SymptomRecord+Display.swift */; };
+		ADD62CD7950CEF9E53DEFDDD /* ItamiTechoWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB1555ADDD0E4B1DF0FC7B1 /* ItamiTechoWatchApp.swift */; };
+		AF52028B059E5FFED22EEE2B /* SourceDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F53DB6661EE5F379370BA /* SourceDevice.swift */; };
+		B0BFDFBEAD4B138B53235246 /* SymptomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCADA2A117520BB839906A2 /* SymptomType.swift */; };
+		B0DA77095E0F5324E0E4C7BA /* LegalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B864013EFDEE8913DBD63EA /* LegalView.swift */; };
+		B17CA45E21A4D795E922E946 /* EnvironmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F8309642423352DA3279D9 /* EnvironmentService.swift */; };
+		B4C3B36EFBB935C4115EBCAC /* SymptomRecord+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B73A3C17D5A33266222D9BB /* SymptomRecord+Display.swift */; };
+		B6F63D38B033735203B92BE1 /* PressureHistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E56852F3F8554D49B516A4 /* PressureHistoryStore.swift */; };
+		BB641C0E1BB31C01E46E50AF /* EnvironmentSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F964FC569EC533BE5AFF458B /* EnvironmentSnapshot.swift */; };
+		BCB7BD91214121B565C37A46 /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3149AD38AC8342560EAF6901 /* HealthService.swift */; };
+		BDB6FB5BA8D6066B24E0D7A6 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4D7BB6069DDDCC2AABC85D /* OnboardingView.swift */; };
+		C0DF8F45BA531AFAF056AA15 /* CustomMedication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2D5FE7B40C9881593D2FED /* CustomMedication.swift */; };
+		C3B0C6D1B54155C0BB46C2C4 /* WatchQuickActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE0D3CF384420DFF424434 /* WatchQuickActionButton.swift */; };
+		C4524DEF46E83FC50E78F912 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F49E3F955622918185F8DE /* RecordView.swift */; };
+		C68BEC30312D90C16D5FD7C7 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A8CAD197034E7E3D783C8B /* WeatherService.swift */; };
+		C6ADACA6B360C955BC7730FA /* RecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2A8923E253022443282FF3 /* RecordStore.swift */; };
+		C6B93263A7075C8391991A24 /* EnvironmentSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F964FC569EC533BE5AFF458B /* EnvironmentSnapshot.swift */; };
+		C976F8A293A53CE6C28E2266 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E078E9E89660F69A40DDC3E /* NotificationService.swift */; };
+		CE3DB4480F53E450767878F5 /* WatchSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E955D599AAD32E058DA9E18 /* WatchSyncService.swift */; };
+		CE8C3D11C6D41D2FF1DDA7A1 /* PlanLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3431A605F28F3BC28482F999 /* PlanLimits.swift */; };
+		D09AE85BEB8A68DCDD526A1D /* PlanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5038A95AD0D6CF2A20ABD /* PlanService.swift */; };
+		D3E0A33B45C02343F0DFE103 /* CustomMedication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2D5FE7B40C9881593D2FED /* CustomMedication.swift */; };
+		D4A7784268410338B810CF12 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979F138AC67AEFE93F27383C /* PaywallView.swift */; };
+		D522394DA18B001A7652DEDA /* PlanLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3431A605F28F3BC28482F999 /* PlanLimits.swift */; };
+		D6ACB52184926322785AA25F /* WatchSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E955D599AAD32E058DA9E18 /* WatchSyncService.swift */; };
+		D84B36025D21CDDC84FDE98B /* ItamiTechoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3009AD7C1DD7166BD6EF5AAB /* ItamiTechoApp.swift */; };
+		D8ACF22DC96CE692CC4FA222 /* HealthSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252131398E2F4E994C5CFD1 /* HealthSnapshot.swift */; };
+		D92F234730A06D9EB85CA33D /* AnalysisHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15543C82C90EEE37278B6DF8 /* AnalysisHelper.swift */; };
+		D9CA1337AAC3FA020D3448BF /* RecordEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA29599A7BBC8FA82F629F92 /* RecordEditView.swift */; };
+		DAFA966E36508324F3A3E76B /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A8CAD197034E7E3D783C8B /* WeatherService.swift */; };
+		DFBBF0A07E0215D00DFFA820 /* SymptomRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A535D66EAC5B6D4993ECC6 /* SymptomRecord.swift */; };
+		DFF7F464AEFEE7B7E70A7B83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DE1D9FE8A172C4306293679 /* Assets.xcassets */; };
+		E172D3913B3EEB45586AEB1E /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102BCA0F9545A2867BA014E /* Strings.swift */; };
+		E4895617CD2CBA1EE13AD0CD /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB982CC831F3209858A7511 /* LocationService.swift */; };
+		E5304E51A05B269B9F17FD3E /* WatchHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27812C0D63C3A43267F2DF3F /* WatchHistoryView.swift */; };
+		E62BEBCD2C8BD60E5B0F129C /* RecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2A8923E253022443282FF3 /* RecordStore.swift */; };
+		EB026C09CF4D20DBAFFE7E42 /* SymptomRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A535D66EAC5B6D4993ECC6 /* SymptomRecord.swift */; };
+		EBD8F837E3E1F64C94239EEE /* EnvironmentAnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230EF9B67139C5F0A28D2D7E /* EnvironmentAnalysisView.swift */; };
+		EEBAEE0B5C1F7B2B774D193F /* SymptomRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A535D66EAC5B6D4993ECC6 /* SymptomRecord.swift */; };
+		EF85D71279DBE56DAEC702C9 /* HealthSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252131398E2F4E994C5CFD1 /* HealthSnapshot.swift */; };
+		F3C922FA665FCC541BF1344D /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A0E76B3DEE2D9BB77D116E /* ReportView.swift */; };
+		F5392F0E5CABECE3B4116B0E /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A8CAD197034E7E3D783C8B /* WeatherService.swift */; };
+		F6099D26B9C9C65AB479904A /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB982CC831F3209858A7511 /* LocationService.swift */; };
+		F7EC31C84BE7C4CB429D5141 /* CustomSymptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE92063302087082890758C9 /* CustomSymptom.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3D2A7760760C18E2F4F04582 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1AA791E1C01CB500E5AA2458 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E922794B359B0DE2BDD3581;
+			remoteInfo = ItamiTecho;
+		};
+		4457D77CAB93CBBD4BBAFCD3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1AA791E1C01CB500E5AA2458 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 371A41431E7B861A1AB3118B;
+			remoteInfo = ItamiTechoWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E6439172E328AB41DBEC776E /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				13A1DA3B483FD1E22381D763 /* ItamiTechoWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		00294B54167FBA76BB0A7E3A /* StoreKitConfiguration.storekit */ = {isa = PBXFileReference; path = StoreKitConfiguration.storekit; sourceTree = "<group>"; };
+		00BBDF18B249F6EE5FBFA242 /* WatchSeveritySelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSeveritySelectView.swift; sourceTree = "<group>"; };
+		06C728874BA2DAA4206AFA78 /* ItamiTecho.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ItamiTecho.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		08A535D66EAC5B6D4993ECC6 /* SymptomRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomRecord.swift; sourceTree = "<group>"; };
+		0E078E9E89660F69A40DDC3E /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		15543C82C90EEE37278B6DF8 /* AnalysisHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisHelper.swift; sourceTree = "<group>"; };
+		193ADF2324508AEA30BD1EFA /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		1B2A8923E253022443282FF3 /* RecordStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordStore.swift; sourceTree = "<group>"; };
+		1CEBE4D9BC1BD270286AACDA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1FF5038A95AD0D6CF2A20ABD /* PlanService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanService.swift; sourceTree = "<group>"; };
+		20D3C5ED5C67B1D251D2814B /* ItamiTechoWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItamiTechoWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		230EF9B67139C5F0A28D2D7E /* EnvironmentAnalysisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentAnalysisView.swift; sourceTree = "<group>"; };
+		243B0D68697EC3DB42DE9736 /* CustomSymptomStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSymptomStore.swift; sourceTree = "<group>"; };
+		24A8CAD197034E7E3D783C8B /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		27812C0D63C3A43267F2DF3F /* WatchHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchHistoryView.swift; sourceTree = "<group>"; };
+		28265EB0059A902A798F4848 /* AddCustomSymptomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomSymptomView.swift; sourceTree = "<group>"; };
+		29C5DE67A7BD52DD3074D40C /* WatchHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchHomeView.swift; sourceTree = "<group>"; };
+		2E91536D3EA4BF9A34E364A7 /* LocationPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionView.swift; sourceTree = "<group>"; };
+		2E955D599AAD32E058DA9E18 /* WatchSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSyncService.swift; sourceTree = "<group>"; };
+		3009AD7C1DD7166BD6EF5AAB /* ItamiTechoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItamiTechoApp.swift; sourceTree = "<group>"; };
+		30A25D2B9A872F7CF1A582B1 /* HealthAnalysisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthAnalysisView.swift; sourceTree = "<group>"; };
+		3149AD38AC8342560EAF6901 /* HealthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthService.swift; sourceTree = "<group>"; };
+		340DBA6B750F784A8085DFBE /* TrendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsView.swift; sourceTree = "<group>"; };
+		3431A605F28F3BC28482F999 /* PlanLimits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanLimits.swift; sourceTree = "<group>"; };
+		3B73A3C17D5A33266222D9BB /* SymptomRecord+Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SymptomRecord+Display.swift"; sourceTree = "<group>"; };
+		4B5D0028D1E1A03173B47879 /* AppIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntents.swift; sourceTree = "<group>"; };
+		4E5F1247B4463A6551FC07D1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		50F49E3F955622918185F8DE /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		5B6F53DB6661EE5F379370BA /* SourceDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceDevice.swift; sourceTree = "<group>"; };
+		5E0F3D046722A07343067260 /* RecordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailView.swift; sourceTree = "<group>"; };
+		5EB1555ADDD0E4B1DF0FC7B1 /* ItamiTechoWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItamiTechoWatchApp.swift; sourceTree = "<group>"; };
+		6C2D5FE7B40C9881593D2FED /* CustomMedication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMedication.swift; sourceTree = "<group>"; };
+		6FCDC9A8350090177505740B /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		72A0E76B3DEE2D9BB77D116E /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
+		72E56852F3F8554D49B516A4 /* PressureHistoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressureHistoryStore.swift; sourceTree = "<group>"; };
+		7F1A9DD46C6086D3977A3576 /* ItamiTechoWidgetExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = ItamiTechoWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		80F9DC603E95B815FDA55976 /* ItamiTechoTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ItamiTechoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8252131398E2F4E994C5CFD1 /* HealthSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthSnapshot.swift; sourceTree = "<group>"; };
+		8B864013EFDEE8913DBD63EA /* LegalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalView.swift; sourceTree = "<group>"; };
+		8DE1D9FE8A172C4306293679 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9462D5C8C6067B9DDD9FBAF9 /* ItamiTecho.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ItamiTecho.entitlements; sourceTree = "<group>"; };
+		96C1F622D59A2ECD6E06AC12 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		979F138AC67AEFE93F27383C /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
+		982CA405CA16A14D35C84252 /* WatchSymptomSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSymptomSelectView.swift; sourceTree = "<group>"; };
+		AA29599A7BBC8FA82F629F92 /* RecordEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordEditView.swift; sourceTree = "<group>"; };
+		AC21945180E1D6E37E254C35 /* ReportCSVGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCSVGenerator.swift; sourceTree = "<group>"; };
+		AE92063302087082890758C9 /* CustomSymptom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSymptom.swift; sourceTree = "<group>"; };
+		B147764F021F5BABF149E09F /* ItamiTechoWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItamiTechoWidget.swift; sourceTree = "<group>"; };
+		BB226EB3961D03CEF96084D6 /* ItamiTechoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItamiTechoTests.swift; sourceTree = "<group>"; };
+		BDB982CC831F3209858A7511 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		BFCADA2A117520BB839906A2 /* SymptomType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomType.swift; sourceTree = "<group>"; };
+		C8E1D1F50E99C46DE0B8E1DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CC4D7BB6069DDDCC2AABC85D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		D3693FED76691693DB319B50 /* ReportPDFRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPDFRenderer.swift; sourceTree = "<group>"; };
+		D824D2DE4563C639201AEEE3 /* WatchRecordCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchRecordCompleteView.swift; sourceTree = "<group>"; };
+		E102BCA0F9545A2867BA014E /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		E6EF53841CC9DD18A8AA170B /* ItamiTechoWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ItamiTechoWatch.entitlements; sourceTree = "<group>"; };
+		EBFE0D3CF384420DFF424434 /* WatchQuickActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchQuickActionButton.swift; sourceTree = "<group>"; };
+		F7F8309642423352DA3279D9 /* EnvironmentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentService.swift; sourceTree = "<group>"; };
+		F8876DF83E78487A49E75F2F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F964FC569EC533BE5AFF458B /* EnvironmentSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentSnapshot.swift; sourceTree = "<group>"; };
+		F987C1F880A3AB803929D3A1 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
+		FD92B1EC9806B59B1E1F6F93 /* RecordCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCompleteView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		03FE31C87372AC40681A0BC9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0A2D99F5A29C2F1388BC60D2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				06C728874BA2DAA4206AFA78 /* ItamiTecho.app */,
+				80F9DC603E95B815FDA55976 /* ItamiTechoTests.xctest */,
+				20D3C5ED5C67B1D251D2814B /* ItamiTechoWatch.app */,
+				7F1A9DD46C6086D3977A3576 /* ItamiTechoWidgetExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0CD3585941AF6B069525B265 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				15543C82C90EEE37278B6DF8 /* AnalysisHelper.swift */,
+				243B0D68697EC3DB42DE9736 /* CustomSymptomStore.swift */,
+				F7F8309642423352DA3279D9 /* EnvironmentService.swift */,
+				3149AD38AC8342560EAF6901 /* HealthService.swift */,
+				BDB982CC831F3209858A7511 /* LocationService.swift */,
+				0E078E9E89660F69A40DDC3E /* NotificationService.swift */,
+				1FF5038A95AD0D6CF2A20ABD /* PlanService.swift */,
+				72E56852F3F8554D49B516A4 /* PressureHistoryStore.swift */,
+				1B2A8923E253022443282FF3 /* RecordStore.swift */,
+				2E955D599AAD32E058DA9E18 /* WatchSyncService.swift */,
+				24A8CAD197034E7E3D783C8B /* WeatherService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		2449F7031A6A6B0941C71C21 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6C2D5FE7B40C9881593D2FED /* CustomMedication.swift */,
+				AE92063302087082890758C9 /* CustomSymptom.swift */,
+				F964FC569EC533BE5AFF458B /* EnvironmentSnapshot.swift */,
+				8252131398E2F4E994C5CFD1 /* HealthSnapshot.swift */,
+				3431A605F28F3BC28482F999 /* PlanLimits.swift */,
+				5B6F53DB6661EE5F379370BA /* SourceDevice.swift */,
+				08A535D66EAC5B6D4993ECC6 /* SymptomRecord.swift */,
+				3B73A3C17D5A33266222D9BB /* SymptomRecord+Display.swift */,
+				BFCADA2A117520BB839906A2 /* SymptomType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2AAA71868829068F27836C3A /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				F8876DF83E78487A49E75F2F /* Constants.swift */,
+				E102BCA0F9545A2867BA014E /* Strings.swift */,
+				2449F7031A6A6B0941C71C21 /* Models */,
+				0CD3585941AF6B069525B265 /* Services */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		3839E5BECDDD7DD567C11BCF /* Paywall */ = {
+			isa = PBXGroup;
+			children = (
+				979F138AC67AEFE93F27383C /* PaywallView.swift */,
+			);
+			path = Paywall;
+			sourceTree = "<group>";
+		};
+		3C08EAD6D17CE50FC4F76EB5 /* ItamiTechoWatch */ = {
+			isa = PBXGroup;
+			children = (
+				E6EF53841CC9DD18A8AA170B /* ItamiTechoWatch.entitlements */,
+				771B0C0C122039BC0A47AD16 /* App */,
+				923ABE96103868BD3A8F97F7 /* Resources */,
+				66D5C498F233CC5C6903555E /* Services */,
+				DE0AB4EA776E0ABE2E14A30D /* ViewModels */,
+				D7968AA8D386C25DEB5ABAD4 /* Views */,
+			);
+			path = ItamiTechoWatch;
+			sourceTree = "<group>";
+		};
+		48FEB24A4F13D5B80216B91A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4B5D0028D1E1A03173B47879 /* AppIntents.swift */,
+				AC21945180E1D6E37E254C35 /* ReportCSVGenerator.swift */,
+				D3693FED76691693DB319B50 /* ReportPDFRenderer.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		4FC369CFC3B235229F039078 /* Trends */ = {
+			isa = PBXGroup;
+			children = (
+				230EF9B67139C5F0A28D2D7E /* EnvironmentAnalysisView.swift */,
+				30A25D2B9A872F7CF1A582B1 /* HealthAnalysisView.swift */,
+				340DBA6B750F784A8085DFBE /* TrendsView.swift */,
+			);
+			path = Trends;
+			sourceTree = "<group>";
+		};
+		5E72CA5231803674D37B209E /* ItamiTecho */ = {
+			isa = PBXGroup;
+			children = (
+				9462D5C8C6067B9DDD9FBAF9 /* ItamiTecho.entitlements */,
+				D0C36C3D299908D117F78418 /* App */,
+				61E773BBA0B93C331796801C /* Resources */,
+				48FEB24A4F13D5B80216B91A /* Services */,
+				E295196B3D4A615074F302CD /* ViewModels */,
+				ECC1B5F5A6C474F435C70685 /* Views */,
+			);
+			path = ItamiTecho;
+			sourceTree = "<group>";
+		};
+		61E773BBA0B93C331796801C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C8E1D1F50E99C46DE0B8E1DA /* Assets.xcassets */,
+				00294B54167FBA76BB0A7E3A /* StoreKitConfiguration.storekit */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		66D5C498F233CC5C6903555E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		6B4891A35A35C05D9FD641C8 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				2E91536D3EA4BF9A34E364A7 /* LocationPermissionView.swift */,
+				CC4D7BB6069DDDCC2AABC85D /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		6F75D97BE4E2BF6191233BF1 /* ItamiTechoWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B147764F021F5BABF149E09F /* ItamiTechoWidget.swift */,
+			);
+			path = ItamiTechoWidget;
+			sourceTree = "<group>";
+		};
+		771B0C0C122039BC0A47AD16 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5EB1555ADDD0E4B1DF0FC7B1 /* ItamiTechoWatchApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		7FDA54E7039933286D066B14 = {
+			isa = PBXGroup;
+			children = (
+				5E72CA5231803674D37B209E /* ItamiTecho */,
+				9AD02DBD3010DA2993E74F56 /* ItamiTechoTests */,
+				3C08EAD6D17CE50FC4F76EB5 /* ItamiTechoWatch */,
+				6F75D97BE4E2BF6191233BF1 /* ItamiTechoWidget */,
+				2AAA71868829068F27836C3A /* Shared */,
+				0A2D99F5A29C2F1388BC60D2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		923ABE96103868BD3A8F97F7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8DE1D9FE8A172C4306293679 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9A762E0B5F0FF13F0A5A1BAD /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				193ADF2324508AEA30BD1EFA /* AboutView.swift */,
+				8B864013EFDEE8913DBD63EA /* LegalView.swift */,
+				4E5F1247B4463A6551FC07D1 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		9AD02DBD3010DA2993E74F56 /* ItamiTechoTests */ = {
+			isa = PBXGroup;
+			children = (
+				BB226EB3961D03CEF96084D6 /* ItamiTechoTests.swift */,
+			);
+			path = ItamiTechoTests;
+			sourceTree = "<group>";
+		};
+		AE3E591067606F321EA2014A /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		D0C36C3D299908D117F78418 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3009AD7C1DD7166BD6EF5AAB /* ItamiTechoApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D230FC5B5F97FF7371F2C1A8 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				28265EB0059A902A798F4848 /* AddCustomSymptomView.swift */,
+				FD92B1EC9806B59B1E1F6F93 /* RecordCompleteView.swift */,
+				50F49E3F955622918185F8DE /* RecordView.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		D7968AA8D386C25DEB5ABAD4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				27812C0D63C3A43267F2DF3F /* WatchHistoryView.swift */,
+				29C5DE67A7BD52DD3074D40C /* WatchHomeView.swift */,
+				EBFE0D3CF384420DFF424434 /* WatchQuickActionButton.swift */,
+				D824D2DE4563C639201AEEE3 /* WatchRecordCompleteView.swift */,
+				00BBDF18B249F6EE5FBFA242 /* WatchSeveritySelectView.swift */,
+				982CA405CA16A14D35C84252 /* WatchSymptomSelectView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DE0AB4EA776E0ABE2E14A30D /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E295196B3D4A615074F302CD /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F987C1F880A3AB803929D3A1 /* RecordViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		ECC1B5F5A6C474F435C70685 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1CEBE4D9BC1BD270286AACDA /* ContentView.swift */,
+				AE3E591067606F321EA2014A /* Calendar */,
+				F9A297473DD269521B8F7265 /* History */,
+				03FE31C87372AC40681A0BC9 /* Home */,
+				6B4891A35A35C05D9FD641C8 /* Onboarding */,
+				3839E5BECDDD7DD567C11BCF /* Paywall */,
+				D230FC5B5F97FF7371F2C1A8 /* Record */,
+				F9F78F623F5F19839B075443 /* Report */,
+				9A762E0B5F0FF13F0A5A1BAD /* Settings */,
+				4FC369CFC3B235229F039078 /* Trends */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F9A297473DD269521B8F7265 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				96C1F622D59A2ECD6E06AC12 /* CalendarView.swift */,
+				6FCDC9A8350090177505740B /* HistoryView.swift */,
+				5E0F3D046722A07343067260 /* RecordDetailView.swift */,
+				AA29599A7BBC8FA82F629F92 /* RecordEditView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		F9F78F623F5F19839B075443 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				72A0E76B3DEE2D9BB77D116E /* ReportView.swift */,
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2E922794B359B0DE2BDD3581 /* ItamiTecho */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D354FCF1A4DB4FAC203EAE11 /* Build configuration list for PBXNativeTarget "ItamiTecho" */;
+			buildPhases = (
+				98139456975ABDDDAD5BDFFB /* Sources */,
+				33B1C3B610BFC69D3FB4D493 /* Resources */,
+				E6439172E328AB41DBEC776E /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D575A39BEFC5D5E72E3C1021 /* PBXTargetDependency */,
+			);
+			name = ItamiTecho;
+			packageProductDependencies = (
+			);
+			productName = ItamiTecho;
+			productReference = 06C728874BA2DAA4206AFA78 /* ItamiTecho.app */;
+			productType = "com.apple.product-type.application";
+		};
+		371A41431E7B861A1AB3118B /* ItamiTechoWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23637A38D16711EE91A3156E /* Build configuration list for PBXNativeTarget "ItamiTechoWidgetExtension" */;
+			buildPhases = (
+				9916B729C6CC7ACC6D45D98C /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ItamiTechoWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = ItamiTechoWidgetExtension;
+			productReference = 7F1A9DD46C6086D3977A3576 /* ItamiTechoWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		8B788E2115A8BD3DF7011DCE /* ItamiTechoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 56493FB1833BE393E84D5BBA /* Build configuration list for PBXNativeTarget "ItamiTechoTests" */;
+			buildPhases = (
+				77DEA05C9B099BDA7CE15C04 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D38E1F2431CBCC124583CA4C /* PBXTargetDependency */,
+			);
+			name = ItamiTechoTests;
+			packageProductDependencies = (
+			);
+			productName = ItamiTechoTests;
+			productReference = 80F9DC603E95B815FDA55976 /* ItamiTechoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F182150731C48D69EA07C6A8 /* ItamiTechoWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8A4979D90D1C0F4D23822CE /* Build configuration list for PBXNativeTarget "ItamiTechoWatch" */;
+			buildPhases = (
+				4DA58DC03986B49AFF72F1C9 /* Sources */,
+				79A80EF6D060ADE80CA05775 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ItamiTechoWatch;
+			packageProductDependencies = (
+			);
+			productName = ItamiTechoWatch;
+			productReference = 20D3C5ED5C67B1D251D2814B /* ItamiTechoWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1AA791E1C01CB500E5AA2458 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					2E922794B359B0DE2BDD3581 = {
+						DevelopmentTeam = R7B3AEZ7TA;
+					};
+					371A41431E7B861A1AB3118B = {
+						DevelopmentTeam = R7B3AEZ7TA;
+					};
+					8B788E2115A8BD3DF7011DCE = {
+						DevelopmentTeam = R7B3AEZ7TA;
+					};
+					F182150731C48D69EA07C6A8 = {
+						DevelopmentTeam = R7B3AEZ7TA;
+					};
+				};
+			};
+			buildConfigurationList = D1E9881ACFA66B9ACF5A8161 /* Build configuration list for PBXProject "ItamiTecho" */;
+			developmentRegion = ja;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				ja,
+			);
+			mainGroup = 7FDA54E7039933286D066B14;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 0A2D99F5A29C2F1388BC60D2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2E922794B359B0DE2BDD3581 /* ItamiTecho */,
+				8B788E2115A8BD3DF7011DCE /* ItamiTechoTests */,
+				F182150731C48D69EA07C6A8 /* ItamiTechoWatch */,
+				371A41431E7B861A1AB3118B /* ItamiTechoWidgetExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		33B1C3B610BFC69D3FB4D493 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E4F2260B1EC00C875AE5245 /* Assets.xcassets in Resources */,
+				516BC9499CC631A48ADDF447 /* StoreKitConfiguration.storekit in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79A80EF6D060ADE80CA05775 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFF7F464AEFEE7B7E70A7B83 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4DA58DC03986B49AFF72F1C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EA5F153F08FA90F6EAE6BB7 /* AnalysisHelper.swift in Sources */,
+				4C7F87C4A78BFF8089018366 /* Constants.swift in Sources */,
+				1D2EC95F795A128617D77FCE /* CustomMedication.swift in Sources */,
+				4CB181136F75684F279AD219 /* CustomSymptom.swift in Sources */,
+				4ADA93169528D66B0155AFE3 /* CustomSymptomStore.swift in Sources */,
+				23420ABC8C641BC20AECECFB /* EnvironmentService.swift in Sources */,
+				C6B93263A7075C8391991A24 /* EnvironmentSnapshot.swift in Sources */,
+				BCB7BD91214121B565C37A46 /* HealthService.swift in Sources */,
+				EF85D71279DBE56DAEC702C9 /* HealthSnapshot.swift in Sources */,
+				ADD62CD7950CEF9E53DEFDDD /* ItamiTechoWatchApp.swift in Sources */,
+				E4895617CD2CBA1EE13AD0CD /* LocationService.swift in Sources */,
+				746EE46E0BD0F1B90BD30525 /* NotificationService.swift in Sources */,
+				750F7B1BFF71F55C5DACE6F6 /* PlanLimits.swift in Sources */,
+				D09AE85BEB8A68DCDD526A1D /* PlanService.swift in Sources */,
+				9439D57339B6D66A2E0567C9 /* PressureHistoryStore.swift in Sources */,
+				A879D3D2B0E375DB99663674 /* RecordStore.swift in Sources */,
+				AF52028B059E5FFED22EEE2B /* SourceDevice.swift in Sources */,
+				81CB230AEE619242979E3D47 /* Strings.swift in Sources */,
+				ACAD608409BD469117E8A50B /* SymptomRecord+Display.swift in Sources */,
+				EEBAEE0B5C1F7B2B774D193F /* SymptomRecord.swift in Sources */,
+				B0BFDFBEAD4B138B53235246 /* SymptomType.swift in Sources */,
+				E5304E51A05B269B9F17FD3E /* WatchHistoryView.swift in Sources */,
+				5E7C916748E736C7F78F90D0 /* WatchHomeView.swift in Sources */,
+				C3B0C6D1B54155C0BB46C2C4 /* WatchQuickActionButton.swift in Sources */,
+				3F0FE7D902C2D959EC722C80 /* WatchRecordCompleteView.swift in Sources */,
+				82509191510D4D63B0D750D6 /* WatchSeveritySelectView.swift in Sources */,
+				97083DEFDB3FAE59BEE9070E /* WatchSymptomSelectView.swift in Sources */,
+				42D206E730ABB0D28C8BA915 /* WatchSyncService.swift in Sources */,
+				C68BEC30312D90C16D5FD7C7 /* WeatherService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		77DEA05C9B099BDA7CE15C04 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D92F234730A06D9EB85CA33D /* AnalysisHelper.swift in Sources */,
+				9AA86139E2FF36DB3EDED652 /* Constants.swift in Sources */,
+				D3E0A33B45C02343F0DFE103 /* CustomMedication.swift in Sources */,
+				A7CA453C0724C131F20273C7 /* CustomSymptom.swift in Sources */,
+				3DC59523E75B4B2A96021066 /* CustomSymptomStore.swift in Sources */,
+				87090D0AF4207FD44A9588BB /* EnvironmentService.swift in Sources */,
+				AA1618B25730D36D68D2027A /* EnvironmentSnapshot.swift in Sources */,
+				6037EB2F6700BD68A010DA86 /* HealthService.swift in Sources */,
+				38A3CC6067429C033E04C239 /* HealthSnapshot.swift in Sources */,
+				A237363D26FB70C622D8DD1C /* ItamiTechoTests.swift in Sources */,
+				0AE6158D2CD38EBFA7C56072 /* LocationService.swift in Sources */,
+				C976F8A293A53CE6C28E2266 /* NotificationService.swift in Sources */,
+				CE8C3D11C6D41D2FF1DDA7A1 /* PlanLimits.swift in Sources */,
+				99C566FAE7B4AB0DCD099353 /* PlanService.swift in Sources */,
+				49F8B19D78DDC87234905474 /* PressureHistoryStore.swift in Sources */,
+				C6ADACA6B360C955BC7730FA /* RecordStore.swift in Sources */,
+				699287ADB1B414C8AD4F656C /* SourceDevice.swift in Sources */,
+				2DBCE8E47398D18356EF18D4 /* Strings.swift in Sources */,
+				B4C3B36EFBB935C4115EBCAC /* SymptomRecord+Display.swift in Sources */,
+				EB026C09CF4D20DBAFFE7E42 /* SymptomRecord.swift in Sources */,
+				767035051ECD6436FF14825A /* SymptomType.swift in Sources */,
+				4C2ABE183BD24DC5F7763D3F /* WatchSyncService.swift in Sources */,
+				290A033826F7F338FAF975D2 /* WeatherService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98139456975ABDDDAD5BDFFB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				385092E856D86D0CB339A188 /* AboutView.swift in Sources */,
+				7962B42D2934A5B5EDD4FFB6 /* AddCustomSymptomView.swift in Sources */,
+				216FD1804609B5788FC277F3 /* AnalysisHelper.swift in Sources */,
+				6B5D92F1A901395936A96A83 /* AppIntents.swift in Sources */,
+				2485D8FEAD080256D88E6A63 /* CalendarView.swift in Sources */,
+				32D8D8CCD100155EE3FB4431 /* Constants.swift in Sources */,
+				65601D14CCA4B3D870C461A5 /* ContentView.swift in Sources */,
+				00F6CC2C98BACAE555199B00 /* CustomMedication.swift in Sources */,
+				5973CE7635E185EC46944FB4 /* CustomSymptom.swift in Sources */,
+				0536C2722685DF9A7C407CB6 /* CustomSymptomStore.swift in Sources */,
+				EBD8F837E3E1F64C94239EEE /* EnvironmentAnalysisView.swift in Sources */,
+				B17CA45E21A4D795E922E946 /* EnvironmentService.swift in Sources */,
+				BB641C0E1BB31C01E46E50AF /* EnvironmentSnapshot.swift in Sources */,
+				807A00E9EEA163FF18DEBA0D /* HealthAnalysisView.swift in Sources */,
+				541C8524BA5E76217CDFF457 /* HealthService.swift in Sources */,
+				42584CB90A4D3366339A0C94 /* HealthSnapshot.swift in Sources */,
+				2574B2F6E9F9136AF14DE3FF /* HistoryView.swift in Sources */,
+				D84B36025D21CDDC84FDE98B /* ItamiTechoApp.swift in Sources */,
+				B0DA77095E0F5324E0E4C7BA /* LegalView.swift in Sources */,
+				ABB508AAA1D16585406C58F4 /* LocationPermissionView.swift in Sources */,
+				F6099D26B9C9C65AB479904A /* LocationService.swift in Sources */,
+				6B93B5B6EA16F50B773CB88C /* NotificationService.swift in Sources */,
+				BDB6FB5BA8D6066B24E0D7A6 /* OnboardingView.swift in Sources */,
+				D4A7784268410338B810CF12 /* PaywallView.swift in Sources */,
+				D522394DA18B001A7652DEDA /* PlanLimits.swift in Sources */,
+				8DF548CD2113533191250DAE /* PlanService.swift in Sources */,
+				510E4893007279B627770C00 /* PressureHistoryStore.swift in Sources */,
+				8B4E188D80457D56DC3D1872 /* RecordCompleteView.swift in Sources */,
+				31FA088224F5E8932EC7B2D1 /* RecordDetailView.swift in Sources */,
+				D9CA1337AAC3FA020D3448BF /* RecordEditView.swift in Sources */,
+				E62BEBCD2C8BD60E5B0F129C /* RecordStore.swift in Sources */,
+				C4524DEF46E83FC50E78F912 /* RecordView.swift in Sources */,
+				36DF3016C9B54B58664C1199 /* RecordViewModel.swift in Sources */,
+				A659A60C78AD14B3E33DF291 /* ReportCSVGenerator.swift in Sources */,
+				89C7A30DDB76EA1115904CE5 /* ReportPDFRenderer.swift in Sources */,
+				F3C922FA665FCC541BF1344D /* ReportView.swift in Sources */,
+				247286CD3941D4A45F360CF6 /* SettingsView.swift in Sources */,
+				4D070095C5C3DE1578B5885C /* SourceDevice.swift in Sources */,
+				924E72B50760B11AE49BF561 /* Strings.swift in Sources */,
+				503B02E240483CE52477B312 /* SymptomRecord+Display.swift in Sources */,
+				DFBBF0A07E0215D00DFFA820 /* SymptomRecord.swift in Sources */,
+				319D5AED25CC07AE05EA08F2 /* SymptomType.swift in Sources */,
+				2EAE8ABC24EFED88B95D46D2 /* TrendsView.swift in Sources */,
+				CE3DB4480F53E450767878F5 /* WatchSyncService.swift in Sources */,
+				F5392F0E5CABECE3B4116B0E /* WeatherService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9916B729C6CC7ACC6D45D98C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				518E696DAAD45FEADC1DC32C /* AnalysisHelper.swift in Sources */,
+				7BE3575498A7CEC95B94F614 /* Constants.swift in Sources */,
+				C0DF8F45BA531AFAF056AA15 /* CustomMedication.swift in Sources */,
+				F7EC31C84BE7C4CB429D5141 /* CustomSymptom.swift in Sources */,
+				875764CD548868A3B9190C19 /* CustomSymptomStore.swift in Sources */,
+				154A9E092CF3C6CB249AA18D /* EnvironmentService.swift in Sources */,
+				8FD339EA3EFE45E1DB2C49B3 /* EnvironmentSnapshot.swift in Sources */,
+				75A6D81102DFEDB53061DDCC /* HealthService.swift in Sources */,
+				D8ACF22DC96CE692CC4FA222 /* HealthSnapshot.swift in Sources */,
+				02A24641AE82B2D361179A0E /* ItamiTechoWidget.swift in Sources */,
+				7FC90D037D2271237172BD01 /* LocationService.swift in Sources */,
+				3D0B60956E6B2CC78A5621E5 /* NotificationService.swift in Sources */,
+				7F59987F4B8A61D07DE7F44C /* PlanLimits.swift in Sources */,
+				51B7458E26102912DAE8464D /* PlanService.swift in Sources */,
+				B6F63D38B033735203B92BE1 /* PressureHistoryStore.swift in Sources */,
+				0BD256B2DB7B9D6F694B2BEB /* RecordStore.swift in Sources */,
+				958CDDF7DD9A5BB6E078BCAC /* SourceDevice.swift in Sources */,
+				E172D3913B3EEB45586AEB1E /* Strings.swift in Sources */,
+				02B83067095651730E5D25DF /* SymptomRecord+Display.swift in Sources */,
+				490829C7FA8F83BA1EBB6EB0 /* SymptomRecord.swift in Sources */,
+				42BCC565796949B9E013E8A3 /* SymptomType.swift in Sources */,
+				D6ACB52184926322785AA25F /* WatchSyncService.swift in Sources */,
+				DAFA966E36508324F3A3E76B /* WeatherService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D38E1F2431CBCC124583CA4C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2E922794B359B0DE2BDD3581 /* ItamiTecho */;
+			targetProxy = 3D2A7760760C18E2F4F04582 /* PBXContainerItemProxy */;
+		};
+		D575A39BEFC5D5E72E3C1021 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 371A41431E7B861A1AB3118B /* ItamiTechoWidgetExtension */;
+			targetProxy = 4457D77CAB93CBBD4BBAFCD3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		01AC1A494986AA4A2EB66CCD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ItamiTechoWatch/ItamiTechoWatch.entitlements;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "不調記録と心拍の関係を振り返るために使用します。";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.mankai.itamitecho;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.itamitecho.ItamiTechoWatch;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Debug;
+		};
+		5C155CC77D19CCBF9C141E43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.itamitecho.ItamiTechoTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ItamiTecho.app/ItamiTecho";
+			};
+			name = Release;
+		};
+		7CDB857572A658B59EFEBD43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ItamiTechoWatch/ItamiTechoWatch.entitlements;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "不調記録と心拍の関係を振り返るために使用します。";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.mankai.itamitecho;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.itamitecho.ItamiTechoWatch;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Release;
+		};
+		A402A1EA1B5B243D3CAE747F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ItamiTecho/ItamiTecho.entitlements;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ItamiTechoWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.itamitecho.ItamiTecho.widget;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C93DDF28BB92B4CEF1A2CC6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = R7B3AEZ7TA;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		C9A624AAB0FA573077B21FD6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.itamitecho.ItamiTechoTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ItamiTecho.app/ItamiTecho";
+			};
+			name = Debug;
+		};
+		E71F7CCE34C8BD65F4FDA50F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ItamiTecho/ItamiTecho.entitlements;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ItamiTechoWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.itamitecho.ItamiTecho.widget;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E9C8917A02F5BEF0B3B1F9D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = R7B3AEZ7TA;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		F2FD98F2F678845789450544 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ItamiTecho/ItamiTecho.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "不調記録と睡眠・心拍・歩数などの関係を振り返るために使用します。";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "不調記録をApple Healthに反映するために使用します。";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "記録時の天気・気圧情報を取得するために使用します。位置情報は市区町村レベルに丸めて保存され、外部に送信されません。";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.itamitecho.ItamiTecho;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F68242346CA68976824E396A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ItamiTecho/ItamiTecho.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "不調記録と睡眠・心拍・歩数などの関係を振り返るために使用します。";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "不調記録をApple Healthに反映するために使用します。";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "記録時の天気・気圧情報を取得するために使用します。位置情報は市区町村レベルに丸めて保存され、外部に送信されません。";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.itamitecho.ItamiTecho;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		23637A38D16711EE91A3156E /* Build configuration list for PBXNativeTarget "ItamiTechoWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A402A1EA1B5B243D3CAE747F /* Debug */,
+				E71F7CCE34C8BD65F4FDA50F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		56493FB1833BE393E84D5BBA /* Build configuration list for PBXNativeTarget "ItamiTechoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9A624AAB0FA573077B21FD6 /* Debug */,
+				5C155CC77D19CCBF9C141E43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D1E9881ACFA66B9ACF5A8161 /* Build configuration list for PBXProject "ItamiTecho" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C93DDF28BB92B4CEF1A2CC6D /* Debug */,
+				E9C8917A02F5BEF0B3B1F9D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D354FCF1A4DB4FAC203EAE11 /* Build configuration list for PBXNativeTarget "ItamiTecho" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F68242346CA68976824E396A /* Debug */,
+				F2FD98F2F678845789450544 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D8A4979D90D1C0F4D23822CE /* Build configuration list for PBXNativeTarget "ItamiTechoWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01AC1A494986AA4A2EB66CCD /* Debug */,
+				7CDB857572A658B59EFEBD43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1AA791E1C01CB500E5AA2458 /* Project object */;
+}

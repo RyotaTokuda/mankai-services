@@ -1,0 +1,79 @@
+name: ItamiTecho
+options:
+  bundleIdPrefix: com.mankai.itamitecho
+  deploymentTarget:
+    iOS: "17.0"
+    watchOS: "10.0"
+  xcodeVersion: "16.0"
+  developmentLanguage: ja
+  generateEmptyDirectories: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: 1
+    DEVELOPMENT_TEAM: R7B3AEZ7TA
+    GENERATE_INFOPLIST_FILE: true
+
+targets:
+  ItamiTecho:
+    type: application
+    platform: iOS
+    sources:
+      - path: ItamiTecho
+      - path: Shared
+    settings:
+      base:
+        INFOPLIST_KEY_UILaunchScreen_Generation: true
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
+        INFOPLIST_KEY_NSHealthShareUsageDescription: "不調記録と睡眠・心拍・歩数などの関係を振り返るために使用します。"
+        INFOPLIST_KEY_NSHealthUpdateUsageDescription: "不調記録をApple Healthに反映するために使用します。"
+        INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: "記録時の天気・気圧情報を取得するために使用します。位置情報は市区町村レベルに丸めて保存され、外部に送信されません。"
+        INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: false
+    entitlements:
+      path: ItamiTecho/ItamiTecho.entitlements
+    dependencies:
+      - target: ItamiTechoWidgetExtension
+    scheme:
+      testTargets:
+        - ItamiTechoTests
+
+  ItamiTechoWatch:
+    type: application
+    platform: watchOS
+    sources:
+      - path: ItamiTechoWatch
+      - path: Shared
+    settings:
+      base:
+        INFOPLIST_KEY_WKCompanionAppBundleIdentifier: com.mankai.itamitecho
+        INFOPLIST_KEY_NSHealthShareUsageDescription: "不調記録と心拍の関係を振り返るために使用します。"
+    entitlements:
+      path: ItamiTechoWatch/ItamiTechoWatch.entitlements
+
+  ItamiTechoWidgetExtension:
+    type: app-extension
+    platform: iOS
+    product: ItamiTechoWidgetExtension
+    sources:
+      - path: ItamiTechoWidget
+        excludes:
+          - Info.plist
+      - path: Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.mankai.itamitecho.ItamiTecho.widget
+        GENERATE_INFOPLIST_FILE: false
+        INFOPLIST_FILE: ItamiTechoWidget/Info.plist
+    entitlements:
+      path: ItamiTecho/ItamiTecho.entitlements
+
+  ItamiTechoTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: ItamiTechoTests
+      - path: Shared
+    dependencies:
+      - target: ItamiTecho
