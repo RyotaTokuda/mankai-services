@@ -15,12 +15,16 @@ apps/
   home-stock/              おうちストック — 消耗品管理アプリ（Next.js / Vercel）
   shouhyou-box/            証憑ボックス — 副業者向け証憑整理アプリ（Expo / EAS Build）
   shimedoki/               しめどき — 会議の締めどき通知アプリ（SwiftUI / iOS + watchOS）
+  itami-techo/             痛み手帳 — 不調瞬間ログアプリ（SwiftUI / iOS + watchOS）
+  car-diary/               愛車台帳 — 整備記録・維持費管理・車検診断（Next.js / Vercel）
+  car-diary-mobile/        愛車台帳 モバイルアプリ（Expo / EAS Build）※作成予定
   api/                     Webhook + OCR API サーバー（Next.js / Vercel）
 packages/
   auth/                    @mankai/auth — Supabase 認証一式
   billing/                 @mankai/billing — 課金一式（Lemon Squeezy / Stripe / App Store / Google Play）
   ui/                      @mankai/ui — UI 基盤（tokens / components / a11y / ESLint preset）
   parking-shared/          @mankai/parking-shared — 駐車料金計算ロジック・型定義
+  car-diary-shared/        @mankai/car-diary-shared — 愛車台帳の型・定数・バリデーション・APIクライアント
 supabase/
   migrations/              Supabase DB スキーマ定義（SQL）
 ```
@@ -113,6 +117,52 @@ Android（Google Play）→ apps/api webhook → subscriptions (platform: "googl
 ### アクセシビリティ
 - 全アプリで `@mankai/ui/a11y/eslint-config` を ESLint に追加する（テンプレートに設定済み）
 - UI コンポーネントは `@mankai/ui` の Button / Input / Alert を優先使用する（a11y 属性が組み込み済み）
+
+## ネイティブアプリ ストア公開 — 全体共通ルール
+
+> 詳細なチェックリスト → [`STORE_SUBMISSION_GUIDE.md`](./STORE_SUBMISSION_GUIDE.md)
+
+### 対象アプリ
+
+| アプリ | プラットフォーム | 課金方式 |
+|---|---|---|
+| `parking-reader` | Expo / EAS Build（iOS + Android） | App Store IAP / Google Play Billing（RevenueCat） |
+| `shouhyou-box` | Expo / EAS Build（iOS + Android） | App Store IAP / Google Play Billing |
+| `shimedoki` | SwiftUI（iOS + watchOS） | StoreKit 2 |
+| `itami-techo` | SwiftUI（iOS + watchOS） | StoreKit 2 |
+
+### 絶対に守ること（違反 = 即リジェクト）
+
+1. **デジタル機能の課金は必ず IAP を使う** — ネイティブアプリ内で Stripe / Lemon Squeezy への誘導は禁止
+2. **サードパーティログインを使うなら Sign in with Apple も提供する**（iOS 必須）
+3. **アカウント削除機能を実装する**（Apple 5.1.1(v) 必須）
+4. **不要なパーミッションを要求しない** — 使わないキーは Info.plist / AndroidManifest から削除
+5. **プライバシーポリシーを最新に保つ** — 収集データ・利用目的・第三者共有を正確に記載
+6. **App Privacy Details（iOS）/ Data Safety（Android）を正確に申告する**
+7. **スクリーンショットは実際のアプリ画面から取得する** — モックアップ・合成は不可
+8. **`ITSAppUsesNonExemptEncryption`** を `app.json` / Info.plist に設定する（HTTPS のみなら `false`）
+9. **審査用デモアカウント** — ログイン必須アプリは審査メモにデモアカウント情報を記載
+10. **購入の復元ボタン** — IAP がある全アプリに必須
+
+### ネイティブアプリの課金フロー
+
+```
+iOS（App Store IAP）  → apps/api webhook → subscriptions (platform: "apple")
+Android（Google Play） → apps/api webhook → subscriptions (platform: "google")
+```
+
+- ネイティブアプリでは Web 課金（Stripe / Lemon Squeezy）を使わない
+- Webhook で `subscriptions` テーブルを更新し、`isPro()` で統一判定
+- RevenueCat を使う場合は Server-to-Server Notification を apps/api で受信
+
+### ストアメタデータ
+
+各ネイティブアプリに `store/metadata-ja.md` を配置する:
+- アプリ名 / サブタイトル / 説明文 / キーワード
+- カテゴリ / レーティング / 対象年齢
+- スクリーンショット仕様
+- IAP 商品情報（Product ID / 種別 / 価格 / 説明）
+- サポート URL / プライバシーポリシー URL / 利用規約 URL
 
 ## ブランチ・コミット
 
