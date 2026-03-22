@@ -140,21 +140,9 @@ export default function Simulator() {
 
       {/* 入力エリア */}
       <section>
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-bold">試算条件</h2>
-          <button
-            onClick={addScenario}
-            className="rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 px-5 py-2 text-sm font-medium text-white hover:from-blue-700 hover:to-cyan-700 transition-all shadow-md shadow-blue-200 dark:shadow-blue-900/30"
-          >
-            + 車種を追加
-          </button>
-        </div>
+        <h2 className="text-lg font-bold mb-4">試算条件</h2>
 
-        <div
-          className={`grid gap-6 ${
-            scenarios.length > 1 ? "lg:grid-cols-2" : "max-w-2xl"
-          }`}
-        >
+        <div className="grid gap-6 lg:grid-cols-2">
           {scenarios.map((s) => (
             <ScenarioForm
               key={s.id}
@@ -164,12 +152,18 @@ export default function Simulator() {
               canRemove={scenarios.length > 1}
             />
           ))}
+          <button
+            onClick={addScenario}
+            className="self-start rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 px-8 py-3 text-base font-medium text-white hover:from-blue-700 hover:to-cyan-700 transition-all shadow-md shadow-blue-200 dark:shadow-blue-900/30"
+          >
+            + 車種を追加
+          </button>
         </div>
       </section>
 
       {/* 結果エリア */}
       <section>
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-3 mb-4">
           <h2 className="text-lg font-bold">試算結果</h2>
           <div className="flex gap-2">
             <button
