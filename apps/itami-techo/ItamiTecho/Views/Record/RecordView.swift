@@ -165,10 +165,10 @@ struct RecordView: View {
                                 .lineLimit(1)
                         }
                         .frame(maxWidth: .infinity, minHeight: 60)
-                        .background(severity == level ? severityColor(level).opacity(0.2) : Color.clear)
+                        .background(severity == level ? SymptomRecord.color(for: level).opacity(0.2) : Color.clear)
                         .cornerRadius(8)
                     }
-                    .foregroundStyle(severity == level ? severityColor(level) : .secondary)
+                    .foregroundStyle(severity == level ? SymptomRecord.color(for: level) : .secondary)
                 }
             }
             .padding(.horizontal)
@@ -266,16 +266,6 @@ struct RecordView: View {
         recordDate = Date()
     }
 
-    private func severityColor(_ level: Int) -> Color {
-        switch level {
-        case 1: .green
-        case 2: .yellow
-        case 3: .orange
-        case 4: .red
-        case 5: .purple
-        default: .orange
-        }
-    }
 }
 
 // MARK: - 症状ボタン

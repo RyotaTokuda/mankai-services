@@ -19,6 +19,8 @@ final class RecordStore {
     // MARK: - CRUD
 
     func add(_ record: SymptomRecord) {
+        // WatchSync 経由で同一レコードが複数回届く可能性があるため重複チェック
+        guard !records.contains(where: { $0.id == record.id }) else { return }
         records.append(record)
         records.sort { $0.createdAt > $1.createdAt }
         save()

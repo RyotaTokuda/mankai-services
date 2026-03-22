@@ -131,6 +131,28 @@ struct ItamiTechoWidgetMedium: View {
     }
 }
 
+// MARK: - Size Routing
+
+struct ItamiTechoWidgetEntryView: View {
+    @SwiftUI.Environment(\.widgetFamily) var family
+    let entry: ItamiTechoEntry
+
+    var body: some View {
+        switch family {
+        case .systemSmall:
+            ItamiTechoWidgetSmall(entry: entry)
+        case .systemMedium:
+            ItamiTechoWidgetMedium(entry: entry)
+        case .accessoryCircular:
+            ItamiTechoAccessoryCircular(entry: entry)
+        case .accessoryRectangular:
+            ItamiTechoAccessoryRectangular(entry: entry)
+        default:
+            ItamiTechoWidgetSmall(entry: entry)
+        }
+    }
+}
+
 // MARK: - Widget Definition
 
 struct ItamiTechoWidget: Widget {
@@ -139,7 +161,7 @@ struct ItamiTechoWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: ItamiTechoTimelineProvider()) { entry in
             if #available(iOS 17.0, *) {
-                ItamiTechoWidgetSmall(entry: entry)
+                ItamiTechoWidgetEntryView(entry: entry)
             }
         }
         .configurationDisplayName(S.App.name)

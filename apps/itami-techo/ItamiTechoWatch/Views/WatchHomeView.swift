@@ -36,7 +36,7 @@ struct WatchHomeView: View {
                             } label: {
                                 HStack {
                                     VStack(alignment: .leading, spacing: 2) {
-                                        Text(symptomName(for: latest))
+                                        Text(latest.displayName)
                                             .font(.caption)
                                             .fontWeight(.medium)
                                         HStack(spacing: 4) {
@@ -88,9 +88,4 @@ struct WatchHomeView: View {
         }
     }
 
-    private func symptomName(for record: SymptomRecord) -> String {
-        record.symptomType.map { S.Symptom.name(for: $0) }
-            ?? record.customSymptomName
-            ?? S.Symptom.custom
-    }
 }

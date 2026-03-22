@@ -94,11 +94,11 @@ struct RecordRow: View {
         HStack {
             // 強さインジケーター
             Circle()
-                .fill(severityColor)
+                .fill(record.severityColor)
                 .frame(width: 10, height: 10)
 
             VStack(alignment: .leading, spacing: 2) {
-                Text(symptomName)
+                Text(record.displayName)
                     .font(.subheadline)
                     .fontWeight(.medium)
 
@@ -131,23 +131,6 @@ struct RecordRow: View {
             }
         }
         .accessibilityElement(children: .combine)
-        .accessibilityLabel("\(symptomName)、\(S.Severity.label(for: record.severity))")
-    }
-
-    private var symptomName: String {
-        record.symptomType.map { S.Symptom.name(for: $0) }
-            ?? record.customSymptomName
-            ?? S.Symptom.custom
-    }
-
-    private var severityColor: Color {
-        switch record.severity {
-        case 1: .green
-        case 2: .yellow
-        case 3: .orange
-        case 4: .red
-        case 5: .purple
-        default: .orange
-        }
+        .accessibilityLabel("\(record.displayName)、\(S.Severity.label(for: record.severity))")
     }
 }

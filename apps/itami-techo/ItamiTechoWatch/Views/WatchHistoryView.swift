@@ -19,7 +19,7 @@ struct WatchHistoryView: View {
             List(recentRecords) { record in
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
-                        Text(symptomName(for: record))
+                        Text(record.displayName)
                             .font(.caption)
                             .fontWeight(.medium)
                         Spacer()
@@ -47,12 +47,6 @@ struct WatchHistoryView: View {
             }
             .navigationTitle(S.History.title)
         }
-    }
-
-    private func symptomName(for record: SymptomRecord) -> String {
-        record.symptomType.map { S.Symptom.name(for: $0) }
-            ?? record.customSymptomName
-            ?? S.Symptom.custom
     }
 
     /// 強さを●の数で表現（Watch では文字より視覚的に分かりやすい）
