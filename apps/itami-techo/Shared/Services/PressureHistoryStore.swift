@@ -11,6 +11,7 @@ final class PressureHistoryStore {
 
     private let maxReadings = 36 // 3時間分（5分間隔）
     private let fileURL: URL
+    private let coordinator = NSFileCoordinator()
 
     struct PressureReading: Codable {
         let date: Date
@@ -74,24 +75,29 @@ final class PressureHistoryStore {
     }
 
     private func loadReadings() {
-        guard FileManager.default.fileExists(atPath: fileURL.path) else { return }
-        do {
-            let data = try Data(contentsOf: fileURL)
-            readings = try JSONDecoder.appDecoder.decode([PressureReading].self, from: data)
-            // 24時間以上古い読み取りを削除
-            let cutoff = Date().addingTimeInterval(-24 * 3600)
-            readings.removeAll { $0.date < cutoff }
-        } catch {
-            readings = []
+        var readError: NSError?
+        coordinator.coordinate(readingItemAt: fileURL, options: [], error: &readError) { url in
+            guard FileManager.default.fileExists(atPath: url.path) else { return }
+            do {
+                let data = try Data(contentsOf: url)
+                self.readings = try JSONDecoder.appDecoder.decode([PressureReading].self, from: data)
+                let cutoff = Date().addingTimeInterval(-24 * 3600)
+                self.readings.removeAll { $0.date < cutoff }
+            } catch {
+                self.readings = []
+            }
         }
     }
 
     private func saveReadings() {
-        do {
-            let data = try JSONEncoder.appEncoder.encode(readings)
-            try data.write(to: fileURL, options: .atomic)
-        } catch {
-            print("[PressureHistory] save error: \(error)")
+        var writeError: NSError?
+        coordinator.coordinate(writingItemAt: fileURL, options: .forReplacing, error: &writeError) { url in
+            do {
+                let data = try JSONEncoder.appEncoder.encode(readings)
+                try data.write(to: url, options: .atomic)
+            } catch {
+                print("[PressureHistory] save error: \(error)")
+            }
         }
     }
 }

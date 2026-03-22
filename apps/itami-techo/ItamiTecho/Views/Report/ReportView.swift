@@ -14,36 +14,20 @@ struct ReportView: View {
         recordStore.records(from: startDate, to: endDate)
     }
 
-    /// 症状別件数
     private var symptomCounts: [(String, Int)] {
-        var counts: [String: Int] = [:]
-        for r in periodRecords {
-            let name = r.symptomType.map { S.Symptom.name(for: $0) } ?? r.customSymptomName ?? S.Symptom.custom
-            counts[name, default: 0] += 1
-        }
-        return counts.sorted { $0.value > $1.value }
+        AnalysisHelper.symptomCounts(from: periodRecords)
     }
 
-    /// 強さ分布
     private var severityDistribution: [(String, Int)] {
-        var dist = [Int: Int]()
-        for r in periodRecords { dist[r.severity, default: 0] += 1 }
-        return (1...5).map { (S.Severity.label(for: $0), dist[$0] ?? 0) }
+        AnalysisHelper.severityDistribution(from: periodRecords)
     }
 
-    /// 服薬回数
     private var medicationCount: Int {
-        periodRecords.filter(\.medicationTaken).count
+        AnalysisHelper.medicationCount(from: periodRecords)
     }
 
-    /// 落ち着くまでの平均時間
     private var avgSettleMinutes: Int? {
-        let durations = periodRecords.compactMap { r -> TimeInterval? in
-            guard let settled = r.settledAt else { return nil }
-            return settled.timeIntervalSince(r.createdAt)
-        }
-        guard !durations.isEmpty else { return nil }
-        return Int(durations.reduce(0, +) / Double(durations.count) / 60)
+        AnalysisHelper.avgSettleMinutes(from: periodRecords)
     }
 
     var body: some View {
