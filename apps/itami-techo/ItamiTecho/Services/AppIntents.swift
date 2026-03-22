@@ -1,4 +1,5 @@
 import AppIntents
+import WidgetKit
 
 /// Siri ショートカット: 症状を記録
 struct RecordSymptomIntent: AppIntent {
@@ -33,6 +34,7 @@ struct RecordSymptomIntent: AppIntent {
 
         let store = RecordStore()
         store.add(record)
+        WidgetCenter.shared.reloadAllTimelines()
 
         let name = symptomType.map { S.Symptom.name(for: $0) } ?? symptomName
         return .result(dialog: "\(name)（\(S.Severity.label(for: clampedSeverity))）を記録しました")

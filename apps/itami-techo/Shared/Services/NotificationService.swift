@@ -8,6 +8,7 @@ import CoreLocation
 final class NotificationService {
     private(set) var isAuthorized = false
     private let fileURL: URL
+    private let coordinator = NSFileCoordinator()
 
     /// 通知履歴（頻度制御用）
     private var sentDates: [Date] = []
@@ -110,21 +111,27 @@ final class NotificationService {
     // MARK: - 永続化
 
     private func loadHistory() {
-        guard FileManager.default.fileExists(atPath: fileURL.path) else { return }
-        do {
-            let data = try Data(contentsOf: fileURL)
-            sentDates = try JSONDecoder.appDecoder.decode([Date].self, from: data)
-        } catch {
-            sentDates = []
+        var readError: NSError?
+        coordinator.coordinate(readingItemAt: fileURL, options: [], error: &readError) { url in
+            guard FileManager.default.fileExists(atPath: url.path) else { return }
+            do {
+                let data = try Data(contentsOf: url)
+                self.sentDates = try JSONDecoder.appDecoder.decode([Date].self, from: data)
+            } catch {
+                self.sentDates = []
+            }
         }
     }
 
     private func saveHistory() {
-        do {
-            let data = try JSONEncoder.appEncoder.encode(sentDates)
-            try data.write(to: fileURL, options: .atomic)
-        } catch {
-            print("[NotificationService] save error: \(error)")
+        var writeError: NSError?
+        coordinator.coordinate(writingItemAt: fileURL, options: .forReplacing, error: &writeError) { url in
+            do {
+                let data = try JSONEncoder.appEncoder.encode(sentDates)
+                try data.write(to: url, options: .atomic)
+            } catch {
+                print("[NotificationService] save error: \(error)")
+            }
         }
     }
 }
