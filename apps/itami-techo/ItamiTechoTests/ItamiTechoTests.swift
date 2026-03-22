@@ -140,3 +140,141 @@ struct CustomSymptomTests {
         #expect(symptom.name == "腰痛")
     }
 }
+
+@Suite("SymptomRecord+Display")
+struct SymptomRecordDisplayTests {
+
+    @Test("デフォルト症状の displayName")
+    func defaultSymptomDisplayName() {
+        let record = SymptomRecord(symptomType: .headache, severity: 3, sourceDevice: .iPhone)
+        #expect(record.displayName == S.Symptom.headache)
+    }
+
+    @Test("カスタム症状の displayName")
+    func customSymptomDisplayName() {
+        let record = SymptomRecord(customSymptomId: UUID(), customSymptomName: "腰痛", severity: 2, sourceDevice: .watch)
+        #expect(record.displayName == "腰痛")
+    }
+
+    @Test("症状未指定の displayName はカスタム")
+    func noSymptomDisplayName() {
+        let record = SymptomRecord(severity: 1, sourceDevice: .iPhone)
+        #expect(record.displayName == S.Symptom.custom)
+    }
+
+    @Test("severityColor が全レベルで返る")
+    func severityColorAllLevels() {
+        for level in 1...5 {
+            let color = SymptomRecord.color(for: level)
+            #expect(color != .clear)
+        }
+    }
+}
+
+@Suite("SymptomRecord 過去日記録")
+struct PastDateRecordTests {
+
+    @Test("date パラメータで過去日を指定できる")
+    func createWithPastDate() {
+        let pastDate = Calendar.current.date(byAdding: .day, value: -3, to: Date())!
+        let record = SymptomRecord(symptomType: .fatigue, severity: 2, sourceDevice: .iPhone, date: pastDate)
+        #expect(Calendar.current.isDate(record.createdAt, inSameDayAs: pastDate))
+        #expect(record.environment == nil)
+    }
+
+    @Test("date 省略時は現在時刻")
+    func createWithoutDate() {
+        let before = Date()
+        let record = SymptomRecord(symptomType: .headache, severity: 3, sourceDevice: .iPhone)
+        let after = Date()
+        #expect(record.createdAt >= before)
+        #expect(record.createdAt <= after)
+    }
+}
+
+@Suite("RecordStore")
+struct RecordStoreTests {
+
+    @Test("レコード追加と取得")
+    func addAndRetrieve() {
+        let store = RecordStore()
+        let record = SymptomRecord(symptomType: .headache, severity: 3, sourceDevice: .iPhone)
+        store.add(record)
+        #expect(store.records.contains(where: { $0.id == record.id }))
+    }
+
+    @Test("重複IDは追加されない")
+    func duplicateIdRejected() {
+        let store = RecordStore()
+        let record = SymptomRecord(symptomType: .headache, severity: 3, sourceDevice: .iPhone)
+        store.add(record)
+        store.add(record)
+        #expect(store.records.filter({ $0.id == record.id }).count == 1)
+    }
+
+    @Test("レコード削除")
+    func deleteRecord() {
+        let store = RecordStore()
+        let record = SymptomRecord(symptomType: .dizziness, severity: 2, sourceDevice: .watch)
+        store.add(record)
+        store.delete(id: record.id)
+        #expect(!store.records.contains(where: { $0.id == record.id }))
+    }
+
+    @Test("服薬記録")
+    func markMedication() {
+        let store = RecordStore()
+        let record = SymptomRecord(symptomType: .headache, severity: 4, sourceDevice: .iPhone)
+        store.add(record)
+        store.markMedicationTaken(id: record.id)
+        let updated = store.records.first { $0.id == record.id }
+        #expect(updated?.medicationTaken == true)
+        #expect(updated?.medicationTakenAt != nil)
+    }
+
+    @Test("落ち着いた記録")
+    func markSettled() {
+        let store = RecordStore()
+        let record = SymptomRecord(symptomType: .nausea, severity: 3, sourceDevice: .watch)
+        store.add(record)
+        store.markSettled(id: record.id)
+        let updated = store.records.first { $0.id == record.id }
+        #expect(updated?.settledAt != nil)
+    }
+
+    @Test("今日のレコードフィルタ")
+    func todayRecords() {
+        let store = RecordStore()
+        let countBefore = store.todayRecords.count
+        let today = SymptomRecord(symptomType: .headache, severity: 2, sourceDevice: .iPhone)
+        let yesterday = SymptomRecord(symptomType: .fatigue, severity: 1, sourceDevice: .iPhone, date: Calendar.current.date(byAdding: .day, value: -1, to: Date())!)
+        store.add(today)
+        store.add(yesterday)
+        // 今日のレコードは1件増えたはず（昨日の分は含まれない）
+        #expect(store.todayRecords.count == countBefore + 1)
+        #expect(store.todayRecords.contains(where: { $0.id == today.id }))
+        #expect(!store.todayRecords.contains(where: { $0.id == yesterday.id }))
+    }
+}
+
+@Suite("EnvironmentSnapshot backfill")
+struct EnvironmentSnapshotBackfillTests {
+
+    @Test("needsBackfill の JSON 往復")
+    func backfillCodable() throws {
+        var snapshot = EnvironmentSnapshot()
+        snapshot.pressure = 1010.0
+        snapshot.needsBackfill = true
+        snapshot.backfillDeadline = Date().addingTimeInterval(24 * 3600)
+
+        let data = try JSONEncoder.appEncoder.encode(snapshot)
+        let decoded = try JSONDecoder.appDecoder.decode(EnvironmentSnapshot.self, from: data)
+        #expect(decoded.needsBackfill == true)
+        #expect(decoded.backfillDeadline != nil)
+        #expect(decoded.pressure == 1010.0)
+    }
+}
+
+// Note: ReportCSVGenerator のテストは iOS ターゲットに含まれるため
+// テストターゲット（Shared のみ）からはアクセスできない。
+// UI テストまたは iOS ターゲット内のテストで検証する。

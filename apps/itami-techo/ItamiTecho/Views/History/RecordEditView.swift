@@ -20,17 +20,11 @@ struct RecordEditView: View {
         _medicationTakenAt = State(initialValue: record.medicationTakenAt ?? Date())
     }
 
-    private var symptomName: String {
-        record.symptomType.map { S.Symptom.name(for: $0) }
-            ?? record.customSymptomName
-            ?? S.Symptom.custom
-    }
-
     var body: some View {
         NavigationStack {
             Form {
                 Section("症状") {
-                    LabeledContent("症状", value: symptomName)
+                    LabeledContent("症状", value: record.displayName)
                 }
 
                 Section(S.Record.selectSeverity) {

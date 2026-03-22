@@ -199,6 +199,44 @@ enum S {
         static let disclaimer4 = "表示される傾向は記録データに基づく参考情報です。"
     }
 
+    // ── 共通 UI ──────────────────────────────────────────
+    enum Common {
+        static let close = "閉じる"
+        static let cancel = "キャンセル"
+        static let save = "保存"
+        static let next = "次へ"
+        static let skip = "スキップ"
+        static let version = "バージョン"
+        static let addSymptom = "症状を追加"
+        static let customSymptomLimitPremium = "カスタム症状の追加はプレミアムで無制限に"
+        static let pastRecord = "過去の記録"
+        static let symptomName = "症状名"
+        static let emojiOptional = "絵文字（任意）"
+        static let customSymptomHint = "一般的な症状を入力してください。\n病名の入力は推奨しません。"
+        static let add = "追加"
+        static let symptom = "症状"
+        static let severity = "強さ"
+        static let recordedAt = "記録日時"
+        static let recordSource = "記録元"
+        static let medication = "薬"
+        static let timeTaken = "かかった時間"
+        static let medicationTime = "服薬時刻"
+        static let calendar = "カレンダー"
+        static let detailView = "詳しく見る"
+        static let last14Days = "直近14日"
+        static let trendHint = "記録が増えると傾向が見えてきます"
+    }
+
+    // ── Widget ──────────────────────────────────────────
+    enum Widget {
+        static func todayCount(_ count: Int) -> String {
+            "今日 \(count)件"
+        }
+        static let noRecords = "記録なし"
+        static let tapToRecord = "タップして記録"
+        static let latest = "直近"
+    }
+
     // ── Watch ────────────────────────────────────────────
     enum Watch {
         static let recordNow = "今すぐ記録"

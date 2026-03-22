@@ -12,18 +12,6 @@ struct WatchSeveritySelectView: View {
     @Environment(CustomSymptomStore.self) private var customSymptomStore
     @State private var completedRecord: SymptomRecord?
 
-    /// 強さレベルに対応する色
-    private func color(for level: Int) -> Color {
-        switch level {
-        case 1: .green
-        case 2: .yellow
-        case 3: .orange
-        case 4: .red
-        case 5: .purple
-        default: .orange
-        }
-    }
-
     var body: some View {
         if let record = completedRecord {
             WatchRecordCompleteView(record: record)
@@ -46,7 +34,7 @@ struct WatchSeveritySelectView: View {
                             .frame(maxWidth: .infinity, minHeight: 44)
                         }
                         .buttonStyle(.borderedProminent)
-                        .tint(color(for: level))
+                        .tint(SymptomRecord.color(for: level))
                     }
                 }
                 .padding(.horizontal, 4)

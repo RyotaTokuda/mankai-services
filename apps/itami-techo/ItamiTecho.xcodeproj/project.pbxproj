@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		00F6CC2C98BACAE555199B00 /* CustomMedication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2D5FE7B40C9881593D2FED /* CustomMedication.swift */; };
 		02A24641AE82B2D361179A0E /* ItamiTechoWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B147764F021F5BABF149E09F /* ItamiTechoWidget.swift */; };
+		02B83067095651730E5D25DF /* SymptomRecord+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B73A3C17D5A33266222D9BB /* SymptomRecord+Display.swift */; };
 		0536C2722685DF9A7C407CB6 /* CustomSymptomStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243B0D68697EC3DB42DE9736 /* CustomSymptomStore.swift */; };
 		0AE6158D2CD38EBFA7C56072 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB982CC831F3209858A7511 /* LocationService.swift */; };
 		0BD256B2DB7B9D6F694B2BEB /* RecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2A8923E253022443282FF3 /* RecordStore.swift */; };
@@ -40,6 +41,7 @@
 		4C7F87C4A78BFF8089018366 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8876DF83E78487A49E75F2F /* Constants.swift */; };
 		4CB181136F75684F279AD219 /* CustomSymptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE92063302087082890758C9 /* CustomSymptom.swift */; };
 		4D070095C5C3DE1578B5885C /* SourceDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F53DB6661EE5F379370BA /* SourceDevice.swift */; };
+		503B02E240483CE52477B312 /* SymptomRecord+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B73A3C17D5A33266222D9BB /* SymptomRecord+Display.swift */; };
 		510E4893007279B627770C00 /* PressureHistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E56852F3F8554D49B516A4 /* PressureHistoryStore.swift */; };
 		516BC9499CC631A48ADDF447 /* StoreKitConfiguration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 00294B54167FBA76BB0A7E3A /* StoreKitConfiguration.storekit */; };
 		51B7458E26102912DAE8464D /* PlanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5038A95AD0D6CF2A20ABD /* PlanService.swift */; };
@@ -81,11 +83,13 @@
 		A879D3D2B0E375DB99663674 /* RecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2A8923E253022443282FF3 /* RecordStore.swift */; };
 		AA1618B25730D36D68D2027A /* EnvironmentSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F964FC569EC533BE5AFF458B /* EnvironmentSnapshot.swift */; };
 		ABB508AAA1D16585406C58F4 /* LocationPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91536D3EA4BF9A34E364A7 /* LocationPermissionView.swift */; };
+		ACAD608409BD469117E8A50B /* SymptomRecord+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B73A3C17D5A33266222D9BB /* SymptomRecord+Display.swift */; };
 		ADD62CD7950CEF9E53DEFDDD /* ItamiTechoWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB1555ADDD0E4B1DF0FC7B1 /* ItamiTechoWatchApp.swift */; };
 		AF52028B059E5FFED22EEE2B /* SourceDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F53DB6661EE5F379370BA /* SourceDevice.swift */; };
 		B0BFDFBEAD4B138B53235246 /* SymptomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCADA2A117520BB839906A2 /* SymptomType.swift */; };
 		B0DA77095E0F5324E0E4C7BA /* LegalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B864013EFDEE8913DBD63EA /* LegalView.swift */; };
 		B17CA45E21A4D795E922E946 /* EnvironmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F8309642423352DA3279D9 /* EnvironmentService.swift */; };
+		B4C3B36EFBB935C4115EBCAC /* SymptomRecord+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B73A3C17D5A33266222D9BB /* SymptomRecord+Display.swift */; };
 		B6F63D38B033735203B92BE1 /* PressureHistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E56852F3F8554D49B516A4 /* PressureHistoryStore.swift */; };
 		BB641C0E1BB31C01E46E50AF /* EnvironmentSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F964FC569EC533BE5AFF458B /* EnvironmentSnapshot.swift */; };
 		BCB7BD91214121B565C37A46 /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3149AD38AC8342560EAF6901 /* HealthService.swift */; };
@@ -179,6 +183,7 @@
 		3149AD38AC8342560EAF6901 /* HealthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthService.swift; sourceTree = "<group>"; };
 		340DBA6B750F784A8085DFBE /* TrendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsView.swift; sourceTree = "<group>"; };
 		3431A605F28F3BC28482F999 /* PlanLimits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanLimits.swift; sourceTree = "<group>"; };
+		3B73A3C17D5A33266222D9BB /* SymptomRecord+Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SymptomRecord+Display.swift"; sourceTree = "<group>"; };
 		4B5D0028D1E1A03173B47879 /* AppIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntents.swift; sourceTree = "<group>"; };
 		4E5F1247B4463A6551FC07D1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		50F49E3F955622918185F8DE /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
@@ -264,6 +269,7 @@
 				3431A605F28F3BC28482F999 /* PlanLimits.swift */,
 				5B6F53DB6661EE5F379370BA /* SourceDevice.swift */,
 				08A535D66EAC5B6D4993ECC6 /* SymptomRecord.swift */,
+				3B73A3C17D5A33266222D9BB /* SymptomRecord+Display.swift */,
 				BFCADA2A117520BB839906A2 /* SymptomType.swift */,
 			);
 			path = Models;
@@ -664,6 +670,7 @@
 				A879D3D2B0E375DB99663674 /* RecordStore.swift in Sources */,
 				AF52028B059E5FFED22EEE2B /* SourceDevice.swift in Sources */,
 				81CB230AEE619242979E3D47 /* Strings.swift in Sources */,
+				ACAD608409BD469117E8A50B /* SymptomRecord+Display.swift in Sources */,
 				EEBAEE0B5C1F7B2B774D193F /* SymptomRecord.swift in Sources */,
 				B0BFDFBEAD4B138B53235246 /* SymptomType.swift in Sources */,
 				E5304E51A05B269B9F17FD3E /* WatchHistoryView.swift in Sources */,
@@ -698,6 +705,7 @@
 				C6ADACA6B360C955BC7730FA /* RecordStore.swift in Sources */,
 				699287ADB1B414C8AD4F656C /* SourceDevice.swift in Sources */,
 				2DBCE8E47398D18356EF18D4 /* Strings.swift in Sources */,
+				B4C3B36EFBB935C4115EBCAC /* SymptomRecord+Display.swift in Sources */,
 				EB026C09CF4D20DBAFFE7E42 /* SymptomRecord.swift in Sources */,
 				767035051ECD6436FF14825A /* SymptomType.swift in Sources */,
 				4C2ABE183BD24DC5F7763D3F /* WatchSyncService.swift in Sources */,
@@ -746,6 +754,7 @@
 				247286CD3941D4A45F360CF6 /* SettingsView.swift in Sources */,
 				4D070095C5C3DE1578B5885C /* SourceDevice.swift in Sources */,
 				924E72B50760B11AE49BF561 /* Strings.swift in Sources */,
+				503B02E240483CE52477B312 /* SymptomRecord+Display.swift in Sources */,
 				DFBBF0A07E0215D00DFFA820 /* SymptomRecord.swift in Sources */,
 				319D5AED25CC07AE05EA08F2 /* SymptomType.swift in Sources */,
 				2EAE8ABC24EFED88B95D46D2 /* TrendsView.swift in Sources */,
@@ -775,6 +784,7 @@
 				0BD256B2DB7B9D6F694B2BEB /* RecordStore.swift in Sources */,
 				958CDDF7DD9A5BB6E078BCAC /* SourceDevice.swift in Sources */,
 				E172D3913B3EEB45586AEB1E /* Strings.swift in Sources */,
+				02B83067095651730E5D25DF /* SymptomRecord+Display.swift in Sources */,
 				490829C7FA8F83BA1EBB6EB0 /* SymptomRecord.swift in Sources */,
 				42BCC565796949B9E013E8A3 /* SymptomType.swift in Sources */,
 				D6ACB52184926322785AA25F /* WatchSyncService.swift in Sources */,

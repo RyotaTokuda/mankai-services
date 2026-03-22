@@ -11,18 +11,12 @@ struct RecordDetailView: View {
     @State private var showingEdit = false
     @State private var showingDeleteConfirm = false
 
-    private var symptomName: String {
-        record.symptomType.map { S.Symptom.name(for: $0) }
-            ?? record.customSymptomName
-            ?? S.Symptom.custom
-    }
-
     var body: some View {
         NavigationStack {
             List {
                 // ── 基本情報 ──
                 Section {
-                    LabeledContent("症状", value: symptomName)
+                    LabeledContent("症状", value: record.displayName)
                     LabeledContent("強さ", value: "\(record.severity) - \(S.Severity.label(for: record.severity))")
                     LabeledContent("記録日時", value: record.createdAt.formatted(.dateTime.year().month().day().hour().minute()))
                     LabeledContent("記録元", value: record.sourceDevice == .watch ? "Apple Watch" : "iPhone")
@@ -112,7 +106,7 @@ struct RecordDetailView: View {
                     }
                 }
             }
-            .navigationTitle(symptomName)
+            .navigationTitle(record.displayName)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {

@@ -44,6 +44,7 @@ final class HealthService {
 
     /// 現在時点の Health データからスナップショットを生成
     func createSnapshot() async -> HealthSnapshot {
+        guard HealthService.isAvailable, isAuthorized else { return HealthSnapshot() }
         var snapshot = HealthSnapshot()
 
         async let sleep = fetchLastNightSleep()

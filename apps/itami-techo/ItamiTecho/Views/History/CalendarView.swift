@@ -23,10 +23,18 @@ struct CalendarView: View {
         }
     }
 
-    /// 月の最初の曜日（日=1, 月=2, ...）
-    private var firstWeekday: Int {
-        guard let firstDay = daysInMonth.first else { return 1 }
-        return calendar.component(.weekday, from: firstDay)
+    /// ロケールの週開始日を考慮した曜日ヘッダー
+    private var orderedWeekdaySymbols: [String] {
+        let symbols = calendar.shortWeekdaySymbols
+        let start = calendar.firstWeekday - 1
+        return Array(symbols[start...]) + Array(symbols[..<start])
+    }
+
+    /// 月初の空白日数（ロケールの週開始日を考慮）
+    private var leadingEmptyDays: Int {
+        guard let firstDay = daysInMonth.first else { return 0 }
+        let weekday = calendar.component(.weekday, from: firstDay)
+        return (weekday - calendar.firstWeekday + 7) % 7
     }
 
     /// 特定日の記録件数
@@ -69,7 +77,7 @@ struct CalendarView: View {
 
                 // ── 曜日ヘッダー ──
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 8) {
-                    ForEach(["日", "月", "火", "水", "木", "金", "土"], id: \.self) { day in
+                    ForEach(orderedWeekdaySymbols, id: \.self) { day in
                         Text(day)
                             .font(.caption2)
                             .foregroundStyle(.secondary)
@@ -79,8 +87,8 @@ struct CalendarView: View {
 
                 // ── カレンダーグリッド ──
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 8) {
-                    // 月初の空白
-                    ForEach(0..<(firstWeekday - 1), id: \.self) { _ in
+                    // 月初の空白（ロケールの週開始日を考慮）
+                    ForEach(0..<leadingEmptyDays, id: \.self) { _ in
                         Text("")
                     }
 
