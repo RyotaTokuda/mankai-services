@@ -47,5 +47,20 @@ targets:
     sources:
       - path: FileConverterTests
       - path: Shared
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: true
+      configs:
+        debug:
+          TEST_HOST: "$(BUILT_PRODUCTS_DIR)/FileConverter.app/Contents/MacOS/FileConverter"
     dependencies:
       - target: FileConverter
+schemes:
+  FileConverter:
+    build:
+      targets:
+        FileConverter: all
+        FileConverterTests: [test]
+    test:
+      targets:
+        - FileConverterTests
