@@ -16,6 +16,7 @@ apps/
   shouhyou-box/            証憑ボックス — 副業者向け証憑整理アプリ（Expo / EAS Build）
   shimedoki/               しめどき — 会議の締めどき通知アプリ（SwiftUI / iOS + watchOS）
   itami-techo/             痛み手帳 — 不調瞬間ログアプリ（SwiftUI / iOS + watchOS）
+  file-converter-ios/      ファイル変換 — 画像・PDF・動画変換ネイティブアプリ（SwiftUI / iOS + iPadOS + macOS）
   car-diary/               愛車台帳 — 整備記録・維持費管理・車検診断（Next.js / Vercel）
   car-diary-mobile/        愛車台帳 モバイルアプリ（Expo / EAS Build）※作成予定
   api/                     Webhook + OCR API サーバー（Next.js / Vercel）
@@ -130,6 +131,7 @@ Android（Google Play）→ apps/api webhook → subscriptions (platform: "googl
 | `shouhyou-box` | Expo / EAS Build（iOS + Android） | App Store IAP / Google Play Billing |
 | `shimedoki` | SwiftUI（iOS + watchOS） | StoreKit 2 |
 | `itami-techo` | SwiftUI（iOS + watchOS） | StoreKit 2 |
+| `file-converter-ios` | SwiftUI（iOS + iPadOS + macOS） | StoreKit 2 |
 
 ### 絶対に守ること（違反 = 即リジェクト）
 

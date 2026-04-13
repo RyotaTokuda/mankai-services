@@ -1,0 +1,93 @@
+{
+  "identifier" : "com.mankai.fileconverter.storekit",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+    "_applicationInternalID" : "0",
+    "_developerTeamID" : "",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : "",
+    "_storeKitErrors" : [
+
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "fileconverter.plus",
+      "localizations" : [
+        {
+          "description" : "ファイル変換の全機能を使えるようになります",
+          "displayName" : "ファイル変換 Plus",
+          "locale" : "ja"
+        }
+      ],
+      "name" : "ファイル変換 Plus",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "480",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "fileconverter.plus.monthly",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "月額プラン",
+              "displayName" : "ファイル変換 Plus 月額",
+              "locale" : "ja"
+            }
+          ],
+          "productID" : "fileconverter.plus.monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Plus Monthly",
+          "subscriptionGroupID" : "fileconverter.plus",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "3800",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "fileconverter.plus.yearly",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "年額プラン（月あたり約317円）",
+              "displayName" : "ファイル変換 Plus 年額",
+              "locale" : "ja"
+            }
+          ],
+          "productID" : "fileconverter.plus.yearly",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Plus Yearly",
+          "subscriptionGroupID" : "fileconverter.plus",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}
