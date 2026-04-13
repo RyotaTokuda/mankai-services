@@ -88,12 +88,10 @@ final class WorkspaceViewModel {
             }
         }
 
-        if selectedToolId == .metadataStrip && !planService.canRemoveMetadata() {
-            return .plusRequired(feature: "メタデータ削除")
-        }
-
-        if selectedToolId == .pdfPassword && !planService.canSetPdfPassword() {
-            return .plusRequired(feature: "PDFパスワード設定")
+        // Plus 専用ツールのチェック
+        let tool = ToolDefinition.tool(for: selectedToolId)
+        if !tool.isAvailable(isPlus: planService.isPlus) {
+            return .plusRequired(feature: tool.name)
         }
 
         return nil

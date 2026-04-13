@@ -54,10 +54,17 @@ struct ToolDefinition: Identifiable {
     let category: ToolCategory
     let icon: String
     let acceptedTypes: [UTType]
+    /// Free プランで利用可能か（false = Plus 専用）
+    let isFree: Bool
 
     var acceptsImages: Bool { category == .image }
     var acceptsPdfs: Bool { category == .pdf }
     var acceptsVideos: Bool { category == .video }
+
+    /// このツールが指定プランで利用可能か
+    func isAvailable(isPlus: Bool) -> Bool {
+        isFree || isPlus
+    }
 }
 
 // MARK: - All Tools
@@ -70,7 +77,8 @@ extension ToolDefinition {
             description: "JPG・PNG・WebP・HEIC を相互変換",
             category: .image,
             icon: "arrow.triangle.2.circlepath",
-            acceptedTypes: [.jpeg, .png, .webP, .heic]
+            acceptedTypes: [.jpeg, .png, .webP, .heic],
+            isFree: true
         ),
         ToolDefinition(
             id: .imageCompress,
@@ -78,7 +86,8 @@ extension ToolDefinition {
             description: "画質を調整してファイルサイズを削減",
             category: .image,
             icon: "arrow.down.right.and.arrow.up.left",
-            acceptedTypes: [.jpeg, .png, .webP]
+            acceptedTypes: [.jpeg, .png, .webP],
+            isFree: true
         ),
         ToolDefinition(
             id: .imageResize,
@@ -86,7 +95,8 @@ extension ToolDefinition {
             description: "指定サイズに変更",
             category: .image,
             icon: "arrow.up.left.and.arrow.down.right",
-            acceptedTypes: [.jpeg, .png, .webP]
+            acceptedTypes: [.jpeg, .png, .webP],
+            isFree: true
         ),
         ToolDefinition(
             id: .imageRotate,
@@ -94,7 +104,8 @@ extension ToolDefinition {
             description: "90° / 180° / 270° / 左右反転",
             category: .image,
             icon: "rotate.right",
-            acceptedTypes: [.jpeg, .png, .webP]
+            acceptedTypes: [.jpeg, .png, .webP],
+            isFree: true
         ),
         ToolDefinition(
             id: .imageToPdf,
@@ -102,7 +113,8 @@ extension ToolDefinition {
             description: "複数画像から PDF を作成",
             category: .image,
             icon: "doc.badge.plus",
-            acceptedTypes: [.jpeg, .png, .webP]
+            acceptedTypes: [.jpeg, .png, .webP],
+            isFree: true
         ),
         ToolDefinition(
             id: .metadataStrip,
@@ -110,7 +122,8 @@ extension ToolDefinition {
             description: "GPS・カメラ情報・撮影日時を除去",
             category: .image,
             icon: "eye.slash",
-            acceptedTypes: [.jpeg, .png, .webP]
+            acceptedTypes: [.jpeg, .png, .webP],
+            isFree: false
         ),
         ToolDefinition(
             id: .pdfToImage,
@@ -118,7 +131,8 @@ extension ToolDefinition {
             description: "PDF の各ページを画像に変換",
             category: .pdf,
             icon: "photo.badge.arrow.down",
-            acceptedTypes: [.pdf]
+            acceptedTypes: [.pdf],
+            isFree: true
         ),
         ToolDefinition(
             id: .pdfMerge,
@@ -126,7 +140,8 @@ extension ToolDefinition {
             description: "複数の PDF を1つにまとめる",
             category: .pdf,
             icon: "doc.on.doc",
-            acceptedTypes: [.pdf]
+            acceptedTypes: [.pdf],
+            isFree: true
         ),
         ToolDefinition(
             id: .pdfReorder,
@@ -134,7 +149,8 @@ extension ToolDefinition {
             description: "ページの並び替え",
             category: .pdf,
             icon: "arrow.up.arrow.down",
-            acceptedTypes: [.pdf]
+            acceptedTypes: [.pdf],
+            isFree: false
         ),
         ToolDefinition(
             id: .pdfPassword,
@@ -142,7 +158,8 @@ extension ToolDefinition {
             description: "PDF にパスワードを設定",
             category: .pdf,
             icon: "lock.doc",
-            acceptedTypes: [.pdf]
+            acceptedTypes: [.pdf],
+            isFree: false
         ),
         ToolDefinition(
             id: .videoConvert,
@@ -150,7 +167,8 @@ extension ToolDefinition {
             description: "MP4・MOV → MP4・GIF",
             category: .video,
             icon: "film.stack",
-            acceptedTypes: [.mpeg4Movie, .quickTimeMovie]
+            acceptedTypes: [.mpeg4Movie, .quickTimeMovie],
+            isFree: true
         ),
     ]
 

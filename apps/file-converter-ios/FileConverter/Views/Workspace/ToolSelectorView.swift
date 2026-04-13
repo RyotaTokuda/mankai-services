@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct ToolSelectorView: View {
+    @Environment(PlanService.self) private var planService
     @Binding var selectedCategory: ToolCategory
     @Binding var selectedToolId: ToolId
     let onSelect: (ToolId) -> Void
@@ -23,7 +24,8 @@ struct ToolSelectorView: View {
                     ForEach(ToolDefinition.tools(for: selectedCategory), id: \.id) { tool in
                         ToolChip(
                             tool: tool,
-                            isSelected: selectedToolId == tool.id
+                            isSelected: selectedToolId == tool.id,
+                            isLocked: !tool.isAvailable(isPlus: planService.isPlus)
                         ) {
                             onSelect(tool.id)
                         }
@@ -35,7 +37,6 @@ struct ToolSelectorView: View {
         .padding(.vertical, 8)
         .background(Color.appBackground)
         .onChange(of: selectedCategory) { _, newCategory in
-            // Auto-select first tool in new category
             if let first = ToolDefinition.tools(for: newCategory).first {
                 onSelect(first.id)
             }
@@ -48,6 +49,7 @@ struct ToolSelectorView: View {
 private struct ToolChip: View {
     let tool: ToolDefinition
     let isSelected: Bool
+    let isLocked: Bool
     let action: () -> Void
 
     var body: some View {
@@ -58,6 +60,11 @@ private struct ToolChip: View {
                 Text(tool.name)
                     .font(.caption)
                     .fontWeight(.medium)
+                if isLocked {
+                    Image(systemName: "lock.fill")
+                        .font(.caption2)
+                        .foregroundStyle(isSelected ? .white.opacity(0.7) : .orange)
+                }
             }
             .padding(.horizontal, 12)
             .padding(.vertical, 8)
