@@ -78,7 +78,7 @@ extension ToolDefinition {
             category: .image,
             icon: "arrow.triangle.2.circlepath",
             acceptedTypes: [.jpeg, .png, .webP, .heic],
-            isFree: true
+            isFree: true  // Free: JPG/PNG のみ、Plus: WebP/HEIC も
         ),
         ToolDefinition(
             id: .imageCompress,
@@ -96,7 +96,7 @@ extension ToolDefinition {
             category: .image,
             icon: "arrow.up.left.and.arrow.down.right",
             acceptedTypes: [.jpeg, .png, .webP],
-            isFree: true
+            isFree: false
         ),
         ToolDefinition(
             id: .imageRotate,
@@ -105,7 +105,7 @@ extension ToolDefinition {
             category: .image,
             icon: "rotate.right",
             acceptedTypes: [.jpeg, .png, .webP],
-            isFree: true
+            isFree: false
         ),
         ToolDefinition(
             id: .imageToPdf,
@@ -114,7 +114,7 @@ extension ToolDefinition {
             category: .image,
             icon: "doc.badge.plus",
             acceptedTypes: [.jpeg, .png, .webP],
-            isFree: true
+            isFree: false
         ),
         ToolDefinition(
             id: .metadataStrip,
@@ -132,7 +132,7 @@ extension ToolDefinition {
             category: .pdf,
             icon: "photo.badge.arrow.down",
             acceptedTypes: [.pdf],
-            isFree: true
+            isFree: false
         ),
         ToolDefinition(
             id: .pdfMerge,
@@ -141,7 +141,7 @@ extension ToolDefinition {
             category: .pdf,
             icon: "doc.on.doc",
             acceptedTypes: [.pdf],
-            isFree: true
+            isFree: false
         ),
         ToolDefinition(
             id: .pdfReorder,
@@ -168,7 +168,7 @@ extension ToolDefinition {
             category: .video,
             icon: "film.stack",
             acceptedTypes: [.mpeg4Movie, .quickTimeMovie],
-            isFree: true
+            isFree: true  // Free: MP4 出力のみ、Plus: GIF も
         ),
     ]
 

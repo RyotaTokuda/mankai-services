@@ -47,12 +47,56 @@ enum ImageFormat: String, CaseIterable, Identifiable, Codable {
         }
     }
 
+    /// Free プランで利用可能か
+    var isFree: Bool {
+        switch self {
+        case .jpeg, .png: true
+        case .webp, .heic: false
+        }
+    }
+
+    /// 指定プランで利用可能なフォーマット一覧
+    static func available(isPlus: Bool) -> [ImageFormat] {
+        isPlus ? allCases : allCases.filter(\.isFree)
+    }
+
     static func from(utType: UTType) -> ImageFormat? {
         allCases.first { $0.utType.conforms(to: utType) || utType.conforms(to: $0.utType) }
     }
 }
 
-// MARK: - Video Format
+// MARK: - Video Output Format
+
+enum VideoOutputFormat: String, CaseIterable, Identifiable, Codable {
+    case mp4
+    case gif
+
+    var id: String { rawValue }
+
+    var displayName: String {
+        switch self {
+        case .mp4: "MP4"
+        case .gif: "GIF"
+        }
+    }
+
+    var fileExtension: String { rawValue }
+
+    /// Free プランで利用可能か
+    var isFree: Bool {
+        switch self {
+        case .mp4: true
+        case .gif: false
+        }
+    }
+
+    /// 指定プランで利用可能な出力形式一覧
+    static func available(isPlus: Bool) -> [VideoOutputFormat] {
+        isPlus ? allCases : allCases.filter(\.isFree)
+    }
+}
+
+// MARK: - Video Format (入力用)
 
 enum VideoFormat: String, CaseIterable, Identifiable, Codable {
     case mp4

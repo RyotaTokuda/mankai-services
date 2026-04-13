@@ -17,7 +17,7 @@ final class WorkspaceViewModel {
     var resizeWidth: Int = 1920
     var resizeHeight: Int = 1080
     var rotationAngle: RotationAngle = .cw90
-    var outputVideoFormat: VideoFormat = .mp4
+    var outputVideoFormat: VideoOutputFormat = .mp4
     var pdfPassword: String = ""
 
     // Job state
@@ -65,7 +65,6 @@ final class WorkspaceViewModel {
     }
 
     func clearResults() {
-        // Clean up temp files
         for result in results {
             try? FileManager.default.removeItem(at: result.outputURL)
         }
@@ -92,6 +91,25 @@ final class WorkspaceViewModel {
         let tool = ToolDefinition.tool(for: selectedToolId)
         if !tool.isAvailable(isPlus: planService.isPlus) {
             return .plusRequired(feature: tool.name)
+        }
+
+        // フォーマット制限チェック
+        if selectedToolId == .imageConvert && !outputImageFormat.isFree && !planService.isPlus {
+            return .plusRequired(feature: "\(outputImageFormat.displayName) 形式への変換")
+        }
+
+        if selectedToolId == .videoConvert && !outputVideoFormat.isFree && !planService.isPlus {
+            return .plusRequired(feature: "\(outputVideoFormat.displayName) への変換")
+        }
+
+        // Free で画像変換の入力ファイルが WebP/HEIC の場合もチェック
+        if selectedToolId == .imageConvert && !planService.isPlus {
+            for file in inputFiles {
+                let ext = file.fileExtension
+                if ext == "webp" || ext == "heic" || ext == "heif" {
+                    return .plusRequired(feature: "\(ext.uppercased()) ファイルの変換")
+                }
+            }
         }
 
         return nil
@@ -146,7 +164,6 @@ final class WorkspaceViewModel {
 
         case .pdfToImage:
             let imageURLs = try PdfConverter.pdfToImages(input: file.url, format: outputImageFormat)
-            // Return first; others will be added separately
             for (i, url) in imageURLs.enumerated() {
                 if i > 0 {
                     results.append(makeResult(original: file, output: url))
@@ -162,7 +179,6 @@ final class WorkspaceViewModel {
             return makeResult(original: file, output: outputURL)
 
         case .pdfReorder:
-            // Default: reverse order as a starting point
             let pageCount = inputFiles.count
             let order = Array((0..<pageCount).reversed())
             outputURL = try PdfConverter.reorder(input: file.url, newOrder: order)

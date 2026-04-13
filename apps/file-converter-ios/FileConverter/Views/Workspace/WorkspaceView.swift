@@ -179,17 +179,28 @@ struct WorkspaceView: View {
     private var toolSettingsSection: some View {
         switch viewModel.selectedToolId {
         case .imageConvert:
-            HStack {
-                Text("出力形式")
-                    .font(.subheadline)
-                Spacer()
-                Picker("形式", selection: $viewModel.outputImageFormat) {
-                    ForEach(ImageFormat.allCases) { format in
-                        Text(format.displayName).tag(format)
+            VStack(spacing: 8) {
+                HStack {
+                    Text("出力形式")
+                        .font(.subheadline)
+                    Spacer()
+                    Picker("形式", selection: $viewModel.outputImageFormat) {
+                        ForEach(ImageFormat.allCases) { format in
+                            HStack {
+                                Text(format.displayName)
+                                if !format.isFree && !planService.isPlus {
+                                    Text("Plus")
+                                }
+                            }
+                            .tag(format)
+                        }
                     }
+                    .pickerStyle(.segmented)
+                    .frame(maxWidth: 280)
                 }
-                .pickerStyle(.segmented)
-                .frame(maxWidth: 280)
+                if !viewModel.outputImageFormat.isFree && !planService.isPlus {
+                    formatUpsellHint("\(viewModel.outputImageFormat.displayName) への変換は Plus 機能です")
+                }
             }
             .padding(.horizontal)
 
@@ -244,16 +255,28 @@ struct WorkspaceView: View {
             .padding(.horizontal)
 
         case .videoConvert:
-            HStack {
-                Text("出力形式")
-                    .font(.subheadline)
-                Spacer()
-                Picker("形式", selection: $viewModel.outputVideoFormat) {
-                    Text("MP4").tag(VideoFormat.mp4)
-                    Text("GIF").tag(VideoFormat.gif)
+            VStack(spacing: 8) {
+                HStack {
+                    Text("出力形式")
+                        .font(.subheadline)
+                    Spacer()
+                    Picker("形式", selection: $viewModel.outputVideoFormat) {
+                        ForEach(VideoOutputFormat.allCases) { format in
+                            HStack {
+                                Text(format.displayName)
+                                if !format.isFree && !planService.isPlus {
+                                    Text("Plus")
+                                }
+                            }
+                            .tag(format)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    .frame(maxWidth: 200)
                 }
-                .pickerStyle(.segmented)
-                .frame(maxWidth: 200)
+                if !viewModel.outputVideoFormat.isFree && !planService.isPlus {
+                    formatUpsellHint("GIF への変換は Plus 機能です")
+                }
             }
             .padding(.horizontal)
 
@@ -274,6 +297,29 @@ struct WorkspaceView: View {
         default:
             EmptyView()
         }
+    }
+
+    // MARK: - Format Upsell Hint
+
+    private func formatUpsellHint(_ text: String) -> some View {
+        HStack(spacing: 6) {
+            Image(systemName: "lock.fill")
+                .font(.caption2)
+                .foregroundStyle(.orange)
+            Text(text)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            Spacer()
+            Button("Plus") {
+                showPaywall = true
+            }
+            .font(.caption)
+            .fontWeight(.semibold)
+            .foregroundStyle(.orange)
+        }
+        .padding(8)
+        .background(.orange.opacity(0.06))
+        .clipShape(RoundedRectangle(cornerRadius: 6))
     }
 
     // MARK: - Actions
