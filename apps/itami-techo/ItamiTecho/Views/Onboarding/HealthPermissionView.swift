@@ -59,7 +59,7 @@ struct HealthPermissionView: View {
             // 許可ボタン → システムダイアログを表示
             Button {
                 Task {
-                    await healthService.requestAuthorization()
+                    _ = await healthService.requestAuthorization()
                     isCompleted = true
                 }
             } label: {

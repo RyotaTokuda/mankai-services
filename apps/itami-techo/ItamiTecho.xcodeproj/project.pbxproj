@@ -1058,6 +1058,7 @@
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "不調記録をApple Healthに反映するために使用します。";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "記録時の天気・気圧情報を取得するために使用します。位置情報は市区町村レベルに丸めて保存され、外部に送信されません。";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1080,6 +1081,7 @@
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "不調記録をApple Healthに反映するために使用します。";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "記録時の天気・気圧情報を取得するために使用します。位置情報は市区町村レベルに丸めて保存され、外部に送信されません。";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

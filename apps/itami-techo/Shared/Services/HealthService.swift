@@ -22,7 +22,7 @@ final class HealthService {
         if let hrv = HKObjectType.quantityType(forIdentifier: .heartRateVariabilitySDNN) { types.insert(hrv) }
         if let steps = HKObjectType.quantityType(forIdentifier: .stepCount) { types.insert(steps) }
         if let resp = HKObjectType.quantityType(forIdentifier: .respiratoryRate) { types.insert(resp) }
-        if let workout = HKObjectType.workoutType() as? HKObjectType { types.insert(workout) }
+        types.insert(HKObjectType.workoutType())
         return types
     }
 
