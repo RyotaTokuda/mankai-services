@@ -8,9 +8,13 @@ import CoreLocation
 final class NotificationService {
     private(set) var isAuthorized = false
     /// ユーザーが通知を有効にしているか（システム権限とは別）
-    var isEnabled: Bool = true
+    var isEnabled: Bool {
+        didSet { defaults?.set(isEnabled, forKey: Self.enabledKey) }
+    }
     private let fileURL: URL
     private let coordinator = NSFileCoordinator()
+    private let defaults = UserDefaults(suiteName: AppConstants.appGroupID)
+    private static let enabledKey = "notificationEnabled"
 
     /// 通知履歴（頻度制御用）
     private var sentDates: [Date] = []
@@ -18,6 +22,8 @@ final class NotificationService {
     init() {
         self.fileURL = AppConstants.sharedContainerURL
             .appendingPathComponent("notification_history.json")
+        let defaults = UserDefaults(suiteName: AppConstants.appGroupID)
+        self.isEnabled = defaults?.bool(forKey: Self.enabledKey) ?? true
         loadHistory()
     }
 
