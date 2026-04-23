@@ -7,6 +7,8 @@ import CoreLocation
 @Observable
 final class NotificationService {
     private(set) var isAuthorized = false
+    /// ユーザーが通知を有効にしているか（システム権限とは別）
+    var isEnabled: Bool = true
     private let fileURL: URL
     private let coordinator = NSFileCoordinator()
 
@@ -36,7 +38,7 @@ final class NotificationService {
 
     /// 気圧予報から通知が必要か判定
     func evaluateAndNotify(forecast: [PressureForecastPoint]) async {
-        guard isAuthorized, canSendToday(), canSendThisWeek() else { return }
+        guard isAuthorized, isEnabled, canSendToday(), canSendThisWeek() else { return }
 
         // 今後6時間で3hPa以上の低下があるか
         guard let current = forecast.first,

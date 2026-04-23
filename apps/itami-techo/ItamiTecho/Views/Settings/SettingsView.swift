@@ -10,8 +10,7 @@ struct SettingsView: View {
                 // ── プラン ──
                 Section {
                     NavigationLink {
-                        // Phase 4 で PaywallView を実装
-                        Text(S.Paywall.title)
+                        PlanManagementView()
                     } label: {
                         HStack {
                             Label(S.Settings.subscription, systemImage: "crown")
@@ -26,8 +25,7 @@ struct SettingsView: View {
                 // ── 通知 ──
                 Section {
                     NavigationLink {
-                        // Phase 4 で通知設定を実装
-                        Text(S.Settings.notification)
+                        NotificationSettingsView()
                     } label: {
                         Label(S.Settings.notification, systemImage: "bell")
                     }
@@ -36,8 +34,7 @@ struct SettingsView: View {
                 // ── Health 連携 ──
                 Section {
                     NavigationLink {
-                        // Phase 2 で Health 連携設定を実装
-                        Text(S.Settings.healthIntegration)
+                        HealthSettingsView()
                     } label: {
                         Label(S.Settings.healthIntegration, systemImage: "heart.text.square")
                     }

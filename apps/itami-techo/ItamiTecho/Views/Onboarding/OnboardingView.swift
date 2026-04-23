@@ -6,13 +6,14 @@ struct OnboardingView: View {
     @Binding var isCompleted: Bool
 
     private enum Step {
-        case slides, location, health
+        case slides, location, health, notification
     }
 
     @State private var step: Step = .slides
     @State private var currentPage = 0
     @State private var locationCompleted = false
     @State private var healthCompleted = false
+    @State private var notificationCompleted = false
 
     private let pages: [(title: String, body: String, icon: String)] = [
         (S.Onboarding.step1Title, S.Onboarding.step1Body, "applewatch"),
@@ -33,6 +34,11 @@ struct OnboardingView: View {
         case .health:
             HealthPermissionView(isCompleted: $healthCompleted)
                 .onChange(of: healthCompleted) { _, completed in
+                    if completed { step = .notification }
+                }
+        case .notification:
+            NotificationPermissionView(isCompleted: $notificationCompleted)
+                .onChange(of: notificationCompleted) { _, completed in
                     if completed { isCompleted = true }
                 }
         }

@@ -7,6 +7,7 @@ struct ItamiTechoApp: App {
     @State private var planService = PlanService()
     @State private var environmentService = EnvironmentService()
     @State private var healthService = HealthService()
+    @State private var notificationService = NotificationService()
     @Environment(\.scenePhase) private var scenePhase
 
     var body: some Scene {
@@ -17,14 +18,15 @@ struct ItamiTechoApp: App {
                 .environment(planService)
                 .environment(environmentService)
                 .environment(healthService)
+                .environment(notificationService)
                 .onChange(of: scenePhase) { _, newPhase in
                     if newPhase == .active {
                         recordStore.reload()
                         customSymptomStore.reload()
                         Task {
                             await planService.checkEntitlements()
-                            // 環境データの補完処理
                             await environmentService.processBackfills(store: recordStore)
+                            await evaluateNotification()
                         }
                     }
                 }
@@ -32,6 +34,12 @@ struct ItamiTechoApp: App {
                     setupWatchSync()
                 }
         }
+    }
+
+    private func evaluateNotification() async {
+        guard notificationService.isEnabled else { return }
+        let forecast = await environmentService.fetchPressureForecast()
+        await notificationService.evaluateAndNotify(forecast: forecast)
     }
 
     private func setupWatchSync() {

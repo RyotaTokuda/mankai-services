@@ -71,6 +71,12 @@ final class EnvironmentService {
         return updated
     }
 
+    /// 予兆通知用の気圧予報を取得（位置なしなら空配列）
+    func fetchPressureForecast() async -> [PressureForecastPoint] {
+        guard let location = await locationService.requestLocation() else { return [] }
+        return await weatherService.fetchPressureForecast(at: location)
+    }
+
     /// 起動時に補完が必要な記録を処理
     func processBackfills(store: RecordStore) async {
         let pendingRecords = store.records.filter { $0.environment?.needsBackfill == true }

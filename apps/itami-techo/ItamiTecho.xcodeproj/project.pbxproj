@@ -14,6 +14,7 @@
 		0AE6158D2CD38EBFA7C56072 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB982CC831F3209858A7511 /* LocationService.swift */; };
 		0BD256B2DB7B9D6F694B2BEB /* RecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2A8923E253022443282FF3 /* RecordStore.swift */; };
 		13A1DA3B483FD1E22381D763 /* ItamiTechoWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7F1A9DD46C6086D3977A3576 /* ItamiTechoWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		142B3A0FCBB4BAA9BE3E2F1B /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820A6493091705E5CC8FEA73 /* NotificationSettingsView.swift */; };
 		154A9E092CF3C6CB249AA18D /* EnvironmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F8309642423352DA3279D9 /* EnvironmentService.swift */; };
 		1D2EC95F795A128617D77FCE /* CustomMedication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2D5FE7B40C9881593D2FED /* CustomMedication.swift */; };
 		216FD1804609B5788FC277F3 /* AnalysisHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15543C82C90EEE37278B6DF8 /* AnalysisHelper.swift */; };
@@ -33,6 +34,7 @@
 		3D0B60956E6B2CC78A5621E5 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E078E9E89660F69A40DDC3E /* NotificationService.swift */; };
 		3DC59523E75B4B2A96021066 /* CustomSymptomStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243B0D68697EC3DB42DE9736 /* CustomSymptomStore.swift */; };
 		3F0FE7D902C2D959EC722C80 /* WatchRecordCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D824D2DE4563C639201AEEE3 /* WatchRecordCompleteView.swift */; };
+		421C76C5B4D5F67E4A5907FF /* HealthSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CD1889920E5F1B8D115731 /* HealthSettingsView.swift */; };
 		42584CB90A4D3366339A0C94 /* HealthSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252131398E2F4E994C5CFD1 /* HealthSnapshot.swift */; };
 		42BCC565796949B9E013E8A3 /* SymptomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCADA2A117520BB839906A2 /* SymptomType.swift */; };
 		42D206E730ABB0D28C8BA915 /* WatchSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E955D599AAD32E058DA9E18 /* WatchSyncService.swift */; };
@@ -85,6 +87,7 @@
 		A237363D26FB70C622D8DD1C /* ItamiTechoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB226EB3961D03CEF96084D6 /* ItamiTechoTests.swift */; };
 		A659A60C78AD14B3E33DF291 /* ReportCSVGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC21945180E1D6E37E254C35 /* ReportCSVGenerator.swift */; };
 		A7CA453C0724C131F20273C7 /* CustomSymptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE92063302087082890758C9 /* CustomSymptom.swift */; };
+		A8075B2157C7DEADBE293570 /* PlanManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E3A58115DDB55BDDC7566F /* PlanManagementView.swift */; };
 		A879D3D2B0E375DB99663674 /* RecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2A8923E253022443282FF3 /* RecordStore.swift */; };
 		AA1618B25730D36D68D2027A /* EnvironmentSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F964FC569EC533BE5AFF458B /* EnvironmentSnapshot.swift */; };
 		ABB508AAA1D16585406C58F4 /* LocationPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91536D3EA4BF9A34E364A7 /* LocationPermissionView.swift */; };
@@ -121,6 +124,7 @@
 		DFBBF0A07E0215D00DFFA820 /* SymptomRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A535D66EAC5B6D4993ECC6 /* SymptomRecord.swift */; };
 		DFF7F464AEFEE7B7E70A7B83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DE1D9FE8A172C4306293679 /* Assets.xcassets */; };
 		E172D3913B3EEB45586AEB1E /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102BCA0F9545A2867BA014E /* Strings.swift */; };
+		E3308A999CFF3B1EB93953C9 /* NotificationPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85D8DC368E4B3483C067B85 /* NotificationPermissionView.swift */; };
 		E4895617CD2CBA1EE13AD0CD /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB982CC831F3209858A7511 /* LocationService.swift */; };
 		E5304E51A05B269B9F17FD3E /* WatchHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27812C0D63C3A43267F2DF3F /* WatchHistoryView.swift */; };
 		E62BEBCD2C8BD60E5B0F129C /* RecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2A8923E253022443282FF3 /* RecordStore.swift */; };
@@ -168,6 +172,7 @@
 /* Begin PBXFileReference section */
 		00294B54167FBA76BB0A7E3A /* StoreKitConfiguration.storekit */ = {isa = PBXFileReference; path = StoreKitConfiguration.storekit; sourceTree = "<group>"; };
 		00BBDF18B249F6EE5FBFA242 /* WatchSeveritySelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSeveritySelectView.swift; sourceTree = "<group>"; };
+		00E3A58115DDB55BDDC7566F /* PlanManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanManagementView.swift; sourceTree = "<group>"; };
 		06C728874BA2DAA4206AFA78 /* ItamiTecho.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ItamiTecho.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08A535D66EAC5B6D4993ECC6 /* SymptomRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomRecord.swift; sourceTree = "<group>"; };
 		0E078E9E89660F69A40DDC3E /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -204,9 +209,11 @@
 		72E56852F3F8554D49B516A4 /* PressureHistoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressureHistoryStore.swift; sourceTree = "<group>"; };
 		7F1A9DD46C6086D3977A3576 /* ItamiTechoWidgetExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = ItamiTechoWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		80F9DC603E95B815FDA55976 /* ItamiTechoTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ItamiTechoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		820A6493091705E5CC8FEA73 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
 		8252131398E2F4E994C5CFD1 /* HealthSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthSnapshot.swift; sourceTree = "<group>"; };
 		8B864013EFDEE8913DBD63EA /* LegalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalView.swift; sourceTree = "<group>"; };
 		8DE1D9FE8A172C4306293679 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		91CD1889920E5F1B8D115731 /* HealthSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthSettingsView.swift; sourceTree = "<group>"; };
 		9462D5C8C6067B9DDD9FBAF9 /* ItamiTecho.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ItamiTecho.entitlements; sourceTree = "<group>"; };
 		96C1F622D59A2ECD6E06AC12 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		979F138AC67AEFE93F27383C /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
@@ -218,6 +225,7 @@
 		BB226EB3961D03CEF96084D6 /* ItamiTechoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItamiTechoTests.swift; sourceTree = "<group>"; };
 		BDB982CC831F3209858A7511 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		BFCADA2A117520BB839906A2 /* SymptomType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomType.swift; sourceTree = "<group>"; };
+		C85D8DC368E4B3483C067B85 /* NotificationPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermissionView.swift; sourceTree = "<group>"; };
 		C8E1D1F50E99C46DE0B8E1DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC4D7BB6069DDDCC2AABC85D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D3693FED76691693DB319B50 /* ReportPDFRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPDFRenderer.swift; sourceTree = "<group>"; };
@@ -371,6 +379,7 @@
 			children = (
 				4DAC82C8AD3961CD4630B02A /* HealthPermissionView.swift */,
 				2E91536D3EA4BF9A34E364A7 /* LocationPermissionView.swift */,
+				C85D8DC368E4B3483C067B85 /* NotificationPermissionView.swift */,
 				CC4D7BB6069DDDCC2AABC85D /* OnboardingView.swift */,
 			);
 			path = Onboarding;
@@ -416,7 +425,10 @@
 			isa = PBXGroup;
 			children = (
 				193ADF2324508AEA30BD1EFA /* AboutView.swift */,
+				91CD1889920E5F1B8D115731 /* HealthSettingsView.swift */,
 				8B864013EFDEE8913DBD63EA /* LegalView.swift */,
+				820A6493091705E5CC8FEA73 /* NotificationSettingsView.swift */,
+				00E3A58115DDB55BDDC7566F /* PlanManagementView.swift */,
 				4E5F1247B4463A6551FC07D1 /* SettingsView.swift */,
 			);
 			path = Settings;
@@ -747,16 +759,20 @@
 				807A00E9EEA163FF18DEBA0D /* HealthAnalysisView.swift in Sources */,
 				8068F3AC2FA3D0D1D26E7C6A /* HealthPermissionView.swift in Sources */,
 				541C8524BA5E76217CDFF457 /* HealthService.swift in Sources */,
+				421C76C5B4D5F67E4A5907FF /* HealthSettingsView.swift in Sources */,
 				42584CB90A4D3366339A0C94 /* HealthSnapshot.swift in Sources */,
 				2574B2F6E9F9136AF14DE3FF /* HistoryView.swift in Sources */,
 				D84B36025D21CDDC84FDE98B /* ItamiTechoApp.swift in Sources */,
 				B0DA77095E0F5324E0E4C7BA /* LegalView.swift in Sources */,
 				ABB508AAA1D16585406C58F4 /* LocationPermissionView.swift in Sources */,
 				F6099D26B9C9C65AB479904A /* LocationService.swift in Sources */,
+				E3308A999CFF3B1EB93953C9 /* NotificationPermissionView.swift in Sources */,
 				6B93B5B6EA16F50B773CB88C /* NotificationService.swift in Sources */,
+				142B3A0FCBB4BAA9BE3E2F1B /* NotificationSettingsView.swift in Sources */,
 				BDB6FB5BA8D6066B24E0D7A6 /* OnboardingView.swift in Sources */,
 				D4A7784268410338B810CF12 /* PaywallView.swift in Sources */,
 				D522394DA18B001A7652DEDA /* PlanLimits.swift in Sources */,
+				A8075B2157C7DEADBE293570 /* PlanManagementView.swift in Sources */,
 				8DF548CD2113533191250DAE /* PlanService.swift in Sources */,
 				510E4893007279B627770C00 /* PressureHistoryStore.swift in Sources */,
 				8B4E188D80457D56DC3D1872 /* RecordCompleteView.swift in Sources */,
