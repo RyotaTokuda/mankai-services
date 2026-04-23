@@ -141,3 +141,11 @@ final class PlanService {
         case unverified
     }
 }
+
+#if DEBUG
+extension PlanService {
+    func debugTogglePremium() {
+        isPremium.toggle()
+    }
+}
+#endif

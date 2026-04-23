@@ -1,11 +1,11 @@
 import Foundation
 
 /// 記録データを CSV 形式で出力する
+/// 列定義は CLAUDE.md「通院向けレポート仕様 > CSV 列定義」を正とする
 enum ReportCSVGenerator {
     static func generate(records: [SymptomRecord]) -> String {
         var lines: [String] = []
 
-        // ヘッダー
         lines.append([
             "日時",
             "症状",
@@ -14,6 +14,8 @@ enum ReportCSVGenerator {
             "服薬",
             "服薬時刻",
             "落ち着いた時刻",
+            "持続時間(分)",
+            "落ち着いた要因",
             "メモ",
             "記録元",
             "天気",
@@ -26,13 +28,35 @@ enum ReportCSVGenerator {
             "睡眠(時間)",
             "安静時心拍(bpm)",
             "歩数",
+            "曜日",
+            "時間帯",
         ].joined(separator: ","))
 
-        // データ行
+        let calendar = Calendar.current
+        let dowLabels = ["日", "月", "火", "水", "木", "金", "土"]
+
         for r in records {
             let symptom = r.symptomType.map { S.Symptom.name(for: $0) } ?? r.customSymptomName ?? "カスタム"
             let env = r.environment
             let health = r.healthSummary
+
+            let durationMinutes: String = {
+                guard let settled = r.settledAt else { return "" }
+                return "\(Int(settled.timeIntervalSince(r.createdAt) / 60))"
+            }()
+
+            let weekdayIdx = calendar.component(.weekday, from: r.createdAt) // 1=日〜7=土
+            let weekdayLabel = dowLabels[weekdayIdx - 1]
+
+            let hour = calendar.component(.hour, from: r.createdAt)
+            let timeCategory: String = {
+                switch hour {
+                case 5..<12: return "朝"
+                case 12..<17: return "昼"
+                case 17..<21: return "夕"
+                default: return "夜"
+                }
+            }()
 
             var row: [String] = []
             row.append(r.createdAt.formatted(.iso8601))
@@ -42,6 +66,8 @@ enum ReportCSVGenerator {
             row.append(r.medicationTaken ? "はい" : "いいえ")
             row.append(r.medicationTakenAt?.formatted(.iso8601) ?? "")
             row.append(r.settledAt?.formatted(.iso8601) ?? "")
+            row.append(durationMinutes)
+            row.append(csvEscape(r.settleCause?.label ?? ""))
             row.append(csvEscape(r.note ?? ""))
             row.append(r.sourceDevice == .watch ? "Watch" : "iPhone")
             row.append(csvEscape(env?.weatherCondition ?? ""))
@@ -54,6 +80,8 @@ enum ReportCSVGenerator {
             row.append(health?.sleepDurationHours.map { String(format: "%.1f", $0) } ?? "")
             row.append(health?.restingHeartRate.map { String(format: "%.0f", $0) } ?? "")
             row.append(health?.stepCount.map { "\($0)" } ?? "")
+            row.append(weekdayLabel)
+            row.append(timeCategory)
             lines.append(row.joined(separator: ","))
         }
 

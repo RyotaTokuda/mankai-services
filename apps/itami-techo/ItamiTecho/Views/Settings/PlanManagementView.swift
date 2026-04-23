@@ -81,12 +81,12 @@ struct PlanManagementView: View {
                 .padding(.vertical, 4)
             }
 
-            Section("無料プランの制限") {
-                PlanLimitRow(text: "履歴は直近14日間のみ", isLimited: true)
-                PlanLimitRow(text: "カスタム症状は2件まで", isLimited: true)
-                PlanLimitRow(text: "PDF / CSVレポート出力不可", isLimited: true)
-                PlanLimitRow(text: "曜日別傾向・90日分析不可", isLimited: true)
-                PlanLimitRow(text: "記録・履歴・カレンダーは無料で使えます", isLimited: false)
+            Section("プレミアムでできること") {
+                FeatureCheckRow(text: "90日間の無制限履歴")
+                FeatureCheckRow(text: "通院向けPDF / CSVレポート出力")
+                FeatureCheckRow(text: "曜日別傾向・詳細環境分析")
+                FeatureCheckRow(text: "Health連携の詳細分析")
+                FeatureCheckRow(text: "カスタム症状・薬タグ無制限")
             }
 
             Section {

@@ -131,16 +131,42 @@ struct TrendsView: View {
 
                     // ── 詳細分析へのリンク ──
                     Section(S.Common.detailView) {
-                        NavigationLink {
-                            EnvironmentAnalysisView()
-                        } label: {
-                            Label(S.Environment.title, systemImage: "cloud.sun")
-                        }
+                        if planService.isPremium {
+                            NavigationLink {
+                                EnvironmentAnalysisView()
+                            } label: {
+                                Label(S.Environment.title, systemImage: "cloud.sun")
+                            }
 
-                        NavigationLink {
-                            HealthAnalysisView()
-                        } label: {
-                            Label(S.Health.title, systemImage: "heart.text.square")
+                            NavigationLink {
+                                HealthAnalysisView()
+                            } label: {
+                                Label(S.Health.title, systemImage: "heart.text.square")
+                            }
+                        } else {
+                            Button { showingPaywall = true } label: {
+                                HStack {
+                                    Label(S.Environment.title, systemImage: "cloud.sun")
+                                        .foregroundStyle(.primary)
+                                    Spacer()
+                                    Image(systemName: "lock.fill")
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
+                            .buttonStyle(.plain)
+
+                            Button { showingPaywall = true } label: {
+                                HStack {
+                                    Label(S.Health.title, systemImage: "heart.text.square")
+                                        .foregroundStyle(.primary)
+                                    Spacer()
+                                    Image(systemName: "lock.fill")
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
+                            .buttonStyle(.plain)
                         }
 
                         NavigationLink {

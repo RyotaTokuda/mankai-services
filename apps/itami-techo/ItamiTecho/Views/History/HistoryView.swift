@@ -55,6 +55,16 @@ struct HistoryView: View {
                                                 .foregroundStyle(.secondary)
                                         }
                                         Spacer()
+                                        if !planService.isPremium {
+                                            Text("プレミアム")
+                                                .font(.caption2)
+                                                .fontWeight(.semibold)
+                                                .foregroundStyle(.white)
+                                                .padding(.horizontal, 7)
+                                                .padding(.vertical, 3)
+                                                .background(Color.accentColor)
+                                                .cornerRadius(6)
+                                        }
                                         Image(systemName: "chevron.right")
                                             .font(.caption)
                                             .foregroundStyle(.tertiary)
@@ -69,8 +79,16 @@ struct HistoryView: View {
                                 ForEach(records) { record in
                                     RecordRow(record: record)
                                         .contentShape(Rectangle())
-                                        .onTapGesture {
-                                            selectedRecord = record
+                                        .onTapGesture { selectedRecord = record }
+                                        .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                                            if record.settledAt == nil {
+                                                Button {
+                                                    recordStore.markSettled(id: record.id)
+                                                } label: {
+                                                    Label("落ち着いた", systemImage: "heart.fill")
+                                                }
+                                                .tint(.green)
+                                            }
                                         }
                                 }
                             }
@@ -104,7 +122,7 @@ struct HistoryView: View {
                 CalendarView()
             }
             .sheet(isPresented: $showingReport) {
-                ReportView()
+                NavigationStack { ReportView() }
             }
         }
     }
@@ -123,12 +141,19 @@ struct HistoryView: View {
 struct RecordRow: View {
     let record: SymptomRecord
 
+    private var isUnresolved: Bool {
+        record.settledAt == nil
+    }
+
     var body: some View {
         HStack {
-            // 強さインジケーター
+            // 強さインジケーター（未解消は点滅しているように見せる）
             Circle()
-                .fill(record.severityColor)
+                .fill(isUnresolved ? record.severityColor : record.severityColor.opacity(0.4))
                 .frame(width: 10, height: 10)
+                .overlay(
+                    isUnresolved ? Circle().stroke(record.severityColor, lineWidth: 1.5) : nil
+                )
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(record.displayName)
@@ -151,11 +176,10 @@ struct RecordRow: View {
                         .font(.caption)
                         .foregroundStyle(.orange)
                 }
-                if record.settledAt != nil {
-                    Image(systemName: "heart.fill")
-                        .font(.caption)
-                        .foregroundStyle(.green)
-                }
+                // 落ち着いた：解消済みは塗りつぶし、未解消はアウトライン（アクション可能を示唆）
+                Image(systemName: record.settledAt != nil ? "heart.fill" : "heart")
+                    .font(.caption)
+                    .foregroundStyle(record.settledAt != nil ? Color.green : Color.secondary.opacity(0.5))
                 if record.sourceDevice == .watch {
                     Image(systemName: "applewatch")
                         .font(.caption2)

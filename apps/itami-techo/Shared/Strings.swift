@@ -36,6 +36,9 @@ enum S {
         static let nausea = "吐き気"
         static let stiffness = "肩こり"
         static let drowsiness = "眠気"
+        static let stomachache = "腹痛"
+        static let palpitations = "動悸"
+        static let heavyHead = "頭重感"
         static let custom = "カスタム"
 
         static func name(for type: SymptomType) -> String {
@@ -46,6 +49,9 @@ enum S {
             case .nausea: nausea
             case .stiffness: stiffness
             case .drowsiness: drowsiness
+            case .stomachache: stomachache
+            case .palpitations: palpitations
+            case .heavyHead: heavyHead
             }
         }
     }
@@ -151,8 +157,8 @@ enum S {
 
     // ── 課金 ─────────────────────────────────────────────
     enum Paywall {
-        static let title = "記録を、振り返れる形に"
-        static let subtitle = "長期保存、Health連携、環境分析、通院向けレポートで自分の傾向を見える化"
+        static let title = "プレミアムプラン"
+        static let subtitle = "傾向を深く知り、通院時にも役立てる"
         static let description = "必要な時だけ、より深く振り返れます"
         static let monthlyLabel = "月額"
         static let yearlyLabel = "年額"
