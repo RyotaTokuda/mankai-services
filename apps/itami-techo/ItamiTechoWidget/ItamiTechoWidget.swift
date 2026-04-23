@@ -101,7 +101,7 @@ struct ItamiTechoWidgetMedium: View {
                         .font(.title2)
                         .fontWeight(.bold)
                 } else {
-                    Text("今日の記録はまだありません")
+                    Text(S.Widget.noRecordsToday)
                         .font(.subheadline)
                 }
 

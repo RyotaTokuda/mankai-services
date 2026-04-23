@@ -23,12 +23,12 @@ struct RecordEditView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("症状") {
-                    LabeledContent("症状", value: record.displayName)
+                Section(S.Common.symptom) {
+                    LabeledContent(S.Common.symptom, value: record.displayName)
                 }
 
                 Section(S.Record.selectSeverity) {
-                    Picker("強さ", selection: $severity) {
+                    Picker(S.Common.severity, selection: $severity) {
                         ForEach(1...5, id: \.self) { level in
                             Text("\(level) - \(S.Severity.label(for: level))").tag(level)
                         }
@@ -40,7 +40,8 @@ struct RecordEditView: View {
                 Section {
                     Toggle(S.Record.medication, isOn: $medicationTaken)
                     if medicationTaken {
-                        DatePicker("服薬時刻", selection: $medicationTakenAt, displayedComponents: [.date, .hourAndMinute])
+                        DatePicker(S.Common.medicationTime, selection: $medicationTakenAt,
+                                   displayedComponents: [.date, .hourAndMinute])
                     }
                 }
 
@@ -49,19 +50,10 @@ struct RecordEditView: View {
                         .lineLimit(1...6)
                 }
 
-                // 落ち着いた時刻の設定
                 if record.settledAt == nil {
                     Section {
                         Button {
-                            var updated = record
-                            updated.severity = severity
-                            updated.note = note.isEmpty ? nil : note
-                            updated.medicationTaken = medicationTaken
-                            updated.medicationTakenAt = medicationTaken ? medicationTakenAt : nil
-                            updated.settledAt = Date()
-                            recordStore.update(updated)
-                            WatchSyncService.shared.sendRecordUpdate(updated)
-                            dismiss()
+                            applyEdits(settleNow: true)
                         } label: {
                             Label(S.Record.settled, systemImage: "heart.fill")
                         }
@@ -72,23 +64,22 @@ struct RecordEditView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("キャンセル") { dismiss() }
+                    Button(S.Common.cancel) { dismiss() }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("保存") {
-                        save()
-                    }
+                    Button(S.Common.save) { applyEdits(settleNow: false) }
                 }
             }
         }
     }
 
-    private func save() {
+    private func applyEdits(settleNow: Bool) {
         var updated = record
         updated.severity = severity
         updated.note = note.isEmpty ? nil : note
         updated.medicationTaken = medicationTaken
         updated.medicationTakenAt = medicationTaken ? medicationTakenAt : nil
+        if settleNow { updated.settledAt = Date() }
         recordStore.update(updated)
         WatchSyncService.shared.sendRecordUpdate(updated)
         dismiss()

@@ -79,14 +79,16 @@ struct ItamiTechoApp: App {
         let sync = WatchSyncService.shared
         sync.activate()
 
-        sync.onRecordReceived = { [recordStore] record in
-            recordStore.add(record)
+        // WatchSyncService.shared はシングルトンなのでクロージャを保持し続ける。
+        // recordStore は @Observable クラスなので weak 参照で循環を防ぐ。
+        sync.onRecordReceived = { [weak recordStore] record in
+            recordStore?.add(record)
         }
-        sync.onRecordUpdated = { [recordStore] record in
-            recordStore.update(record)
+        sync.onRecordUpdated = { [weak recordStore] record in
+            recordStore?.update(record)
         }
-        sync.onRecordDeleted = { [recordStore] id in
-            recordStore.delete(id: id)
+        sync.onRecordDeleted = { [weak recordStore] id in
+            recordStore?.delete(id: id)
         }
     }
 }

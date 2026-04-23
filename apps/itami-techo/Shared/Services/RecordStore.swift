@@ -39,6 +39,11 @@ final class RecordStore {
         save()
     }
 
+    func deleteAll() {
+        records = []
+        save()
+    }
+
     /// 服薬を記録
     func markMedicationTaken(id: UUID, at date: Date = Date(), medicationId: UUID? = nil, medicationName: String? = nil) {
         guard let index = records.firstIndex(where: { $0.id == id }) else { return }

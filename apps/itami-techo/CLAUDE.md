@@ -184,6 +184,30 @@ iOS のシステムダイアログの**前に**カスタム事前説明画面を
 - **HealthKit 承認済みだがデータなし**: 「記録されていません」+ trendHint テキスト
 - **位置情報拒否**: 「設定で位置情報を許可する」ボタン → openSettingsURLString
 
+#### データ管理（設定画面）
+- 「すべてのデータを削除」ボタンを設定画面のデータ管理セクションに配置
+- `recordStore.deleteAll()` + `customSymptomStore.deleteAll()` を呼ぶ
+- 実行前に `confirmationDialog` で確認（破壊的操作のため）
+
+### UI コンポーネントパターン
+
+#### BarRow（TrendsView 共通バーチャート行）
+棒グラフ行の共通パターン。TrendsView 内の `private struct BarRow` として実装済み。
+同様の繰り返しが発生した場合は BarRow を拡張・再利用すること。
+
+```swift
+BarRow(label: name, count: count, maxCount: maxCount, color: .accentColor,
+       labelWidth: 60, isWeekend: false)
+```
+
+パラメータ:
+- `labelWidth`: 左テキスト幅（症状名 60pt、時間帯/強さラベル 80pt、曜日 24pt）
+- `isWeekend`: true なら label を color で太字表示
+
+#### LockedRow（プレミアムロック行）
+課金ゲート付きの NavigationLink 代替。TrendsView 内の `private struct LockedRow` として実装済み。
+プレミアム機能のリンクで `isPremium ? NavigationLink : LockedRow` のパターンを使うこと。
+
 ### ペイウォール表示タイミング
 1. 記録 5件到達時
 2. 14日超の履歴閲覧時

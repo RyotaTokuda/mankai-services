@@ -25,6 +25,11 @@ final class CustomSymptomStore {
         save()
     }
 
+    func deleteAll() {
+        symptoms = []
+        save()
+    }
+
     func incrementUseCount(id: UUID) {
         guard let index = symptoms.firstIndex(where: { $0.id == id }) else { return }
         symptoms[index].useCount += 1

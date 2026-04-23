@@ -4,6 +4,9 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(PlanService.self) private var planService
     @Environment(RecordStore.self) private var recordStore
+    @Environment(CustomSymptomStore.self) private var customSymptomStore
+
+    @State private var showingDeleteAllConfirm = false
 
     var body: some View {
         NavigationStack {
@@ -46,22 +49,33 @@ struct SettingsView: View {
                     if FileManager.default.ubiquityIdentityToken != nil {
                         HStack {
                             Image(systemName: "checkmark.circle.fill").foregroundStyle(.green)
-                            Text("iCloud と同期中")
+                            Text(S.Settings.iCloudSyncing)
                         }
                     } else {
                         HStack {
                             Image(systemName: "exclamationmark.circle.fill").foregroundStyle(.orange)
                             VStack(alignment: .leading, spacing: 2) {
-                                Text("iCloud が無効です")
+                                Text(S.Settings.iCloudDisabled)
                                     .font(.subheadline)
-                                Text("設定 › Apple Account › iCloud でオンにすると機種変後もデータを引き継げます")
+                                Text(S.Settings.iCloudHint)
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                             }
                         }
                     }
                 } header: {
-                    Text("機種変・バックアップ")
+                    Text(S.Settings.backup)
+                }
+
+                // ── データ管理 ──
+                Section {
+                    Button(role: .destructive) {
+                        showingDeleteAllConfirm = true
+                    } label: {
+                        Label(S.Settings.deleteAllData, systemImage: "trash")
+                    }
+                } header: {
+                    Text("データ管理")
                 }
 
                 // ── このアプリについて ──
@@ -81,7 +95,7 @@ struct SettingsView: View {
 
                 // ── バージョン ──
                 Section {
-                    LabeledContent("バージョン") {
+                    LabeledContent(S.Common.version) {
                         Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0")
                             .foregroundStyle(.secondary)
                     }
@@ -102,6 +116,16 @@ struct SettingsView: View {
                 #endif
             }
             .navigationTitle(S.Settings.title)
+            .confirmationDialog(
+                S.Settings.deleteAllDataConfirm,
+                isPresented: $showingDeleteAllConfirm,
+                titleVisibility: .visible
+            ) {
+                Button(S.Settings.deleteAllDataButton, role: .destructive) {
+                    recordStore.deleteAll()
+                    customSymptomStore.deleteAll()
+                }
+            }
         }
     }
 }

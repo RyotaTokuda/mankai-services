@@ -21,23 +21,26 @@ struct TrendsView: View {
                             .foregroundStyle(.secondary)
                     }
                 } else {
-                    // ── 集計期間 ──
+                    // ── 集計期間 + 基本カウント ──
                     Section {
                         HStack {
                             Image(systemName: planService.isPremium ? "chart.bar.fill" : "lock")
                                 .foregroundStyle(planService.isPremium ? Color.accentColor : .secondary)
-                            Text(planService.isPremium ? "直近90日間の傾向" : "直近14日間の傾向（無料プラン）")
+                            Text(planService.isPremium ? S.Trends.periodPremium : S.Trends.periodFree)
                                 .font(.subheadline)
                                 .foregroundStyle(.secondary)
                             Spacer()
                             if !planService.isPremium {
-                                Button("アップグレード") { showingPaywall = true }
+                                Button(S.Trends.upgrade) { showingPaywall = true }
                                     .font(.caption)
                                     .buttonStyle(.bordered)
                             }
                         }
-                        LabeledContent("記録件数", value: "\(records.count)件")
-                        LabeledContent("服薬回数", value: "\(AnalysisHelper.medicationCount(from: records))回")
+                        LabeledContent(S.Trends.recordCount, value: "\(records.count)件")
+                        LabeledContent(S.Trends.medicationCount, value: "\(AnalysisHelper.medicationCount(from: records))回")
+                        if let avg = AnalysisHelper.avgSettleMinutes(from: records) {
+                            LabeledContent(S.Trends.avgDuration, value: "\(avg)分")
+                        }
                     }
 
                     // ── 症状別 ──
@@ -45,18 +48,18 @@ struct TrendsView: View {
                         let counts = AnalysisHelper.symptomCounts(from: records)
                         let maxCount = counts.first?.1 ?? 1
                         ForEach(counts, id: \.0) { name, count in
-                            HStack(spacing: 8) {
-                                Text(name)
-                                    .frame(minWidth: 60, alignment: .leading)
-                                Rectangle()
-                                    .fill(Color.accentColor.opacity(0.35))
-                                    .frame(width: CGFloat(count) / CGFloat(maxCount) * 80, height: 10)
-                                    .cornerRadius(3)
-                                Spacer()
-                                Text("\(count)件")
-                                    .foregroundStyle(.secondary)
-                                    .monospacedDigit()
-                            }
+                            BarRow(label: name, count: count, maxCount: maxCount,
+                                   color: .accentColor, labelWidth: 60)
+                        }
+                    }
+
+                    // ── 強さの分布 ──
+                    Section(S.Trends.severityDistribution) {
+                        let dist = AnalysisHelper.severityDistribution(from: records)
+                        let maxSev = dist.map(\.1).max() ?? 1
+                        ForEach(dist.reversed(), id: \.0) { label, count in
+                            BarRow(label: label, count: count, maxCount: maxSev,
+                                   color: .red, labelWidth: 80)
                         }
                     }
 
@@ -65,18 +68,8 @@ struct TrendsView: View {
                         let counts = AnalysisHelper.timeOfDayCounts(from: records)
                         let maxTime = counts.map(\.1).max() ?? 1
                         ForEach(counts, id: \.0) { label, count in
-                            HStack(spacing: 8) {
-                                Text(label)
-                                    .frame(minWidth: 80, alignment: .leading)
-                                Rectangle()
-                                    .fill(Color.orange.opacity(0.35))
-                                    .frame(width: CGFloat(count) / CGFloat(maxTime) * 80, height: 10)
-                                    .cornerRadius(3)
-                                Spacer()
-                                Text("\(count)件")
-                                    .foregroundStyle(.secondary)
-                                    .monospacedDigit()
-                            }
+                            BarRow(label: label, count: count, maxCount: maxTime,
+                                   color: .orange, labelWidth: 80)
                         }
                     }
 
@@ -84,36 +77,22 @@ struct TrendsView: View {
                     Section {
                         if planService.isPremium {
                             let counts = AnalysisHelper.dayOfWeekCounts(from: records)
-                            let maxDay = counts.map(\.1).max().flatMap { $0 > 0 ? $0 : nil } ?? 1
+                            let maxDay = counts.map(\.1).max() ?? 1
                             ForEach(counts, id: \.0) { label, count in
-                                HStack(spacing: 8) {
-                                    Text(label)
-                                        .frame(width: 24, alignment: .center)
-                                        .fontWeight(isWeekend(label) ? .bold : .regular)
-                                        .foregroundStyle(isWeekend(label) ? Color.accentColor : .primary)
-                                    Rectangle()
-                                        .fill(Color.purple.opacity(0.35))
-                                        .frame(width: CGFloat(count) / CGFloat(maxDay) * 80, height: 10)
-                                        .cornerRadius(3)
-                                    Spacer()
-                                    Text("\(count)件")
-                                        .foregroundStyle(.secondary)
-                                        .monospacedDigit()
-                                }
+                                BarRow(label: label, count: count, maxCount: maxDay,
+                                       color: .purple, labelWidth: 24,
+                                       isWeekend: label == "土" || label == "日")
                             }
                         } else {
                             Button {
                                 showingPaywall = true
                             } label: {
                                 HStack {
-                                    Image(systemName: "lock.fill")
-                                        .foregroundStyle(.secondary)
-                                    Text("曜日別傾向はプレミアム機能です")
-                                        .foregroundStyle(.secondary)
+                                    Image(systemName: "lock.fill").foregroundStyle(.secondary)
+                                    Text(S.Trends.dayOfWeekLocked).foregroundStyle(.secondary)
                                     Spacer()
                                     Image(systemName: "chevron.right")
-                                        .font(.caption)
-                                        .foregroundStyle(.tertiary)
+                                        .font(.caption).foregroundStyle(.tertiary)
                                 }
                             }
                             .buttonStyle(.plain)
@@ -123,8 +102,7 @@ struct TrendsView: View {
                             Text(S.Trends.byDayOfWeek)
                             if !planService.isPremium {
                                 Image(systemName: "lock.fill")
-                                    .font(.caption2)
-                                    .foregroundStyle(.secondary)
+                                    .font(.caption2).foregroundStyle(.secondary)
                             }
                         }
                     }
@@ -137,36 +115,18 @@ struct TrendsView: View {
                             } label: {
                                 Label(S.Environment.title, systemImage: "cloud.sun")
                             }
-
                             NavigationLink {
                                 HealthAnalysisView()
                             } label: {
                                 Label(S.Health.title, systemImage: "heart.text.square")
                             }
                         } else {
-                            Button { showingPaywall = true } label: {
-                                HStack {
-                                    Label(S.Environment.title, systemImage: "cloud.sun")
-                                        .foregroundStyle(.primary)
-                                    Spacer()
-                                    Image(systemName: "lock.fill")
-                                        .font(.caption)
-                                        .foregroundStyle(.secondary)
-                                }
+                            LockedRow(label: S.Environment.title, icon: "cloud.sun") {
+                                showingPaywall = true
                             }
-                            .buttonStyle(.plain)
-
-                            Button { showingPaywall = true } label: {
-                                HStack {
-                                    Label(S.Health.title, systemImage: "heart.text.square")
-                                        .foregroundStyle(.primary)
-                                    Spacer()
-                                    Image(systemName: "lock.fill")
-                                        .font(.caption)
-                                        .foregroundStyle(.secondary)
-                                }
+                            LockedRow(label: S.Health.title, icon: "heart.text.square") {
+                                showingPaywall = true
                             }
-                            .buttonStyle(.plain)
                         }
 
                         NavigationLink {
@@ -183,8 +143,52 @@ struct TrendsView: View {
             }
         }
     }
+}
 
-    private func isWeekend(_ label: String) -> Bool {
-        label == "土" || label == "日"
+// MARK: - BarRow
+
+private struct BarRow: View {
+    let label: String
+    let count: Int
+    let maxCount: Int
+    let color: Color
+    var labelWidth: CGFloat = 80
+    var isWeekend: Bool = false
+
+    var body: some View {
+        HStack(spacing: 8) {
+            Text(label)
+                .frame(minWidth: labelWidth, alignment: .leading)
+                .fontWeight(isWeekend ? .bold : .regular)
+                .foregroundStyle(isWeekend ? color : .primary)
+            Rectangle()
+                .fill(color.opacity(0.35))
+                .frame(width: CGFloat(count) / CGFloat(max(1, maxCount)) * 80, height: 10)
+                .cornerRadius(3)
+            Spacer()
+            Text("\(count)件")
+                .foregroundStyle(.secondary)
+                .monospacedDigit()
+        }
+    }
+}
+
+// MARK: - LockedRow
+
+private struct LockedRow: View {
+    let label: String
+    let icon: String
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            HStack {
+                Label(label, systemImage: icon).foregroundStyle(.primary)
+                Spacer()
+                Image(systemName: "lock.fill")
+                    .font(.caption).foregroundStyle(.secondary)
+            }
+        }
+        .buttonStyle(.plain)
     }
 }

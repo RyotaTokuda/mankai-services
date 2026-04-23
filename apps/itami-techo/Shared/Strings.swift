@@ -89,6 +89,8 @@ enum S {
         static let edit = "編集"
         static let delete = "削除"
         static let deleteConfirm = "この記録を削除しますか？"
+        static let whySettled = "どうして落ち着きましたか？"
+        static let settledFooter = "症状が治まったら記録しておくと、通院時のレポートに持続時間が表示されます"
     }
 
     // ── 履歴 ─────────────────────────────────────────────
@@ -108,6 +110,13 @@ enum S {
         static let byDayOfWeek = "曜日別"
         static let severityDistribution = "強さの分布"
         static let monthComparison = "先月との比較"
+        static let periodPremium = "直近90日間の傾向"
+        static let periodFree = "直近14日間の傾向（無料プラン）"
+        static let recordCount = "記録件数"
+        static let medicationCount = "服薬回数"
+        static let dayOfWeekLocked = "曜日別傾向はプレミアム機能です"
+        static let upgrade = "アップグレード"
+        static let avgDuration = "平均持続時間"
     }
 
     // ── 環境分析 ─────────────────────────────────────────
@@ -208,6 +217,7 @@ enum S {
         // プラン管理
         static let planFree = "無料プラン"
         static let planPremium = "プレミアム"
+        static let planBadge = "プレミアム"
         static let planTrialActive = "トライアル中"
         static let planUpgrade = "プレミアムにアップグレード"
         static let planRestore = "購入を復元"
@@ -217,6 +227,15 @@ enum S {
         static let healthOpenSettings = "設定でHealthを許可する"
         static let healthAuthorized = "Healthと連携中"
         static let healthDataList = "取得データ：睡眠・安静時心拍・心拍変動・歩数・呼吸数・ワークアウト"
+        // iCloud
+        static let backup = "機種変・バックアップ"
+        static let iCloudSyncing = "iCloud と同期中"
+        static let iCloudDisabled = "iCloud が無効です"
+        static let iCloudHint = "設定 › Apple Account › iCloud でオンにすると機種変後もデータを引き継げます"
+        // データ管理
+        static let deleteAllData = "すべてのデータを削除"
+        static let deleteAllDataConfirm = "記録・カスタム症状を含む全データを削除します。この操作は元に戻せません。"
+        static let deleteAllDataButton = "すべて削除"
     }
 
     // ── 法的注意書き ─────────────────────────────────────
@@ -250,6 +269,10 @@ enum S {
         static let medication = "薬"
         static let timeTaken = "かかった時間"
         static let medicationTime = "服薬時刻"
+        static let settleCause = "解消の要因"
+        static let sourceDevice = "記録元"
+        static let sourceWatch = "Apple Watch"
+        static let sourceiPhone = "iPhone"
         static let calendar = "カレンダー"
         static let detailView = "詳しく見る"
         static let last14Days = "直近14日"
@@ -262,6 +285,7 @@ enum S {
             "今日 \(count)件"
         }
         static let noRecords = "記録なし"
+        static let noRecordsToday = "今日の記録はまだありません"
         static let tapToRecord = "タップして記録"
         static let latest = "直近"
     }

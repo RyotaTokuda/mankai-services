@@ -78,7 +78,7 @@ struct WatchRecordCompleteView: View {
                 Button {
                     dismiss()
                 } label: {
-                    Text("閉じる")
+                    Text(S.Common.close)
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.bordered)

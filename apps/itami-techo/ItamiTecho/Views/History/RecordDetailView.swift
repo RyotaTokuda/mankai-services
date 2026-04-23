@@ -19,7 +19,7 @@ struct RecordDetailView: View {
                     LabeledContent("症状", value: record.displayName)
                     LabeledContent("強さ", value: "\(record.severity) - \(S.Severity.label(for: record.severity))")
                     LabeledContent("記録日時", value: record.createdAt.formatted(.dateTime.year().month().day().hour().minute()))
-                    LabeledContent("記録元", value: record.sourceDevice == .watch ? "Apple Watch" : "iPhone")
+                    LabeledContent(S.Common.sourceDevice, value: record.sourceDevice == .watch ? S.Common.sourceWatch : S.Common.sourceiPhone)
                 }
 
                 // ── 服薬・落ち着いた ──
@@ -33,7 +33,7 @@ struct RecordDetailView: View {
                             }
                         }
                         if let name = record.customMedicationName {
-                            LabeledContent("薬", value: name)
+                            LabeledContent(S.Common.medication, value: name)
                         }
                     }
 
@@ -41,10 +41,10 @@ struct RecordDetailView: View {
                         LabeledContent(S.Record.settled, value: settled.formatted(.dateTime.hour().minute()))
                         let duration = settled.timeIntervalSince(record.createdAt)
                         if duration > 0 {
-                            LabeledContent("かかった時間", value: formatDuration(duration))
+                            LabeledContent(S.Common.timeTaken, value: formatDuration(duration))
                         }
                         if let cause = record.settleCause {
-                            LabeledContent("解消の要因", value: cause.label)
+                            LabeledContent(S.Common.settleCause, value: cause.label)
                         }
                     }
                 }
@@ -65,8 +65,7 @@ struct RecordDetailView: View {
                         .buttonStyle(.plain)
                         .listRowBackground(Color.green)
                     } footer: {
-                        Text("症状が治まったらここに記録しておくと、通院時のレポートに持続時間が表示されます")
-                            .font(.caption)
+                        Text(S.Record.settledFooter).font(.caption)
                     }
                 }
 

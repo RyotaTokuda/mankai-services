@@ -61,7 +61,7 @@ struct RecordCompleteView: View {
             // ── 解消要因ピッカー（落ち着いた後に表示） ──
             if isSettled {
                 VStack(spacing: 8) {
-                    Text("どうして落ち着きましたか？")
+                    Text(S.Record.whySettled)
                         .font(.caption)
                         .foregroundStyle(.secondary)
 

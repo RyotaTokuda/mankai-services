@@ -56,7 +56,7 @@ struct HistoryView: View {
                                         }
                                         Spacer()
                                         if !planService.isPremium {
-                                            Text("プレミアム")
+                                            Text(S.Settings.planBadge)
                                                 .font(.caption2)
                                                 .fontWeight(.semibold)
                                                 .foregroundStyle(.white)
@@ -90,7 +90,7 @@ struct HistoryView: View {
                                             Button {
                                                 recordStore.markSettled(id: record.id)
                                             } label: {
-                                                Label("落ち着いた", systemImage: "heart.fill")
+                                                Label(S.Record.settled, systemImage: "heart.fill")
                                             }
                                             .tint(.green)
                                         }
