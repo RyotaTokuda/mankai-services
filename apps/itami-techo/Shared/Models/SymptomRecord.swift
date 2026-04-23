@@ -34,6 +34,7 @@ struct SymptomRecord: Codable, Identifiable {
 
     // ── 落ち着いた ────────────────────────────────────────
     var settledAt: Date?
+    var settleCause: SettleCause?
 
     // ── 環境データ（記録時スナップショット） ──────────────
     var environment: EnvironmentSnapshot?
@@ -69,8 +70,28 @@ struct SymptomRecord: Codable, Identifiable {
         self.customMedicationId = nil
         self.customMedicationName = nil
         self.settledAt = nil
+        self.settleCause = nil
         self.environment = nil
         self.healthSummary = nil
         self.tags = tags
+    }
+}
+
+/// 落ち着いた要因
+enum SettleCause: String, Codable, CaseIterable, Identifiable {
+    case medication = "服薬"
+    case rest       = "休息"
+    case time       = "時間経過"
+    case other      = "その他"
+
+    var id: String { rawValue }
+    var label: String { rawValue }
+    var icon: String {
+        switch self {
+        case .medication: "pills.fill"
+        case .rest:       "moon.fill"
+        case .time:       "clock.fill"
+        case .other:      "ellipsis.circle.fill"
+        }
     }
 }

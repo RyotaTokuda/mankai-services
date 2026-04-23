@@ -56,12 +56,10 @@ struct HealthPermissionView: View {
 
             Spacer()
 
-            // 許可ボタン → システムダイアログを表示
+            // 許可ボタン → 即遷移してからシステムダイアログを表示
             Button {
-                Task {
-                    _ = await healthService.requestAuthorization()
-                    isCompleted = true
-                }
+                isCompleted = true
+                Task { _ = await healthService.requestAuthorization() }
             } label: {
                 Text(S.Permission.healthAllowButton)
                     .font(.headline)

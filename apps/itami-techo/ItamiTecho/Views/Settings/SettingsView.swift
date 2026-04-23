@@ -3,6 +3,7 @@ import SwiftUI
 /// iPhone: 設定画面
 struct SettingsView: View {
     @Environment(PlanService.self) private var planService
+    @Environment(RecordStore.self) private var recordStore
 
     var body: some View {
         NavigationStack {
@@ -62,6 +63,15 @@ struct SettingsView: View {
                             .foregroundStyle(.secondary)
                     }
                 }
+
+                #if DEBUG
+                Section("Debug") {
+                    Button("シードデータを生成（90日分）") {
+                        recordStore.seedDebugData()
+                    }
+                    .foregroundStyle(.orange)
+                }
+                #endif
             }
             .navigationTitle(S.Settings.title)
         }

@@ -50,10 +50,11 @@ final class RecordStore {
         save()
     }
 
-    /// 落ち着いた時刻を記録
-    func markSettled(id: UUID, at date: Date = Date()) {
+    /// 落ち着いた時刻と要因を記録
+    func markSettled(id: UUID, at date: Date = Date(), cause: SettleCause? = nil) {
         guard let index = records.firstIndex(where: { $0.id == id }) else { return }
         records[index].settledAt = date
+        records[index].settleCause = cause
         records[index].updatedAt = Date()
         save()
     }
@@ -158,6 +159,44 @@ final class RecordStore {
         }
     }
 }
+
+// MARK: - Debug Seed
+
+#if DEBUG
+extension RecordStore {
+    func seedDebugData() {
+        guard records.isEmpty else { return }
+        let calendar = Calendar.current
+        let symptoms: [SymptomType] = [.headache, .fatigue, .dizziness, .nausea, .stiffness, .drowsiness]
+        var seeded: [SymptomRecord] = []
+
+        for daysAgo in 0..<90 {
+            guard Double.random(in: 0...1) < 0.55 else { continue }
+            let base = calendar.date(byAdding: .day, value: -daysAgo, to: Date()) ?? Date()
+            let count = Int.random(in: 1...3)
+            for _ in 0..<count {
+                let hourOffset = TimeInterval(Int.random(in: 6...22) * 3600)
+                let date = base.addingTimeInterval(hourOffset - base.timeIntervalSince(calendar.startOfDay(for: base)))
+                var r = SymptomRecord(
+                    symptomType: symptoms.randomElement()!,
+                    severity: Int.random(in: 1...5),
+                    sourceDevice: Bool.random() ? .iPhone : .watch,
+                    date: date
+                )
+                if Bool.random() { r.medicationTaken = true; r.medicationTakenAt = date.addingTimeInterval(600) }
+                if Bool.random() {
+                    r.settledAt = date.addingTimeInterval(TimeInterval(Int.random(in: 30...180) * 60))
+                    r.settleCause = SettleCause.allCases.randomElement()
+                }
+                seeded.append(r)
+            }
+        }
+        seeded.forEach { records.append($0) }
+        records.sort { $0.createdAt > $1.createdAt }
+        save()
+    }
+}
+#endif
 
 // MARK: - JSON Coding
 

@@ -44,10 +44,8 @@ struct NotificationPermissionView: View {
             Spacer()
 
             Button {
-                Task {
-                    _ = await notificationService.requestAuthorization()
-                    isCompleted = true
-                }
+                isCompleted = true
+                Task { _ = await notificationService.requestAuthorization() }
             } label: {
                 Text("通知を許可する")
                     .font(.headline)

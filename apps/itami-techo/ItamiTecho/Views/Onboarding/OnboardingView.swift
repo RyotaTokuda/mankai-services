@@ -28,18 +28,21 @@ struct OnboardingView: View {
             slidesView
         case .location:
             LocationPermissionView(isCompleted: $locationCompleted)
+                .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
                 .onChange(of: locationCompleted) { _, completed in
-                    if completed { step = .health }
+                    if completed { withAnimation(.easeInOut(duration: 0.3)) { step = .health } }
                 }
         case .health:
             HealthPermissionView(isCompleted: $healthCompleted)
+                .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
                 .onChange(of: healthCompleted) { _, completed in
-                    if completed { step = .notification }
+                    if completed { withAnimation(.easeInOut(duration: 0.3)) { step = .notification } }
                 }
         case .notification:
             NotificationPermissionView(isCompleted: $notificationCompleted)
+                .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
                 .onChange(of: notificationCompleted) { _, completed in
-                    if completed { isCompleted = true }
+                    if completed { withAnimation(.easeInOut(duration: 0.3)) { isCompleted = true } }
                 }
         }
     }
@@ -77,7 +80,7 @@ struct OnboardingView: View {
                 if currentPage < pages.count - 1 {
                     withAnimation { currentPage += 1 }
                 } else {
-                    step = .location
+                    withAnimation(.easeInOut(duration: 0.3)) { step = .location }
                 }
             } label: {
                 Text(currentPage == pages.count - 1 ? S.Onboarding.startButton : "次へ")

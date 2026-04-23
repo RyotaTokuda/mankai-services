@@ -10,6 +10,7 @@ struct RecordView: View {
     @Environment(HealthService.self) private var healthService
 
     @State private var vm = RecordViewModel()
+    @State private var showingPaywall = false
 
     var body: some View {
         NavigationStack {
@@ -49,9 +50,8 @@ struct RecordView: View {
                     RecordCompleteView(record: record)
                 }
             }
-            .sheet(isPresented: $vm.showingPaywall) {
-                PaywallView()
-            }
+            .sheet(isPresented: $vm.showingPaywall) { PaywallView() }
+            .sheet(isPresented: $showingPaywall) { PaywallView() }
         }
     }
 
@@ -111,11 +111,24 @@ struct RecordView: View {
             .disabled(!canAddCustom)
             .padding(.horizontal)
 
-            if !canAddCustom && !planService.isPremium {
-                Text(S.Common.customSymptomLimitPremium)
-                    .font(.caption2)
+            if !planService.isPremium {
+                Button {
+                    showingPaywall = true
+                } label: {
+                    HStack(spacing: 6) {
+                        Image(systemName: "lock.fill")
+                            .font(.caption2)
+                        Text("プレミアムでカスタム症状を無制限追加")
+                            .font(.caption2)
+                    }
                     .foregroundStyle(.secondary)
-                    .padding(.horizontal)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
+                    .background(Color(.systemGray6))
+                    .cornerRadius(8)
+                }
+                .buttonStyle(.plain)
+                .padding(.horizontal)
             }
         }
     }

@@ -10,18 +10,11 @@ struct RecordCompleteView: View {
 
     @State private var medicationTapped = false
     @State private var settledTapped = false
+    @State private var selectedCause: SettleCause? = nil
 
-    private var todayCount: Int {
-        recordStore.todayRecords.count
-    }
-
-    private var isMedTaken: Bool {
-        medicationTapped || record.medicationTaken
-    }
-
-    private var isSettled: Bool {
-        settledTapped || record.settledAt != nil
-    }
+    private var todayCount: Int { recordStore.todayRecords.count }
+    private var isMedTaken: Bool { medicationTapped || record.medicationTaken }
+    private var isSettled: Bool { settledTapped || record.settledAt != nil }
 
     var body: some View {
         VStack(spacing: 20) {
@@ -65,6 +58,43 @@ struct RecordCompleteView: View {
             }
             .padding(.horizontal)
 
+            // ── 解消要因ピッカー（落ち着いた後に表示） ──
+            if isSettled {
+                VStack(spacing: 8) {
+                    Text("どうして落ち着きましたか？")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+
+                    HStack(spacing: 8) {
+                        ForEach(SettleCause.allCases) { cause in
+                            Button {
+                                selectedCause = cause
+                                recordStore.markSettled(id: record.id, cause: cause)
+                            } label: {
+                                VStack(spacing: 3) {
+                                    Image(systemName: cause.icon)
+                                        .font(.caption)
+                                    Text(cause.label)
+                                        .font(.caption2)
+                                }
+                                .frame(maxWidth: .infinity, minHeight: 44)
+                                .background(selectedCause == cause ? Color.green.opacity(0.15) : Color(.systemGray6))
+                                .foregroundStyle(selectedCause == cause ? .green : .secondary)
+                                .cornerRadius(8)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(selectedCause == cause ? Color.green.opacity(0.5) : Color.clear, lineWidth: 1.5)
+                                )
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                    .padding(.horizontal)
+                }
+                .transition(.opacity.combined(with: .move(edge: .bottom)))
+                .animation(.easeInOut(duration: 0.2), value: isSettled)
+            }
+
             Spacer()
 
             Button {
@@ -77,7 +107,12 @@ struct RecordCompleteView: View {
             .padding(.horizontal)
             .padding(.bottom)
         }
-        .presentationDetents([.medium])
+        .presentationDetents([.medium, .large])
+        .animation(.easeInOut(duration: 0.2), value: isSettled)
+        .onAppear {
+            // 既存レコードに解消済みがある場合は要因を復元
+            selectedCause = record.settleCause
+        }
     }
 }
 

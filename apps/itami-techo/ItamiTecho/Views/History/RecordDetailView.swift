@@ -39,10 +39,12 @@ struct RecordDetailView: View {
 
                     if let settled = record.settledAt {
                         LabeledContent(S.Record.settled, value: settled.formatted(.dateTime.hour().minute()))
-                        // 落ち着くまでの時間
                         let duration = settled.timeIntervalSince(record.createdAt)
                         if duration > 0 {
                             LabeledContent("かかった時間", value: formatDuration(duration))
+                        }
+                        if let cause = record.settleCause {
+                            LabeledContent("解消の要因", value: cause.label)
                         }
                     }
                 }

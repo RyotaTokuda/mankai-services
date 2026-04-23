@@ -18,11 +18,11 @@ enum S {
     // ── オンボーディング ──────────────────────────────────
     enum Onboarding {
         static let step1Title = "しんどい瞬間を、手首からすぐ記録"
-        static let step1Body = "Apple Watch でもiPhone でもすぐ残せます"
+        static let step1Body = "Apple Watch でも\niPhone でもすぐ残せます"
         static let step2Title = "天気や体調データと一緒に振り返れる"
-        static let step2Body = "Health や天気・気圧との関係をあとから確認できます"
+        static let step2Body = "天気・気圧・Health との関係を\nあとから確認できます"
         static let step3Title = "通院時に見せやすいレポート"
-        static let step3Body = "いつ・どのくらい・どんな時に起きたかをまとめられます"
+        static let step3Body = "いつ・どのくらい・どんな状況で\n起きたかをまとめられます"
         static let step4Title = "診断ではなく、記録と振り返りに特化"
         static let step4Body = "あなたの記録を整理するアプリです"
         static let startButton = "さっそく記録する"
@@ -156,7 +156,7 @@ enum S {
         static let description = "必要な時だけ、より深く振り返れます"
         static let monthlyLabel = "月額"
         static let yearlyLabel = "年額"
-        static let yearlySaving = "10ヶ月分の価格"
+        static let yearlySaving = "月換算 ¥300（37% オフ）"
         static let trialLabel = "7日間無料で試す"
         static let restoreLabel = "購入を復元"
         static let freeNote = "無料でも記録・基本履歴・カレンダーはずっと使えます"
@@ -193,6 +193,24 @@ enum S {
         static let subscription = "プラン管理"
         static let about = "このアプリについて"
         static let legal = "法的情報"
+        // 通知設定
+        static let notificationPermissionDenied = "通知がオフになっています。設定アプリから許可してください。"
+        static let notificationSensitivityLow = "少なめ（週1〜2回）"
+        static let notificationSensitivityNormal = "通常（週3〜4回）"
+        static let notificationSensitivityHigh = "多め（毎日）"
+        static let notificationFooter = "天気・気圧が大きく変化する予報の時にだけお知らせします。診断・予防を目的とするものではありません。"
+        // プラン管理
+        static let planFree = "無料プラン"
+        static let planPremium = "プレミアム"
+        static let planTrialActive = "トライアル中"
+        static let planUpgrade = "プレミアムにアップグレード"
+        static let planRestore = "購入を復元"
+        static let planManageSubscription = "サブスクリプションを管理"
+        // Health設定
+        static let healthNotAuthorized = "Healthへのアクセスが許可されていません"
+        static let healthOpenSettings = "設定でHealthを許可する"
+        static let healthAuthorized = "Healthと連携中"
+        static let healthDataList = "取得データ：睡眠・安静時心拍・心拍変動・歩数・呼吸数・ワークアウト"
     }
 
     // ── 法的注意書き ─────────────────────────────────────
