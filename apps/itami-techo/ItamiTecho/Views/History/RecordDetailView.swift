@@ -49,6 +49,27 @@ struct RecordDetailView: View {
                     }
                 }
 
+                // ── 未解消の場合: 落ち着いたボタン ──
+                if record.settledAt == nil {
+                    Section {
+                        Button {
+                            recordStore.markSettled(id: record.id)
+                            dismiss()
+                        } label: {
+                            Label("落ち着いた", systemImage: "heart.fill")
+                                .font(.subheadline)
+                                .fontWeight(.semibold)
+                                .foregroundStyle(.white)
+                                .frame(maxWidth: .infinity, minHeight: 44)
+                        }
+                        .buttonStyle(.plain)
+                        .listRowBackground(Color.green)
+                    } footer: {
+                        Text("症状が治まったらここに記録しておくと、通院時のレポートに持続時間が表示されます")
+                            .font(.caption)
+                    }
+                }
+
                 // ── メモ ──
                 if let note = record.note, !note.isEmpty {
                     Section("メモ") {

@@ -4,10 +4,10 @@ import SwiftUI
 struct HealthAnalysisView: View {
     @Environment(RecordStore.self) private var recordStore
     @Environment(PlanService.self) private var planService
+    @Environment(HealthService.self) private var healthService
 
     private var records: [SymptomRecord] {
-        let days = planService.isPremium ? 90 : 14
-        return recordStore.records(lastDays: days)
+        recordStore.records(lastDays: planService.isPremium ? 90 : 14)
     }
 
     private var recordsWithHealth: [SymptomRecord] {
@@ -17,10 +17,44 @@ struct HealthAnalysisView: View {
     var body: some View {
         List {
             if recordsWithHealth.isEmpty {
-                Section {
-                    Text(S.Common.trendHint)
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
+                if !healthService.isAuthorized {
+                    // HealthKit 未連携 → 設定へ誘導
+                    Section {
+                        VStack(alignment: .leading, spacing: 12) {
+                            Label("Apple Healthと連携すると", systemImage: "heart.text.square.fill")
+                                .font(.subheadline)
+                                .fontWeight(.medium)
+                                .foregroundStyle(Color.accentColor)
+
+                            Text("睡眠・安静時心拍・歩数と症状の関係が見えるようになります。")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+
+                            Button {
+                                Task { await healthService.requestAuthorization() }
+                            } label: {
+                                Text("Apple Healthの連携を許可する")
+                                    .font(.subheadline)
+                                    .fontWeight(.medium)
+                                    .frame(maxWidth: .infinity, minHeight: 44)
+                            }
+                            .buttonStyle(.borderedProminent)
+                        }
+                        .padding(.vertical, 4)
+                    }
+                } else {
+                    // 連携済みだがデータなし
+                    Section {
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text("Healthデータがまだ記録されていません")
+                                .font(.subheadline)
+                                .fontWeight(.medium)
+                            Text(S.Common.trendHint)
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                        .padding(.vertical, 4)
+                    }
                 }
             } else {
                 if let sleep = AnalysisHelper.sleepAnalysis(from: recordsWithHealth) {

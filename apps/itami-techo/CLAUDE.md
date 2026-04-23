@@ -49,6 +49,15 @@ apps/itami-techo/
   project.yml          xcodegen 設定
 ```
 
+## 開発ルール
+
+**仕様書を正とする、実機を正としない。必ず仕様書を変更する。**
+
+- 実機・シミュレーターで挙動が仕様と異なる場合、仕様書（この CLAUDE.md）を正として実装を直す
+- 実機動作が「そっちの方が良い」と感じても、まず仕様書を更新してから実装を変更する
+- 仕様書を変更せずに実装だけ変えることは禁止
+- 動作確認の前に想定する仕様を文書化してから確認する
+
 ## 判断基準
 
 **確認してから進める**
@@ -157,6 +166,23 @@ iOS のシステムダイアログの**前に**カスタム事前説明画面を
 - 7日無料トライアル
 - Product ID: `itamitecho.premium.monthly` / `itamitecho.premium.yearly`
 - Subscription Group: `itamitecho.premium`
+
+### UX 仕様
+
+#### 症状ボタン
+- minHeight: 58pt、cornerRadius: 12pt
+- 選択状態: accentColor 15% 背景 + 2pt border
+- 非選択: systemGray6 背景
+
+#### 「落ち着いた」の記録方法（3つの動線）
+1. **履歴リスト** — 未解消行の右端に「完了」ボタン（ハート+テキスト、タップで即記録）
+2. **履歴リスト** — 左スワイプ（スワイプ右方向）→「落ち着いた」スワイプアクション
+3. **記録詳細画面** — 未解消の場合、緑の「落ち着いた」全幅ボタンを表示 + 持続時間記録の説明テキスト
+
+#### HealthKit / 環境データ の空状態
+- **HealthKit 未承認**: 「Apple Healthの連携を許可する」ボタン → requestAuthorization()
+- **HealthKit 承認済みだがデータなし**: 「記録されていません」+ trendHint テキスト
+- **位置情報拒否**: 「設定で位置情報を許可する」ボタン → openSettingsURLString
 
 ### ペイウォール表示タイミング
 1. 記録 5件到達時

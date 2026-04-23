@@ -217,12 +217,13 @@ private struct SymptomButton: View {
             Text(label)
                 .font(.subheadline)
                 .fontWeight(.medium)
-                .frame(maxWidth: .infinity, minHeight: 48)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: .infinity, minHeight: 58)
                 .background(isSelected ? Color.accentColor.opacity(0.15) : Color(.systemGray6))
                 .foregroundStyle(isSelected ? Color.accentColor : .primary)
-                .cornerRadius(10)
+                .cornerRadius(12)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 10)
+                    RoundedRectangle(cornerRadius: 12)
                         .stroke(isSelected ? Color.accentColor : .clear, lineWidth: 2)
                 )
         }

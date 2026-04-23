@@ -77,19 +77,24 @@ struct HistoryView: View {
                         ForEach(groupedRecords, id: \.0) { dateLabel, records in
                             Section(dateLabel) {
                                 ForEach(records) { record in
-                                    RecordRow(record: record)
-                                        .contentShape(Rectangle())
-                                        .onTapGesture { selectedRecord = record }
-                                        .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                                            if record.settledAt == nil {
-                                                Button {
-                                                    recordStore.markSettled(id: record.id)
-                                                } label: {
-                                                    Label("落ち着いた", systemImage: "heart.fill")
-                                                }
-                                                .tint(.green)
+                                    RecordRow(
+                                        record: record,
+                                        onSettle: record.settledAt == nil
+                                            ? { recordStore.markSettled(id: record.id) }
+                                            : nil
+                                    )
+                                    .contentShape(Rectangle())
+                                    .onTapGesture { selectedRecord = record }
+                                    .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                                        if record.settledAt == nil {
+                                            Button {
+                                                recordStore.markSettled(id: record.id)
+                                            } label: {
+                                                Label("落ち着いた", systemImage: "heart.fill")
                                             }
+                                            .tint(.green)
                                         }
+                                    }
                                 }
                             }
                         }
@@ -140,14 +145,14 @@ struct HistoryView: View {
 
 struct RecordRow: View {
     let record: SymptomRecord
+    /// 未解消の記録を「落ち着いた」にするコールバック。nil の場合はボタン非表示
+    var onSettle: (() -> Void)? = nil
 
-    private var isUnresolved: Bool {
-        record.settledAt == nil
-    }
+    private var isUnresolved: Bool { record.settledAt == nil }
 
     var body: some View {
         HStack {
-            // 強さインジケーター（未解消は点滅しているように見せる）
+            // 強さインジケーター（未解消は彩度高め、解消済みは淡色）
             Circle()
                 .fill(isUnresolved ? record.severityColor : record.severityColor.opacity(0.4))
                 .frame(width: 10, height: 10)
@@ -170,16 +175,37 @@ struct RecordRow: View {
 
             Spacer()
 
-            HStack(spacing: 4) {
+            HStack(spacing: 6) {
                 if record.medicationTaken {
                     Image(systemName: "pills.fill")
                         .font(.caption)
                         .foregroundStyle(.orange)
                 }
-                // 落ち着いた：解消済みは塗りつぶし、未解消はアウトライン（アクション可能を示唆）
-                Image(systemName: record.settledAt != nil ? "heart.fill" : "heart")
-                    .font(.caption)
-                    .foregroundStyle(record.settledAt != nil ? Color.green : Color.secondary.opacity(0.5))
+
+                if let settle = onSettle, isUnresolved {
+                    // 未解消：タップで「落ち着いた」を記録できるボタン
+                    Button {
+                        settle()
+                    } label: {
+                        VStack(spacing: 1) {
+                            Image(systemName: "heart")
+                                .font(.caption)
+                            Text("完了")
+                                .font(.system(size: 8))
+                        }
+                        .foregroundStyle(Color.green.opacity(0.8))
+                        .padding(6)
+                        .background(Color.green.opacity(0.1))
+                        .cornerRadius(6)
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel("落ち着いた")
+                } else {
+                    Image(systemName: record.settledAt != nil ? "heart.fill" : "heart")
+                        .font(.caption)
+                        .foregroundStyle(record.settledAt != nil ? Color.green : Color.secondary.opacity(0.35))
+                }
+
                 if record.sourceDevice == .watch {
                     Image(systemName: "applewatch")
                         .font(.caption2)
