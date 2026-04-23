@@ -5,6 +5,7 @@ import WidgetKit
 struct RecordSymptomIntent: AppIntent {
     static var title: LocalizedStringResource = "不調を記録"
     static var description: IntentDescription = "痛み手帳に症状を記録します"
+    static var openAppWhenRun: Bool = true
 
     @Parameter(title: "症状")
     var symptomName: String

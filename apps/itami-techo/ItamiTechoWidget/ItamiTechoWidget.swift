@@ -61,7 +61,7 @@ struct ItamiTechoWidgetSmall: View {
             Spacer()
 
             if entry.todayCount > 0 {
-                Text("今日 \(entry.todayCount)件")
+                Text(S.Widget.todayCount(entry.todayCount))
                     .font(.headline)
                 if let symptom = entry.latestSymptom {
                     Text(symptom)
@@ -69,15 +69,16 @@ struct ItamiTechoWidgetSmall: View {
                         .foregroundStyle(.secondary)
                 }
             } else {
-                Text("記録なし")
+                Text(S.Widget.noRecords)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
-                Text("タップして記録")
+                Text(S.Widget.tapToRecord)
                     .font(.caption2)
                     .foregroundStyle(.blue)
             }
         }
         .containerBackground(.fill.tertiary, for: .widget)
+        .widgetURL(URL(string: "itamitecho://record"))
     }
 }
 
@@ -96,7 +97,7 @@ struct ItamiTechoWidgetMedium: View {
                 }
 
                 if entry.todayCount > 0 {
-                    Text("今日 \(entry.todayCount)件")
+                    Text(S.Widget.todayCount(entry.todayCount))
                         .font(.title2)
                         .fontWeight(.bold)
                 } else {
@@ -106,7 +107,7 @@ struct ItamiTechoWidgetMedium: View {
 
                 Spacer()
 
-                Text("タップして記録")
+                Text(S.Widget.tapToRecord)
                     .font(.caption)
                     .foregroundStyle(.blue)
             }
@@ -115,7 +116,7 @@ struct ItamiTechoWidgetMedium: View {
 
             if let symptom = entry.latestSymptom, let severity = entry.latestSeverity {
                 VStack(spacing: 4) {
-                    Text("直近")
+                    Text(S.Widget.latest)
                         .font(.caption2)
                         .foregroundStyle(.secondary)
                     Text(symptom)
@@ -128,6 +129,7 @@ struct ItamiTechoWidgetMedium: View {
             }
         }
         .containerBackground(.fill.tertiary, for: .widget)
+        .widgetURL(URL(string: "itamitecho://record"))
     }
 }
 
@@ -189,6 +191,7 @@ struct ItamiTechoAccessoryCircular: View {
             }
         }
         .containerBackground(.fill.tertiary, for: .widget)
+        .widgetURL(URL(string: "itamitecho://record"))
     }
 }
 
@@ -205,15 +208,16 @@ struct ItamiTechoAccessoryRectangular: View {
             .font(.caption)
 
             if entry.todayCount > 0 {
-                Text("今日 \(entry.todayCount)件")
+                Text(S.Widget.todayCount(entry.todayCount))
                     .font(.caption2)
             } else {
-                Text("タップして記録")
+                Text(S.Widget.tapToRecord)
                     .font(.caption2)
                     .foregroundStyle(.secondary)
             }
         }
         .containerBackground(.fill.tertiary, for: .widget)
+        .widgetURL(URL(string: "itamitecho://record"))
     }
 }
 

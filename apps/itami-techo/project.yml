@@ -32,6 +32,9 @@ targets:
         INFOPLIST_KEY_NSHealthUpdateUsageDescription: "不調記録をApple Healthに反映するために使用します。"
         INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: "記録時の天気・気圧情報を取得するために使用します。位置情報は市区町村レベルに丸めて保存され、外部に送信されません。"
         INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: false
+        CFBundleURLTypes:
+          - CFBundleURLSchemes:
+              - itamitecho
     entitlements:
       path: ItamiTecho/ItamiTecho.entitlements
       properties:
@@ -57,6 +60,29 @@ targets:
       base:
         INFOPLIST_KEY_WKCompanionAppBundleIdentifier: com.mankai.itamitecho
         INFOPLIST_KEY_NSHealthShareUsageDescription: "不調記録と心拍の関係を振り返るために使用します。"
+    entitlements:
+      path: ItamiTechoWatch/ItamiTechoWatch.entitlements
+      properties:
+        com.apple.developer.healthkit: true
+        com.apple.security.application-groups:
+          - group.com.mankai.itami-techo
+    dependencies:
+      - target: ItamiTechoWatchWidgetExtension
+
+  ItamiTechoWatchWidgetExtension:
+    type: app-extension
+    platform: watchOS
+    product: ItamiTechoWatchWidgetExtension
+    sources:
+      - path: ItamiTechoWatchWidget
+        excludes:
+          - Info.plist
+      - path: Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.mankai.itamitecho.ItamiTechoWatch.watchwidget
+        GENERATE_INFOPLIST_FILE: false
+        INFOPLIST_FILE: ItamiTechoWatchWidget/Info.plist
     entitlements:
       path: ItamiTechoWatch/ItamiTechoWatch.entitlements
       properties:

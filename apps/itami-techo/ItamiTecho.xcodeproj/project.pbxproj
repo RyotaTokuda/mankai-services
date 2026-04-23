@@ -10,12 +10,16 @@
 		00F6CC2C98BACAE555199B00 /* CustomMedication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2D5FE7B40C9881593D2FED /* CustomMedication.swift */; };
 		02A24641AE82B2D361179A0E /* ItamiTechoWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B147764F021F5BABF149E09F /* ItamiTechoWidget.swift */; };
 		02B83067095651730E5D25DF /* SymptomRecord+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B73A3C17D5A33266222D9BB /* SymptomRecord+Display.swift */; };
+		02E556D392D353623B8E8CED /* RecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2A8923E253022443282FF3 /* RecordStore.swift */; };
 		0536C2722685DF9A7C407CB6 /* CustomSymptomStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243B0D68697EC3DB42DE9736 /* CustomSymptomStore.swift */; };
 		0AE6158D2CD38EBFA7C56072 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB982CC831F3209858A7511 /* LocationService.swift */; };
 		0BD256B2DB7B9D6F694B2BEB /* RecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2A8923E253022443282FF3 /* RecordStore.swift */; };
+		0D4D0B4A1E6D584AC0947442 /* HealthSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252131398E2F4E994C5CFD1 /* HealthSnapshot.swift */; };
 		13A1DA3B483FD1E22381D763 /* ItamiTechoWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7F1A9DD46C6086D3977A3576 /* ItamiTechoWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		142B3A0FCBB4BAA9BE3E2F1B /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820A6493091705E5CC8FEA73 /* NotificationSettingsView.swift */; };
 		154A9E092CF3C6CB249AA18D /* EnvironmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F8309642423352DA3279D9 /* EnvironmentService.swift */; };
+		15FB48531CF9B4AFF1D7CF7A /* PressureHistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E56852F3F8554D49B516A4 /* PressureHistoryStore.swift */; };
+		1B73C5DDA574295D41253458 /* ItamiTechoWatchWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 15EBADAD76D44D2B9381A18E /* ItamiTechoWatchWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1D2EC95F795A128617D77FCE /* CustomMedication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2D5FE7B40C9881593D2FED /* CustomMedication.swift */; };
 		216FD1804609B5788FC277F3 /* AnalysisHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15543C82C90EEE37278B6DF8 /* AnalysisHelper.swift */; };
 		23420ABC8C641BC20AECECFB /* EnvironmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F8309642423352DA3279D9 /* EnvironmentService.swift */; };
@@ -34,10 +38,13 @@
 		3D0B60956E6B2CC78A5621E5 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E078E9E89660F69A40DDC3E /* NotificationService.swift */; };
 		3DC59523E75B4B2A96021066 /* CustomSymptomStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243B0D68697EC3DB42DE9736 /* CustomSymptomStore.swift */; };
 		3F0FE7D902C2D959EC722C80 /* WatchRecordCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D824D2DE4563C639201AEEE3 /* WatchRecordCompleteView.swift */; };
+		402D6DB7C9C2445CFE660B1F /* EnvironmentSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F964FC569EC533BE5AFF458B /* EnvironmentSnapshot.swift */; };
 		421C76C5B4D5F67E4A5907FF /* HealthSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CD1889920E5F1B8D115731 /* HealthSettingsView.swift */; };
 		42584CB90A4D3366339A0C94 /* HealthSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252131398E2F4E994C5CFD1 /* HealthSnapshot.swift */; };
 		42BCC565796949B9E013E8A3 /* SymptomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCADA2A117520BB839906A2 /* SymptomType.swift */; };
 		42D206E730ABB0D28C8BA915 /* WatchSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E955D599AAD32E058DA9E18 /* WatchSyncService.swift */; };
+		43450942884747EC587EBE39 /* CustomSymptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE92063302087082890758C9 /* CustomSymptom.swift */; };
+		48587891F250D2C2A7F3E494 /* SourceDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F53DB6661EE5F379370BA /* SourceDevice.swift */; };
 		490829C7FA8F83BA1EBB6EB0 /* SymptomRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A535D66EAC5B6D4993ECC6 /* SymptomRecord.swift */; };
 		49F8B19D78DDC87234905474 /* PressureHistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E56852F3F8554D49B516A4 /* PressureHistoryStore.swift */; };
 		4ADA93169528D66B0155AFE3 /* CustomSymptomStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243B0D68697EC3DB42DE9736 /* CustomSymptomStore.swift */; };
@@ -52,9 +59,12 @@
 		518E696DAAD45FEADC1DC32C /* AnalysisHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15543C82C90EEE37278B6DF8 /* AnalysisHelper.swift */; };
 		51B7458E26102912DAE8464D /* PlanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5038A95AD0D6CF2A20ABD /* PlanService.swift */; };
 		541C8524BA5E76217CDFF457 /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3149AD38AC8342560EAF6901 /* HealthService.swift */; };
+		56CAE6E3D35C439C7126AEDC /* SymptomRecord+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B73A3C17D5A33266222D9BB /* SymptomRecord+Display.swift */; };
 		5973CE7635E185EC46944FB4 /* CustomSymptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE92063302087082890758C9 /* CustomSymptom.swift */; };
 		5E7C916748E736C7F78F90D0 /* WatchHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C5DE67A7BD52DD3074D40C /* WatchHomeView.swift */; };
+		5EABEAF1646E1CDCB3D662A4 /* CustomSymptomStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243B0D68697EC3DB42DE9736 /* CustomSymptomStore.swift */; };
 		6037EB2F6700BD68A010DA86 /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3149AD38AC8342560EAF6901 /* HealthService.swift */; };
+		6293D0E0EA5D8F1612EA8DFF /* WatchSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E955D599AAD32E058DA9E18 /* WatchSyncService.swift */; };
 		65601D14CCA4B3D870C461A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEBE4D9BC1BD270286AACDA /* ContentView.swift */; };
 		699287ADB1B414C8AD4F656C /* SourceDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F53DB6661EE5F379370BA /* SourceDevice.swift */; };
 		6B5D92F1A901395936A96A83 /* AppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5D0028D1E1A03173B47879 /* AppIntents.swift */; };
@@ -76,7 +86,9 @@
 		89C7A30DDB76EA1115904CE5 /* ReportPDFRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3693FED76691693DB319B50 /* ReportPDFRenderer.swift */; };
 		8B4E188D80457D56DC3D1872 /* RecordCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD92B1EC9806B59B1E1F6F93 /* RecordCompleteView.swift */; };
 		8DF548CD2113533191250DAE /* PlanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5038A95AD0D6CF2A20ABD /* PlanService.swift */; };
+		8EB88D74F6254AB2689A7590 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB982CC831F3209858A7511 /* LocationService.swift */; };
 		8FD339EA3EFE45E1DB2C49B3 /* EnvironmentSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F964FC569EC533BE5AFF458B /* EnvironmentSnapshot.swift */; };
+		9194F486F3A344A1198EF2B7 /* EnvironmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F8309642423352DA3279D9 /* EnvironmentService.swift */; };
 		924E72B50760B11AE49BF561 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102BCA0F9545A2867BA014E /* Strings.swift */; };
 		9439D57339B6D66A2E0567C9 /* PressureHistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E56852F3F8554D49B516A4 /* PressureHistoryStore.swift */; };
 		958CDDF7DD9A5BB6E078BCAC /* SourceDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F53DB6661EE5F379370BA /* SourceDevice.swift */; };
@@ -84,6 +96,7 @@
 		99C566FAE7B4AB0DCD099353 /* PlanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5038A95AD0D6CF2A20ABD /* PlanService.swift */; };
 		9AA86139E2FF36DB3EDED652 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8876DF83E78487A49E75F2F /* Constants.swift */; };
 		9E4F2260B1EC00C875AE5245 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8E1D1F50E99C46DE0B8E1DA /* Assets.xcassets */; };
+		9F895770D43843976B973195 /* CustomMedication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2D5FE7B40C9881593D2FED /* CustomMedication.swift */; };
 		A237363D26FB70C622D8DD1C /* ItamiTechoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB226EB3961D03CEF96084D6 /* ItamiTechoTests.swift */; };
 		A659A60C78AD14B3E33DF291 /* ReportCSVGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC21945180E1D6E37E254C35 /* ReportCSVGenerator.swift */; };
 		A7CA453C0724C131F20273C7 /* CustomSymptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE92063302087082890758C9 /* CustomSymptom.swift */; };
@@ -93,7 +106,9 @@
 		ABB508AAA1D16585406C58F4 /* LocationPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91536D3EA4BF9A34E364A7 /* LocationPermissionView.swift */; };
 		ACAD608409BD469117E8A50B /* SymptomRecord+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B73A3C17D5A33266222D9BB /* SymptomRecord+Display.swift */; };
 		ADD62CD7950CEF9E53DEFDDD /* ItamiTechoWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB1555ADDD0E4B1DF0FC7B1 /* ItamiTechoWatchApp.swift */; };
+		AF4941378F5A96E8D6CFED62 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A8CAD197034E7E3D783C8B /* WeatherService.swift */; };
 		AF52028B059E5FFED22EEE2B /* SourceDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F53DB6661EE5F379370BA /* SourceDevice.swift */; };
+		AFB5DBAAED9ED4F937972687 /* SymptomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCADA2A117520BB839906A2 /* SymptomType.swift */; };
 		B0BFDFBEAD4B138B53235246 /* SymptomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCADA2A117520BB839906A2 /* SymptomType.swift */; };
 		B0DA77095E0F5324E0E4C7BA /* LegalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B864013EFDEE8913DBD63EA /* LegalView.swift */; };
 		B17CA45E21A4D795E922E946 /* EnvironmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F8309642423352DA3279D9 /* EnvironmentService.swift */; };
@@ -102,13 +117,17 @@
 		BB641C0E1BB31C01E46E50AF /* EnvironmentSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F964FC569EC533BE5AFF458B /* EnvironmentSnapshot.swift */; };
 		BCB7BD91214121B565C37A46 /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3149AD38AC8342560EAF6901 /* HealthService.swift */; };
 		BDB6FB5BA8D6066B24E0D7A6 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4D7BB6069DDDCC2AABC85D /* OnboardingView.swift */; };
+		BE6E1610790F68DE2974843E /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3149AD38AC8342560EAF6901 /* HealthService.swift */; };
 		C0DF8F45BA531AFAF056AA15 /* CustomMedication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2D5FE7B40C9881593D2FED /* CustomMedication.swift */; };
+		C264286FEFA7D71C928D7C2A /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E078E9E89660F69A40DDC3E /* NotificationService.swift */; };
 		C3B0C6D1B54155C0BB46C2C4 /* WatchQuickActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE0D3CF384420DFF424434 /* WatchQuickActionButton.swift */; };
 		C4524DEF46E83FC50E78F912 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F49E3F955622918185F8DE /* RecordView.swift */; };
+		C5E6EF077979478A58CB71C5 /* PlanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5038A95AD0D6CF2A20ABD /* PlanService.swift */; };
 		C68BEC30312D90C16D5FD7C7 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A8CAD197034E7E3D783C8B /* WeatherService.swift */; };
 		C6ADACA6B360C955BC7730FA /* RecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2A8923E253022443282FF3 /* RecordStore.swift */; };
 		C6B93263A7075C8391991A24 /* EnvironmentSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F964FC569EC533BE5AFF458B /* EnvironmentSnapshot.swift */; };
 		C976F8A293A53CE6C28E2266 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E078E9E89660F69A40DDC3E /* NotificationService.swift */; };
+		CB599DBD85E74FAAB635A75E /* SymptomRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A535D66EAC5B6D4993ECC6 /* SymptomRecord.swift */; };
 		CE3DB4480F53E450767878F5 /* WatchSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E955D599AAD32E058DA9E18 /* WatchSyncService.swift */; };
 		CE8C3D11C6D41D2FF1DDA7A1 /* PlanLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3431A605F28F3BC28482F999 /* PlanLimits.swift */; };
 		D09AE85BEB8A68DCDD526A1D /* PlanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5038A95AD0D6CF2A20ABD /* PlanService.swift */; };
@@ -119,8 +138,10 @@
 		D84B36025D21CDDC84FDE98B /* ItamiTechoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3009AD7C1DD7166BD6EF5AAB /* ItamiTechoApp.swift */; };
 		D8ACF22DC96CE692CC4FA222 /* HealthSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252131398E2F4E994C5CFD1 /* HealthSnapshot.swift */; };
 		D92F234730A06D9EB85CA33D /* AnalysisHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15543C82C90EEE37278B6DF8 /* AnalysisHelper.swift */; };
+		D94FA4692C891BA9846F1014 /* ItamiTechoWatchWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9946300260CBF533429F138 /* ItamiTechoWatchWidget.swift */; };
 		D9CA1337AAC3FA020D3448BF /* RecordEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA29599A7BBC8FA82F629F92 /* RecordEditView.swift */; };
 		DAFA966E36508324F3A3E76B /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A8CAD197034E7E3D783C8B /* WeatherService.swift */; };
+		DE54ABDF6327DE704E2933E6 /* AnalysisHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15543C82C90EEE37278B6DF8 /* AnalysisHelper.swift */; };
 		DFBBF0A07E0215D00DFFA820 /* SymptomRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A535D66EAC5B6D4993ECC6 /* SymptomRecord.swift */; };
 		DFF7F464AEFEE7B7E70A7B83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DE1D9FE8A172C4306293679 /* Assets.xcassets */; };
 		E172D3913B3EEB45586AEB1E /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102BCA0F9545A2867BA014E /* Strings.swift */; };
@@ -128,7 +149,10 @@
 		E4895617CD2CBA1EE13AD0CD /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB982CC831F3209858A7511 /* LocationService.swift */; };
 		E5304E51A05B269B9F17FD3E /* WatchHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27812C0D63C3A43267F2DF3F /* WatchHistoryView.swift */; };
 		E62BEBCD2C8BD60E5B0F129C /* RecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2A8923E253022443282FF3 /* RecordStore.swift */; };
+		E90A3CE86CFF50260BAC3659 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8876DF83E78487A49E75F2F /* Constants.swift */; };
+		EAADF7F7A3ECB88F9858F769 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102BCA0F9545A2867BA014E /* Strings.swift */; };
 		EB026C09CF4D20DBAFFE7E42 /* SymptomRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A535D66EAC5B6D4993ECC6 /* SymptomRecord.swift */; };
+		EB46A6B2733E380A6ABE887E /* PlanLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3431A605F28F3BC28482F999 /* PlanLimits.swift */; };
 		EBD8F837E3E1F64C94239EEE /* EnvironmentAnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230EF9B67139C5F0A28D2D7E /* EnvironmentAnalysisView.swift */; };
 		EEBAEE0B5C1F7B2B774D193F /* SymptomRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A535D66EAC5B6D4993ECC6 /* SymptomRecord.swift */; };
 		EF85D71279DBE56DAEC702C9 /* HealthSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252131398E2F4E994C5CFD1 /* HealthSnapshot.swift */; };
@@ -153,6 +177,13 @@
 			remoteGlobalIDString = 371A41431E7B861A1AB3118B;
 			remoteInfo = ItamiTechoWidgetExtension;
 		};
+		996BD48036EB255B2F5A9925 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1AA791E1C01CB500E5AA2458 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D1EFB2CEB1327AE313949FED;
+			remoteInfo = ItamiTechoWatchWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -167,6 +198,17 @@
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EF24AEFFEFD041AB1562367F /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1B73C5DDA574295D41253458 /* ItamiTechoWatchWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -177,6 +219,7 @@
 		08A535D66EAC5B6D4993ECC6 /* SymptomRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomRecord.swift; sourceTree = "<group>"; };
 		0E078E9E89660F69A40DDC3E /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		15543C82C90EEE37278B6DF8 /* AnalysisHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisHelper.swift; sourceTree = "<group>"; };
+		15EBADAD76D44D2B9381A18E /* ItamiTechoWatchWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ItamiTechoWatchWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		193ADF2324508AEA30BD1EFA /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		1B2A8923E253022443282FF3 /* RecordStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordStore.swift; sourceTree = "<group>"; };
 		1CEBE4D9BC1BD270286AACDA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -222,6 +265,7 @@
 		AC21945180E1D6E37E254C35 /* ReportCSVGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCSVGenerator.swift; sourceTree = "<group>"; };
 		AE92063302087082890758C9 /* CustomSymptom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSymptom.swift; sourceTree = "<group>"; };
 		B147764F021F5BABF149E09F /* ItamiTechoWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItamiTechoWidget.swift; sourceTree = "<group>"; };
+		B9946300260CBF533429F138 /* ItamiTechoWatchWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItamiTechoWatchWidget.swift; sourceTree = "<group>"; };
 		BB226EB3961D03CEF96084D6 /* ItamiTechoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItamiTechoTests.swift; sourceTree = "<group>"; };
 		BDB982CC831F3209858A7511 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		BFCADA2A117520BB839906A2 /* SymptomType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomType.swift; sourceTree = "<group>"; };
@@ -254,6 +298,7 @@
 				06C728874BA2DAA4206AFA78 /* ItamiTecho.app */,
 				80F9DC603E95B815FDA55976 /* ItamiTechoTests.xctest */,
 				20D3C5ED5C67B1D251D2814B /* ItamiTechoWatch.app */,
+				15EBADAD76D44D2B9381A18E /* ItamiTechoWatchWidgetExtension.appex */,
 				7F1A9DD46C6086D3977A3576 /* ItamiTechoWidgetExtension.appex */,
 			);
 			name = Products;
@@ -407,6 +452,7 @@
 				5E72CA5231803674D37B209E /* ItamiTecho */,
 				9AD02DBD3010DA2993E74F56 /* ItamiTechoTests */,
 				3C08EAD6D17CE50FC4F76EB5 /* ItamiTechoWatch */,
+				99C678287813319B084997DC /* ItamiTechoWatchWidget */,
 				6F75D97BE4E2BF6191233BF1 /* ItamiTechoWidget */,
 				2AAA71868829068F27836C3A /* Shared */,
 				0A2D99F5A29C2F1388BC60D2 /* Products */,
@@ -419,6 +465,14 @@
 				8DE1D9FE8A172C4306293679 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		99C678287813319B084997DC /* ItamiTechoWatchWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B9946300260CBF533429F138 /* ItamiTechoWatchWidget.swift */,
+			);
+			path = ItamiTechoWatchWidget;
 			sourceTree = "<group>";
 		};
 		9A762E0B5F0FF13F0A5A1BAD /* Settings */ = {
@@ -589,16 +643,35 @@
 			productReference = 80F9DC603E95B815FDA55976 /* ItamiTechoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		D1EFB2CEB1327AE313949FED /* ItamiTechoWatchWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49FE094D41DF9A482B874E92 /* Build configuration list for PBXNativeTarget "ItamiTechoWatchWidgetExtension" */;
+			buildPhases = (
+				3193DAF8D7661C8291095222 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ItamiTechoWatchWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = ItamiTechoWatchWidgetExtension;
+			productReference = 15EBADAD76D44D2B9381A18E /* ItamiTechoWatchWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		F182150731C48D69EA07C6A8 /* ItamiTechoWatch */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D8A4979D90D1C0F4D23822CE /* Build configuration list for PBXNativeTarget "ItamiTechoWatch" */;
 			buildPhases = (
 				4DA58DC03986B49AFF72F1C9 /* Sources */,
 				79A80EF6D060ADE80CA05775 /* Resources */,
+				EF24AEFFEFD041AB1562367F /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3835B1E92A4FBA96BD00182F /* PBXTargetDependency */,
 			);
 			name = ItamiTechoWatch;
 			packageProductDependencies = (
@@ -625,6 +698,9 @@
 					8B788E2115A8BD3DF7011DCE = {
 						DevelopmentTeam = R7B3AEZ7TA;
 					};
+					D1EFB2CEB1327AE313949FED = {
+						DevelopmentTeam = R7B3AEZ7TA;
+					};
 					F182150731C48D69EA07C6A8 = {
 						DevelopmentTeam = R7B3AEZ7TA;
 					};
@@ -647,6 +723,7 @@
 				2E922794B359B0DE2BDD3581 /* ItamiTecho */,
 				8B788E2115A8BD3DF7011DCE /* ItamiTechoTests */,
 				F182150731C48D69EA07C6A8 /* ItamiTechoWatch */,
+				D1EFB2CEB1327AE313949FED /* ItamiTechoWatchWidgetExtension */,
 				371A41431E7B861A1AB3118B /* ItamiTechoWidgetExtension */,
 			);
 		};
@@ -673,6 +750,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3193DAF8D7661C8291095222 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE54ABDF6327DE704E2933E6 /* AnalysisHelper.swift in Sources */,
+				E90A3CE86CFF50260BAC3659 /* Constants.swift in Sources */,
+				9F895770D43843976B973195 /* CustomMedication.swift in Sources */,
+				43450942884747EC587EBE39 /* CustomSymptom.swift in Sources */,
+				5EABEAF1646E1CDCB3D662A4 /* CustomSymptomStore.swift in Sources */,
+				9194F486F3A344A1198EF2B7 /* EnvironmentService.swift in Sources */,
+				402D6DB7C9C2445CFE660B1F /* EnvironmentSnapshot.swift in Sources */,
+				BE6E1610790F68DE2974843E /* HealthService.swift in Sources */,
+				0D4D0B4A1E6D584AC0947442 /* HealthSnapshot.swift in Sources */,
+				D94FA4692C891BA9846F1014 /* ItamiTechoWatchWidget.swift in Sources */,
+				8EB88D74F6254AB2689A7590 /* LocationService.swift in Sources */,
+				C264286FEFA7D71C928D7C2A /* NotificationService.swift in Sources */,
+				EB46A6B2733E380A6ABE887E /* PlanLimits.swift in Sources */,
+				C5E6EF077979478A58CB71C5 /* PlanService.swift in Sources */,
+				15FB48531CF9B4AFF1D7CF7A /* PressureHistoryStore.swift in Sources */,
+				02E556D392D353623B8E8CED /* RecordStore.swift in Sources */,
+				48587891F250D2C2A7F3E494 /* SourceDevice.swift in Sources */,
+				EAADF7F7A3ECB88F9858F769 /* Strings.swift in Sources */,
+				56CAE6E3D35C439C7126AEDC /* SymptomRecord+Display.swift in Sources */,
+				CB599DBD85E74FAAB635A75E /* SymptomRecord.swift in Sources */,
+				AFB5DBAAED9ED4F937972687 /* SymptomType.swift in Sources */,
+				6293D0E0EA5D8F1612EA8DFF /* WatchSyncService.swift in Sources */,
+				AF4941378F5A96E8D6CFED62 /* WeatherService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4DA58DC03986B49AFF72F1C9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -829,6 +936,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3835B1E92A4FBA96BD00182F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D1EFB2CEB1327AE313949FED /* ItamiTechoWatchWidgetExtension */;
+			targetProxy = 996BD48036EB255B2F5A9925 /* PBXContainerItemProxy */;
+		};
 		D38E1F2431CBCC124583CA4C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2E922794B359B0DE2BDD3581 /* ItamiTecho */;
@@ -855,6 +967,24 @@
 				TARGETED_DEVICE_FAMILY = 4;
 			};
 			name = Debug;
+		};
+		36350E1DA515B846C673335E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ItamiTechoWatch/ItamiTechoWatch.entitlements;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ItamiTechoWatchWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.itamitecho.ItamiTechoWatch.watchwidget;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Release;
 		};
 		5C155CC77D19CCBF9C141E43 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -986,6 +1116,24 @@
 			};
 			name = Debug;
 		};
+		E427D67D83A6FFC9DC485648 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ItamiTechoWatch/ItamiTechoWatch.entitlements;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ItamiTechoWatchWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.itamitecho.ItamiTechoWatch.watchwidget;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Debug;
+		};
 		E71F7CCE34C8BD65F4FDA50F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1067,6 +1215,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CFBundleURLTypes = "[[\"CFBundleURLSchemes\": [\"itamitecho\"]]]";
 				CODE_SIGN_ENTITLEMENTS = ItamiTecho/ItamiTecho.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
@@ -1090,6 +1239,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CFBundleURLTypes = "[[\"CFBundleURLSchemes\": [\"itamitecho\"]]]";
 				CODE_SIGN_ENTITLEMENTS = ItamiTecho/ItamiTecho.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
@@ -1117,6 +1267,15 @@
 			buildConfigurations = (
 				A402A1EA1B5B243D3CAE747F /* Debug */,
 				E71F7CCE34C8BD65F4FDA50F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		49FE094D41DF9A482B874E92 /* Build configuration list for PBXNativeTarget "ItamiTechoWatchWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E427D67D83A6FFC9DC485648 /* Debug */,
+				36350E1DA515B846C673335E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
