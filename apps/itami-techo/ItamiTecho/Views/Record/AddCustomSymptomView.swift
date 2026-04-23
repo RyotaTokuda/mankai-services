@@ -12,8 +12,8 @@ struct AddCustomSymptomView: View {
         NavigationStack {
             Form {
                 Section {
-                    TextField("症状名", text: $name)
-                    TextField("絵文字（任意）", text: $emoji)
+                    TextField(S.Common.symptomName, text: $name)
+                    TextField(S.Common.emojiOptional, text: $emoji)
                         .onChange(of: emoji) { _, newValue in
                             // 1文字だけに制限
                             if newValue.count > 1 {
@@ -23,21 +23,21 @@ struct AddCustomSymptomView: View {
                 }
 
                 Section {
-                    Text("一般的な症状を入力してください。\n病名の入力は推奨しません。")
+                    Text(S.Common.customSymptomHint)
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
             }
-            .navigationTitle("症状を追加")
+            .navigationTitle(S.Common.addSymptom)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("キャンセル") {
+                    Button(S.Common.cancel) {
                         dismiss()
                     }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("追加") {
+                    Button(S.Common.add) {
                         let symptom = CustomSymptom(
                             name: name.trimmingCharacters(in: .whitespaces),
                             emoji: emoji.isEmpty ? nil : emoji

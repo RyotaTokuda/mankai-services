@@ -75,7 +75,7 @@ struct SettingsView: View {
                         Label(S.Settings.deleteAllData, systemImage: "trash")
                     }
                 } header: {
-                    Text("データ管理")
+                    Text(S.Settings.dataManagement)
                 }
 
                 // ── このアプリについて ──

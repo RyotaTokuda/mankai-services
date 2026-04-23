@@ -26,16 +26,16 @@ struct NotificationPermissionView: View {
                 .padding(.horizontal)
 
             VStack(alignment: .leading, spacing: 6) {
-                NotifPermItem(text: "気圧が大きく下がる見込みの時")
-                NotifPermItem(text: "天気が急変する予報の時")
-                NotifPermItem(text: "診断や予防を目的としない通知です")
+                NotifPermItem(text: S.Permission.notificationPressureDrop)
+                NotifPermItem(text: S.Permission.notificationWeatherChange)
+                NotifPermItem(text: S.Permission.notificationNonMedical)
             }
             .padding()
             .background(Color(.systemGray6))
             .cornerRadius(12)
             .padding(.horizontal)
 
-            Text("週4回以内・1日1回以内に制限されます。\n通知のオン/オフは設定でいつでも変更できます。")
+            Text(S.Permission.notificationFrequencyNote)
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
@@ -47,7 +47,7 @@ struct NotificationPermissionView: View {
                 isCompleted = true
                 Task { _ = await notificationService.requestAuthorization() }
             } label: {
-                Text("通知を許可する")
+                Text(S.Permission.notificationAllowButton)
                     .font(.headline)
                     .frame(maxWidth: .infinity, minHeight: 50)
             }
@@ -57,7 +57,7 @@ struct NotificationPermissionView: View {
             Button {
                 isCompleted = true
             } label: {
-                Text("あとで設定する")
+                Text(S.Permission.notificationSkipButton)
                     .font(.subheadline)
             }
             .padding(.bottom, 16)

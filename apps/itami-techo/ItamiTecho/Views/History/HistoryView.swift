@@ -190,7 +190,7 @@ struct RecordRow: View {
                         VStack(spacing: 1) {
                             Image(systemName: "heart")
                                 .font(.caption)
-                            Text("完了")
+                            Text(S.Record.settledButton)
                                 .font(.system(size: 8))
                         }
                         .foregroundStyle(Color.green.opacity(0.8))
@@ -199,7 +199,7 @@ struct RecordRow: View {
                         .cornerRadius(6)
                     }
                     .buttonStyle(.plain)
-                    .accessibilityLabel("落ち着いた")
+                    .accessibilityLabel(S.Record.settled)
                 } else {
                     Image(systemName: record.settledAt != nil ? "heart.fill" : "heart")
                         .font(.caption)

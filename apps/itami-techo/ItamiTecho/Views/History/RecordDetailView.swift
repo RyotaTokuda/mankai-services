@@ -16,9 +16,9 @@ struct RecordDetailView: View {
             List {
                 // ── 基本情報 ──
                 Section {
-                    LabeledContent("症状", value: record.displayName)
+                    LabeledContent(S.Common.symptom, value: record.displayName)
                     LabeledContent("強さ", value: "\(record.severity) - \(S.Severity.label(for: record.severity))")
-                    LabeledContent("記録日時", value: record.createdAt.formatted(.dateTime.year().month().day().hour().minute()))
+                    LabeledContent(S.Common.recordedAt, value: record.createdAt.formatted(.dateTime.year().month().day().hour().minute()))
                     LabeledContent(S.Common.sourceDevice, value: record.sourceDevice == .watch ? S.Common.sourceWatch : S.Common.sourceiPhone)
                 }
 
@@ -56,7 +56,7 @@ struct RecordDetailView: View {
                             recordStore.markSettled(id: record.id)
                             dismiss()
                         } label: {
-                            Label("落ち着いた", systemImage: "heart.fill")
+                            Label(S.Record.settled, systemImage: "heart.fill")
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
                                 .foregroundStyle(.white)
@@ -71,7 +71,7 @@ struct RecordDetailView: View {
 
                 // ── メモ ──
                 if let note = record.note, !note.isEmpty {
-                    Section("メモ") {
+                    Section(S.Common.note) {
                         Text(note)
                             .font(.body)
                     }
@@ -132,7 +132,7 @@ struct RecordDetailView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("閉じる") { dismiss() }
+                    Button(S.Common.close) { dismiss() }
                 }
             }
             .sheet(isPresented: $showingEdit) {

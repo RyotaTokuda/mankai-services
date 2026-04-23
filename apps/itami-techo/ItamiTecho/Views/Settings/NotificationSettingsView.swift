@@ -17,7 +17,7 @@ struct NotificationSettingsView: View {
                 case .authorized:
                     HStack {
                         Image(systemName: "checkmark.circle.fill").foregroundStyle(.green)
-                        Text("通知が許可されています")
+                        Text(S.Settings.notificationAuthorized)
                     }
                 case .denied:
                     VStack(alignment: .leading, spacing: 8) {
@@ -26,7 +26,7 @@ struct NotificationSettingsView: View {
                             Text(S.Settings.notificationPermissionDenied)
                                 .font(.subheadline)
                         }
-                        Button("設定アプリを開く") {
+                        Button(S.Settings.notificationOpenSettings) {
                             if let url = URL(string: UIApplication.openSettingsURLString) {
                                 UIApplication.shared.open(url)
                             }
@@ -34,7 +34,7 @@ struct NotificationSettingsView: View {
                         .font(.subheadline)
                     }
                 default:
-                    Button("通知を許可する") {
+                    Button(S.Settings.notificationAllow) {
                         Task {
                             _ = await notificationService.requestAuthorization()
                             await refreshAuthStatus()

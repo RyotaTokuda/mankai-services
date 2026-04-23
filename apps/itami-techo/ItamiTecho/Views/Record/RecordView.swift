@@ -124,7 +124,7 @@ struct RecordView: View {
                     HStack(spacing: 6) {
                         Image(systemName: "lock.fill")
                             .font(.caption2)
-                        Text("プレミアムでカスタム症状を無制限追加")
+                        Text(S.Record.premiumUnlockCustom)
                             .font(.caption2)
                     }
                     .foregroundStyle(.secondary)
@@ -189,7 +189,7 @@ struct RecordView: View {
 
             if vm.isPastDate {
                 DatePicker(
-                    "日時",
+                    S.Common.dateTime,
                     selection: $vm.recordDate,
                     in: ...Date(),
                     displayedComponents: [.date, .hourAndMinute]

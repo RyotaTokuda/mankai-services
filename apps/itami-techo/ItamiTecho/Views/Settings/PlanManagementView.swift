@@ -34,7 +34,7 @@ struct PlanManagementView: View {
                     VStack(alignment: .leading, spacing: 2) {
                         Text(S.Settings.planPremium)
                             .font(.headline)
-                        Text("すべての機能をご利用いただけます")
+                        Text(S.Settings.planAllFeatures)
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
@@ -42,12 +42,12 @@ struct PlanManagementView: View {
                 .padding(.vertical, 4)
             }
 
-            Section("プレミアム機能") {
-                FeatureCheckRow(text: "無制限の履歴保存")
-                FeatureCheckRow(text: "通院向けPDF / CSVレポート")
-                FeatureCheckRow(text: "曜日別・90日間の傾向分析")
-                FeatureCheckRow(text: "天気・気圧・Health 高度分析")
-                FeatureCheckRow(text: "カスタム症状・薬タグ無制限")
+            Section(S.Settings.premiumFeaturesTitle) {
+                FeatureCheckRow(text: S.Settings.planFeatureHistory)
+                FeatureCheckRow(text: S.Settings.planFeatureReport)
+                FeatureCheckRow(text: S.Settings.planFeatureTrends)
+                FeatureCheckRow(text: S.Settings.planFeatureAnalysis)
+                FeatureCheckRow(text: S.Settings.planFeatureCustom)
             }
 
             Section {
@@ -73,7 +73,7 @@ struct PlanManagementView: View {
                     VStack(alignment: .leading, spacing: 2) {
                         Text(S.Settings.planFree)
                             .font(.headline)
-                        Text("基本的な記録・履歴機能が使えます")
+                        Text(S.Settings.planFreeFeatures)
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
@@ -81,12 +81,12 @@ struct PlanManagementView: View {
                 .padding(.vertical, 4)
             }
 
-            Section("プレミアムでできること") {
-                FeatureCheckRow(text: "90日間の無制限履歴")
-                FeatureCheckRow(text: "通院向けPDF / CSVレポート出力")
-                FeatureCheckRow(text: "曜日別傾向・詳細環境分析")
-                FeatureCheckRow(text: "Health連携の詳細分析")
-                FeatureCheckRow(text: "カスタム症状・薬タグ無制限")
+            Section(S.Settings.premiumFeaturesUpgradeTitle) {
+                FeatureCheckRow(text: S.Settings.planFeatureHistoryFree)
+                FeatureCheckRow(text: S.Settings.planFeatureReportFree)
+                FeatureCheckRow(text: S.Settings.planFeatureTrendsFree)
+                FeatureCheckRow(text: S.Settings.planFeatureHealthFree)
+                FeatureCheckRow(text: S.Settings.planFeatureCustomFree)
             }
 
             Section {

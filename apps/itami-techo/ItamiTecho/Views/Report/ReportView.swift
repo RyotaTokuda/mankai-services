@@ -26,16 +26,16 @@ struct ReportView: View {
         List {
             // ── 期間選択 ──
             Section(S.Report.periodSelect) {
-                DatePicker("開始", selection: $startDate, displayedComponents: .date)
-                DatePicker("終了", selection: $endDate, displayedComponents: .date)
+                DatePicker(S.Report.startDate, selection: $startDate, displayedComponents: .date)
+                DatePicker(S.Report.endDate, selection: $endDate, displayedComponents: .date)
             }
 
             // ── 概要 ──
             Section(S.Report.summary) {
-                LabeledContent("記録件数", value: "\(periodRecords.count)件")
-                LabeledContent("服薬回数", value: "\(medicationCount)回")
+                LabeledContent(S.Report.recordCount, value: "\(periodRecords.count)件")
+                LabeledContent(S.Report.medicationCount, value: "\(medicationCount)回")
                 if let avg = avgSettleMinutes {
-                    LabeledContent("落ち着くまでの平均", value: "\(avg)分")
+                    LabeledContent(S.Report.avgSettleTime, value: "\(avg)分")
                 }
             }
 
@@ -91,10 +91,10 @@ struct ReportView: View {
                     .buttonStyle(.plain)
                 }
             } header: {
-                Text("出力")
+                Text(S.Report.exportSection)
             } footer: {
                 if !planService.isPremium {
-                    Button("アップグレードして出力する") { showingPaywall = true }
+                    Button(S.Report.upgradeToExport) { showingPaywall = true }
                         .font(.caption)
                         .foregroundStyle(Color.accentColor)
                 }
@@ -111,7 +111,7 @@ struct ReportView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
-                Button("閉じる") { dismiss() }
+                Button(S.Common.close) { dismiss() }
             }
         }
         .sheet(isPresented: $showingShareSheet) {
@@ -123,7 +123,7 @@ struct ReportView: View {
     }
 
     private var premiumBadge: some View {
-        Text("プレミアム")
+        Text(S.Settings.planBadge)
             .font(.caption2)
             .fontWeight(.semibold)
             .foregroundStyle(.white)

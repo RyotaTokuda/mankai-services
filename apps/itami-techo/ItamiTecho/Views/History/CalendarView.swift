@@ -146,11 +146,11 @@ struct CalendarView: View {
 
                 Spacer()
             }
-            .navigationTitle("カレンダー")
+            .navigationTitle(S.Common.calendar)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("閉じる") { dismiss() }
+                    Button(S.Common.close) { dismiss() }
                 }
             }
             .sheet(item: $selectedRecord) { record in

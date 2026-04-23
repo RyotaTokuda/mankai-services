@@ -18,7 +18,7 @@ struct AboutView: View {
             }
 
             Section {
-                Text("しんどい瞬間を、Apple Watch や iPhone からすぐ記録。あとから自分の傾向を振り返り、通院時にも使える形にまとめられるアプリです。")
+                Text(S.App.description)
                     .font(.subheadline)
             }
 
@@ -32,8 +32,8 @@ struct AboutView: View {
             }
 
             Section {
-                Link("プライバシーポリシー", destination: URL(string: "https://mankai-software.com/privacy")!)
-                Link("利用規約", destination: URL(string: "https://mankai-software.com/terms")!)
+                Link(S.Legal.privacyPolicy, destination: URL(string: "https://mankai-software.com/privacy")!)
+                Link(S.Legal.termsOfService, destination: URL(string: "https://mankai-software.com/terms")!)
             }
         }
         .navigationTitle(S.Settings.about)

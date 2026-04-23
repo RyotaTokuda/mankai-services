@@ -13,6 +13,7 @@ enum S {
     enum App {
         static let name = "痛み手帳"
         static let tagline = "しんどい瞬間を、手首からすぐ記録"
+        static let description = "しんどい瞬間を、Apple Watch や iPhone からすぐ記録。あとから自分の傾向を振り返り、通院時にも使える形にまとめられるアプリです。"
     }
 
     // ── オンボーディング ──────────────────────────────────
@@ -85,12 +86,14 @@ enum S {
         static let medication = "薬を飲んだ"
         static let medicationTaken = "薬を飲んだ"
         static let settled = "落ち着いた"
+        static let settledButton = "完了"
         static let addNote = "メモを追加"
         static let edit = "編集"
         static let delete = "削除"
         static let deleteConfirm = "この記録を削除しますか？"
         static let whySettled = "どうして落ち着きましたか？"
         static let settledFooter = "症状が治まったら記録しておくと、通院時のレポートに持続時間が表示されます"
+        static let premiumUnlockCustom = "プレミアムでカスタム症状を無制限追加"
     }
 
     // ── 履歴 ─────────────────────────────────────────────
@@ -133,6 +136,11 @@ enum S {
         static let hintAirQuality = "空気質が低い日に不調記録が重なる可能性があります"
         static let hintTemperature = "気温差が大きい日に記録が見られます"
         static let hintGeneral = "記録と環境データの関係を参考情報として表示しています"
+        // 空状態
+        static let noDataTitle = "天気・気圧データがありません"
+        static let noDataBody = "天気・気圧との関係を見るには、位置情報の許可が必要です。気圧はセンサーで取得しているため、位置を許可しなくても気圧データは収集されます。"
+        static let noDataButton = "設定で位置情報を許可する"
+        static let noDataYet = "環境データがまだ記録されていません"
     }
 
     // ── Health 分析 ──────────────────────────────────────
@@ -146,6 +154,17 @@ enum S {
         /// 相関ヒントの表現（原因断定しない）
         static let hintSleep = "睡眠時間が短い日の前後で記録が多い傾向があります"
         static let hintHeartRate = "安静時心拍が高めの日に不調記録が重なることがあります"
+        // 空状態・接続誘導
+        static let connectTitle = "Apple Healthと連携すると"
+        static let connectBody = "睡眠・安静時心拍・歩数と症状の関係が見えるようになります。"
+        static let connectButton = "Apple Healthの連携を許可する"
+        static let noDataYet = "Healthデータがまだ記録されていません"
+        // データラベル
+        static let shortSleepRecord = "6時間未満の日の記録"
+        static let normalSleepRecord = "6時間以上の日の記録"
+        static let highHRRecord = "安静時心拍高めの日の記録"
+        static let normalHRRecord = "通常の日の記録"
+        static let avgStepsRecord = "記録日の平均歩数"
     }
 
     // ── レポート ─────────────────────────────────────────
@@ -156,6 +175,13 @@ enum S {
         static let exportPDF = "PDFで出力"
         static let exportCSV = "CSVで出力"
         static let periodSelect = "期間を選択"
+        static let startDate = "開始"
+        static let endDate = "終了"
+        static let recordCount = "記録件数"
+        static let medicationCount = "服薬回数"
+        static let avgSettleTime = "落ち着くまでの平均"
+        static let exportSection = "出力"
+        static let upgradeToExport = "アップグレードして出力する"
         static let disclaimer = "このレポートは記録データに基づく参考情報です。医療上の判断に代わるものではありません。"
         static let doctorCTA = "通院前にレポートをまとめますか？"
         static let doctorCTABody = "記録をPDFにまとめて、医師と共有しやすくなります"
@@ -175,6 +201,27 @@ enum S {
         static let trialLabel = "7日間無料で試す"
         static let restoreLabel = "購入を復元"
         static let freeNote = "無料でも記録・基本履歴・カレンダーはずっと使えます"
+        // トライアルタイムライン
+        static let trialBothPlans = "どちらのプランも7日間の無料トライアル付き"
+        static let trialTimelineToday = "今日"
+        static let trialTimelineDay7 = "7日後"
+        static let ctaStart = "7日間無料で始める"
+        static let trialAutoRenew = "無料期間終了後に自動更新。いつでもキャンセル可。"
+        /// Apple 必須の定型開示文（変更禁止）
+        static let subscriptionDisclosure = "サブスクリプションは確認時にApple IDに課金されます。現在の期間終了の少なくとも24時間前にキャンセルしない限り自動更新されます。"
+        // 機能一覧
+        static let featureHistory = "90日間の無制限履歴"
+        static let featureReport = "通院向けPDF / CSVレポート"
+        static let featureEnvironment = "天気・気圧・空気質の詳細分析"
+        static let featureHealth = "Health連携の詳細分析"
+        static let featureTrends = "曜日別・強さ分布の傾向分析"
+        static let featureCustom = "カスタム症状・薬タグ無制限"
+        // プランカード
+        static let planYearly = "年額"
+        static let planMonthly = "月額"
+        static let yearlyDetail = "月換算 ¥300"
+        static let monthlyDetail = "いつでも解約可"
+        static let recommended = "おすすめ"
     }
 
     // ── 通知 ─────────────────────────────────────────────
@@ -214,6 +261,9 @@ enum S {
         static let notificationSensitivityNormal = "通常（週3〜4回）"
         static let notificationSensitivityHigh = "多め（毎日）"
         static let notificationFooter = "天気・気圧が大きく変化する予報の時にだけお知らせします。診断・予防を目的とするものではありません。"
+        static let notificationAuthorized = "通知が許可されています"
+        static let notificationOpenSettings = "設定アプリを開く"
+        static let notificationAllow = "通知を許可する"
         // プラン管理
         static let planFree = "無料プラン"
         static let planPremium = "プレミアム"
@@ -222,17 +272,37 @@ enum S {
         static let planUpgrade = "プレミアムにアップグレード"
         static let planRestore = "購入を復元"
         static let planManageSubscription = "サブスクリプションを管理"
+        static let planAllFeatures = "すべての機能をご利用いただけます"
+        static let planFreeFeatures = "基本的な記録・履歴機能が使えます"
+        static let premiumFeaturesTitle = "プレミアム機能"
+        static let premiumFeaturesUpgradeTitle = "プレミアムでできること"
+        static let planFeatureHistory = "無制限の履歴保存"
+        static let planFeatureReport = "通院向けPDF / CSVレポート"
+        static let planFeatureTrends = "曜日別・90日間の傾向分析"
+        static let planFeatureAnalysis = "天気・気圧・Health 高度分析"
+        static let planFeatureCustom = "カスタム症状・薬タグ無制限"
+        static let planFeatureHistoryFree = "90日間の無制限履歴"
+        static let planFeatureReportFree = "通院向けPDF / CSVレポート出力"
+        static let planFeatureTrendsFree = "曜日別傾向・詳細環境分析"
+        static let planFeatureHealthFree = "Health連携の詳細分析"
+        static let planFeatureCustomFree = "カスタム症状・薬タグ無制限"
+        static let planTrialBanner = "7日間無料トライアルあり"
         // Health設定
         static let healthNotAuthorized = "Healthへのアクセスが許可されていません"
         static let healthOpenSettings = "設定でHealthを許可する"
         static let healthAuthorized = "Healthと連携中"
         static let healthDataList = "取得データ：睡眠・安静時心拍・心拍変動・歩数・呼吸数・ワークアウト"
+        static let healthDeviceNotSupported = "このデバイスはHealthKitに対応していません"
+        static let healthConnectionStatus = "接続状態"
+        static let healthDataSection = "取得するデータ"
+        static let healthPrivacyNote = "HealthKitデータは端末内でのみ使用し、外部に送信されることはありません。"
         // iCloud
         static let backup = "機種変・バックアップ"
         static let iCloudSyncing = "iCloud と同期中"
         static let iCloudDisabled = "iCloud が無効です"
         static let iCloudHint = "設定 › Apple Account › iCloud でオンにすると機種変後もデータを引き継げます"
         // データ管理
+        static let dataManagement = "データ管理"
         static let deleteAllData = "すべてのデータを削除"
         static let deleteAllDataConfirm = "記録・カスタム症状を含む全データを削除します。この操作は元に戻せません。"
         static let deleteAllDataButton = "すべて削除"
@@ -241,10 +311,18 @@ enum S {
     // ── 法的注意書き ─────────────────────────────────────
     enum Legal {
         static let title = "法的情報"
+        static let importantNotice = "重要な注意事項"
+        static let dataHandlingTitle = "データの取り扱い"
         static let disclaimer1 = "本アプリは診断、治療、予防を目的としたものではありません。"
         static let disclaimer2 = "本アプリの内容は医療上の判断に代わるものではありません。"
         static let disclaimer3 = "体調に不安がある場合は医療機関に相談してください。"
         static let disclaimer4 = "表示される傾向は記録データに基づく参考情報です。"
+        static let dataLocal = "すべてのデータは端末内に保存されます"
+        static let dataNoExternal = "健康データを外部に送信することはありません"
+        static let locationRounded = "位置情報は市区町村レベルに丸めて保存されます"
+        static let trendsDisclaimer = "表示される傾向は記録データに基づく参考情報です"
+        static let privacyPolicy = "プライバシーポリシー"
+        static let termsOfService = "利用規約"
     }
 
     // ── 共通 UI ──────────────────────────────────────────
@@ -277,6 +355,8 @@ enum S {
         static let detailView = "詳しく見る"
         static let last14Days = "直近14日"
         static let trendHint = "記録が増えると傾向が見えてきます"
+        static let note = "メモ"
+        static let dateTime = "日時"
     }
 
     // ── Widget ──────────────────────────────────────────
@@ -333,5 +413,11 @@ enum S {
         // ── 通知 ──
         static let notificationTitle = "必要な時だけお知らせ"
         static let notificationBody = "天気が大きく変わる時など、記録が必要になりそうな場面でだけ通知します。"
+        static let notificationPressureDrop = "気圧が大きく下がる見込みの時"
+        static let notificationWeatherChange = "天気が急変する予報の時"
+        static let notificationNonMedical = "診断や予防を目的としない通知です"
+        static let notificationFrequencyNote = "週4回以内・1日1回以内に制限されます。\n通知のオン/オフは設定でいつでも変更できます。"
+        static let notificationAllowButton = "通知を許可する"
+        static let notificationSkipButton = "あとで設定する"
     }
 }

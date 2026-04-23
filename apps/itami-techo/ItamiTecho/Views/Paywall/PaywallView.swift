@@ -30,7 +30,7 @@ struct PaywallView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("閉じる") { dismiss() }
+                    Button(S.Common.close) { dismiss() }
                 }
             }
         }
@@ -57,12 +57,12 @@ struct PaywallView: View {
 
     private var features: some View {
         VStack(alignment: .leading, spacing: 10) {
-            FeatureRow(icon: "calendar",          text: "90日間の無制限履歴")
-            FeatureRow(icon: "doc.text",          text: "通院向けPDF / CSVレポート")
-            FeatureRow(icon: "cloud.sun",         text: "天気・気圧・空気質の詳細分析")
-            FeatureRow(icon: "heart.text.square", text: "Health連携の詳細分析")
-            FeatureRow(icon: "chart.bar",         text: "曜日別・強さ分布の傾向分析")
-            FeatureRow(icon: "tag",               text: "カスタム症状・薬タグ無制限")
+            FeatureRow(icon: "calendar",          text: S.Paywall.featureHistory)
+            FeatureRow(icon: "doc.text",          text: S.Paywall.featureReport)
+            FeatureRow(icon: "cloud.sun",         text: S.Paywall.featureEnvironment)
+            FeatureRow(icon: "heart.text.square", text: S.Paywall.featureHealth)
+            FeatureRow(icon: "chart.bar",         text: S.Paywall.featureTrends)
+            FeatureRow(icon: "tag",               text: S.Paywall.featureCustom)
         }
         .padding(16)
         .background(Color(.systemGray6))
@@ -76,18 +76,18 @@ struct PaywallView: View {
         HStack(spacing: 12) {
             PlanCard(
                 kind: .yearly,
-                title: "年額",
+                title: S.Paywall.planYearly,
                 price: yearlyPrice,
-                detail: "月換算 ¥300",
-                badge: "おすすめ",
+                detail: S.Paywall.yearlyDetail,
+                badge: S.Paywall.recommended,
                 isSelected: selectedPlan == .yearly
             ) { selectedPlan = .yearly }
 
             PlanCard(
                 kind: .monthly,
-                title: "月額",
+                title: S.Paywall.planMonthly,
                 price: monthlyPrice,
-                detail: "いつでも解約可",
+                detail: S.Paywall.monthlyDetail,
                 badge: nil,
                 isSelected: selectedPlan == .monthly
             ) { selectedPlan = .monthly }
@@ -99,15 +99,15 @@ struct PaywallView: View {
 
     private var trialTimeline: some View {
         VStack(spacing: 6) {
-            Text("どちらのプランも7日間の無料トライアル付き")
+            Text(S.Paywall.trialBothPlans)
                 .font(.caption)
                 .foregroundStyle(.secondary)
 
             HStack(spacing: 0) {
-                TimelineNode(dayLabel: "今日", desc: "全機能が使えます", isFilled: true)
+                TimelineNode(dayLabel: S.Paywall.trialTimelineToday, desc: "全機能が使えます", isFilled: true)
                 TimelineLine()
                 TimelineNode(
-                    dayLabel: "7日後",
+                    dayLabel: S.Paywall.trialTimelineDay7,
                     desc: selectedPlan == .yearly ? yearlyPrice + "/年" : monthlyPrice + "/月",
                     isFilled: false
                 )
@@ -142,12 +142,12 @@ struct PaywallView: View {
     private var legalLinks: some View {
         VStack(spacing: 6) {
             HStack(spacing: 16) {
-                Link("利用規約", destination: URL(string: "https://mankai-software.com/terms")!)
-                Link("プライバシーポリシー", destination: URL(string: "https://mankai-software.com/privacy")!)
+                Link(S.Legal.termsOfService, destination: URL(string: "https://mankai-software.com/terms")!)
+                Link(S.Legal.privacyPolicy, destination: URL(string: "https://mankai-software.com/privacy")!)
             }
             .font(.caption2)
 
-            Text("サブスクリプションは確認時にApple IDに課金されます。現在の期間終了の少なくとも24時間前にキャンセルしない限り自動更新されます。")
+            Text(S.Paywall.subscriptionDisclosure)
                 .font(.caption2).foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 24)
@@ -161,7 +161,7 @@ struct PaywallView: View {
             Button {
                 purchase()
             } label: {
-                Text("7日間無料で始める")
+                Text(S.Paywall.ctaStart)
                     .font(.headline).fontWeight(.bold)
                     .frame(maxWidth: .infinity, minHeight: 52)
             }
@@ -169,7 +169,7 @@ struct PaywallView: View {
             .controlSize(.large)
             .disabled(isPurchasing)
 
-            Text("無料期間終了後に自動更新。いつでもキャンセル可。")
+            Text(S.Paywall.trialAutoRenew)
                 .font(.caption2).foregroundStyle(.secondary)
         }
         .padding(.horizontal, 20)

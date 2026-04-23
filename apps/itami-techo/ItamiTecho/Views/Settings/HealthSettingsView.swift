@@ -31,11 +31,11 @@ struct HealthSettingsView: View {
                         }
                     }
                 } else {
-                    Text("このデバイスはHealthKitに対応していません")
+                    Text(S.Settings.healthDeviceNotSupported)
                         .foregroundStyle(.secondary)
                 }
             } header: {
-                Text("接続状態")
+                Text(S.Settings.healthConnectionStatus)
             }
 
             Section {
@@ -43,9 +43,9 @@ struct HealthSettingsView: View {
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             } header: {
-                Text("取得するデータ")
+                Text(S.Settings.healthDataSection)
             } footer: {
-                Text("HealthKitデータは端末内でのみ使用し、外部に送信されることはありません。")
+                Text(S.Settings.healthPrivacyNote)
                     .font(.caption)
             }
 

@@ -83,7 +83,7 @@ struct OnboardingView: View {
                     withAnimation(.easeInOut(duration: 0.3)) { step = .location }
                 }
             } label: {
-                Text(currentPage == pages.count - 1 ? S.Onboarding.startButton : "次へ")
+                Text(currentPage == pages.count - 1 ? S.Onboarding.startButton : S.Common.next)
                     .font(.headline)
                     .frame(maxWidth: .infinity, minHeight: 50)
             }
@@ -92,7 +92,7 @@ struct OnboardingView: View {
             .padding(.bottom, 16)
 
             if currentPage < pages.count - 1 {
-                Button("スキップ") {
+                Button(S.Common.skip) {
                     isCompleted = true
                 }
                 .font(.caption)

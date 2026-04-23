@@ -4,7 +4,7 @@ import SwiftUI
 struct LegalView: View {
     var body: some View {
         List {
-            Section("重要な注意事項") {
+            Section(S.Legal.importantNotice) {
                 ForEach([
                     S.Legal.disclaimer1,
                     S.Legal.disclaimer2,
@@ -22,11 +22,11 @@ struct LegalView: View {
                 }
             }
 
-            Section("データの取り扱い") {
-                InfoRow(icon: "iphone", text: "すべてのデータは端末内に保存されます")
-                InfoRow(icon: "arrow.up.right.circle", text: "健康データを外部に送信することはありません")
-                InfoRow(icon: "location.slash", text: "位置情報は市区町村レベルに丸めて保存されます")
-                InfoRow(icon: "chart.line.uptrend.xyaxis", text: "表示される傾向は記録データに基づく参考情報です")
+            Section(S.Legal.dataHandlingTitle) {
+                InfoRow(icon: "iphone", text: S.Legal.dataLocal)
+                InfoRow(icon: "arrow.up.right.circle", text: S.Legal.dataNoExternal)
+                InfoRow(icon: "location.slash", text: S.Legal.locationRounded)
+                InfoRow(icon: "chart.line.uptrend.xyaxis", text: S.Legal.trendsDisclaimer)
             }
         }
         .navigationTitle(S.Legal.title)
