@@ -26,7 +26,8 @@ struct RecordView: View {
                                 recordStore: recordStore,
                                 customSymptomStore: customSymptomStore,
                                 environmentService: environmentService,
-                                healthService: healthService
+                                healthService: healthService,
+                                planService: planService
                             )
                         } label: {
                             Text(S.Record.title)
@@ -47,6 +48,9 @@ struct RecordView: View {
                 if let record = vm.lastRecordedRecord {
                     RecordCompleteView(record: record)
                 }
+            }
+            .sheet(isPresented: $vm.showingPaywall) {
+                PaywallView()
             }
         }
     }

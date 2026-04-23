@@ -8,7 +8,8 @@ struct ReportView: View {
     @State private var startDate = Calendar.current.date(byAdding: .month, value: -1, to: Date()) ?? Date()
     @State private var endDate = Date()
     @State private var showingShareSheet = false
-    @State private var pdfURL: URL?
+    @State private var sharedURL: URL?
+    @State private var showingPaywall = false
 
     private var periodRecords: [SymptomRecord] {
         recordStore.records(from: startDate, to: endDate)
@@ -33,13 +34,13 @@ struct ReportView: View {
     var body: some View {
         NavigationStack {
             List {
-                // 期間選択
+                // ── 期間選択 ──
                 Section(S.Report.periodSelect) {
                     DatePicker("開始", selection: $startDate, displayedComponents: .date)
                     DatePicker("終了", selection: $endDate, displayedComponents: .date)
                 }
 
-                // 概要
+                // ── 概要 ──
                 Section(S.Report.summary) {
                     LabeledContent("記録件数", value: "\(periodRecords.count)件")
                     LabeledContent("服薬回数", value: "\(medicationCount)回")
@@ -48,36 +49,89 @@ struct ReportView: View {
                     }
                 }
 
-                // 症状別
-                Section(S.Trends.bySymptom) {
-                    ForEach(symptomCounts, id: \.0) { name, count in
-                        LabeledContent(name, value: "\(count)件")
+                // ── 症状別 ──
+                if !symptomCounts.isEmpty {
+                    Section(S.Trends.bySymptom) {
+                        ForEach(symptomCounts, id: \.0) { name, count in
+                            LabeledContent(name, value: "\(count)件")
+                        }
                     }
                 }
 
-                // 強さ分布
+                // ── 強さ分布 ──
                 Section(S.Trends.severityDistribution) {
-                    ForEach(severityDistribution, id: \.0) { label, count in
+                    ForEach(severityDistribution.filter { $0.1 > 0 }, id: \.0) { label, count in
                         LabeledContent(label, value: "\(count)件")
                     }
                 }
 
-                // 出力
+                // ── 出力（プレミアムゲート付き） ──
                 Section {
-                    Button {
-                        generateAndSharePDF()
-                    } label: {
-                        Label(S.Report.exportPDF, systemImage: "doc.fill")
-                    }
+                    if planService.isPremium {
+                        Button {
+                            generateAndSharePDF()
+                        } label: {
+                            Label(S.Report.exportPDF, systemImage: "doc.fill")
+                        }
 
-                    Button {
-                        shareCSV()
-                    } label: {
-                        Label(S.Report.exportCSV, systemImage: "tablecells")
+                        Button {
+                            shareCSV()
+                        } label: {
+                            Label(S.Report.exportCSV, systemImage: "tablecells")
+                        }
+                    } else {
+                        // PDF
+                        Button {
+                            showingPaywall = true
+                        } label: {
+                            HStack {
+                                Image(systemName: "lock.fill")
+                                    .foregroundStyle(.secondary)
+                                Text(S.Report.exportPDF)
+                                    .foregroundStyle(.secondary)
+                                Spacer()
+                                Text("プレミアム")
+                                    .font(.caption)
+                                    .foregroundStyle(.white)
+                                    .padding(.horizontal, 8)
+                                    .padding(.vertical, 3)
+                                    .background(Color.accentColor)
+                                    .cornerRadius(6)
+                            }
+                        }
+                        .buttonStyle(.plain)
+
+                        // CSV
+                        Button {
+                            showingPaywall = true
+                        } label: {
+                            HStack {
+                                Image(systemName: "lock.fill")
+                                    .foregroundStyle(.secondary)
+                                Text(S.Report.exportCSV)
+                                    .foregroundStyle(.secondary)
+                                Spacer()
+                                Text("プレミアム")
+                                    .font(.caption)
+                                    .foregroundStyle(.white)
+                                    .padding(.horizontal, 8)
+                                    .padding(.vertical, 3)
+                                    .background(Color.accentColor)
+                                    .cornerRadius(6)
+                            }
+                        }
+                        .buttonStyle(.plain)
+                    }
+                } header: {
+                    Text("出力")
+                } footer: {
+                    if !planService.isPremium {
+                        Text("PDF・CSV出力は7日間無料トライアルでお試しいただけます")
+                            .font(.caption)
                     }
                 }
 
-                // 注意書き
+                // ── 注意書き ──
                 Section {
                     Text(S.Report.disclaimer)
                         .font(.caption)
@@ -86,9 +140,12 @@ struct ReportView: View {
             }
             .navigationTitle(S.Report.title)
             .sheet(isPresented: $showingShareSheet) {
-                if let url = pdfURL {
+                if let url = sharedURL {
                     ShareSheet(items: [url])
                 }
+            }
+            .sheet(isPresented: $showingPaywall) {
+                PaywallView()
             }
         }
     }
@@ -106,7 +163,7 @@ struct ReportView: View {
             avgSettleMinutes: avgSettleMinutes
         )
         if let url = renderer.render() {
-            pdfURL = url
+            sharedURL = url
             showingShareSheet = true
         }
     }
@@ -117,7 +174,7 @@ struct ReportView: View {
         let csv = ReportCSVGenerator.generate(records: periodRecords)
         let tmpURL = FileManager.default.temporaryDirectory.appendingPathComponent("itami-techo-report.csv")
         try? csv.write(to: tmpURL, atomically: true, encoding: .utf8)
-        pdfURL = tmpURL
+        sharedURL = tmpURL
         showingShareSheet = true
     }
 }

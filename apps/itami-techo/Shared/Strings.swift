@@ -142,6 +142,11 @@ enum S {
         static let exportCSV = "CSVで出力"
         static let periodSelect = "期間を選択"
         static let disclaimer = "このレポートは記録データに基づく参考情報です。医療上の判断に代わるものではありません。"
+        static let doctorCTA = "通院前にレポートをまとめますか？"
+        static let doctorCTABody = "記録をPDFにまとめて、医師と共有しやすくなります"
+        static let doctorCTAButton = "レポートを見る"
+        static let premiumRequiredPDF = "PDF出力はプレミアム機能です"
+        static let premiumRequiredCSV = "CSV出力はプレミアム機能です"
     }
 
     // ── 課金 ─────────────────────────────────────────────

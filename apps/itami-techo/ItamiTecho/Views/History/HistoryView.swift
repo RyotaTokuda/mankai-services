@@ -8,6 +8,7 @@ struct HistoryView: View {
 
     @State private var showingCalendar = false
     @State private var selectedRecord: SymptomRecord?
+    @State private var showingReport = false
 
     /// 表示対象の記録（プランに応じた日数制限）
     private var visibleRecords: [SymptomRecord] {
@@ -34,6 +35,35 @@ struct HistoryView: View {
                     }
                 } else {
                     List {
+                        // ── 通院CTA（5件以上記録があれば表示） ──
+                        if recordStore.records.count >= 5 {
+                            Section {
+                                Button {
+                                    showingReport = true
+                                } label: {
+                                    HStack(spacing: 12) {
+                                        Image(systemName: "doc.text.fill")
+                                            .font(.title3)
+                                            .foregroundStyle(Color.accentColor)
+                                        VStack(alignment: .leading, spacing: 2) {
+                                            Text(S.Report.doctorCTA)
+                                                .font(.subheadline)
+                                                .fontWeight(.medium)
+                                                .foregroundStyle(.primary)
+                                            Text(S.Report.doctorCTABody)
+                                                .font(.caption)
+                                                .foregroundStyle(.secondary)
+                                        }
+                                        Spacer()
+                                        Image(systemName: "chevron.right")
+                                            .font(.caption)
+                                            .foregroundStyle(.tertiary)
+                                    }
+                                }
+                                .buttonStyle(.plain)
+                            }
+                        }
+
                         ForEach(groupedRecords, id: \.0) { dateLabel, records in
                             Section(dateLabel) {
                                 ForEach(records) { record in
@@ -72,6 +102,9 @@ struct HistoryView: View {
             }
             .sheet(isPresented: $showingCalendar) {
                 CalendarView()
+            }
+            .sheet(isPresented: $showingReport) {
+                ReportView()
             }
         }
     }

@@ -1,4 +1,5 @@
 import SwiftUI
+import StoreKit
 
 /// RecordView のビジネスロジック
 @Observable
@@ -12,6 +13,7 @@ final class RecordViewModel {
     var isPastDate = false
     var showingAddCustom = false
     var showingComplete = false
+    var showingPaywall = false
     var lastRecordedRecord: SymptomRecord?
 
     var hasSelection: Bool {
@@ -32,7 +34,8 @@ final class RecordViewModel {
         recordStore: RecordStore,
         customSymptomStore: CustomSymptomStore,
         environmentService: EnvironmentService,
-        healthService: HealthService
+        healthService: HealthService,
+        planService: PlanService
     ) {
         let record = SymptomRecord(
             symptomType: selectedSymptomType,
@@ -76,6 +79,27 @@ final class RecordViewModel {
 
         lastRecordedRecord = record
         showingComplete = true
+
+        let totalCount = recordStore.records.count
+
+        // 3件目: App Store レビューリクエスト（体験してもらえた後のベストタイミング）
+        if totalCount == 3 {
+            Task { @MainActor in
+                if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                    SKStoreReviewController.requestReview(in: scene)
+                }
+            }
+        }
+
+        // 5件目: 無料プランならPaywallを表示（CLAUDE.md仕様のトリガー）
+        if totalCount == AppConstants.paywallTriggerRecordCount && !planService.isPremium {
+            Task { @MainActor in
+                // 記録完了UIが閉じた後に表示するため少し遅延
+                try? await Task.sleep(for: .seconds(1.5))
+                showingPaywall = true
+            }
+        }
+
         reset()
     }
 

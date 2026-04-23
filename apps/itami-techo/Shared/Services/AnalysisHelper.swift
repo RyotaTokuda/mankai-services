@@ -48,6 +48,20 @@ enum AnalysisHelper {
         records.filter(\.medicationTaken).count
     }
 
+    /// 曜日別件数（月〜日の順）
+    static func dayOfWeekCounts(from records: [SymptomRecord]) -> [(String, Int)] {
+        let calendar = Calendar.current
+        let labels = ["月", "火", "水", "木", "金", "土", "日"]
+        var counts = [Int: Int]()
+        for r in records {
+            // weekday: 1=日, 2=月, ..., 7=土 → 月曜起点に変換
+            let weekday = calendar.component(.weekday, from: r.createdAt)
+            let idx = (weekday + 5) % 7 // 月=0, 火=1, ..., 日=6
+            counts[idx, default: 0] += 1
+        }
+        return labels.enumerated().map { (i, label) in (label, counts[i] ?? 0) }
+    }
+
     /// 落ち着くまでの平均時間（分）
     static func avgSettleMinutes(from records: [SymptomRecord]) -> Int? {
         let durations = records.compactMap { r -> TimeInterval? in
