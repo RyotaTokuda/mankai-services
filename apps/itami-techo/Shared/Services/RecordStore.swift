@@ -59,6 +59,26 @@ final class RecordStore {
         save()
     }
 
+    /// iCloud から取得したレコードとマージ（UUID 重複は updatedAt が新しい方を優先）
+    func mergeFromCloud(_ cloudRecords: [SymptomRecord]) {
+        var changed = false
+        for cloud in cloudRecords {
+            if let index = records.firstIndex(where: { $0.id == cloud.id }) {
+                if cloud.updatedAt > records[index].updatedAt {
+                    records[index] = cloud
+                    changed = true
+                }
+            } else {
+                records.append(cloud)
+                changed = true
+            }
+        }
+        if changed {
+            records.sort { $0.createdAt > $1.createdAt }
+            save()
+        }
+    }
+
     /// 環境データを後付け
     func attachEnvironment(id: UUID, snapshot: EnvironmentSnapshot) {
         guard let index = records.firstIndex(where: { $0.id == id }) else { return }

@@ -31,6 +31,15 @@ final class CustomSymptomStore {
         save()
     }
 
+    /// iCloud から取得したカスタム症状をマージ（ローカルにないものだけ追加）
+    func mergeFromCloud(_ cloudSymptoms: [CustomSymptom]) {
+        let localIDs = Set(symptoms.map(\.id))
+        let newOnes = cloudSymptoms.filter { !localIDs.contains($0.id) }
+        guard !newOnes.isEmpty else { return }
+        symptoms.append(contentsOf: newOnes)
+        save()
+    }
+
     // MARK: - クエリ
 
     /// 使用頻度順にソート済み

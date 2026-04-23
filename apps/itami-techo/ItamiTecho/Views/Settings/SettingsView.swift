@@ -41,6 +41,29 @@ struct SettingsView: View {
                     }
                 }
 
+                // ── iCloud 同期 ──
+                Section {
+                    if FileManager.default.ubiquityIdentityToken != nil {
+                        HStack {
+                            Image(systemName: "checkmark.circle.fill").foregroundStyle(.green)
+                            Text("iCloud と同期中")
+                        }
+                    } else {
+                        HStack {
+                            Image(systemName: "exclamationmark.circle.fill").foregroundStyle(.orange)
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("iCloud が無効です")
+                                    .font(.subheadline)
+                                Text("設定 › Apple Account › iCloud でオンにすると機種変後もデータを引き継げます")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                    }
+                } header: {
+                    Text("機種変・バックアップ")
+                }
+
                 // ── このアプリについて ──
                 Section {
                     NavigationLink {

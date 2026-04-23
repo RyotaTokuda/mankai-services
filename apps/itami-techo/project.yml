@@ -44,6 +44,8 @@ targets:
         com.apple.developer.weatherkit: true
         com.apple.security.application-groups:
           - group.com.mankai.itami-techo
+        com.apple.developer.ubiquity-container-identifiers:
+          - "$(TeamIdentifierPrefix)iCloud.com.mankai.itamitecho"
     dependencies:
       - target: ItamiTechoWidgetExtension
     scheme:
@@ -105,7 +107,7 @@ targets:
         GENERATE_INFOPLIST_FILE: false
         INFOPLIST_FILE: ItamiTechoWidget/Info.plist
     entitlements:
-      path: ItamiTecho/ItamiTecho.entitlements
+      path: ItamiTechoWidget/ItamiTechoWidget.entitlements
       properties:
         com.apple.developer.healthkit: true
         com.apple.developer.healthkit.access:
