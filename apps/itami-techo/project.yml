@@ -33,6 +33,13 @@ targets:
         INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: false
     entitlements:
       path: ItamiTecho/ItamiTecho.entitlements
+      properties:
+        com.apple.developer.healthkit: true
+        com.apple.developer.healthkit.access:
+          - health-records
+        com.apple.developer.weatherkit: true
+        com.apple.security.application-groups:
+          - group.com.mankai.itami-techo
     dependencies:
       - target: ItamiTechoWidgetExtension
     scheme:
@@ -51,6 +58,10 @@ targets:
         INFOPLIST_KEY_NSHealthShareUsageDescription: "不調記録と心拍の関係を振り返るために使用します。"
     entitlements:
       path: ItamiTechoWatch/ItamiTechoWatch.entitlements
+      properties:
+        com.apple.developer.healthkit: true
+        com.apple.security.application-groups:
+          - group.com.mankai.itami-techo
 
   ItamiTechoWidgetExtension:
     type: app-extension
@@ -68,6 +79,13 @@ targets:
         INFOPLIST_FILE: ItamiTechoWidget/Info.plist
     entitlements:
       path: ItamiTecho/ItamiTecho.entitlements
+      properties:
+        com.apple.developer.healthkit: true
+        com.apple.developer.healthkit.access:
+          - health-records
+        com.apple.developer.weatherkit: true
+        com.apple.security.application-groups:
+          - group.com.mankai.itami-techo
 
   ItamiTechoTests:
     type: bundle.unit-test

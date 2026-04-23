@@ -65,6 +65,7 @@
 		7BE3575498A7CEC95B94F614 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8876DF83E78487A49E75F2F /* Constants.swift */; };
 		7F59987F4B8A61D07DE7F44C /* PlanLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3431A605F28F3BC28482F999 /* PlanLimits.swift */; };
 		7FC90D037D2271237172BD01 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB982CC831F3209858A7511 /* LocationService.swift */; };
+		8068F3AC2FA3D0D1D26E7C6A /* HealthPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAC82C8AD3961CD4630B02A /* HealthPermissionView.swift */; };
 		807A00E9EEA163FF18DEBA0D /* HealthAnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A25D2B9A872F7CF1A582B1 /* HealthAnalysisView.swift */; };
 		81CB230AEE619242979E3D47 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102BCA0F9545A2867BA014E /* Strings.swift */; };
 		82509191510D4D63B0D750D6 /* WatchSeveritySelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BBDF18B249F6EE5FBFA242 /* WatchSeveritySelectView.swift */; };
@@ -191,6 +192,7 @@
 		3431A605F28F3BC28482F999 /* PlanLimits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanLimits.swift; sourceTree = "<group>"; };
 		3B73A3C17D5A33266222D9BB /* SymptomRecord+Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SymptomRecord+Display.swift"; sourceTree = "<group>"; };
 		4B5D0028D1E1A03173B47879 /* AppIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntents.swift; sourceTree = "<group>"; };
+		4DAC82C8AD3961CD4630B02A /* HealthPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthPermissionView.swift; sourceTree = "<group>"; };
 		4E5F1247B4463A6551FC07D1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		50F49E3F955622918185F8DE /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		5B6F53DB6661EE5F379370BA /* SourceDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceDevice.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 		6B4891A35A35C05D9FD641C8 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				4DAC82C8AD3961CD4630B02A /* HealthPermissionView.swift */,
 				2E91536D3EA4BF9A34E364A7 /* LocationPermissionView.swift */,
 				CC4D7BB6069DDDCC2AABC85D /* OnboardingView.swift */,
 			);
@@ -742,6 +745,7 @@
 				B17CA45E21A4D795E922E946 /* EnvironmentService.swift in Sources */,
 				BB641C0E1BB31C01E46E50AF /* EnvironmentSnapshot.swift in Sources */,
 				807A00E9EEA163FF18DEBA0D /* HealthAnalysisView.swift in Sources */,
+				8068F3AC2FA3D0D1D26E7C6A /* HealthPermissionView.swift in Sources */,
 				541C8524BA5E76217CDFF457 /* HealthService.swift in Sources */,
 				42584CB90A4D3366339A0C94 /* HealthSnapshot.swift in Sources */,
 				2574B2F6E9F9136AF14DE3FF /* HistoryView.swift in Sources */,

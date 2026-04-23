@@ -1,10 +1,18 @@
 import SwiftUI
 
 /// iPhone: オンボーディング画面
-/// 4ステップ → 初回記録へ直行
+/// スライド4枚 → 位置情報権限 → HealthKit権限 → アプリへ
 struct OnboardingView: View {
     @Binding var isCompleted: Bool
+
+    private enum Step {
+        case slides, location, health
+    }
+
+    @State private var step: Step = .slides
     @State private var currentPage = 0
+    @State private var locationCompleted = false
+    @State private var healthCompleted = false
 
     private let pages: [(title: String, body: String, icon: String)] = [
         (S.Onboarding.step1Title, S.Onboarding.step1Body, "applewatch"),
@@ -14,6 +22,23 @@ struct OnboardingView: View {
     ]
 
     var body: some View {
+        switch step {
+        case .slides:
+            slidesView
+        case .location:
+            LocationPermissionView(isCompleted: $locationCompleted)
+                .onChange(of: locationCompleted) { _, completed in
+                    if completed { step = .health }
+                }
+        case .health:
+            HealthPermissionView(isCompleted: $healthCompleted)
+                .onChange(of: healthCompleted) { _, completed in
+                    if completed { isCompleted = true }
+                }
+        }
+    }
+
+    private var slidesView: some View {
         VStack {
             TabView(selection: $currentPage) {
                 ForEach(pages.indices, id: \.self) { index in
@@ -42,14 +67,11 @@ struct OnboardingView: View {
             }
             .tabViewStyle(.page(indexDisplayMode: .always))
 
-            // ── ボタン ──
             Button {
                 if currentPage < pages.count - 1 {
-                    withAnimation {
-                        currentPage += 1
-                    }
+                    withAnimation { currentPage += 1 }
                 } else {
-                    isCompleted = true
+                    step = .location
                 }
             } label: {
                 Text(currentPage == pages.count - 1 ? S.Onboarding.startButton : "次へ")

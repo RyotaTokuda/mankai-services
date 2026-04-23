@@ -265,6 +265,17 @@ enum S {
         // ── Health ──
         static let healthTitle = "Healthデータと振り返り"
         static let healthBody = "睡眠・心拍・歩数と不調記録の関係を振り返れるようになります。データは端末内でのみ使用します。"
+        static let healthAllowedTitle = "許可した場合"
+        static let healthAllowedItem1 = "前夜の睡眠時間を記録に自動付与"
+        static let healthAllowedItem2 = "安静時心拍・HRVを記録と並べて確認"
+        static let healthAllowedItem3 = "歩数・ワークアウトの有無も振り返れる"
+        static let healthDeniedTitle = "許可しない場合"
+        static let healthDeniedItem1 = "記録・履歴・レポートは全て使えます"
+        static let healthDeniedItem2 = "気圧・天気との傾向も引き続き確認できます"
+        static let healthDeniedItem3 = "睡眠・心拍との比較はできません"
+        static let healthPrivacy = "HealthKitデータは端末内でのみ使用し、外部に送信されることはありません。"
+        static let healthAllowButton = "Healthデータと連動する"
+        static let healthSkipButton = "あとで設定する"
 
         // ── 通知 ──
         static let notificationTitle = "必要な時だけお知らせ"
