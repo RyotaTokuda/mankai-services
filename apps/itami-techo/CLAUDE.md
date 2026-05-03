@@ -6,11 +6,48 @@
 
 不調の瞬間を Apple Watch または iPhone からすぐに記録し、
 あとから自分の傾向を振り返り、通院時にも使える形にするセルフログアプリ。
+
+### アプリ名（言語別）
+| 言語 | アプリ名 | 備考 |
+|------|---------|------|
+| 日本語 | 痛み手帳 | 確定 |
+| 英語 | Symptom Log | 採用（Pain Diary は不採用） |
+| 簡体字 | 症状日记 | 暫定 |
+| 繁体字 | 症狀日記 | 暫定 |
+
+`S.App.name` は `L()` で4言語に対応済み。`AppLanguage.current` が端末言語を自動判定する。
+
 App Store サブタイトル: 「だるさ・めまい・不調をすぐ記録」
 
 **このアプリは医療アプリではない。**
 診断・治療提案・疾病リスク判定・原因断定は一切行わない。
 記録・表示・振り返り・相関の示唆に限定する。
+
+## 多言語対応
+
+### アーキテクチャ
+- `Shared/LocalizationSupport.swift` — `AppLanguage` enum + `L()` 関数
+- `Shared/Strings.swift` — 全文言を `L(ja:en:zhHans:zhHant:)` で管理
+- `AppLanguage.current` は `Locale.preferredLanguages` から起動時に1回評価（`static let` でキャッシュ）
+
+### サポート言語
+| コード | 言語 |
+|--------|------|
+| `ja` | 日本語 |
+| `en` | English |
+| `zh-Hans` | 简体中文 |
+| `zh-Hant` | 繁體中文 |
+
+### 翻訳の追加・修正方法
+1. `Strings.swift` の該当 `L()` 呼び出しを編集する
+2. `static let` ではなく `static var` （computed property）になっている
+3. 配列型（`weekdayLabels` 等）は `switch AppLanguage.current` で切り替え
+4. フォーマット関数は switch を関数内に持つ
+5. **法的注意書き（`S.Legal`）は全言語で原意が変わらないこと**
+
+### 法規制チェック（多言語版）
+`Shared/Strings.swift` の `S.Legal.*` および `S.Report.disclaimer` / `mohWarning` を全言語でレビューする。
+禁止表現（診断・治療・予防・原因断定）が混入していないこと。
 
 ## Stack
 
@@ -174,10 +211,18 @@ iOS のシステムダイアログの**前に**カスタム事前説明画面を
 - 選択状態: accentColor 15% 背景 + 2pt border
 - 非選択: systemGray6 背景
 
-#### 「落ち着いた」の記録方法（3つの動線）
-1. **履歴リスト** — 未解消行の右端に「完了」ボタン（ハート+テキスト、タップで即記録）
-2. **履歴リスト** — 左スワイプ（スワイプ右方向）→「落ち着いた」スワイプアクション
-3. **記録詳細画面** — 未解消の場合、緑の「落ち着いた」全幅ボタンを表示 + 持続時間記録の説明テキスト
+#### 「落ち着いた」の記録方法（4つの動線）
+1. **記録タブ上部** — 直近の未解消レコードを常時表示し、緑丸ボタンでシートを開く
+2. **履歴リスト** — 未解消行の右端に「完了」ボタン（ハート+テキスト、タップでシートを開く）
+3. **履歴リスト** — 左スワイプ → 「落ち着いた」スワイプアクション（allowsFullSwipe: false）
+4. **記録詳細画面** — 未解消の場合、緑の「落ち着いた」全幅ボタン → シートを開く
+
+#### 落ち着いた時刻ピッカー（SettleTimePickerView / WatchSettleTimePickerView）
+- **刻み**: 5分刻み（minuteSteps = [0,5,10,...,55]、Watch は 288ステップ = 24×12）
+- **デフォルト**: 現在時刻を5分ブロックに切り捨て（秒を無視）
+- **バリデーション**: 記録時刻より前はNG（5分ブロック単位で比較）。未来は制限なし
+- **解消要因**: iPhone ピッカーでは `SettleCause` を同一シートで選択
+- コールバック: `onConfirm: (Date, SettleCause?) -> Void`（Watch は `(Date) -> Void`）
 
 #### HealthKit / 環境データ の空状態
 - **HealthKit 未承認**: 「Apple Healthの連携を許可する」ボタン → requestAuthorization()
@@ -191,22 +236,40 @@ iOS のシステムダイアログの**前に**カスタム事前説明画面を
 
 ### UI コンポーネントパターン
 
-#### BarRow（TrendsView 共通バーチャート行）
-棒グラフ行の共通パターン。TrendsView 内の `private struct BarRow` として実装済み。
-同様の繰り返しが発生した場合は BarRow を拡張・再利用すること。
+#### MiniBarRow（TrendsView 共通バーチャート行）
+横バーチャート行の共通パターン。TrendsView 内の `private struct MiniBarRow` として実装済み。
+症状別・天気別・気圧帯別などで再利用する。
 
 ```swift
-BarRow(label: name, count: count, maxCount: maxCount, color: .accentColor,
-       labelWidth: 60, isWeekend: false)
+MiniBarRow(label: name, count: count, maxCount: maxCount, color: .accentColor)
 ```
 
-パラメータ:
-- `labelWidth`: 左テキスト幅（症状名 60pt、時間帯/強さラベル 80pt、曜日 24pt）
-- `isWeekend`: true なら label を color で太字表示
+#### DashCard（カードコンテナ）
+TrendsView の各分析カードを包む共通コンテナ。`private struct DashCard<Content>` として実装済み。
+`title` は省略可能（省略するとタイトルなしカード）。
 
-#### LockedRow（プレミアムロック行）
-課金ゲート付きの NavigationLink 代替。TrendsView 内の `private struct LockedRow` として実装済み。
-プレミアム機能のリンクで `isPremium ? NavigationLink : LockedRow` のパターンを使うこと。
+#### lockedCard(title:)（プレミアムロックカード）
+プレミアム未加入時に表示するロックカード。`TrendsView` のメソッドとして実装済み。
+
+```swift
+lockedCard(title: S.Trends.byTimeOfDay)
+```
+
+プレミアムゲートが必要な `@ViewBuilder` var では `planService.isPremium` で分岐し、
+else ブランチで `lockedCard(title:)` を呼ぶパターンを使うこと。
+
+#### TrendsView カード構成（無料 / プレミアム）
+| カード | 無料 | プレミアム |
+|--------|------|------------|
+| サマリーカード | ✓ | ✓ |
+| 日別バーチャート（week/month のみ） | ✓ | ✓ |
+| 症状別カード | ✓ | ✓ |
+| 時間帯別カード | ロック表示 | ✓ |
+| 曜日別カード | ロック表示 | ✓ |
+| 天気別カード | ロック表示 | ✓（環境データなし時はヒント表示） |
+| 気圧帯別カード | ロック表示 | ✓（環境データなし時はヒント表示） |
+| 気圧変化カード | ロック表示 | ✓（環境データなし時はヒント表示） |
+| 詳細リンクカード | ✓（環境・Health はロック） | ✓ |
 
 ### ペイウォール表示タイミング
 1. 記録 5件到達時
@@ -225,10 +288,11 @@ BarRow(label: name, count: count, maxCount: maxCount, color: .accentColor,
 - カスタム症状 2件まで
 
 ### プレミアムプラン
-- 無制限履歴、月次レポート、PDF/CSV
-- 曜日別・時間帯別傾向、強さ分布
+- **無制限**履歴（全期間）、月次レポート、PDF/CSV
+- 時間帯別・曜日別傾向（全期間対象）
+- 天気別・気圧帯別の記録分析、気圧変化との相関表示
 - カスタム症状・薬タグ無制限
-- Health 高度分析、環境高度分析
+- Health 高度分析（EnvironmentAnalysisView / HealthAnalysisView）
 - 通院向け要約、高度コンプリケーション
 - Siri ショートカット、通知感度調整、個別最適化通知
 - 先月比較・長期比較

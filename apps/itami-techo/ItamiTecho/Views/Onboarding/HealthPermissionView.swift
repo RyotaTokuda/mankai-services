@@ -5,6 +5,7 @@ import SwiftUI
 struct HealthPermissionView: View {
     @Environment(HealthService.self) private var healthService
     @Binding var isCompleted: Bool
+    @State private var isRequesting = false
 
     var body: some View {
         VStack(spacing: 20) {
@@ -56,16 +57,21 @@ struct HealthPermissionView: View {
 
             Spacer()
 
-            // 許可ボタン → 即遷移してからシステムダイアログを表示
+            // 許可ボタン → システムダイアログを表示してから遷移
             Button {
-                isCompleted = true
-                Task { _ = await healthService.requestAuthorization() }
+                isRequesting = true
+                Task {
+                    _ = await healthService.requestAuthorization()
+                    isRequesting = false
+                    isCompleted = true
+                }
             } label: {
                 Text(S.Permission.healthAllowButton)
                     .font(.headline)
                     .frame(maxWidth: .infinity, minHeight: 50)
             }
             .buttonStyle(.borderedProminent)
+            .disabled(isRequesting)
             .padding(.horizontal, 24)
 
             Button {
@@ -74,6 +80,7 @@ struct HealthPermissionView: View {
                 Text(S.Permission.healthSkipButton)
                     .font(.subheadline)
             }
+            .disabled(isRequesting)
             .padding(.bottom, 16)
         }
     }

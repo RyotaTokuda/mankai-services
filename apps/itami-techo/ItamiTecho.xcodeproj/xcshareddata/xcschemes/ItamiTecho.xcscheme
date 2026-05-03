@@ -63,7 +63,8 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES">
+      allowLocationSimulation = "YES"
+      storeKitConfigurationFileReference = "../ItamiTecho/Resources/StoreKitConfiguration.storekit">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
