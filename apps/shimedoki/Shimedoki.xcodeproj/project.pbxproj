@@ -1,0 +1,1162 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		06617BC11F51DFBD4BBD4BCA /* ShimedokiShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A646998F656657A0E7F7AA8 /* ShimedokiShortcuts.swift */; };
+		0897E516A4C997B7068CDD51 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91838979A012E91DCA94973 /* HistoryViewModel.swift */; };
+		0B5C65B22CA4AE7DF9FD05ED /* StoreKitConfiguration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 25667EABA80241BDF22B6838 /* StoreKitConfiguration.storekit */; };
+		0BD3A67F638DDC5311CF6192 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041393E48B1BE7F2C3271D5E /* SessionStore.swift */; };
+		0D1287DCEF1D710158DC8891 /* HapticService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528A8AE1D7EAF65C96E0F433 /* HapticService.swift */; };
+		12BFFE76780FB1C8193F3564 /* WatchQuickExtendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB19E2A82AE27D7B71A12BB /* WatchQuickExtendView.swift */; };
+		131624983C6774A966E36E24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97F40CC924813F05E5747D4F /* Assets.xcassets */; };
+		13F1B99DBE48BEB43323DD90 /* TemplateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EE1AEB137EEAE901A1B2BB /* TemplateStore.swift */; };
+		141436684FB757B288DBABF5 /* SubscriptionManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4364CDA7B92C75519E77EB6E /* SubscriptionManagementView.swift */; };
+		17416E8F299421E4EA3FD0A0 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A07871EA27A76FBF4F0F3E /* Category.swift */; };
+		17D7261797BD73977B744756 /* HapticStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8DA6B0D3504F62031C0FE3 /* HapticStyle.swift */; };
+		1E7ED897B480C003EE1C796A /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3F6FF39ED7B5B9C3651DC3 /* Template.swift */; };
+		268DCC3FBAE13706EF625F8C /* DefaultTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E993E3750F8BBF8BE08CF63 /* DefaultTemplates.swift */; };
+		2A1927AB6E5F3B7B91ECE633 /* PlanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525A669F1B5EB101A28EE28F /* PlanService.swift */; };
+		2A42F39ED99C9200FC71FE5C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11089EED279B0322C5F76EA6 /* Constants.swift */; };
+		2BF627D88FCAC58C2787C885 /* ShimedokiWatchWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 69F20A84257B820B397720BB /* ShimedokiWatchWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2EC364AE33762FE8E5C0EC20 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840E826475B9B8A86C4D8D46 /* NotificationService.swift */; };
+		3C4CBC2C408FAD16933979B8 /* SessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944B51C9FC89925F8B82845F /* SessionViewModel.swift */; };
+		3CC6BE5158278341139EEDA5 /* LocalizationSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576F8DD1F933906D157B1CC4 /* LocalizationSupport.swift */; };
+		3CEF3E965C382D07863637F3 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A07871EA27A76FBF4F0F3E /* Category.swift */; };
+		403C60D971619440F61EDAFD /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840E826475B9B8A86C4D8D46 /* NotificationService.swift */; };
+		44B5837F8DE7203981FF6D2B /* PlanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525A669F1B5EB101A28EE28F /* PlanService.swift */; };
+		46628962EDD3B8876324DFEE /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF5CB85E9CDDD244A624B99 /* ColorExtension.swift */; };
+		47C81095108A22301EDA32A4 /* PlanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525A669F1B5EB101A28EE28F /* PlanService.swift */; };
+		4C16C0CB8F0BC4618FBD35B1 /* TemplateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EE1AEB137EEAE901A1B2BB /* TemplateStore.swift */; };
+		4E19BB6CBF2AA0D0C32A95EA /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3F6FF39ED7B5B9C3651DC3 /* Template.swift */; };
+		54AB01DD4B038F600E694875 /* TemplateListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD0C456DB11D7081E440E53 /* TemplateListView.swift */; };
+		5557E611C1C3516A9ECE7A8D /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3F6FF39ED7B5B9C3651DC3 /* Template.swift */; };
+		55F9CDCC3FFE0CDAF941286A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1F650B0790FC1107EEA8140 /* Assets.xcassets */; };
+		577AB435A121B284653F15EE /* TemplateListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C8C1ACE5B0BCC567F17162 /* TemplateListViewModel.swift */; };
+		5C5CC8071E5812F6646A17EA /* PhoneSessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422D23560FAB21E7018F327E /* PhoneSessionViewModel.swift */; };
+		5EC3757FB1A0E7FAA1B4BCC3 /* PhoneRunningSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696A68B771B5104C1877ED27 /* PhoneRunningSessionView.swift */; };
+		63F707C88EEFDB2F50AEFF85 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A07871EA27A76FBF4F0F3E /* Category.swift */; };
+		64558F7B4FD21A85CB66DBFF /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041393E48B1BE7F2C3271D5E /* SessionStore.swift */; };
+		6507F4A12BEF38A35A5B597E /* LocalizationSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576F8DD1F933906D157B1CC4 /* LocalizationSupport.swift */; };
+		6968EBBC217F66FD454B47BB /* AppIconService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C25BDD840190F0ECF3ED9D0 /* AppIconService.swift */; };
+		6A0927AFBE23438C3AAEB93C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB530415E1D3DB46CED83D5F /* SettingsView.swift */; };
+		6BA7DF7267975B36B3B43E0A /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59BDBC375A91CDB0E043611 /* Strings.swift */; };
+		6EDA09603E8D2113A6062B23 /* ShimedokiWatchWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B61AACA7CF67840281DD651 /* ShimedokiWatchWidget.swift */; };
+		71A385650A7BF838E9F6EFEC /* ShimedokiActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216EEFB54CCC6AEDBC9028D1 /* ShimedokiActivityAttributes.swift */; };
+		7698103D43AD82517F6702D9 /* SessionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7819E2DDD93CB8CA6C459482 /* SessionLog.swift */; };
+		79EAB0F1CB49CAE4FCB463BE /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA0116F56648591B41634F6 /* PaywallView.swift */; };
+		7A983A89DD4081F6FF6167C5 /* LocalizationSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576F8DD1F933906D157B1CC4 /* LocalizationSupport.swift */; };
+		7D36795C5E173D866CB2F009 /* SessionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7819E2DDD93CB8CA6C459482 /* SessionLog.swift */; };
+		81FC649B97EACB69E843112C /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041393E48B1BE7F2C3271D5E /* SessionStore.swift */; };
+		8275115FC5EA5CC7969754DE /* WatchHapticService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0BF2805C8843E3167AE214 /* WatchHapticService.swift */; };
+		84EE2BA0FBC5D6A6077480A4 /* DefaultTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E993E3750F8BBF8BE08CF63 /* DefaultTemplates.swift */; };
+		8947A97B592F98B080637ACD /* ShimedokiWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EDFBF492DB601089D10F4 /* ShimedokiWatchApp.swift */; };
+		8C7994F588817771F57C19A1 /* WatchTemplateListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C322F2CDDB82C3E6FF7C6D3D /* WatchTemplateListView.swift */; };
+		94D532AD0353E44DED5E018B /* PlanLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B4D21909B936DA602B3FFC /* PlanLimits.swift */; };
+		95C71C22E0EB5155F4901F37 /* PlanLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B4D21909B936DA602B3FFC /* PlanLimits.swift */; };
+		96EEC3EBF35AB2BB44457EC9 /* WatchSessionCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DAA3690B12C91A16E5A8C /* WatchSessionCompleteView.swift */; };
+		9F3C9C97D7EA040D723132CC /* ShimedokiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C7A64F61C059E54BFE4988 /* ShimedokiApp.swift */; };
+		A08D49857F1C874220CF01C8 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5668E803A9C21142C863EFC0 /* CalendarService.swift */; };
+		A5343D9BC0D08C072B502F76 /* ShimedokiActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216EEFB54CCC6AEDBC9028D1 /* ShimedokiActivityAttributes.swift */; };
+		A7ABE7090DC845616701995A /* ShimedokiWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 35F4E08EE38124A58B5D5224 /* ShimedokiWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A9EE777DEF51E2D7287EA5C3 /* TemplateEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5B7648646B61D27830E567 /* TemplateEditView.swift */; };
+		AC59F4567972A0AFEEAE89CF /* WeeklySummaryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED378321FBC5EDF5CD1FA9F /* WeeklySummaryService.swift */; };
+		ACF6DA3BDBD1881E3C881495 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78A33EF8BB3D82426E5614B /* OnboardingView.swift */; };
+		B336345215F8D68C765B1B51 /* WatchRunningSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9F8E53290CEA779434ACF5 /* WatchRunningSessionView.swift */; };
+		B6B99B1945700646F72E1A3B /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59BDBC375A91CDB0E043611 /* Strings.swift */; };
+		B937DC129F64EDE49FEF57D8 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF5CB85E9CDDD244A624B99 /* ColorExtension.swift */; };
+		B98218D949CDF401D29A440D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11089EED279B0322C5F76EA6 /* Constants.swift */; };
+		BC12BC0EEC133EA92F080378 /* SessionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7819E2DDD93CB8CA6C459482 /* SessionLog.swift */; };
+		C212F02A4A5FC6ACECA29492 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59BDBC375A91CDB0E043611 /* Strings.swift */; };
+		C4B8FC860C20836337739E08 /* TemplateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EE1AEB137EEAE901A1B2BB /* TemplateStore.swift */; };
+		C62D6B8B4C1BA5E71F88E89F /* TemplateEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1EDF4F7D6C098A2BB311D7 /* TemplateEditViewModel.swift */; };
+		C88FD63477601BA72A722855 /* ShimedokiWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B4A74067D0B767964A471 /* ShimedokiWidget.swift */; };
+		CE5EB54EE65B2371A8EA6DFA /* ShimedokiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2772D99A382A8D55578658A4 /* ShimedokiTests.swift */; };
+		D6E424E5FE582FAC85C85B25 /* HapticStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8DA6B0D3504F62031C0FE3 /* HapticStyle.swift */; };
+		D9A07073EB0CA70F157505EA /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F469F8F5E4F3F05B66EC90A4 /* AnalyticsService.swift */; };
+		DBB8582D8FE9F9D3A43AFD45 /* WatchAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1CBF5233DEDCF559955606 /* WatchAnalytics.swift */; };
+		E80EC3548114FF1C64DEF8BF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE7C27930262B93457CD3FE /* ContentView.swift */; };
+		EA6095665D500F9624D99A9C /* HapticStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8DA6B0D3504F62031C0FE3 /* HapticStyle.swift */; };
+		ED6A68D91745B9FFA7A9D351 /* PaywallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BF9CE1830AB623B0A5C76 /* PaywallViewModel.swift */; };
+		EEDFAF33A2A2C4C0E90DB6C7 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840E826475B9B8A86C4D8D46 /* NotificationService.swift */; };
+		EF51A4DDEE79CBE7A2D32AAC /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5AF7081B4E6DA245291A0 /* HistoryView.swift */; };
+		F390FABA5B5B9A9137FE6599 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF5CB85E9CDDD244A624B99 /* ColorExtension.swift */; };
+		F591984490594FF734293C59 /* PlanLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B4D21909B936DA602B3FFC /* PlanLimits.swift */; };
+		FCA2747CEE3C93C093EB76F0 /* DefaultTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E993E3750F8BBF8BE08CF63 /* DefaultTemplates.swift */; };
+		FFFCD33163A3469B1566968A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11089EED279B0322C5F76EA6 /* Constants.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7F6F183B07793AFA38535513 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 052DEA004F44C0D8DDBAE7F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D7B7F008EEC13EBD88DD7D4;
+			remoteInfo = ShimedokiWatchWidget;
+		};
+		D04E6EAC5165A4D7827B4EA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 052DEA004F44C0D8DDBAE7F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE46609AD56B7F2D88C40B14;
+			remoteInfo = ShimedokiWidget;
+		};
+		F238B9EAD05D83CAF567FC78 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 052DEA004F44C0D8DDBAE7F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A9283EE3F15935D3DB4D2250;
+			remoteInfo = Shimedoki;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0EC98F646B42A3944071C2F3 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2BF627D88FCAC58C2787C885 /* ShimedokiWatchWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82DCAD887D8B6AC3ED080DEE /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A7ABE7090DC845616701995A /* ShimedokiWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		041393E48B1BE7F2C3271D5E /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
+		0B61AACA7CF67840281DD651 /* ShimedokiWatchWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimedokiWatchWidget.swift; sourceTree = "<group>"; };
+		0C9F8E53290CEA779434ACF5 /* WatchRunningSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchRunningSessionView.swift; sourceTree = "<group>"; };
+		0FF5CB85E9CDDD244A624B99 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		11089EED279B0322C5F76EA6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1A646998F656657A0E7F7AA8 /* ShimedokiShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimedokiShortcuts.swift; sourceTree = "<group>"; };
+		216EEFB54CCC6AEDBC9028D1 /* ShimedokiActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimedokiActivityAttributes.swift; sourceTree = "<group>"; };
+		25667EABA80241BDF22B6838 /* StoreKitConfiguration.storekit */ = {isa = PBXFileReference; path = StoreKitConfiguration.storekit; sourceTree = "<group>"; };
+		2772D99A382A8D55578658A4 /* ShimedokiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimedokiTests.swift; sourceTree = "<group>"; };
+		279BF9CE1830AB623B0A5C76 /* PaywallViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallViewModel.swift; sourceTree = "<group>"; };
+		2BD0C456DB11D7081E440E53 /* TemplateListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateListView.swift; sourceTree = "<group>"; };
+		2E0BF2805C8843E3167AE214 /* WatchHapticService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchHapticService.swift; sourceTree = "<group>"; };
+		31C7A64F61C059E54BFE4988 /* ShimedokiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimedokiApp.swift; sourceTree = "<group>"; };
+		35F4E08EE38124A58B5D5224 /* ShimedokiWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = ShimedokiWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		422D23560FAB21E7018F327E /* PhoneSessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneSessionViewModel.swift; sourceTree = "<group>"; };
+		4364CDA7B92C75519E77EB6E /* SubscriptionManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionManagementView.swift; sourceTree = "<group>"; };
+		43EE1AEB137EEAE901A1B2BB /* TemplateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateStore.swift; sourceTree = "<group>"; };
+		4C2389E725C809E89F420F91 /* ShimedokiWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShimedokiWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DD5AF7081B4E6DA245291A0 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		525A669F1B5EB101A28EE28F /* PlanService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanService.swift; sourceTree = "<group>"; };
+		528A8AE1D7EAF65C96E0F433 /* HapticService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticService.swift; sourceTree = "<group>"; };
+		5668E803A9C21142C863EFC0 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
+		576F8DD1F933906D157B1CC4 /* LocalizationSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationSupport.swift; sourceTree = "<group>"; };
+		5A1EDF4F7D6C098A2BB311D7 /* TemplateEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateEditViewModel.swift; sourceTree = "<group>"; };
+		5E993E3750F8BBF8BE08CF63 /* DefaultTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTemplates.swift; sourceTree = "<group>"; };
+		5EEDB354C1B7DEF9876F9CD3 /* ShimedokiWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShimedokiWatch.entitlements; sourceTree = "<group>"; };
+		660244E4C6D5A8A6CBD84D76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		679F65EE5617BA22DEE6F414 /* Shimedoki.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Shimedoki.entitlements; sourceTree = "<group>"; };
+		696A68B771B5104C1877ED27 /* PhoneRunningSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneRunningSessionView.swift; sourceTree = "<group>"; };
+		69F20A84257B820B397720BB /* ShimedokiWatchWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShimedokiWatchWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7819E2DDD93CB8CA6C459482 /* SessionLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLog.swift; sourceTree = "<group>"; };
+		7C25BDD840190F0ECF3ED9D0 /* AppIconService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconService.swift; sourceTree = "<group>"; };
+		7F1CBF5233DEDCF559955606 /* WatchAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchAnalytics.swift; sourceTree = "<group>"; };
+		840E826475B9B8A86C4D8D46 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		864B4A74067D0B767964A471 /* ShimedokiWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimedokiWidget.swift; sourceTree = "<group>"; };
+		8B5B7648646B61D27830E567 /* TemplateEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateEditView.swift; sourceTree = "<group>"; };
+		8D4DAA3690B12C91A16E5A8C /* WatchSessionCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionCompleteView.swift; sourceTree = "<group>"; };
+		909EDFBF492DB601089D10F4 /* ShimedokiWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimedokiWatchApp.swift; sourceTree = "<group>"; };
+		944B51C9FC89925F8B82845F /* SessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewModel.swift; sourceTree = "<group>"; };
+		97F40CC924813F05E5747D4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A4A07871EA27A76FBF4F0F3E /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		A91838979A012E91DCA94973 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		B7009A6F5C6F5DCBCDB9E077 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B7C8C1ACE5B0BCC567F17162 /* TemplateListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateListViewModel.swift; sourceTree = "<group>"; };
+		BB492CDD1B0E258CF21401E1 /* ShimedokiTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ShimedokiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB530415E1D3DB46CED83D5F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		BDA91726F5BBC5853E8EEE08 /* ShimedokiWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShimedokiWidget.entitlements; sourceTree = "<group>"; };
+		C322F2CDDB82C3E6FF7C6D3D /* WatchTemplateListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchTemplateListView.swift; sourceTree = "<group>"; };
+		C78A33EF8BB3D82426E5614B /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		C879D75EB4A0F39F259A1C07 /* Shimedoki.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Shimedoki.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDB19E2A82AE27D7B71A12BB /* WatchQuickExtendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchQuickExtendView.swift; sourceTree = "<group>"; };
+		D1F650B0790FC1107EEA8140 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DD3F6FF39ED7B5B9C3651DC3 /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
+		DE8DA6B0D3504F62031C0FE3 /* HapticStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticStyle.swift; sourceTree = "<group>"; };
+		E6B4D21909B936DA602B3FFC /* PlanLimits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanLimits.swift; sourceTree = "<group>"; };
+		ECA0116F56648591B41634F6 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
+		EED378321FBC5EDF5CD1FA9F /* WeeklySummaryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklySummaryService.swift; sourceTree = "<group>"; };
+		F469F8F5E4F3F05B66EC90A4 /* AnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
+		F59BDBC375A91CDB0E043611 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		F971C63E8145FC55365FCD55 /* ShimedokiWatchWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShimedokiWatchWidget.entitlements; sourceTree = "<group>"; };
+		FEE7C27930262B93457CD3FE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		01A32E45FAD0309D7231235C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5E993E3750F8BBF8BE08CF63 /* DefaultTemplates.swift */,
+				840E826475B9B8A86C4D8D46 /* NotificationService.swift */,
+				525A669F1B5EB101A28EE28F /* PlanService.swift */,
+				041393E48B1BE7F2C3271D5E /* SessionStore.swift */,
+				43EE1AEB137EEAE901A1B2BB /* TemplateStore.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		0501D0F72F6FF4826A423E29 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CDB19E2A82AE27D7B71A12BB /* WatchQuickExtendView.swift */,
+				0C9F8E53290CEA779434ACF5 /* WatchRunningSessionView.swift */,
+				8D4DAA3690B12C91A16E5A8C /* WatchSessionCompleteView.swift */,
+				C322F2CDDB82C3E6FF7C6D3D /* WatchTemplateListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		17154CA76DECE2B1D383A4E9 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				909EDFBF492DB601089D10F4 /* ShimedokiWatchApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		1FD784EFBE1B918365439BDE /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A91838979A012E91DCA94973 /* HistoryViewModel.swift */,
+				279BF9CE1830AB623B0A5C76 /* PaywallViewModel.swift */,
+				422D23560FAB21E7018F327E /* PhoneSessionViewModel.swift */,
+				5A1EDF4F7D6C098A2BB311D7 /* TemplateEditViewModel.swift */,
+				B7C8C1ACE5B0BCC567F17162 /* TemplateListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		3F6604F571AC6F62EB9A2620 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				C78A33EF8BB3D82426E5614B /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		4B724CC80B173FCEC0FAB0AA /* Shimedoki */ = {
+			isa = PBXGroup;
+			children = (
+				679F65EE5617BA22DEE6F414 /* Shimedoki.entitlements */,
+				6A0EB0E3C1462C4CE663CCE9 /* App */,
+				A66736C182CCF19F6D47408B /* LiveActivity */,
+				CC2FDA8B10C9232D7CC3CD5B /* Resources */,
+				5BCF3D849AA2DE5B5C23085B /* Services */,
+				1FD784EFBE1B918365439BDE /* ViewModels */,
+				B5B630B3D93C2EF4F3CFA733 /* Views */,
+			);
+			path = Shimedoki;
+			sourceTree = "<group>";
+		};
+		4BF1517BE91E20D10853A77D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D1F650B0790FC1107EEA8140 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		50CD584958D68FC0FF654EDE /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				8B5B7648646B61D27830E567 /* TemplateEditView.swift */,
+				2BD0C456DB11D7081E440E53 /* TemplateListView.swift */,
+			);
+			path = Templates;
+			sourceTree = "<group>";
+		};
+		57D813B8172EC323D8C31494 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				0FF5CB85E9CDDD244A624B99 /* ColorExtension.swift */,
+				11089EED279B0322C5F76EA6 /* Constants.swift */,
+				576F8DD1F933906D157B1CC4 /* LocalizationSupport.swift */,
+				F59BDBC375A91CDB0E043611 /* Strings.swift */,
+				7BE15A80BC02C84CE6D34714 /* Models */,
+				01A32E45FAD0309D7231235C /* Services */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		5AD78314A2E421ABE1460666 /* ShimedokiTests */ = {
+			isa = PBXGroup;
+			children = (
+				2772D99A382A8D55578658A4 /* ShimedokiTests.swift */,
+			);
+			path = ShimedokiTests;
+			sourceTree = "<group>";
+		};
+		5BCF3D849AA2DE5B5C23085B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F469F8F5E4F3F05B66EC90A4 /* AnalyticsService.swift */,
+				7C25BDD840190F0ECF3ED9D0 /* AppIconService.swift */,
+				5668E803A9C21142C863EFC0 /* CalendarService.swift */,
+				528A8AE1D7EAF65C96E0F433 /* HapticService.swift */,
+				1A646998F656657A0E7F7AA8 /* ShimedokiShortcuts.swift */,
+				EED378321FBC5EDF5CD1FA9F /* WeeklySummaryService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		6118619DA4A9ED549A399830 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				BB530415E1D3DB46CED83D5F /* SettingsView.swift */,
+				4364CDA7B92C75519E77EB6E /* SubscriptionManagementView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		6A0EB0E3C1462C4CE663CCE9 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				31C7A64F61C059E54BFE4988 /* ShimedokiApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		7025549A0F82325123B28D5A /* History */ = {
+			isa = PBXGroup;
+			children = (
+				4DD5AF7081B4E6DA245291A0 /* HistoryView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		7BE15A80BC02C84CE6D34714 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A4A07871EA27A76FBF4F0F3E /* Category.swift */,
+				DE8DA6B0D3504F62031C0FE3 /* HapticStyle.swift */,
+				E6B4D21909B936DA602B3FFC /* PlanLimits.swift */,
+				7819E2DDD93CB8CA6C459482 /* SessionLog.swift */,
+				DD3F6FF39ED7B5B9C3651DC3 /* Template.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9EEB73C2C92514210B2A9D93 /* ShimedokiWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B7009A6F5C6F5DCBCDB9E077 /* Info.plist */,
+				BDA91726F5BBC5853E8EEE08 /* ShimedokiWidget.entitlements */,
+				864B4A74067D0B767964A471 /* ShimedokiWidget.swift */,
+			);
+			path = ShimedokiWidget;
+			sourceTree = "<group>";
+		};
+		A06DB2FB6F1B8F560ED0363E /* ShimedokiWatchWidget */ = {
+			isa = PBXGroup;
+			children = (
+				660244E4C6D5A8A6CBD84D76 /* Info.plist */,
+				F971C63E8145FC55365FCD55 /* ShimedokiWatchWidget.entitlements */,
+				0B61AACA7CF67840281DD651 /* ShimedokiWatchWidget.swift */,
+			);
+			path = ShimedokiWatchWidget;
+			sourceTree = "<group>";
+		};
+		A66736C182CCF19F6D47408B /* LiveActivity */ = {
+			isa = PBXGroup;
+			children = (
+				216EEFB54CCC6AEDBC9028D1 /* ShimedokiActivityAttributes.swift */,
+			);
+			path = LiveActivity;
+			sourceTree = "<group>";
+		};
+		A93151FDA7CBB857A33C4EFD /* Paywall */ = {
+			isa = PBXGroup;
+			children = (
+				ECA0116F56648591B41634F6 /* PaywallView.swift */,
+			);
+			path = Paywall;
+			sourceTree = "<group>";
+		};
+		AE0F88295C0B820DD7F71A69 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				696A68B771B5104C1877ED27 /* PhoneRunningSessionView.swift */,
+			);
+			path = Session;
+			sourceTree = "<group>";
+		};
+		B5B630B3D93C2EF4F3CFA733 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FEE7C27930262B93457CD3FE /* ContentView.swift */,
+				7025549A0F82325123B28D5A /* History */,
+				3F6604F571AC6F62EB9A2620 /* Onboarding */,
+				A93151FDA7CBB857A33C4EFD /* Paywall */,
+				AE0F88295C0B820DD7F71A69 /* Session */,
+				6118619DA4A9ED549A399830 /* Settings */,
+				50CD584958D68FC0FF654EDE /* Templates */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C67349520566C03DA2C90830 = {
+			isa = PBXGroup;
+			children = (
+				57D813B8172EC323D8C31494 /* Shared */,
+				4B724CC80B173FCEC0FAB0AA /* Shimedoki */,
+				5AD78314A2E421ABE1460666 /* ShimedokiTests */,
+				E1FD91ABAC2CE56A3B5927DE /* ShimedokiWatch */,
+				A06DB2FB6F1B8F560ED0363E /* ShimedokiWatchWidget */,
+				9EEB73C2C92514210B2A9D93 /* ShimedokiWidget */,
+				E88026B80D55884CC02A958B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CC2FDA8B10C9232D7CC3CD5B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				97F40CC924813F05E5747D4F /* Assets.xcassets */,
+				25667EABA80241BDF22B6838 /* StoreKitConfiguration.storekit */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CE2270235DF52810C45A4915 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				944B51C9FC89925F8B82845F /* SessionViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E1FD91ABAC2CE56A3B5927DE /* ShimedokiWatch */ = {
+			isa = PBXGroup;
+			children = (
+				5EEDB354C1B7DEF9876F9CD3 /* ShimedokiWatch.entitlements */,
+				17154CA76DECE2B1D383A4E9 /* App */,
+				4BF1517BE91E20D10853A77D /* Resources */,
+				E48A8AB93383D5263E575BDB /* Services */,
+				CE2270235DF52810C45A4915 /* ViewModels */,
+				0501D0F72F6FF4826A423E29 /* Views */,
+			);
+			path = ShimedokiWatch;
+			sourceTree = "<group>";
+		};
+		E48A8AB93383D5263E575BDB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7F1CBF5233DEDCF559955606 /* WatchAnalytics.swift */,
+				2E0BF2805C8843E3167AE214 /* WatchHapticService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E88026B80D55884CC02A958B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C879D75EB4A0F39F259A1C07 /* Shimedoki.app */,
+				BB492CDD1B0E258CF21401E1 /* ShimedokiTests.xctest */,
+				4C2389E725C809E89F420F91 /* ShimedokiWatch.app */,
+				69F20A84257B820B397720BB /* ShimedokiWatchWidget.appex */,
+				35F4E08EE38124A58B5D5224 /* ShimedokiWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2D7B7F008EEC13EBD88DD7D4 /* ShimedokiWatchWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FBA4F9F57E119D1B064BE7C8 /* Build configuration list for PBXNativeTarget "ShimedokiWatchWidget" */;
+			buildPhases = (
+				D4B3E362DA520EAC672F32EE /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShimedokiWatchWidget;
+			packageProductDependencies = (
+			);
+			productName = ShimedokiWatchWidget;
+			productReference = 69F20A84257B820B397720BB /* ShimedokiWatchWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		4D6B36BF10C9A900BD6EB474 /* ShimedokiWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 744F1D1EB5EC8595948DABC4 /* Build configuration list for PBXNativeTarget "ShimedokiWatch" */;
+			buildPhases = (
+				5CFE80A5857239E1E8E45CEC /* Sources */,
+				5069945BC1C6622511A8DA11 /* Resources */,
+				0EC98F646B42A3944071C2F3 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D863CC53A4D022584B15D9E9 /* PBXTargetDependency */,
+			);
+			name = ShimedokiWatch;
+			packageProductDependencies = (
+			);
+			productName = ShimedokiWatch;
+			productReference = 4C2389E725C809E89F420F91 /* ShimedokiWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5B24C201BF3E3C95F04B82AD /* ShimedokiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB9C7B24F92800815D4EC29C /* Build configuration list for PBXNativeTarget "ShimedokiTests" */;
+			buildPhases = (
+				516A789FE1F701D6B2C8F629 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D877D5BEA8462F23041A15C4 /* PBXTargetDependency */,
+			);
+			name = ShimedokiTests;
+			packageProductDependencies = (
+			);
+			productName = ShimedokiTests;
+			productReference = BB492CDD1B0E258CF21401E1 /* ShimedokiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A9283EE3F15935D3DB4D2250 /* Shimedoki */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 641481491AE43B41CCAD123E /* Build configuration list for PBXNativeTarget "Shimedoki" */;
+			buildPhases = (
+				FEF34CA8DDFDD565C0688BFB /* Sources */,
+				779FAB65C9E5C6FCD533FB6D /* Resources */,
+				82DCAD887D8B6AC3ED080DEE /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				767248F8791BCEA6D6EB2A14 /* PBXTargetDependency */,
+			);
+			name = Shimedoki;
+			packageProductDependencies = (
+			);
+			productName = Shimedoki;
+			productReference = C879D75EB4A0F39F259A1C07 /* Shimedoki.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EE46609AD56B7F2D88C40B14 /* ShimedokiWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 153CC5B261CF849E9055C86A /* Build configuration list for PBXNativeTarget "ShimedokiWidget" */;
+			buildPhases = (
+				EE20DA834FAFC8F5BACE1A4E /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShimedokiWidget;
+			packageProductDependencies = (
+			);
+			productName = ShimedokiWidget;
+			productReference = 35F4E08EE38124A58B5D5224 /* ShimedokiWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		052DEA004F44C0D8DDBAE7F6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					2D7B7F008EEC13EBD88DD7D4 = {
+						DevelopmentTeam = R7B3AEZ7TA;
+					};
+					4D6B36BF10C9A900BD6EB474 = {
+						DevelopmentTeam = R7B3AEZ7TA;
+					};
+					5B24C201BF3E3C95F04B82AD = {
+						DevelopmentTeam = R7B3AEZ7TA;
+					};
+					A9283EE3F15935D3DB4D2250 = {
+						DevelopmentTeam = R7B3AEZ7TA;
+					};
+					EE46609AD56B7F2D88C40B14 = {
+						DevelopmentTeam = R7B3AEZ7TA;
+					};
+				};
+			};
+			buildConfigurationList = A22853CE6D67E731F0B46427 /* Build configuration list for PBXProject "Shimedoki" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = C67349520566C03DA2C90830;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = E88026B80D55884CC02A958B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A9283EE3F15935D3DB4D2250 /* Shimedoki */,
+				5B24C201BF3E3C95F04B82AD /* ShimedokiTests */,
+				4D6B36BF10C9A900BD6EB474 /* ShimedokiWatch */,
+				2D7B7F008EEC13EBD88DD7D4 /* ShimedokiWatchWidget */,
+				EE46609AD56B7F2D88C40B14 /* ShimedokiWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5069945BC1C6622511A8DA11 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55F9CDCC3FFE0CDAF941286A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		779FAB65C9E5C6FCD533FB6D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				131624983C6774A966E36E24 /* Assets.xcassets in Resources */,
+				0B5C65B22CA4AE7DF9FD05ED /* StoreKitConfiguration.storekit in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		516A789FE1F701D6B2C8F629 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17416E8F299421E4EA3FD0A0 /* Category.swift in Sources */,
+				F390FABA5B5B9A9137FE6599 /* ColorExtension.swift in Sources */,
+				FFFCD33163A3469B1566968A /* Constants.swift in Sources */,
+				FCA2747CEE3C93C093EB76F0 /* DefaultTemplates.swift in Sources */,
+				D6E424E5FE582FAC85C85B25 /* HapticStyle.swift in Sources */,
+				6507F4A12BEF38A35A5B597E /* LocalizationSupport.swift in Sources */,
+				2EC364AE33762FE8E5C0EC20 /* NotificationService.swift in Sources */,
+				94D532AD0353E44DED5E018B /* PlanLimits.swift in Sources */,
+				47C81095108A22301EDA32A4 /* PlanService.swift in Sources */,
+				7698103D43AD82517F6702D9 /* SessionLog.swift in Sources */,
+				64558F7B4FD21A85CB66DBFF /* SessionStore.swift in Sources */,
+				CE5EB54EE65B2371A8EA6DFA /* ShimedokiTests.swift in Sources */,
+				B6B99B1945700646F72E1A3B /* Strings.swift in Sources */,
+				1E7ED897B480C003EE1C796A /* Template.swift in Sources */,
+				C4B8FC860C20836337739E08 /* TemplateStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CFE80A5857239E1E8E45CEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CEF3E965C382D07863637F3 /* Category.swift in Sources */,
+				46628962EDD3B8876324DFEE /* ColorExtension.swift in Sources */,
+				2A42F39ED99C9200FC71FE5C /* Constants.swift in Sources */,
+				268DCC3FBAE13706EF625F8C /* DefaultTemplates.swift in Sources */,
+				EA6095665D500F9624D99A9C /* HapticStyle.swift in Sources */,
+				7A983A89DD4081F6FF6167C5 /* LocalizationSupport.swift in Sources */,
+				EEDFAF33A2A2C4C0E90DB6C7 /* NotificationService.swift in Sources */,
+				95C71C22E0EB5155F4901F37 /* PlanLimits.swift in Sources */,
+				44B5837F8DE7203981FF6D2B /* PlanService.swift in Sources */,
+				BC12BC0EEC133EA92F080378 /* SessionLog.swift in Sources */,
+				0BD3A67F638DDC5311CF6192 /* SessionStore.swift in Sources */,
+				3C4CBC2C408FAD16933979B8 /* SessionViewModel.swift in Sources */,
+				8947A97B592F98B080637ACD /* ShimedokiWatchApp.swift in Sources */,
+				C212F02A4A5FC6ACECA29492 /* Strings.swift in Sources */,
+				5557E611C1C3516A9ECE7A8D /* Template.swift in Sources */,
+				4C16C0CB8F0BC4618FBD35B1 /* TemplateStore.swift in Sources */,
+				DBB8582D8FE9F9D3A43AFD45 /* WatchAnalytics.swift in Sources */,
+				8275115FC5EA5CC7969754DE /* WatchHapticService.swift in Sources */,
+				12BFFE76780FB1C8193F3564 /* WatchQuickExtendView.swift in Sources */,
+				B336345215F8D68C765B1B51 /* WatchRunningSessionView.swift in Sources */,
+				96EEC3EBF35AB2BB44457EC9 /* WatchSessionCompleteView.swift in Sources */,
+				8C7994F588817771F57C19A1 /* WatchTemplateListView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4B3E362DA520EAC672F32EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6EDA09603E8D2113A6062B23 /* ShimedokiWatchWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE20DA834FAFC8F5BACE1A4E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5343D9BC0D08C072B502F76 /* ShimedokiActivityAttributes.swift in Sources */,
+				C88FD63477601BA72A722855 /* ShimedokiWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FEF34CA8DDFDD565C0688BFB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9A07073EB0CA70F157505EA /* AnalyticsService.swift in Sources */,
+				6968EBBC217F66FD454B47BB /* AppIconService.swift in Sources */,
+				A08D49857F1C874220CF01C8 /* CalendarService.swift in Sources */,
+				63F707C88EEFDB2F50AEFF85 /* Category.swift in Sources */,
+				B937DC129F64EDE49FEF57D8 /* ColorExtension.swift in Sources */,
+				B98218D949CDF401D29A440D /* Constants.swift in Sources */,
+				E80EC3548114FF1C64DEF8BF /* ContentView.swift in Sources */,
+				84EE2BA0FBC5D6A6077480A4 /* DefaultTemplates.swift in Sources */,
+				0D1287DCEF1D710158DC8891 /* HapticService.swift in Sources */,
+				17D7261797BD73977B744756 /* HapticStyle.swift in Sources */,
+				EF51A4DDEE79CBE7A2D32AAC /* HistoryView.swift in Sources */,
+				0897E516A4C997B7068CDD51 /* HistoryViewModel.swift in Sources */,
+				3CC6BE5158278341139EEDA5 /* LocalizationSupport.swift in Sources */,
+				403C60D971619440F61EDAFD /* NotificationService.swift in Sources */,
+				ACF6DA3BDBD1881E3C881495 /* OnboardingView.swift in Sources */,
+				79EAB0F1CB49CAE4FCB463BE /* PaywallView.swift in Sources */,
+				ED6A68D91745B9FFA7A9D351 /* PaywallViewModel.swift in Sources */,
+				5EC3757FB1A0E7FAA1B4BCC3 /* PhoneRunningSessionView.swift in Sources */,
+				5C5CC8071E5812F6646A17EA /* PhoneSessionViewModel.swift in Sources */,
+				F591984490594FF734293C59 /* PlanLimits.swift in Sources */,
+				2A1927AB6E5F3B7B91ECE633 /* PlanService.swift in Sources */,
+				7D36795C5E173D866CB2F009 /* SessionLog.swift in Sources */,
+				81FC649B97EACB69E843112C /* SessionStore.swift in Sources */,
+				6A0927AFBE23438C3AAEB93C /* SettingsView.swift in Sources */,
+				71A385650A7BF838E9F6EFEC /* ShimedokiActivityAttributes.swift in Sources */,
+				9F3C9C97D7EA040D723132CC /* ShimedokiApp.swift in Sources */,
+				06617BC11F51DFBD4BBD4BCA /* ShimedokiShortcuts.swift in Sources */,
+				6BA7DF7267975B36B3B43E0A /* Strings.swift in Sources */,
+				141436684FB757B288DBABF5 /* SubscriptionManagementView.swift in Sources */,
+				4E19BB6CBF2AA0D0C32A95EA /* Template.swift in Sources */,
+				A9EE777DEF51E2D7287EA5C3 /* TemplateEditView.swift in Sources */,
+				C62D6B8B4C1BA5E71F88E89F /* TemplateEditViewModel.swift in Sources */,
+				54AB01DD4B038F600E694875 /* TemplateListView.swift in Sources */,
+				577AB435A121B284653F15EE /* TemplateListViewModel.swift in Sources */,
+				13F1B99DBE48BEB43323DD90 /* TemplateStore.swift in Sources */,
+				AC59F4567972A0AFEEAE89CF /* WeeklySummaryService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		767248F8791BCEA6D6EB2A14 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE46609AD56B7F2D88C40B14 /* ShimedokiWidget */;
+			targetProxy = D04E6EAC5165A4D7827B4EA6 /* PBXContainerItemProxy */;
+		};
+		D863CC53A4D022584B15D9E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2D7B7F008EEC13EBD88DD7D4 /* ShimedokiWatchWidget */;
+			targetProxy = 7F6F183B07793AFA38535513 /* PBXContainerItemProxy */;
+		};
+		D877D5BEA8462F23041A15C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A9283EE3F15935D3DB4D2250 /* Shimedoki */;
+			targetProxy = F238B9EAD05D83CAF567FC78 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3258933F9605DFC4CF260E49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.shimedoki.ShimedokiTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shimedoki.app/Shimedoki";
+			};
+			name = Release;
+		};
+		5402BDEF1214150898D5906E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ShimedokiWatchWidget/ShimedokiWatchWidget.entitlements;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ShimedokiWatchWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.shimedoki.ShimedokiWatch.watchwidget;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		7444A1748F6FBE7BF509D2AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = R7B3AEZ7TA;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "しめどき";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		7FC60E04A5445EDEC58295F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ShimedokiWatch/ShimedokiWatch.entitlements;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.mankai.shimedoki;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.shimedoki.ShimedokiWatch;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		918587D821780CF5463873B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ShimedokiWidget/ShimedokiWidget.entitlements;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ShimedokiWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.shimedoki.Shimedoki.widget;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A06CF67AE81735048CDCA192 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = R7B3AEZ7TA;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "しめどき";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		A18EA90CDE831EB02329E268 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ShimedokiWatchWidget/ShimedokiWatchWidget.entitlements;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ShimedokiWatchWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.shimedoki.ShimedokiWatch.watchwidget;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		A214269F98AB619BC017E2F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ShimedokiWidget/ShimedokiWidget.entitlements;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ShimedokiWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.shimedoki.Shimedoki.widget;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A5CD714C3D86E27DF293EEB5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Shimedoki/Shimedoki.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "カレンダーの予定から自動でテンプレを提案します";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.shimedoki.Shimedoki;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CED2B908006D8B220BCFB67C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.shimedoki.ShimedokiTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shimedoki.app/Shimedoki";
+			};
+			name = Debug;
+		};
+		DCD0874F7CC71AF73347BC97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ShimedokiWatch/ShimedokiWatch.entitlements;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.mankai.shimedoki;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.shimedoki.ShimedokiWatch;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		F8A869261831FC389E54B1D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Shimedoki/Shimedoki.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "カレンダーの予定から自動でテンプレを提案します";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.shimedoki.Shimedoki;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		153CC5B261CF849E9055C86A /* Build configuration list for PBXNativeTarget "ShimedokiWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A214269F98AB619BC017E2F4 /* Debug */,
+				918587D821780CF5463873B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		641481491AE43B41CCAD123E /* Build configuration list for PBXNativeTarget "Shimedoki" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8A869261831FC389E54B1D0 /* Debug */,
+				A5CD714C3D86E27DF293EEB5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		744F1D1EB5EC8595948DABC4 /* Build configuration list for PBXNativeTarget "ShimedokiWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DCD0874F7CC71AF73347BC97 /* Debug */,
+				7FC60E04A5445EDEC58295F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A22853CE6D67E731F0B46427 /* Build configuration list for PBXProject "Shimedoki" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7444A1748F6FBE7BF509D2AF /* Debug */,
+				A06CF67AE81735048CDCA192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		CB9C7B24F92800815D4EC29C /* Build configuration list for PBXNativeTarget "ShimedokiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CED2B908006D8B220BCFB67C /* Debug */,
+				3258933F9605DFC4CF260E49 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FBA4F9F57E119D1B064BE7C8 /* Build configuration list for PBXNativeTarget "ShimedokiWatchWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A18EA90CDE831EB02329E268 /* Debug */,
+				5402BDEF1214150898D5906E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 052DEA004F44C0D8DDBAE7F6 /* Project object */;
+}

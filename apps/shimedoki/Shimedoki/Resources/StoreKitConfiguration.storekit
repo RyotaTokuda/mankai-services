@@ -1,0 +1,107 @@
+{
+  "identifier" : "com.mankai.shimedoki.storekit",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+    "_applicationInternalID" : "0",
+    "_developerTeamID" : "R7B3AEZ7TA",
+    "_failTransactionsEnabled" : false,
+    "_storeKitErrors" : [
+
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "shimedoki.plus",
+      "localizations" : [
+        {
+          "description" : "しめどきの全機能を使えるようになります",
+          "displayName" : "しめどき Plus",
+          "locale" : "ja_JP"
+        },
+        {
+          "description" : "Unlock all Shimedoki features",
+          "displayName" : "Shimedoki Plus",
+          "locale" : "en_US"
+        }
+      ],
+      "name" : "しめどき Plus",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "150",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "shimedoki.plus.monthly",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "月額プラン。いつでもキャンセルできます。",
+              "displayName" : "しめどき Plus 月額",
+              "locale" : "ja_JP"
+            },
+            {
+              "description" : "Monthly plan. Cancel anytime.",
+              "displayName" : "Shimedoki Plus Monthly",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "shimedoki.plus.monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Plus Monthly",
+          "subscriptionGroupID" : "shimedoki.plus",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "1200",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "shimedoki.plus.yearly",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "年額プラン。月あたり100円。",
+              "displayName" : "しめどき Plus 年額",
+              "locale" : "ja_JP"
+            },
+            {
+              "description" : "Yearly plan. Just ¥100/month.",
+              "displayName" : "Shimedoki Plus Yearly",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "shimedoki.plus.yearly",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Plus Yearly",
+          "subscriptionGroupID" : "shimedoki.plus",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}
