@@ -113,8 +113,9 @@ final class RecordStore {
         records.first
     }
 
-    /// 指定日数分の記録
+    /// 指定日数分の記録（Int.max を渡すと全件返す）
     func records(lastDays days: Int) -> [SymptomRecord] {
+        guard days < Int.max else { return records }
         let cutoff = Calendar.current.date(byAdding: .day, value: -days, to: Date()) ?? Date()
         return records.filter { $0.createdAt >= cutoff }
     }
@@ -184,44 +185,6 @@ final class RecordStore {
         }
     }
 }
-
-// MARK: - Debug Seed
-
-#if DEBUG
-extension RecordStore {
-    func seedDebugData() {
-        guard records.isEmpty else { return }
-        let calendar = Calendar.current
-        let symptoms: [SymptomType] = [.headache, .fatigue, .dizziness, .nausea, .stiffness, .drowsiness]
-        var seeded: [SymptomRecord] = []
-
-        for daysAgo in 0..<90 {
-            guard Double.random(in: 0...1) < 0.55 else { continue }
-            let base = calendar.date(byAdding: .day, value: -daysAgo, to: Date()) ?? Date()
-            let count = Int.random(in: 1...3)
-            for _ in 0..<count {
-                let hourOffset = TimeInterval(Int.random(in: 6...22) * 3600)
-                let date = base.addingTimeInterval(hourOffset - base.timeIntervalSince(calendar.startOfDay(for: base)))
-                var r = SymptomRecord(
-                    symptomType: symptoms.randomElement()!,
-                    severity: Int.random(in: 1...5),
-                    sourceDevice: Bool.random() ? .iPhone : .watch,
-                    date: date
-                )
-                if Bool.random() { r.medicationTaken = true; r.medicationTakenAt = date.addingTimeInterval(600) }
-                if Bool.random() {
-                    r.settledAt = date.addingTimeInterval(TimeInterval(Int.random(in: 30...180) * 60))
-                    r.settleCause = SettleCause.allCases.randomElement()
-                }
-                seeded.append(r)
-            }
-        }
-        seeded.forEach { records.append($0) }
-        records.sort { $0.createdAt > $1.createdAt }
-        save()
-    }
-}
-#endif
 
 // MARK: - JSON Coding
 

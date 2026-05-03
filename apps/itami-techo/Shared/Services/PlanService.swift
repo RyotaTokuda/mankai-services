@@ -142,10 +142,3 @@ final class PlanService {
     }
 }
 
-#if DEBUG
-extension PlanService {
-    func debugTogglePremium() {
-        isPremium.toggle()
-    }
-}
-#endif

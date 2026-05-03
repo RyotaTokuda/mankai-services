@@ -31,13 +31,6 @@ enum AppConstants {
         ) {
             return url
         }
-        // App Group が利用できない場合（Simulator / テスト / entitlements 未設定）
-        // ドキュメントディレクトリにフォールバック
-        #if DEBUG
-        print("[ItamiTecho] App Group container not available. Falling back to documents directory.")
-        #else
-        assertionFailure("[ItamiTecho] App Group container not available. Check entitlements.")
-        #endif
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }
 }

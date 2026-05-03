@@ -101,19 +101,6 @@ struct SettingsView: View {
                     }
                 }
 
-                #if DEBUG
-                Section("Debug") {
-                    Button("シードデータを生成（90日分）") {
-                        recordStore.seedDebugData()
-                    }
-                    .foregroundStyle(.orange)
-
-                    Button(planService.isPremium ? "プレミアムを解除（Debug）" : "プレミアムを有効化（Debug）") {
-                        planService.debugTogglePremium()
-                    }
-                    .foregroundStyle(planService.isPremium ? .red : .blue)
-                }
-                #endif
             }
             .navigationTitle(S.Settings.title)
             .confirmationDialog(
