@@ -11,8 +11,8 @@ struct PaywallView: View {
 
     enum PlanKind { case yearly, monthly }
 
-    private var yearlyPrice: String { planService.yearlyProduct?.displayPrice ?? "¥3,900" }
-    private var monthlyPrice: String { planService.monthlyProduct?.displayPrice ?? "¥390" }
+    private var yearlyPrice: String { planService.yearlyProduct?.displayPrice ?? "¥4,000" }
+    private var monthlyPrice: String { planService.monthlyProduct?.displayPrice ?? "¥400" }
 
     var body: some View {
         NavigationStack {
