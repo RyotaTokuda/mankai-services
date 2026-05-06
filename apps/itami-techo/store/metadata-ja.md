@@ -70,7 +70,7 @@ Subscription Group: `itamitecho.premium`
 3. Apple Watch: Watch アプリの即記録がコア機能
 4. HealthKit: 睡眠・心拍等を読み取り、不調との傾向表示に使用（書き込みは行わない）
 5. 位置情報: 天気・気圧データ取得のため When In Use で使用。市区町村レベルに丸めて保存
-6. 課金テスト: サンドボックス環境で Premium プランの購入が可能（7日トライアル付き）
+6. 課金テスト: サンドボックス環境で Premium プランの購入が可能（無料トライアルなし）
 7. ログイン不要: ローカルファーストのため、デモアカウントは不要
 
 ## App Privacy Details
