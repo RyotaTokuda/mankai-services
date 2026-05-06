@@ -21,7 +21,6 @@ struct PaywallView: View {
                     header
                     features
                     planCards
-                    trialTimeline
                     freeNote
                     legalLinks
                 }
@@ -103,27 +102,6 @@ struct PaywallView: View {
             ) { selectedPlan = .monthly }
         }
         .padding(.horizontal, 20)
-    }
-
-    // MARK: - トライアルタイムライン
-
-    private var trialTimeline: some View {
-        VStack(spacing: 6) {
-            Text(S.Paywall.trialBothPlans)
-                .font(.caption)
-                .foregroundStyle(.secondary)
-
-            HStack(spacing: 0) {
-                TimelineNode(dayLabel: S.Paywall.trialTimelineToday, desc: S.Paywall.trialTimelineDesc, isFilled: true)
-                TimelineLine()
-                TimelineNode(
-                    dayLabel: S.Paywall.trialTimelineDay7,
-                    desc: selectedPlan == .yearly ? yearlyPrice + "/年" : monthlyPrice + "/月",
-                    isFilled: false
-                )
-            }
-            .padding(.horizontal, 60)
-        }
     }
 
     // MARK: - 無料メモ・法的リンク
@@ -248,41 +226,6 @@ private struct PlanCard: View {
         }
         .buttonStyle(.plain)
         .animation(.easeInOut(duration: 0.15), value: isSelected)
-    }
-}
-
-// MARK: - TimelineNode / Line
-
-private struct TimelineNode: View {
-    let dayLabel: String
-    let desc: String
-    let isFilled: Bool
-
-    var body: some View {
-        VStack(spacing: 4) {
-            ZStack {
-                Circle()
-                    .fill(isFilled ? Color.accentColor : Color(.systemGray5))
-                    .frame(width: 10, height: 10)
-                if !isFilled {
-                    Circle().stroke(Color.accentColor, lineWidth: 1.5)
-                        .frame(width: 10, height: 10)
-                }
-            }
-            Text(dayLabel).font(.caption2).fontWeight(.semibold)
-            Text(desc).font(.caption2).foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
-        }
-        .frame(maxWidth: .infinity)
-    }
-}
-
-private struct TimelineLine: View {
-    var body: some View {
-        Rectangle()
-            .fill(Color(.systemGray4))
-            .frame(height: 1)
-            .padding(.bottom, 36)
     }
 }
 
