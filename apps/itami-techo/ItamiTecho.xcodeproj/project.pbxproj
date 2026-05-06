@@ -13,6 +13,7 @@
 		02E556D392D353623B8E8CED /* RecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2A8923E253022443282FF3 /* RecordStore.swift */; };
 		0536C2722685DF9A7C407CB6 /* CustomSymptomStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243B0D68697EC3DB42DE9736 /* CustomSymptomStore.swift */; };
 		0AE6158D2CD38EBFA7C56072 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB982CC831F3209858A7511 /* LocationService.swift */; };
+		0B43AF8587CB1D8D5AB0B004 /* LocalizationSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9048FA1A632ED9C99660A95 /* LocalizationSupport.swift */; };
 		0BD256B2DB7B9D6F694B2BEB /* RecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2A8923E253022443282FF3 /* RecordStore.swift */; };
 		0D4D0B4A1E6D584AC0947442 /* HealthSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252131398E2F4E994C5CFD1 /* HealthSnapshot.swift */; };
 		13A1DA3B483FD1E22381D763 /* ItamiTechoWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7F1A9DD46C6086D3977A3576 /* ItamiTechoWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -21,6 +22,7 @@
 		15FB48531CF9B4AFF1D7CF7A /* PressureHistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E56852F3F8554D49B516A4 /* PressureHistoryStore.swift */; };
 		1B73C5DDA574295D41253458 /* ItamiTechoWatchWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 15EBADAD76D44D2B9381A18E /* ItamiTechoWatchWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1D2EC95F795A128617D77FCE /* CustomMedication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2D5FE7B40C9881593D2FED /* CustomMedication.swift */; };
+		1DBBB3FF21DBE8C8F085219F /* WatchSettleTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD860141550C528A9F384D2 /* WatchSettleTimePickerView.swift */; };
 		1FF849DC472F96E52AFA0A15 /* CloudSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A384002359A548C3E3454EC /* CloudSyncService.swift */; };
 		216FD1804609B5788FC277F3 /* AnalysisHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15543C82C90EEE37278B6DF8 /* AnalysisHelper.swift */; };
 		23420ABC8C641BC20AECECFB /* EnvironmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F8309642423352DA3279D9 /* EnvironmentService.swift */; };
@@ -31,6 +33,7 @@
 		2DBCE8E47398D18356EF18D4 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E102BCA0F9545A2867BA014E /* Strings.swift */; };
 		2EAE8ABC24EFED88B95D46D2 /* TrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340DBA6B750F784A8085DFBE /* TrendsView.swift */; };
 		319D5AED25CC07AE05EA08F2 /* SymptomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCADA2A117520BB839906A2 /* SymptomType.swift */; };
+		31AC0F113D67069E40EA7C11 /* LocalizationSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9048FA1A632ED9C99660A95 /* LocalizationSupport.swift */; };
 		31FA088224F5E8932EC7B2D1 /* RecordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F3D046722A07343067260 /* RecordDetailView.swift */; };
 		32D8D8CCD100155EE3FB4431 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8876DF83E78487A49E75F2F /* Constants.swift */; };
 		36DF3016C9B54B58664C1199 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F987C1F880A3AB803929D3A1 /* RecordViewModel.swift */; };
@@ -54,6 +57,7 @@
 		4CB181136F75684F279AD219 /* CustomSymptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE92063302087082890758C9 /* CustomSymptom.swift */; };
 		4D070095C5C3DE1578B5885C /* SourceDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F53DB6661EE5F379370BA /* SourceDevice.swift */; };
 		4EA5F153F08FA90F6EAE6BB7 /* AnalysisHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15543C82C90EEE37278B6DF8 /* AnalysisHelper.swift */; };
+		4FF68A409B03C85E945D5220 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D394BC8D752673B27E4A1380 /* InfoPlist.strings */; };
 		503B02E240483CE52477B312 /* SymptomRecord+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B73A3C17D5A33266222D9BB /* SymptomRecord+Display.swift */; };
 		510E4893007279B627770C00 /* PressureHistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E56852F3F8554D49B516A4 /* PressureHistoryStore.swift */; };
 		516BC9499CC631A48ADDF447 /* StoreKitConfiguration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 00294B54167FBA76BB0A7E3A /* StoreKitConfiguration.storekit */; };
@@ -70,10 +74,12 @@
 		699287ADB1B414C8AD4F656C /* SourceDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F53DB6661EE5F379370BA /* SourceDevice.swift */; };
 		6B5D92F1A901395936A96A83 /* AppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5D0028D1E1A03173B47879 /* AppIntents.swift */; };
 		6B93B5B6EA16F50B773CB88C /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E078E9E89660F69A40DDC3E /* NotificationService.swift */; };
+		71B084CDF163C40B6ADC36C4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0D825AE01540FCC229C6B778 /* InfoPlist.strings */; };
 		746EE46E0BD0F1B90BD30525 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E078E9E89660F69A40DDC3E /* NotificationService.swift */; };
 		750F7B1BFF71F55C5DACE6F6 /* PlanLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3431A605F28F3BC28482F999 /* PlanLimits.swift */; };
 		75A6D81102DFEDB53061DDCC /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3149AD38AC8342560EAF6901 /* HealthService.swift */; };
 		767035051ECD6436FF14825A /* SymptomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCADA2A117520BB839906A2 /* SymptomType.swift */; };
+		78A0D6B484E5DFF830253F48 /* SettleTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65617F9C443688D0C248805D /* SettleTimePickerView.swift */; };
 		7962B42D2934A5B5EDD4FFB6 /* AddCustomSymptomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28265EB0059A902A798F4848 /* AddCustomSymptomView.swift */; };
 		7BE3575498A7CEC95B94F614 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8876DF83E78487A49E75F2F /* Constants.swift */; };
 		7F59987F4B8A61D07DE7F44C /* PlanLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3431A605F28F3BC28482F999 /* PlanLimits.swift */; };
@@ -107,6 +113,7 @@
 		ABB508AAA1D16585406C58F4 /* LocationPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91536D3EA4BF9A34E364A7 /* LocationPermissionView.swift */; };
 		ACAD608409BD469117E8A50B /* SymptomRecord+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B73A3C17D5A33266222D9BB /* SymptomRecord+Display.swift */; };
 		ADD62CD7950CEF9E53DEFDDD /* ItamiTechoWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB1555ADDD0E4B1DF0FC7B1 /* ItamiTechoWatchApp.swift */; };
+		AF43C6116C7DCF9774B77EED /* LocalizationSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9048FA1A632ED9C99660A95 /* LocalizationSupport.swift */; };
 		AF4941378F5A96E8D6CFED62 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A8CAD197034E7E3D783C8B /* WeatherService.swift */; };
 		AF52028B059E5FFED22EEE2B /* SourceDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F53DB6661EE5F379370BA /* SourceDevice.swift */; };
 		AFB5DBAAED9ED4F937972687 /* SymptomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCADA2A117520BB839906A2 /* SymptomType.swift */; };
@@ -116,7 +123,9 @@
 		B4C3B36EFBB935C4115EBCAC /* SymptomRecord+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B73A3C17D5A33266222D9BB /* SymptomRecord+Display.swift */; };
 		B6F63D38B033735203B92BE1 /* PressureHistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E56852F3F8554D49B516A4 /* PressureHistoryStore.swift */; };
 		BB641C0E1BB31C01E46E50AF /* EnvironmentSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F964FC569EC533BE5AFF458B /* EnvironmentSnapshot.swift */; };
+		BB904084B6503AD049DEE83B /* LocalizationSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9048FA1A632ED9C99660A95 /* LocalizationSupport.swift */; };
 		BCB7BD91214121B565C37A46 /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3149AD38AC8342560EAF6901 /* HealthService.swift */; };
+		BCBCC9E1F3B2125B376F6839 /* LocalizationSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9048FA1A632ED9C99660A95 /* LocalizationSupport.swift */; };
 		BDB6FB5BA8D6066B24E0D7A6 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4D7BB6069DDDCC2AABC85D /* OnboardingView.swift */; };
 		BE6E1610790F68DE2974843E /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3149AD38AC8342560EAF6901 /* HealthService.swift */; };
 		C0DF8F45BA531AFAF056AA15 /* CustomMedication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2D5FE7B40C9881593D2FED /* CustomMedication.swift */; };
@@ -216,6 +225,7 @@
 		00294B54167FBA76BB0A7E3A /* StoreKitConfiguration.storekit */ = {isa = PBXFileReference; path = StoreKitConfiguration.storekit; sourceTree = "<group>"; };
 		00BBDF18B249F6EE5FBFA242 /* WatchSeveritySelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSeveritySelectView.swift; sourceTree = "<group>"; };
 		00E3A58115DDB55BDDC7566F /* PlanManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanManagementView.swift; sourceTree = "<group>"; };
+		013B6B05115770853CBB54D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		06C728874BA2DAA4206AFA78 /* ItamiTecho.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ItamiTecho.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08A535D66EAC5B6D4993ECC6 /* SymptomRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomRecord.swift; sourceTree = "<group>"; };
 		0E078E9E89660F69A40DDC3E /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -248,8 +258,11 @@
 		5B6F53DB6661EE5F379370BA /* SourceDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceDevice.swift; sourceTree = "<group>"; };
 		5E0F3D046722A07343067260 /* RecordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailView.swift; sourceTree = "<group>"; };
 		5EB1555ADDD0E4B1DF0FC7B1 /* ItamiTechoWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItamiTechoWatchApp.swift; sourceTree = "<group>"; };
+		65617F9C443688D0C248805D /* SettleTimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettleTimePickerView.swift; sourceTree = "<group>"; };
 		6C2D5FE7B40C9881593D2FED /* CustomMedication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMedication.swift; sourceTree = "<group>"; };
+		6C98F38DEF1F1B202F0BEC8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6FCDC9A8350090177505740B /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		6FD860141550C528A9F384D2 /* WatchSettleTimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSettleTimePickerView.swift; sourceTree = "<group>"; };
 		72A0E76B3DEE2D9BB77D116E /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		72E56852F3F8554D49B516A4 /* PressureHistoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressureHistoryStore.swift; sourceTree = "<group>"; };
 		7F1A9DD46C6086D3977A3576 /* ItamiTechoWidgetExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = ItamiTechoWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -267,6 +280,7 @@
 		AC21945180E1D6E37E254C35 /* ReportCSVGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCSVGenerator.swift; sourceTree = "<group>"; };
 		AE92063302087082890758C9 /* CustomSymptom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSymptom.swift; sourceTree = "<group>"; };
 		B147764F021F5BABF149E09F /* ItamiTechoWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItamiTechoWidget.swift; sourceTree = "<group>"; };
+		B913DBE04420708494C4F114 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B9946300260CBF533429F138 /* ItamiTechoWatchWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItamiTechoWatchWidget.swift; sourceTree = "<group>"; };
 		BB226EB3961D03CEF96084D6 /* ItamiTechoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItamiTechoTests.swift; sourceTree = "<group>"; };
 		BDB982CC831F3209858A7511 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
@@ -274,9 +288,11 @@
 		C85D8DC368E4B3483C067B85 /* NotificationPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermissionView.swift; sourceTree = "<group>"; };
 		C8E1D1F50E99C46DE0B8E1DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC4D7BB6069DDDCC2AABC85D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		CFA4E086058508ED5E801D1B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D2DA13455B5D4AD456FA5209 /* ItamiTechoWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ItamiTechoWidget.entitlements; sourceTree = "<group>"; };
 		D3693FED76691693DB319B50 /* ReportPDFRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPDFRenderer.swift; sourceTree = "<group>"; };
 		D824D2DE4563C639201AEEE3 /* WatchRecordCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchRecordCompleteView.swift; sourceTree = "<group>"; };
+		D9048FA1A632ED9C99660A95 /* LocalizationSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationSupport.swift; sourceTree = "<group>"; };
 		E102BCA0F9545A2867BA014E /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		E6EF53841CC9DD18A8AA170B /* ItamiTechoWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ItamiTechoWatch.entitlements; sourceTree = "<group>"; };
 		EBFE0D3CF384420DFF424434 /* WatchQuickActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchQuickActionButton.swift; sourceTree = "<group>"; };
@@ -345,6 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				F8876DF83E78487A49E75F2F /* Constants.swift */,
+				D9048FA1A632ED9C99660A95 /* LocalizationSupport.swift */,
 				E102BCA0F9545A2867BA014E /* Strings.swift */,
 				2449F7031A6A6B0941C71C21 /* Models */,
 				0CD3585941AF6B069525B265 /* Services */,
@@ -365,6 +382,7 @@
 			children = (
 				E6EF53841CC9DD18A8AA170B /* ItamiTechoWatch.entitlements */,
 				771B0C0C122039BC0A47AD16 /* App */,
+				D394BC8D752673B27E4A1380 /* InfoPlist.strings */,
 				923ABE96103868BD3A8F97F7 /* Resources */,
 				66D5C498F233CC5C6903555E /* Services */,
 				DE0AB4EA776E0ABE2E14A30D /* ViewModels */,
@@ -399,6 +417,7 @@
 			children = (
 				9462D5C8C6067B9DDD9FBAF9 /* ItamiTecho.entitlements */,
 				D0C36C3D299908D117F78418 /* App */,
+				0D825AE01540FCC229C6B778 /* InfoPlist.strings */,
 				61E773BBA0B93C331796801C /* Resources */,
 				48FEB24A4F13D5B80216B91A /* Services */,
 				E295196B3D4A615074F302CD /* ViewModels */,
@@ -522,6 +541,7 @@
 				28265EB0059A902A798F4848 /* AddCustomSymptomView.swift */,
 				FD92B1EC9806B59B1E1F6F93 /* RecordCompleteView.swift */,
 				50F49E3F955622918185F8DE /* RecordView.swift */,
+				65617F9C443688D0C248805D /* SettleTimePickerView.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -533,6 +553,7 @@
 				29C5DE67A7BD52DD3074D40C /* WatchHomeView.swift */,
 				EBFE0D3CF384420DFF424434 /* WatchQuickActionButton.swift */,
 				D824D2DE4563C639201AEEE3 /* WatchRecordCompleteView.swift */,
+				6FD860141550C528A9F384D2 /* WatchSettleTimePickerView.swift */,
 				00BBDF18B249F6EE5FBFA242 /* WatchSeveritySelectView.swift */,
 				982CA405CA16A14D35C84252 /* WatchSymptomSelectView.swift */,
 			);
@@ -696,18 +717,23 @@
 				TargetAttributes = {
 					2E922794B359B0DE2BDD3581 = {
 						DevelopmentTeam = R7B3AEZ7TA;
+						ProvisioningStyle = Automatic;
 					};
 					371A41431E7B861A1AB3118B = {
 						DevelopmentTeam = R7B3AEZ7TA;
+						ProvisioningStyle = Automatic;
 					};
 					8B788E2115A8BD3DF7011DCE = {
 						DevelopmentTeam = R7B3AEZ7TA;
+						ProvisioningStyle = Automatic;
 					};
 					D1EFB2CEB1327AE313949FED = {
 						DevelopmentTeam = R7B3AEZ7TA;
+						ProvisioningStyle = Automatic;
 					};
 					F182150731C48D69EA07C6A8 = {
 						DevelopmentTeam = R7B3AEZ7TA;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -716,6 +742,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
+				en,
 				ja,
 			);
 			mainGroup = 7FDA54E7039933286D066B14;
@@ -740,6 +767,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E4F2260B1EC00C875AE5245 /* Assets.xcassets in Resources */,
+				71B084CDF163C40B6ADC36C4 /* InfoPlist.strings in Resources */,
 				516BC9499CC631A48ADDF447 /* StoreKitConfiguration.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -749,6 +777,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFF7F464AEFEE7B7E70A7B83 /* Assets.xcassets in Resources */,
+				4FF68A409B03C85E945D5220 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -769,6 +798,7 @@
 				BE6E1610790F68DE2974843E /* HealthService.swift in Sources */,
 				0D4D0B4A1E6D584AC0947442 /* HealthSnapshot.swift in Sources */,
 				D94FA4692C891BA9846F1014 /* ItamiTechoWatchWidget.swift in Sources */,
+				0B43AF8587CB1D8D5AB0B004 /* LocalizationSupport.swift in Sources */,
 				8EB88D74F6254AB2689A7590 /* LocationService.swift in Sources */,
 				C264286FEFA7D71C928D7C2A /* NotificationService.swift in Sources */,
 				EB46A6B2733E380A6ABE887E /* PlanLimits.swift in Sources */,
@@ -799,6 +829,7 @@
 				BCB7BD91214121B565C37A46 /* HealthService.swift in Sources */,
 				EF85D71279DBE56DAEC702C9 /* HealthSnapshot.swift in Sources */,
 				ADD62CD7950CEF9E53DEFDDD /* ItamiTechoWatchApp.swift in Sources */,
+				31AC0F113D67069E40EA7C11 /* LocalizationSupport.swift in Sources */,
 				E4895617CD2CBA1EE13AD0CD /* LocationService.swift in Sources */,
 				746EE46E0BD0F1B90BD30525 /* NotificationService.swift in Sources */,
 				750F7B1BFF71F55C5DACE6F6 /* PlanLimits.swift in Sources */,
@@ -814,6 +845,7 @@
 				5E7C916748E736C7F78F90D0 /* WatchHomeView.swift in Sources */,
 				C3B0C6D1B54155C0BB46C2C4 /* WatchQuickActionButton.swift in Sources */,
 				3F0FE7D902C2D959EC722C80 /* WatchRecordCompleteView.swift in Sources */,
+				1DBBB3FF21DBE8C8F085219F /* WatchSettleTimePickerView.swift in Sources */,
 				82509191510D4D63B0D750D6 /* WatchSeveritySelectView.swift in Sources */,
 				97083DEFDB3FAE59BEE9070E /* WatchSymptomSelectView.swift in Sources */,
 				42D206E730ABB0D28C8BA915 /* WatchSyncService.swift in Sources */,
@@ -835,6 +867,7 @@
 				6037EB2F6700BD68A010DA86 /* HealthService.swift in Sources */,
 				38A3CC6067429C033E04C239 /* HealthSnapshot.swift in Sources */,
 				A237363D26FB70C622D8DD1C /* ItamiTechoTests.swift in Sources */,
+				AF43C6116C7DCF9774B77EED /* LocalizationSupport.swift in Sources */,
 				0AE6158D2CD38EBFA7C56072 /* LocationService.swift in Sources */,
 				C976F8A293A53CE6C28E2266 /* NotificationService.swift in Sources */,
 				CE8C3D11C6D41D2FF1DDA7A1 /* PlanLimits.swift in Sources */,
@@ -877,6 +910,7 @@
 				2574B2F6E9F9136AF14DE3FF /* HistoryView.swift in Sources */,
 				D84B36025D21CDDC84FDE98B /* ItamiTechoApp.swift in Sources */,
 				B0DA77095E0F5324E0E4C7BA /* LegalView.swift in Sources */,
+				BCBCC9E1F3B2125B376F6839 /* LocalizationSupport.swift in Sources */,
 				ABB508AAA1D16585406C58F4 /* LocationPermissionView.swift in Sources */,
 				F6099D26B9C9C65AB479904A /* LocationService.swift in Sources */,
 				E3308A999CFF3B1EB93953C9 /* NotificationPermissionView.swift in Sources */,
@@ -898,6 +932,7 @@
 				89C7A30DDB76EA1115904CE5 /* ReportPDFRenderer.swift in Sources */,
 				F3C922FA665FCC541BF1344D /* ReportView.swift in Sources */,
 				247286CD3941D4A45F360CF6 /* SettingsView.swift in Sources */,
+				78A0D6B484E5DFF830253F48 /* SettleTimePickerView.swift in Sources */,
 				4D070095C5C3DE1578B5885C /* SourceDevice.swift in Sources */,
 				924E72B50760B11AE49BF561 /* Strings.swift in Sources */,
 				503B02E240483CE52477B312 /* SymptomRecord+Display.swift in Sources */,
@@ -923,6 +958,7 @@
 				75A6D81102DFEDB53061DDCC /* HealthService.swift in Sources */,
 				D8ACF22DC96CE692CC4FA222 /* HealthSnapshot.swift in Sources */,
 				02A24641AE82B2D361179A0E /* ItamiTechoWidget.swift in Sources */,
+				BB904084B6503AD049DEE83B /* LocalizationSupport.swift in Sources */,
 				7FC90D037D2271237172BD01 /* LocationService.swift in Sources */,
 				3D0B60956E6B2CC78A5621E5 /* NotificationService.swift in Sources */,
 				7F59987F4B8A61D07DE7F44C /* PlanLimits.swift in Sources */,
@@ -959,12 +995,34 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		0D825AE01540FCC229C6B778 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				013B6B05115770853CBB54D6 /* en */,
+				CFA4E086058508ED5E801D1B /* ja */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D394BC8D752673B27E4A1380 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6C98F38DEF1F1B202F0BEC8C /* en */,
+				B913DBE04420708494C4F114 /* ja */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		01AC1A494986AA4A2EB66CCD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ItamiTechoWatch/ItamiTechoWatch.entitlements;
+				INFOPLIST_KEY_CFBundleDisplayName = "痛み手帳";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "不調記録と心拍の関係を振り返るために使用します。";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.mankai.itamitecho;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.itamitecho.ItamiTechoWatch;
@@ -1013,6 +1071,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ItamiTechoWatch/ItamiTechoWatch.entitlements;
+				INFOPLIST_KEY_CFBundleDisplayName = "痛み手帳";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "不調記録と心拍の関係を振り返るために使用します。";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.mankai.itamitecho;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.itamitecho.ItamiTechoWatch;
@@ -1072,6 +1131,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1190,6 +1250,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1224,6 +1285,7 @@
 				CFBundleURLTypes = "[[\"CFBundleURLSchemes\": [\"itamitecho\"]]]";
 				CODE_SIGN_ENTITLEMENTS = ItamiTecho/ItamiTecho.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_KEY_CFBundleDisplayName = "痛み手帳";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "不調記録と睡眠・心拍・歩数などの関係を振り返るために使用します。";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "不調記録をApple Healthに反映するために使用します。";
@@ -1248,6 +1310,7 @@
 				CFBundleURLTypes = "[[\"CFBundleURLSchemes\": [\"itamitecho\"]]]";
 				CODE_SIGN_ENTITLEMENTS = ItamiTecho/ItamiTecho.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_KEY_CFBundleDisplayName = "痛み手帳";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "不調記録と睡眠・心拍・歩数などの関係を振り返るために使用します。";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "不調記録をApple Healthに反映するために使用します。";
