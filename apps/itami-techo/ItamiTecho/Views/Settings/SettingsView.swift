@@ -7,6 +7,11 @@ struct SettingsView: View {
     @Environment(CustomSymptomStore.self) private var customSymptomStore
 
     @State private var showingDeleteAllConfirm = false
+    @State private var showingPrivacyPolicy = false
+    @State private var showingTerms = false
+
+    private let privacyURL = URL(string: "https://mankai-software.vercel.app/privacy")!
+    private let termsURL = URL(string: "https://mankai-software.vercel.app/terms")!
 
     var body: some View {
         NavigationStack {
@@ -91,6 +96,20 @@ struct SettingsView: View {
                     } label: {
                         Label(S.Settings.legal, systemImage: "doc.text")
                     }
+
+                    Button {
+                        showingPrivacyPolicy = true
+                    } label: {
+                        Label(S.Settings.privacyPolicy, systemImage: "hand.raised")
+                            .foregroundStyle(.primary)
+                    }
+
+                    Button {
+                        showingTerms = true
+                    } label: {
+                        Label(S.Settings.termsOfService, systemImage: "doc.plaintext")
+                            .foregroundStyle(.primary)
+                    }
                 }
 
                 // ── バージョン ──
@@ -103,6 +122,14 @@ struct SettingsView: View {
 
             }
             .navigationTitle(S.Settings.title)
+            .sheet(isPresented: $showingPrivacyPolicy) {
+                SafariView(url: privacyURL)
+                    .ignoresSafeArea()
+            }
+            .sheet(isPresented: $showingTerms) {
+                SafariView(url: termsURL)
+                    .ignoresSafeArea()
+            }
             .confirmationDialog(
                 S.Settings.deleteAllDataConfirm,
                 isPresented: $showingDeleteAllConfirm,

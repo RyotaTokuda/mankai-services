@@ -12,7 +12,7 @@ enum AnalysisHelper {
         for r in records {
             counts[r.displayName, default: 0] += 1
         }
-        return counts.sorted { $0.value > $1.value }
+        return counts.sorted { $0.value != $1.value ? $0.value > $1.value : $0.key < $1.key }
     }
 
     /// 時間帯別件数（朝・昼・夕・夜の固定4要素、件数0も含む）

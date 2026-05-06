@@ -92,6 +92,7 @@
 		875764CD548868A3B9190C19 /* CustomSymptomStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243B0D68697EC3DB42DE9736 /* CustomSymptomStore.swift */; };
 		89C7A30DDB76EA1115904CE5 /* ReportPDFRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3693FED76691693DB319B50 /* ReportPDFRenderer.swift */; };
 		8B4E188D80457D56DC3D1872 /* RecordCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD92B1EC9806B59B1E1F6F93 /* RecordCompleteView.swift */; };
+		8D03FF14354DAD2C6C01CEEA /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1214A85F02DC33090DC5B211 /* SafariView.swift */; };
 		8DF548CD2113533191250DAE /* PlanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5038A95AD0D6CF2A20ABD /* PlanService.swift */; };
 		8EB88D74F6254AB2689A7590 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB982CC831F3209858A7511 /* LocationService.swift */; };
 		8FD339EA3EFE45E1DB2C49B3 /* EnvironmentSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F964FC569EC533BE5AFF458B /* EnvironmentSnapshot.swift */; };
@@ -229,6 +230,7 @@
 		06C728874BA2DAA4206AFA78 /* ItamiTecho.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ItamiTecho.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08A535D66EAC5B6D4993ECC6 /* SymptomRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomRecord.swift; sourceTree = "<group>"; };
 		0E078E9E89660F69A40DDC3E /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		1214A85F02DC33090DC5B211 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		15543C82C90EEE37278B6DF8 /* AnalysisHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisHelper.swift; sourceTree = "<group>"; };
 		15EBADAD76D44D2B9381A18E /* ItamiTechoWatchWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ItamiTechoWatchWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		193ADF2324508AEA30BD1EFA /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
@@ -507,6 +509,7 @@
 				8B864013EFDEE8913DBD63EA /* LegalView.swift */,
 				820A6493091705E5CC8FEA73 /* NotificationSettingsView.swift */,
 				00E3A58115DDB55BDDC7566F /* PlanManagementView.swift */,
+				1214A85F02DC33090DC5B211 /* SafariView.swift */,
 				4E5F1247B4463A6551FC07D1 /* SettingsView.swift */,
 			);
 			path = Settings;
@@ -931,6 +934,7 @@
 				A659A60C78AD14B3E33DF291 /* ReportCSVGenerator.swift in Sources */,
 				89C7A30DDB76EA1115904CE5 /* ReportPDFRenderer.swift in Sources */,
 				F3C922FA665FCC541BF1344D /* ReportView.swift in Sources */,
+				8D03FF14354DAD2C6C01CEEA /* SafariView.swift in Sources */,
 				247286CD3941D4A45F360CF6 /* SettingsView.swift in Sources */,
 				78A0D6B484E5DFF830253F48 /* SettleTimePickerView.swift in Sources */,
 				4D070095C5C3DE1578B5885C /* SourceDevice.swift in Sources */,
@@ -1024,6 +1028,7 @@
 				CODE_SIGN_ENTITLEMENTS = ItamiTechoWatch/ItamiTechoWatch.entitlements;
 				INFOPLIST_KEY_CFBundleDisplayName = "痛み手帳";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "不調記録と心拍の関係を振り返るために使用します。";
+				INFOPLIST_KEY_NSMotionUsageDescription = "記録時の気圧データを取得するために使用します。";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.mankai.itamitecho;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.itamitecho.watchkitapp;
 				SDKROOT = watchos;
@@ -1073,6 +1078,7 @@
 				CODE_SIGN_ENTITLEMENTS = ItamiTechoWatch/ItamiTechoWatch.entitlements;
 				INFOPLIST_KEY_CFBundleDisplayName = "痛み手帳";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "不調記録と心拍の関係を振り返るために使用します。";
+				INFOPLIST_KEY_NSMotionUsageDescription = "記録時の気圧データを取得するために使用します。";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.mankai.itamitecho;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.itamitecho.watchkitapp;
 				SDKROOT = watchos;
@@ -1290,6 +1296,7 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "不調記録と睡眠・心拍・歩数などの関係を振り返るために使用します。";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "不調記録をApple Healthに反映するために使用します。";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "記録時の天気・気圧情報を取得するために使用します。位置情報は市区町村レベルに丸めて保存され、外部に送信されません。";
+				INFOPLIST_KEY_NSMotionUsageDescription = "記録時の気圧データを取得するために使用します。";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1315,6 +1322,7 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "不調記録と睡眠・心拍・歩数などの関係を振り返るために使用します。";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "不調記録をApple Healthに反映するために使用します。";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "記録時の天気・気圧情報を取得するために使用します。位置情報は市区町村レベルに丸めて保存され、外部に送信されません。";
+				INFOPLIST_KEY_NSMotionUsageDescription = "記録時の気圧データを取得するために使用します。";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

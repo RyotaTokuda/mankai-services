@@ -3,6 +3,7 @@ import SwiftUI
 /// iPhone: 通院向けレポート画面
 /// NavigationStack は呼び出し元（HistoryView sheet / TrendsView NavigationLink）が持つため、ここでは持たない
 struct ReportView: View {
+    var isModal: Bool = false
     @Environment(RecordStore.self) private var recordStore
     @Environment(PlanService.self) private var planService
     @Environment(\.dismiss) private var dismiss
@@ -110,8 +111,10 @@ struct ReportView: View {
         .navigationTitle(S.Report.title)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-                Button(S.Common.close) { dismiss() }
+            if isModal {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button(S.Common.close) { dismiss() }
+                }
             }
         }
         .sheet(isPresented: $showingShareSheet) {

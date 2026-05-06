@@ -610,6 +610,8 @@ enum S {
         static var subscription: String             { L("プラン管理",              en: "Plan Management",                  zhHans: "计划管理",         zhHant: "方案管理") }
         static var about: String                    { L("このアプリについて",       en: "About This App",                   zhHans: "关于本应用",       zhHant: "關於本應用程式") }
         static var legal: String                    { L("法的情報",               en: "Legal",                            zhHans: "法律信息",         zhHant: "法律資訊") }
+        static var privacyPolicy: String            { L("プライバシーポリシー",     en: "Privacy Policy",                   zhHans: "隐私政策",         zhHant: "隱私權政策") }
+        static var termsOfService: String           { L("利用規約",               en: "Terms of Service",                 zhHans: "服务条款",         zhHant: "服務條款") }
         // 通知設定
         static var notificationPermissionDenied: String { L(
             "通知がオフになっています。設定アプリから許可してください。",

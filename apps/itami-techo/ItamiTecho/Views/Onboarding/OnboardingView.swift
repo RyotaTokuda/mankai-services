@@ -32,19 +32,34 @@ struct OnboardingView: View {
                 .onChange(of: locationCompleted) { _, completed in
                     if completed { withAnimation(.easeInOut(duration: 0.3)) { step = .health } }
                 }
+                .overlay(alignment: .topLeading) { backButton(to: .slides) }
         case .health:
             HealthPermissionView(isCompleted: $healthCompleted)
                 .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
                 .onChange(of: healthCompleted) { _, completed in
                     if completed { withAnimation(.easeInOut(duration: 0.3)) { step = .notification } }
                 }
+                .overlay(alignment: .topLeading) { backButton(to: .location) }
         case .notification:
             NotificationPermissionView(isCompleted: $notificationCompleted)
                 .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
                 .onChange(of: notificationCompleted) { _, completed in
                     if completed { withAnimation(.easeInOut(duration: 0.3)) { isCompleted = true } }
                 }
+                .overlay(alignment: .topLeading) { backButton(to: .health) }
         }
+    }
+
+    private func backButton(to target: Step) -> some View {
+        Button {
+            withAnimation(.easeInOut(duration: 0.3)) { step = target }
+        } label: {
+            Image(systemName: "chevron.left")
+                .font(.body.weight(.semibold))
+                .foregroundStyle(Color.accentColor)
+                .padding()
+        }
+        .padding(.top, 8)
     }
 
     private var slidesView: some View {
@@ -95,8 +110,9 @@ struct OnboardingView: View {
                 Button(S.Common.skip) {
                     isCompleted = true
                 }
-                .font(.caption)
+                .font(.subheadline)
                 .foregroundStyle(.secondary)
+                .frame(minWidth: 80, minHeight: 44)
                 .padding(.bottom, 8)
             }
         }

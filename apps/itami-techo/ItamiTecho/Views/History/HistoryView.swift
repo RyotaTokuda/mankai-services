@@ -128,7 +128,7 @@ struct HistoryView: View {
                 CalendarView()
             }
             .sheet(isPresented: $showingReport) {
-                NavigationStack { ReportView() }
+                NavigationStack { ReportView(isModal: true) }
             }
             .sheet(item: $settlingRecord) { record in
                 SettleTimePickerView(record: record) { date, cause in
