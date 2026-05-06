@@ -52,7 +52,7 @@ struct PlanManagementView: View {
 
             Section {
                 Button(S.Settings.planManageSubscription) {
-                    if let url = URL(string: "https://apps.apple.com/account/subscriptions") {
+                    if let url = URL(string: "itms-apps://apps.apple.com/account/subscriptions") {
                         UIApplication.shared.open(url)
                     }
                 }
@@ -99,7 +99,7 @@ struct PlanManagementView: View {
                             Text(S.Settings.planUpgrade)
                                 .font(.headline)
                                 .foregroundStyle(.white)
-                            Text("7日間無料トライアルあり")
+                            Text(S.Settings.planTrialBanner)
                                 .font(.caption)
                                 .foregroundStyle(.white.opacity(0.8))
                         }

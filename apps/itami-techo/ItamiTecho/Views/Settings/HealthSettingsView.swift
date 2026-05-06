@@ -4,6 +4,7 @@ import HealthKit
 /// Health連携設定画面
 struct HealthSettingsView: View {
     @Environment(HealthService.self) private var healthService
+    @State private var isRequesting = false
 
     var body: some View {
         List {
@@ -22,12 +23,22 @@ struct HealthSettingsView: View {
                                 Text(S.Settings.healthNotAuthorized)
                                     .font(.subheadline)
                             }
+                            Button(S.Settings.healthAllow) {
+                                Task {
+                                    isRequesting = true
+                                    await healthService.requestAuthorization()
+                                    isRequesting = false
+                                }
+                            }
+                            .font(.subheadline)
+                            .disabled(isRequesting)
                             Button(S.Settings.healthOpenSettings) {
                                 if let url = URL(string: UIApplication.openSettingsURLString) {
                                     UIApplication.shared.open(url)
                                 }
                             }
-                            .font(.subheadline)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
                         }
                     }
                 } else {

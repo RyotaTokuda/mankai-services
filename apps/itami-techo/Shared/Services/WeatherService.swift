@@ -48,11 +48,30 @@ final class WeatherDataService {
         }
     }
 
-    /// 空気質データを取得
+    /// 空気質データを取得（Open-Meteo Air Quality API 使用）
+    /// WeatherKit は現行 SDK で AQI クエリ非対応のため Open-Meteo を使用
     func fetchAirQuality(at location: CLLocation) async -> AirQualityData? {
-        // WeatherKit の空気質は一部地域のみ対応
-        // 取得できない場合は nil を返す
-        return nil
+        let lat = location.coordinate.latitude
+        let lon = location.coordinate.longitude
+        let urlString = "https://air-quality-api.open-meteo.com/v1/air-quality"
+            + "?latitude=\(lat)&longitude=\(lon)"
+            + "&current=pm2_5,european_aqi"
+        guard let url = URL(string: urlString) else { return nil }
+
+        do {
+            let (data, response) = try await URLSession.shared.data(from: url)
+            guard let http = response as? HTTPURLResponse, http.statusCode == 200 else { return nil }
+
+            let decoded = try JSONDecoder().decode(OpenMeteoAirQualityResponse.self, from: data)
+            guard let current = decoded.current else { return nil }
+            return AirQualityData(
+                index: current.european_aqi.map { Int($0.rounded()) },
+                pm25: current.pm2_5
+            )
+        } catch {
+            print("[WeatherDataService] air quality error: \(error)")
+            return nil
+        }
     }
 
     // MARK: - 予報取得（予兆通知用）
@@ -88,8 +107,19 @@ struct WeatherSnapshot {
 
 /// 空気質データ（内部用）
 struct AirQualityData {
-    let index: Int
-    let pm25: Double?
+    let index: Int?      // 欧州 AQI（0〜100+）
+    let pm25: Double?    // PM2.5 (µg/m³)
+}
+
+// MARK: - Open-Meteo レスポンス型
+
+private struct OpenMeteoAirQualityResponse: Decodable {
+    let current: CurrentAQ?
+
+    struct CurrentAQ: Decodable {
+        let pm2_5: Double?
+        let european_aqi: Double?
+    }
 }
 
 /// 気圧予報ポイント（予兆通知用）

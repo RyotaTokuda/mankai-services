@@ -3,11 +3,12 @@ import WatchKit
 
 /// Watch: 直近記録への薬・落ち着いたクイックアクション
 struct WatchQuickActionButton: View {
-    let recordId: UUID
+    let record: SymptomRecord
     let action: QuickAction
 
     @Environment(RecordStore.self) private var recordStore
     @State private var isDone = false
+    @State private var showingSettlePicker = false
 
     enum QuickAction {
         case medication
@@ -16,21 +17,21 @@ struct WatchQuickActionButton: View {
         var label: String {
             switch self {
             case .medication: S.Watch.tookMedicine
-            case .settled: S.Watch.settledDown
+            case .settled:    S.Watch.settledDown
             }
         }
 
         var icon: String {
             switch self {
             case .medication: "pills.fill"
-            case .settled: "heart.fill"
+            case .settled:    "heart.fill"
             }
         }
 
         var tint: Color {
             switch self {
             case .medication: .orange
-            case .settled: .green
+            case .settled:    .green
             }
         }
     }
@@ -42,7 +43,11 @@ struct WatchQuickActionButton: View {
                 .foregroundStyle(.secondary)
         } else {
             Button {
-                performAction()
+                if action == .settled {
+                    showingSettlePicker = true
+                } else {
+                    performAction(at: Date())
+                }
             } label: {
                 Label(action.label, systemImage: action.icon)
                     .font(.caption2)
@@ -50,18 +55,23 @@ struct WatchQuickActionButton: View {
             }
             .buttonStyle(.bordered)
             .tint(action.tint)
+            .sheet(isPresented: $showingSettlePicker) {
+                WatchSettleTimePickerView(record: record) { date in
+                    performAction(at: date)
+                }
+            }
         }
     }
 
-    private func performAction() {
+    private func performAction(at date: Date) {
         switch action {
         case .medication:
-            recordStore.markMedicationTaken(id: recordId)
+            recordStore.markMedicationTaken(id: record.id)
         case .settled:
-            recordStore.markSettled(id: recordId)
+            recordStore.markSettled(id: record.id, at: date)
         }
 
-        if let updated = recordStore.records.first(where: { $0.id == recordId }) {
+        if let updated = recordStore.records.first(where: { $0.id == record.id }) {
             WatchSyncService.shared.sendRecordUpdate(updated)
         }
 

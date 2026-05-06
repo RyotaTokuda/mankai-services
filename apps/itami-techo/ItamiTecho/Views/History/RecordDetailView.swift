@@ -10,6 +10,7 @@ struct RecordDetailView: View {
 
     @State private var showingEdit = false
     @State private var showingDeleteConfirm = false
+    @State private var showingSettlePicker = false
 
     var body: some View {
         NavigationStack {
@@ -53,8 +54,7 @@ struct RecordDetailView: View {
                 if record.settledAt == nil {
                     Section {
                         Button {
-                            recordStore.markSettled(id: record.id)
-                            dismiss()
+                            showingSettlePicker = true
                         } label: {
                             Label(S.Record.settled, systemImage: "heart.fill")
                                 .font(.subheadline)
@@ -137,6 +137,15 @@ struct RecordDetailView: View {
             }
             .sheet(isPresented: $showingEdit) {
                 RecordEditView(record: record)
+            }
+            .sheet(isPresented: $showingSettlePicker) {
+                SettleTimePickerView(record: record) { date, cause in
+                    recordStore.markSettled(id: record.id, at: date, cause: cause)
+                    if let updated = recordStore.records.first(where: { $0.id == record.id }) {
+                        WatchSyncService.shared.sendRecordUpdate(updated)
+                    }
+                    dismiss()
+                }
             }
             .confirmationDialog(
                 S.Record.deleteConfirm,

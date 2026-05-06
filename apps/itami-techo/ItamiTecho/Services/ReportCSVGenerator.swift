@@ -6,37 +6,12 @@ enum ReportCSVGenerator {
     static func generate(records: [SymptomRecord]) -> String {
         var lines: [String] = []
 
-        lines.append([
-            "日時",
-            "症状",
-            "強さ",
-            "強さラベル",
-            "服薬",
-            "服薬時刻",
-            "落ち着いた時刻",
-            "持続時間(分)",
-            "落ち着いた要因",
-            "メモ",
-            "記録元",
-            "天気",
-            "気圧(hPa)",
-            "気圧変化3h(hPa)",
-            "気温(℃)",
-            "湿度(%)",
-            "空気質(AQI)",
-            "PM2.5",
-            "睡眠(時間)",
-            "安静時心拍(bpm)",
-            "歩数",
-            "曜日",
-            "時間帯",
-        ].joined(separator: ","))
+        lines.append(S.Report.csvHeaders.joined(separator: ","))
 
         let calendar = Calendar.current
-        let dowLabels = ["日", "月", "火", "水", "木", "金", "土"]
 
         for r in records {
-            let symptom = r.symptomType.map { S.Symptom.name(for: $0) } ?? r.customSymptomName ?? "カスタム"
+            let symptom = r.symptomType.map { S.Symptom.name(for: $0) } ?? r.customSymptomName ?? S.Symptom.custom
             let env = r.environment
             let health = r.healthSummary
 
@@ -45,16 +20,16 @@ enum ReportCSVGenerator {
                 return "\(Int(settled.timeIntervalSince(r.createdAt) / 60))"
             }()
 
-            let weekdayIdx = calendar.component(.weekday, from: r.createdAt) // 1=日〜7=土
-            let weekdayLabel = dowLabels[weekdayIdx - 1]
+            let weekdayIdx = calendar.component(.weekday, from: r.createdAt) - 1  // 0=日〜6=土
+            let weekdayLabel = S.Common.weekdayLabelsSundayFirst[weekdayIdx]
 
             let hour = calendar.component(.hour, from: r.createdAt)
             let timeCategory: String = {
                 switch hour {
-                case 5..<12: return "朝"
-                case 12..<17: return "昼"
-                case 17..<21: return "夕"
-                default: return "夜"
+                case 5..<12: return S.Trends.timeMorningShort
+                case 12..<17: return S.Trends.timeAfternoonShort
+                case 17..<21: return S.Trends.timeEveningShort
+                default: return S.Trends.timeNightShort
                 }
             }()
 
@@ -63,13 +38,13 @@ enum ReportCSVGenerator {
             row.append(csvEscape(symptom))
             row.append("\(r.severity)")
             row.append(csvEscape(S.Severity.label(for: r.severity)))
-            row.append(r.medicationTaken ? "はい" : "いいえ")
+            row.append(r.medicationTaken ? S.Common.boolYes : S.Common.boolNo)
             row.append(r.medicationTakenAt?.formatted(.iso8601) ?? "")
             row.append(r.settledAt?.formatted(.iso8601) ?? "")
             row.append(durationMinutes)
             row.append(csvEscape(r.settleCause?.label ?? ""))
             row.append(csvEscape(r.note ?? ""))
-            row.append(r.sourceDevice == .watch ? "Watch" : "iPhone")
+            row.append(r.sourceDevice == .watch ? S.Common.sourceWatch : S.Common.sourceiPhone)
             row.append(csvEscape(env?.weatherCondition ?? ""))
             row.append(env?.pressure.map { String(format: "%.1f", $0) } ?? "")
             row.append(env?.pressureTrend3h.map { String(format: "%.1f", $0) } ?? "")

@@ -9,6 +9,7 @@ struct WatchRecordCompleteView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var showingMedicationDone = false
     @State private var showingSettledDone = false
+    @State private var showingSettlePicker = false
 
     /// 今日の記録件数
     private var todayCount: Int {
@@ -55,11 +56,7 @@ struct WatchRecordCompleteView: View {
 
                 if !showingSettledDone {
                     Button {
-                        recordStore.markSettled(id: record.id)
-                        WatchSyncService.shared.sendRecordUpdate(
-                            recordStore.records.first { $0.id == record.id } ?? record
-                        )
-                        showingSettledDone = true
+                        showingSettlePicker = true
                     } label: {
                         Label(S.Watch.settledDown, systemImage: "heart.fill")
                             .frame(maxWidth: .infinity, minHeight: 36)
@@ -86,5 +83,14 @@ struct WatchRecordCompleteView: View {
             .padding(.horizontal, 4)
         }
         .navigationBarBackButtonHidden(true)
+        .sheet(isPresented: $showingSettlePicker) {
+            WatchSettleTimePickerView(record: record) { date in
+                recordStore.markSettled(id: record.id, at: date)
+                WatchSyncService.shared.sendRecordUpdate(
+                    recordStore.records.first { $0.id == record.id } ?? record
+                )
+                showingSettledDone = true
+            }
+        }
     }
 }

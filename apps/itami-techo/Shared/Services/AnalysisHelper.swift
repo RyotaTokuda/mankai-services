@@ -15,7 +15,7 @@ enum AnalysisHelper {
         return counts.sorted { $0.value > $1.value }
     }
 
-    /// 時間帯別件数
+    /// 時間帯別件数（朝・昼・夕・夜の固定4要素、件数0も含む）
     static func timeOfDayCounts(from records: [SymptomRecord]) -> [(String, Int)] {
         let calendar = Calendar.current
         var morning = 0, afternoon = 0, evening = 0, night = 0
@@ -29,11 +29,11 @@ enum AnalysisHelper {
             }
         }
         return [
-            ("朝 (5-12時)", morning),
-            ("昼 (12-17時)", afternoon),
-            ("夕 (17-21時)", evening),
-            ("夜 (21-5時)", night),
-        ].filter { $0.1 > 0 }
+            (S.Trends.timeMorning, morning),
+            (S.Trends.timeAfternoon, afternoon),
+            (S.Trends.timeEvening, evening),
+            (S.Trends.timeNight, night),
+        ]
     }
 
     /// 強さ分布
@@ -51,7 +51,7 @@ enum AnalysisHelper {
     /// 曜日別件数（月〜日の順）
     static func dayOfWeekCounts(from records: [SymptomRecord]) -> [(String, Int)] {
         let calendar = Calendar.current
-        let labels = ["月", "火", "水", "木", "金", "土", "日"]
+        let labels = S.Trends.weekdayLabels
         var counts = [Int: Int]()
         for r in records {
             // weekday: 1=日, 2=月, ..., 7=土 → 月曜起点に変換
@@ -72,6 +72,30 @@ enum AnalysisHelper {
         return Int(durations.reduce(0, +) / Double(durations.count) / 60)
     }
 
+    // MARK: - 日別サマリー
+
+    struct DaySummary: Identifiable {
+        let id = UUID()
+        let date: Date
+        let count: Int
+        let maxSeverity: Int
+    }
+
+    /// 直近 days 日分の日別サマリー（古い順）
+    static func dailySummaries(from records: [SymptomRecord], days: Int) -> [DaySummary] {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        return (0..<days).map { offset -> DaySummary in
+            let date = calendar.date(byAdding: .day, value: -(days - 1 - offset), to: today)!
+            let dayRecords = records.filter { calendar.isDate($0.createdAt, inSameDayAs: date) }
+            return DaySummary(
+                date: date,
+                count: dayRecords.count,
+                maxSeverity: dayRecords.map(\.severity).max() ?? 0
+            )
+        }
+    }
+
     // MARK: - 環境分析
 
     /// 気圧帯別の記録件数
@@ -86,9 +110,9 @@ enum AnalysisHelper {
             }
         }
         return [
-            ("低気圧 (<1005hPa)", low),
-            ("通常 (1005-1020hPa)", normal),
-            ("高気圧 (>1020hPa)", high),
+            (S.Trends.pressureLow, low),
+            (S.Trends.pressureMid, normal),
+            (S.Trends.pressureHigh, high),
         ].filter { $0.1 > 0 }
     }
 

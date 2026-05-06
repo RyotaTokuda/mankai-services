@@ -6,7 +6,13 @@ import HealthKit
 @Observable
 final class HealthService {
     private let store = HKHealthStore()
-    private(set) var isAuthorized = false
+    private(set) var isAuthorized: Bool
+
+    private static let authorizedKey = "healthkit.authorized"
+
+    init() {
+        self.isAuthorized = UserDefaults.standard.bool(forKey: Self.authorizedKey)
+    }
 
     /// HealthKit が利用可能かどうか
     static var isAvailable: Bool {
@@ -33,6 +39,7 @@ final class HealthService {
         do {
             try await store.requestAuthorization(toShare: [], read: readTypes)
             isAuthorized = true
+            UserDefaults.standard.set(true, forKey: Self.authorizedKey)
             return true
         } catch {
             print("[HealthService] authorization error: \(error)")

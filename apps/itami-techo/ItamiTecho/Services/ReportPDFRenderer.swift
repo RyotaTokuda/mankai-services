@@ -82,7 +82,7 @@ struct ReportPDFRenderer {
         var y: CGFloat = margin
 
         // ── タイトル ──
-        y = draw(S.App.name + " 通院向けレポート", at: .init(x: margin, y: y), font: titleFont)
+        y = draw(S.Report.pdfTitle(S.App.name), at: .init(x: margin, y: y), font: titleFont)
         y += 2
         let period = "\(fmtDate(startDate)) 〜 \(fmtDate(endDate))　　出力: \(fmtDate(Date()))"
         y = draw(period, at: .init(x: margin, y: y), font: bodyFont, color: .gray)
@@ -91,18 +91,17 @@ struct ReportPDFRenderer {
         y += 12
 
         // ── サマリー ──
-        y = drawSection("サマリー", y: y)
-        y = draw("症状のあった日数: \(symptomDays)日 / \(periodDays)日間（月換算 \(String(format: "%.1f", monthlySymptomDays))日/月）",
+        y = drawSection(S.Report.pdfSectionSummary, y: y)
+        y = draw(S.Report.symptomDaysSummary(symptomDays: symptomDays, periodDays: periodDays, monthly: monthlySymptomDays),
                  at: .init(x: margin, y: y), font: bodyFont)
-        y = draw("総記録件数: \(records.count)件", at: .init(x: margin, y: y), font: bodyFont)
-        y = draw("服薬回数: \(medicationCount)回（服薬した日数: \(medicationDays)日）",
+        y = draw(S.Report.totalRecordsSummary(records.count), at: .init(x: margin, y: y), font: bodyFont)
+        y = draw(S.Report.medicationSummary(count: medicationCount, days: medicationDays),
                  at: .init(x: margin, y: y), font: bodyFont)
 
         if let avg = avgSettleMinutes {
-            var durText = "平均持続時間: \(avg)分"
-            if let mx = maxDurationMinutes {
-                durText += "　最長: \(formatDuration(mx))"
-            }
+            let durText = maxDurationMinutes.map {
+                S.Report.avgDurationSummary(avg: avg, max: formatDuration($0))
+            } ?? S.Report.avgDurationSummaryAvgOnly(avg: avg)
             y = draw(durText, at: .init(x: margin, y: y), font: bodyFont)
         }
 
@@ -117,8 +116,8 @@ struct ReportPDFRenderer {
             UIColor.systemOrange.withAlphaComponent(0.5).setStroke()
             borderPath.lineWidth = 1
             borderPath.stroke()
-            let mohText = "⚠️ 月換算で服薬日数が\(Int(monthlyMedicationDays.rounded()))日を超えています。薬物乱用頭痛（MOH）のリスクがあります。受診時に医師にお伝えください。"
-            draw(mohText, at: .init(x: margin + 6, y: y + 6), width: contentWidth - 12,
+            draw(S.Report.mohWarning(Int(monthlyMedicationDays.rounded())),
+                 at: .init(x: margin + 6, y: y + 6), width: contentWidth - 12,
                  font: .systemFont(ofSize: 9.5), color: .systemOrange)
             y += warningH + 6
         }
@@ -126,13 +125,12 @@ struct ReportPDFRenderer {
 
         // ── 症状別内訳 ──
         y = checkPage(y, needed: 60, ctx: ctx)
-        y = drawSection("症状別内訳", y: y)
+        y = drawSection(S.Report.pdfSectionSymptom, y: y)
         let total = max(1, records.count)
         for (name, count) in AnalysisHelper.symptomCounts(from: records) {
             let pct = Int(Double(count) / Double(total) * 100)
-            let label = "\(name): \(count)件 (\(pct)%)"
-            y = draw(label, at: .init(x: margin, y: y), font: bodyFont)
-            // mini bar
+            y = draw(S.Report.symptomDistributionRow(name: name, count: count, pct: pct),
+                     at: .init(x: margin, y: y), font: bodyFont)
             let barW = CGFloat(pct) / 100.0 * (contentWidth * 0.45)
             let barRect = CGRect(x: margin + 155, y: y - 11, width: barW, height: 7)
             UIColor.systemBlue.withAlphaComponent(0.25).setFill()
@@ -142,54 +140,56 @@ struct ReportPDFRenderer {
 
         // ── 強さの分布 ──
         y = checkPage(y, needed: 60, ctx: ctx)
-        y = drawSection("強さの分布", y: y)
+        y = drawSection(S.Report.pdfSectionSeverity, y: y)
         for (label, count) in AnalysisHelper.severityDistribution(from: records).reversed() where count > 0 {
             let pct = Int(Double(count) / Double(total) * 100)
-            y = draw("\(label): \(count)件 (\(pct)%)", at: .init(x: margin, y: y), font: bodyFont)
+            y = draw(S.Report.timeOfDayRow(label: label, count: count, pct: pct),
+                     at: .init(x: margin, y: y), font: bodyFont)
         }
         y += 8
 
         // ── 時間帯別分布 ──
         y = checkPage(y, needed: 60, ctx: ctx)
-        y = drawSection("時間帯別分布", y: y)
-        for (label, count) in AnalysisHelper.timeOfDayCounts(from: records) {
+        y = drawSection(S.Report.pdfSectionTimeOfDay, y: y)
+        for (label, count) in AnalysisHelper.timeOfDayCounts(from: records) where count > 0 {
             let pct = Int(Double(count) / Double(total) * 100)
-            y = draw("\(label): \(count)件 (\(pct)%)", at: .init(x: margin, y: y), font: bodyFont)
+            y = draw(S.Report.timeOfDayRow(label: label, count: count, pct: pct),
+                     at: .init(x: margin, y: y), font: bodyFont)
         }
         y += 8
 
         // ── 曜日別分布 ──
         y = checkPage(y, needed: 30, ctx: ctx)
-        y = drawSection("曜日別分布", y: y)
+        y = drawSection(S.Report.pdfSectionDayOfWeek, y: y)
         let dow = AnalysisHelper.dayOfWeekCounts(from: records)
-        let dowText = dow.map { "\($0.0): \($0.1)件" }.joined(separator: "　")
+        let dowText = dow.map { "\($0.0): \($0.1)\(S.Trends.countSuffix)" }.joined(separator: "　")
         y = draw(dowText, at: .init(x: margin, y: y), width: contentWidth, font: bodyFont)
         y += 8
 
         // ── 環境データ ──
         if !envRecords.isEmpty {
             y = checkPage(y, needed: 80, ctx: ctx)
-            y = drawSection("環境データ（記録あり \(envRecords.count)件）", y: y)
+            y = drawSection(S.Report.pdfSectionWithCount(S.Report.pdfSectionEnvironment, count: envRecords.count), y: y)
             let dropCount = AnalysisHelper.pressureDropCount(from: records)
             if dropCount > 0 {
                 let dropPct = Int(Double(dropCount) / Double(envRecords.count) * 100)
-                y = draw("気圧下降時（前3時間で -2hPa 以上）の記録: \(dropCount)件 (\(dropPct)%)",
+                y = draw(S.Report.pressureDropStat(count: dropCount, pct: dropPct),
                          at: .init(x: margin, y: y), font: bodyFont)
             }
             let weatherList = AnalysisHelper.weatherCounts(from: records)
             if !weatherList.isEmpty {
-                let wText = weatherList.map { "「\($0.0)」\($0.1)件" }.joined(separator: "　")
-                y = draw("天気別: " + wText, at: .init(x: margin, y: y), width: contentWidth, font: bodyFont)
+                let wText = weatherList.map { "「\($0.0)」\($0.1)\(S.Trends.countSuffix)" }.joined(separator: "　")
+                y = draw(S.Report.weatherStat(wText), at: .init(x: margin, y: y), width: contentWidth, font: bodyFont)
             }
             let temps = envRecords.compactMap { $0.environment?.temperature }
             if !temps.isEmpty {
-                let avg = temps.reduce(0, +) / Double(temps.count)
-                y = draw(String(format: "平均気温: %.1f℃", avg), at: .init(x: margin, y: y), font: bodyFont)
+                y = draw(S.Report.avgTemperatureStat(temps.reduce(0, +) / Double(temps.count)),
+                         at: .init(x: margin, y: y), font: bodyFont)
             }
             let humids = envRecords.compactMap { $0.environment?.humidity }
             if !humids.isEmpty {
-                let avg = humids.reduce(0, +) / Double(humids.count)
-                y = draw(String(format: "平均湿度: %.0f%%", avg), at: .init(x: margin, y: y), font: bodyFont)
+                y = draw(S.Report.avgHumidityStat(humids.reduce(0, +) / Double(humids.count)),
+                         at: .init(x: margin, y: y), font: bodyFont)
             }
             y += 8
         }
@@ -197,27 +197,27 @@ struct ReportPDFRenderer {
         // ── Health データ ──
         if !healthRecords.isEmpty {
             y = checkPage(y, needed: 60, ctx: ctx)
-            y = drawSection("Health データ（記録あり \(healthRecords.count)件）", y: y)
+            y = drawSection(S.Report.pdfSectionWithCount(S.Report.pdfSectionHealth, count: healthRecords.count), y: y)
             if let sleep = AnalysisHelper.sleepAnalysis(from: records) {
-                y = draw("睡眠6時間未満の日の記録: \(sleep.shortSleepCount)件 / \(sleep.shortSleepCount + sleep.normalSleepCount)件",
+                y = draw(S.Report.shortSleepStat(short: sleep.shortSleepCount, total: sleep.shortSleepCount + sleep.normalSleepCount),
                          at: .init(x: margin, y: y), font: bodyFont)
             }
             let rhrs = healthRecords.compactMap { $0.healthSummary?.restingHeartRate }
             if !rhrs.isEmpty {
-                let avg = rhrs.reduce(0, +) / Double(rhrs.count)
-                y = draw(String(format: "平均安静時心拍: %.0f bpm", avg), at: .init(x: margin, y: y), font: bodyFont)
+                y = draw(S.Report.avgRestingHRStat(rhrs.reduce(0, +) / Double(rhrs.count)),
+                         at: .init(x: margin, y: y), font: bodyFont)
             }
             let hrvs = healthRecords.compactMap { $0.healthSummary?.heartRateVariability }
             if !hrvs.isEmpty {
-                let avg = hrvs.reduce(0, +) / Double(hrvs.count)
-                y = draw(String(format: "平均心拍変動 (HRV): %.0f ms", avg), at: .init(x: margin, y: y), font: bodyFont)
+                y = draw(S.Report.avgHRVStat(hrvs.reduce(0, +) / Double(hrvs.count)),
+                         at: .init(x: margin, y: y), font: bodyFont)
             }
             y += 8
         }
 
         // ── 記録一覧 ──
         y = checkPage(y, needed: 60, ctx: ctx)
-        y = drawSection("記録一覧（全\(records.count)件・新しい順）", y: y)
+        y = drawSection(S.Report.pdfRecordListTitle(records.count), y: y)
 
         // Table header
         y = drawRecordTableHeader(y: y)
@@ -257,8 +257,10 @@ struct ReportPDFRenderer {
 
     private func drawRecordTableHeader(y: CGFloat) -> CGFloat {
         let headers: [(String, CGFloat)] = [
-            ("日時", colDate), ("症状", colSymptom), ("強さ", colSeverity),
-            ("持続", colDuration), ("服薬", colMed), ("天気/気圧", colEnv), ("メモ", colMemo),
+            (S.Report.tableColDate, colDate), (S.Report.tableColSymptom, colSymptom),
+            (S.Report.tableColSeverity, colSeverity), (S.Report.tableColDuration, colDuration),
+            (S.Report.tableColMed, colMed), (S.Report.tableColEnvWeather, colEnv),
+            (S.Report.tableColMemo, colMemo),
         ]
         UIColor.systemGray4.setFill()
         UIRectFill(CGRect(x: margin - 2, y: y - 1, width: contentWidth + 4, height: 14))
@@ -271,10 +273,10 @@ struct ReportPDFRenderer {
     private func drawRecordRow(_ record: SymptomRecord, y: CGFloat) -> CGFloat {
         let rowFont = UIFont.systemFont(ofSize: 9)
         let dateStr = record.createdAt.formatted(.dateTime.month(.twoDigits).day(.twoDigits).hour(.twoDigits(amPM: .omitted)).minute(.twoDigits))
-        let symptom = record.symptomType.map { S.Symptom.name(for: $0) } ?? record.customSymptomName ?? "カスタム"
+        let symptom = record.symptomType.map { S.Symptom.name(for: $0) } ?? record.customSymptomName ?? S.Symptom.custom
         let severity = "\(record.severity)"
         let duration: String = {
-            guard let s = record.settledAt else { return "未解消" }
+            guard let s = record.settledAt else { return S.Record.unsettled }
             return formatDuration(Int(s.timeIntervalSince(record.createdAt) / 60))
         }()
         let med = record.medicationTaken ? "○" : "-"

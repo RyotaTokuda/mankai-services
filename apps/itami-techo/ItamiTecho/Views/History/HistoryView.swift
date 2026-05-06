@@ -8,6 +8,7 @@ struct HistoryView: View {
 
     @State private var showingCalendar = false
     @State private var selectedRecord: SymptomRecord?
+    @State private var settlingRecord: SymptomRecord?
     @State private var showingReport = false
 
     /// 表示対象の記録（プランに応じた日数制限）
@@ -80,15 +81,15 @@ struct HistoryView: View {
                                     RecordRow(
                                         record: record,
                                         onSettle: record.settledAt == nil
-                                            ? { recordStore.markSettled(id: record.id) }
+                                            ? { settlingRecord = record }
                                             : nil
                                     )
                                     .contentShape(Rectangle())
                                     .onTapGesture { selectedRecord = record }
-                                    .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                                    .swipeActions(edge: .leading, allowsFullSwipe: false) {
                                         if record.settledAt == nil {
                                             Button {
-                                                recordStore.markSettled(id: record.id)
+                                                settlingRecord = record
                                             } label: {
                                                 Label(S.Record.settled, systemImage: "heart.fill")
                                             }
@@ -128,6 +129,14 @@ struct HistoryView: View {
             }
             .sheet(isPresented: $showingReport) {
                 NavigationStack { ReportView() }
+            }
+            .sheet(item: $settlingRecord) { record in
+                SettleTimePickerView(record: record) { date, cause in
+                    recordStore.markSettled(id: record.id, at: date, cause: cause)
+                    if let updated = recordStore.records.first(where: { $0.id == record.id }) {
+                        WatchSyncService.shared.sendRecordUpdate(updated)
+                    }
+                }
             }
         }
     }

@@ -57,16 +57,10 @@ struct WatchHomeView: View {
 
                             // 直近記録への追加アクション
                             if !latest.medicationTaken {
-                                WatchQuickActionButton(
-                                    recordId: latest.id,
-                                    action: .medication
-                                )
+                                WatchQuickActionButton(record: latest, action: .medication)
                             }
                             if latest.settledAt == nil {
-                                WatchQuickActionButton(
-                                    recordId: latest.id,
-                                    action: .settled
-                                )
+                                WatchQuickActionButton(record: latest, action: .settled)
                             }
                         }
                         .padding(.horizontal, 2)

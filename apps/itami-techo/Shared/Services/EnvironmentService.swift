@@ -40,7 +40,7 @@ final class EnvironmentService {
             snapshot.backfillDeadline = Date().addingTimeInterval(24 * 3600)
         }
 
-        // 4. 空気質
+        // 4. 空気質（Open-Meteo）
         if let aq = await weatherService.fetchAirQuality(at: location) {
             snapshot.airQualityIndex = aq.index
             snapshot.pm25 = aq.pm25

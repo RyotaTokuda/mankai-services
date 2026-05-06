@@ -10,7 +10,7 @@ struct RecordCompleteView: View {
 
     @State private var medicationTapped = false
     @State private var settledTapped = false
-    @State private var selectedCause: SettleCause? = nil
+    @State private var showingSettlePicker = false
 
     private var todayCount: Int { recordStore.todayRecords.count }
     private var isMedTaken: Bool { medicationTapped || record.medicationTaken }
@@ -52,47 +52,16 @@ struct RecordCompleteView: View {
                     color: .green
                 ) {
                     guard !isSettled else { return }
-                    settledTapped = true
-                    recordStore.markSettled(id: record.id)
+                    showingSettlePicker = true
                 }
             }
             .padding(.horizontal)
 
-            // ── 解消要因ピッカー（落ち着いた後に表示） ──
             if isSettled {
-                VStack(spacing: 8) {
-                    Text(S.Record.whySettled)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-
-                    HStack(spacing: 8) {
-                        ForEach(SettleCause.allCases) { cause in
-                            Button {
-                                selectedCause = cause
-                                recordStore.markSettled(id: record.id, cause: cause)
-                            } label: {
-                                VStack(spacing: 3) {
-                                    Image(systemName: cause.icon)
-                                        .font(.caption)
-                                    Text(cause.label)
-                                        .font(.caption2)
-                                }
-                                .frame(maxWidth: .infinity, minHeight: 44)
-                                .background(selectedCause == cause ? Color.green.opacity(0.15) : Color(.systemGray6))
-                                .foregroundStyle(selectedCause == cause ? .green : .secondary)
-                                .cornerRadius(8)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(selectedCause == cause ? Color.green.opacity(0.5) : Color.clear, lineWidth: 1.5)
-                                )
-                            }
-                            .buttonStyle(.plain)
-                        }
-                    }
-                    .padding(.horizontal)
-                }
-                .transition(.opacity.combined(with: .move(edge: .bottom)))
-                .animation(.easeInOut(duration: 0.2), value: isSettled)
+                Label(S.Record.settled, systemImage: "checkmark.circle.fill")
+                    .font(.subheadline)
+                    .foregroundStyle(.green)
+                    .transition(.opacity.combined(with: .move(edge: .bottom)))
             }
 
             Spacer()
@@ -109,9 +78,14 @@ struct RecordCompleteView: View {
         }
         .presentationDetents([.medium, .large])
         .animation(.easeInOut(duration: 0.2), value: isSettled)
-        .onAppear {
-            // 既存レコードに解消済みがある場合は要因を復元
-            selectedCause = record.settleCause
+        .sheet(isPresented: $showingSettlePicker) {
+            SettleTimePickerView(record: record) { date, cause in
+                settledTapped = true
+                recordStore.markSettled(id: record.id, at: date, cause: cause)
+                if let updated = recordStore.records.first(where: { $0.id == record.id }) {
+                    WatchSyncService.shared.sendRecordUpdate(updated)
+                }
+            }
         }
     }
 }

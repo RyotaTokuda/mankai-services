@@ -10,11 +10,13 @@ struct RecordView: View {
     @Environment(HealthService.self) private var healthService
 
     @State private var vm = RecordViewModel()
+    @State private var settlingRecord: SymptomRecord?
 
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 20) {
+                    latestUnsettledSection
                     symptomSection
 
                     if vm.hasSelection {
@@ -50,6 +52,58 @@ struct RecordView: View {
                 }
             }
             .sheet(isPresented: $vm.showingPaywall) { PaywallView() }
+            .sheet(item: $settlingRecord) { record in
+                SettleTimePickerView(record: record) { date, cause in
+                    recordStore.markSettled(id: record.id, at: date, cause: cause)
+                    if let updated = recordStore.records.first(where: { $0.id == record.id }) {
+                        WatchSyncService.shared.sendRecordUpdate(updated)
+                    }
+                }
+            }
+        }
+    }
+
+    // MARK: - 直近の未解消記録セクション
+
+    @ViewBuilder
+    private var latestUnsettledSection: some View {
+        if let unsettled = recordStore.records.first(where: { $0.settledAt == nil }) {
+            VStack(alignment: .leading, spacing: 6) {
+                Text(S.Record.latestUnsettledLabel)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal)
+
+                HStack {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(unsettled.displayName)
+                            .font(.subheadline)
+                            .fontWeight(.medium)
+                        Text(unsettled.createdAt.formatted(.dateTime.hour().minute()))
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                    Spacer()
+                    Button {
+                        settlingRecord = unsettled
+                    } label: {
+                        Label(S.Record.settled, systemImage: "heart.fill")
+                            .font(.subheadline)
+                            .fontWeight(.medium)
+                            .foregroundStyle(.white)
+                            .padding(.horizontal, 14)
+                            .padding(.vertical, 8)
+                            .background(Color.green)
+                            .cornerRadius(20)
+                    }
+                    .buttonStyle(.plain)
+                }
+                .padding(.horizontal)
+                .padding(.vertical, 10)
+                .background(Color(.systemGray6))
+                .cornerRadius(12)
+                .padding(.horizontal)
+            }
         }
     }
 
@@ -101,41 +155,44 @@ struct RecordView: View {
 
             let canAddCustom = customSymptomStore.symptoms.count < planService.maxCustomSymptoms
             Button {
-                vm.showingAddCustom = true
-            } label: {
-                HStack(spacing: 4) {
-                    Label(S.Common.addSymptom, systemImage: "plus")
-                        .font(.caption)
-                    if !planService.isPremium {
-                        Text("\(customSymptomStore.symptoms.count)/\(planService.maxCustomSymptoms)")
-                            .font(.caption)
-                            .foregroundStyle(canAddCustom ? Color.secondary : Color.red)
-                            .monospacedDigit()
-                    }
-                }
-            }
-            .disabled(!canAddCustom)
-            .padding(.horizontal)
-
-            if !planService.isPremium {
-                Button {
+                if canAddCustom {
+                    vm.showingAddCustom = true
+                } else {
                     vm.showingPaywall = true
-                } label: {
-                    HStack(spacing: 6) {
-                        Image(systemName: "lock.fill")
-                            .font(.caption2)
-                        Text(S.Record.premiumUnlockCustom)
-                            .font(.caption2)
-                    }
-                    .foregroundStyle(.secondary)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 6)
-                    .background(Color(.systemGray6))
-                    .cornerRadius(8)
                 }
-                .buttonStyle(.plain)
-                .padding(.horizontal)
+            } label: {
+                HStack(spacing: 10) {
+                    Image(systemName: canAddCustom ? "plus.circle.fill" : "lock.fill")
+                        .font(.title3)
+                        .foregroundStyle(canAddCustom ? Color.accentColor : Color.secondary)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(S.Common.addSymptom)
+                            .font(.subheadline)
+                            .fontWeight(.medium)
+                            .foregroundStyle(canAddCustom ? Color.accentColor : Color.secondary)
+                        if !planService.isPremium {
+                            Text("\(customSymptomStore.symptoms.count)/\(planService.maxCustomSymptoms)")
+                                .font(.caption2)
+                                .foregroundStyle(canAddCustom ? Color.secondary : Color.red)
+                                .monospacedDigit()
+                        }
+                    }
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity, minHeight: 50)
+                .padding(.horizontal, 16)
+                .background(Color(.systemGray6))
+                .cornerRadius(12)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .strokeBorder(
+                            style: StrokeStyle(lineWidth: 1.5, dash: [6, 3])
+                        )
+                        .foregroundStyle(canAddCustom ? Color.accentColor.opacity(0.5) : Color(.systemGray4))
+                )
             }
+            .buttonStyle(.plain)
+            .padding(.horizontal)
         }
     }
 
