@@ -144,7 +144,7 @@ enum S {
         static var bySymptom: String           { L("症状別",            en: "By Symptom",               zhHans: "按症状",       zhHant: "依症狀") }
         static var byTimeOfDay: String         { L("時間帯別",          en: "By Time of Day",           zhHans: "按时段",       zhHant: "依時段") }
         static var byDayOfWeek: String         { L("曜日別",            en: "By Day of Week",           zhHans: "按星期",       zhHant: "依星期") }
-        static var severityDistribution: String { L("強さの分布",       en: "Severity Distribution",    zhHans: "程度分布",     zhHant: "程度分布") }
+        static var severityDistribution: String { L("強さの分布（1〜5）", en: "Severity Distribution (1–5)", zhHans: "程度分布（1〜5）", zhHant: "程度分布（1〜5）") }
         static var monthComparison: String     { L("先月との比較",      en: "vs. Last Month",           zhHans: "与上月比较",   zhHant: "與上月比較") }
         static var periodPremium: String       { L("全期間の傾向",      en: "All-time Trends",          zhHans: "全期间趋势",   zhHant: "全期間趨勢") }
         static var periodFree: String          { L("直近14日間の傾向（無料プラン）", en: "Last 14-Day Trends (Free Plan)", zhHans: "近14天趋势（免费计划）", zhHant: "近14天趨勢（免費方案）") }
@@ -320,7 +320,7 @@ enum S {
         // ── PDF セクション見出し ──
         static var pdfSectionSummary: String     { L("サマリー",       en: "Summary",                  zhHans: "摘要",             zhHant: "摘要") }
         static var pdfSectionSymptom: String     { L("症状別内訳",     en: "By Symptom",               zhHans: "按症状分类",        zhHant: "依症狀分類") }
-        static var pdfSectionSeverity: String    { L("強さの分布",     en: "Severity Distribution",    zhHans: "程度分布",          zhHant: "程度分布") }
+        static var pdfSectionSeverity: String    { L("強さの分布（1〜5）", en: "Severity Distribution (1–5)", zhHans: "程度分布（1〜5）", zhHant: "程度分布（1〜5）") }
         static var pdfSectionTimeOfDay: String   { L("時間帯別分布",   en: "Time of Day Distribution", zhHans: "按时段分布",        zhHant: "依時段分布") }
         static var pdfSectionDayOfWeek: String   { L("曜日別分布",     en: "Day of Week Distribution", zhHans: "按星期分布",        zhHant: "依星期分布") }
         static var pdfSectionEnvironment: String { L("環境データ",     en: "Environment Data",         zhHans: "环境数据",          zhHant: "環境數據") }
