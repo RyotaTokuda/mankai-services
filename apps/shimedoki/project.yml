@@ -38,6 +38,7 @@ targets:
     type: application
     platform: iOS
     deploymentTarget: "17.0"
+    deviceFamilies: [iphone]
     sources:
       - path: Shimedoki
       - path: Shared
@@ -46,7 +47,7 @@ targets:
         GENERATE_INFOPLIST_FILE: true
         INFOPLIST_KEY_UILaunchScreen_Generation: true
         INFOPLIST_KEY_UISupportedInterfaceOrientations: "UIInterfaceOrientationPortrait"
-        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown"
+        TARGETED_DEVICE_FAMILY: "1"
         INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription: "カレンダーの予定から自動でテンプレを提案します"
         INFOPLIST_KEY_NSSupportsLiveActivities: true
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
