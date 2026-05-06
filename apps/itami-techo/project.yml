@@ -26,6 +26,7 @@ targets:
       - path: Shared
     settings:
       base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.mankai.itamitecho
         INFOPLIST_KEY_CFBundleDisplayName: 痛み手帳
         INFOPLIST_KEY_UILaunchScreen_Generation: true
         INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
@@ -46,8 +47,6 @@ targets:
         com.apple.developer.weatherkit: true
         com.apple.security.application-groups:
           - group.com.mankai.itami-techo
-        com.apple.developer.ubiquity-container-identifiers:
-          - "$(TeamIdentifierPrefix)iCloud.com.mankai.itamitecho"
     dependencies:
       - target: ItamiTechoWidgetExtension
     scheme:
@@ -62,6 +61,7 @@ targets:
       - path: Shared
     settings:
       base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.mankai.itamitecho.watchkitapp
         INFOPLIST_KEY_CFBundleDisplayName: 痛み手帳
         INFOPLIST_KEY_WKCompanionAppBundleIdentifier: com.mankai.itamitecho
         INFOPLIST_KEY_NSHealthShareUsageDescription: "不調記録と心拍の関係を振り返るために使用します。"
@@ -85,7 +85,7 @@ targets:
       - path: Shared
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.mankai.itamitecho.ItamiTechoWatch.watchwidget
+        PRODUCT_BUNDLE_IDENTIFIER: com.mankai.itamitecho.watchkitapp.watchwidget
         GENERATE_INFOPLIST_FILE: false
         INFOPLIST_FILE: ItamiTechoWatchWidget/Info.plist
     entitlements:
@@ -106,7 +106,7 @@ targets:
       - path: Shared
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.mankai.itamitecho.ItamiTecho.widget
+        PRODUCT_BUNDLE_IDENTIFIER: com.mankai.itamitecho.widget
         GENERATE_INFOPLIST_FILE: false
         INFOPLIST_FILE: ItamiTechoWidget/Info.plist
     entitlements:
