@@ -11,6 +11,7 @@ struct RecordView: View {
 
     @State private var vm = RecordViewModel()
     @State private var settlingRecord: SymptomRecord?
+    @State private var deletingCustomSymptom: CustomSymptom?
 
     var body: some View {
         NavigationStack {
@@ -58,6 +59,24 @@ struct RecordView: View {
                     if let updated = recordStore.records.first(where: { $0.id == record.id }) {
                         WatchSyncService.shared.sendRecordUpdate(updated)
                     }
+                }
+            }
+        }
+        .confirmationDialog(
+            deletingCustomSymptom.map { "\($0.emoji.map { $0 + " " } ?? "")\($0.name)を削除しますか？" } ?? "",
+            isPresented: Binding(
+                get: { deletingCustomSymptom != nil },
+                set: { if !$0 { deletingCustomSymptom = nil } }
+            ),
+            titleVisibility: .visible
+        ) {
+            Button(S.Record.delete, role: .destructive) {
+                if let target = deletingCustomSymptom {
+                    if vm.selectedCustomSymptom?.id == target.id {
+                        vm.selectedCustomSymptom = nil
+                    }
+                    customSymptomStore.delete(id: target.id)
+                    deletingCustomSymptom = nil
                 }
             }
         }
@@ -147,6 +166,13 @@ struct RecordView: View {
                         ) {
                             vm.selectedCustomSymptom = custom
                             vm.selectedSymptomType = nil
+                        }
+                        .contextMenu {
+                            Button(role: .destructive) {
+                                deletingCustomSymptom = custom
+                            } label: {
+                                Label(S.Record.delete, systemImage: "trash")
+                            }
                         }
                     }
                 }
