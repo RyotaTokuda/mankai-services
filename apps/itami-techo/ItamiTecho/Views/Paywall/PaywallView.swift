@@ -33,6 +33,11 @@ struct PaywallView: View {
                     Button(S.Common.close) { dismiss() }
                 }
             }
+            .task {
+                if planService.monthlyProduct == nil || planService.yearlyProduct == nil {
+                    await planService.loadProducts()
+                }
+            }
             .alert("エラー", isPresented: Binding(
                 get: { errorMessage != nil || planService.purchaseError != nil },
                 set: { if !$0 { errorMessage = nil } }

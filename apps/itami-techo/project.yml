@@ -51,6 +51,7 @@ targets:
     dependencies:
       - target: ItamiTechoWidgetExtension
     scheme:
+      storeKitConfiguration: ItamiTecho/Resources/StoreKitConfiguration.storekit
       testTargets:
         - ItamiTechoTests
 

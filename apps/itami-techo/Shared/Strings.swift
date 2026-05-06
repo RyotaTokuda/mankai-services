@@ -96,6 +96,7 @@ enum S {
         static var addNote: String             { L("メモを追加",        en: "Add note",                 zhHans: "添加备注",     zhHant: "新增備註") }
         static var edit: String                { L("編集",             en: "Edit",                     zhHans: "编辑",         zhHant: "編輯") }
         static var delete: String              { L("削除",             en: "Delete",                   zhHans: "删除",         zhHant: "刪除") }
+        static var longPressToDelete: String   { L("追加した症状は長押しで削除できます", en: "Hold a custom symptom to delete", zhHans: "长按自定义症状可删除", zhHant: "長按自訂症狀可刪除") }
         static var deleteConfirm: String       { L("この記録を削除しますか？", en: "Delete this record?", zhHans: "确定删除此记录？", zhHant: "確定刪除此記錄？") }
         static var whySettled: String          { L("どうして落ち着きましたか？", en: "Why did it settle down?", zhHans: "是什么原因缓解的？", zhHant: "是什麼原因緩解的？") }
         static var settledFooter: String       { L(

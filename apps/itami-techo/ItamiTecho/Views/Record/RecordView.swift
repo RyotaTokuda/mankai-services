@@ -177,6 +177,12 @@ struct RecordView: View {
                     }
                 }
                 .padding(.horizontal)
+
+                Text(S.Record.longPressToDelete)
+                    .font(.caption2)
+                    .foregroundStyle(.tertiary)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .padding(.horizontal)
             }
 
             let canAddCustom = customSymptomStore.symptoms.count < planService.maxCustomSymptoms

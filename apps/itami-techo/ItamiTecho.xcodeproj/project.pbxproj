@@ -306,13 +306,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		03FE31C87372AC40681A0BC9 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
 		0A2D99F5A29C2F1388BC60D2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -386,8 +379,6 @@
 				771B0C0C122039BC0A47AD16 /* App */,
 				D394BC8D752673B27E4A1380 /* InfoPlist.strings */,
 				923ABE96103868BD3A8F97F7 /* Resources */,
-				66D5C498F233CC5C6903555E /* Services */,
-				DE0AB4EA776E0ABE2E14A30D /* ViewModels */,
 				D7968AA8D386C25DEB5ABAD4 /* Views */,
 			);
 			path = ItamiTechoWatch;
@@ -435,13 +426,6 @@
 				00294B54167FBA76BB0A7E3A /* StoreKitConfiguration.storekit */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		66D5C498F233CC5C6903555E /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		6B4891A35A35C05D9FD641C8 /* Onboarding */ = {
@@ -523,13 +507,6 @@
 			path = ItamiTechoTests;
 			sourceTree = "<group>";
 		};
-		AE3E591067606F321EA2014A /* Calendar */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Calendar;
-			sourceTree = "<group>";
-		};
 		D0C36C3D299908D117F78418 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -563,13 +540,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		DE0AB4EA776E0ABE2E14A30D /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		E295196B3D4A615074F302CD /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -582,9 +552,7 @@
 			isa = PBXGroup;
 			children = (
 				1CEBE4D9BC1BD270286AACDA /* ContentView.swift */,
-				AE3E591067606F321EA2014A /* Calendar */,
 				F9A297473DD269521B8F7265 /* History */,
-				03FE31C87372AC40681A0BC9 /* Home */,
 				6B4891A35A35C05D9FD641C8 /* Onboarding */,
 				3839E5BECDDD7DD567C11BCF /* Paywall */,
 				D230FC5B5F97FF7371F2C1A8 /* Record */,
