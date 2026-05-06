@@ -35,7 +35,7 @@ struct SettingsView: View {
                                 Label(S.Settings.upgradePlus, systemImage: "star.fill")
                                     .foregroundStyle(.orange)
                                 Spacer()
-                                Text("¥150/月")
+                                Text("¥200/月")
                                     .font(.caption)
                                     .fontWeight(.semibold)
                                     .foregroundStyle(.orange)
