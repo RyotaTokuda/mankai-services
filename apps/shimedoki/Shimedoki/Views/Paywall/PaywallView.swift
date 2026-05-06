@@ -98,11 +98,11 @@ struct PaywallView: View {
                 Text("年額")
                     .font(.caption2)
                     .foregroundStyle(.secondary)
-                Text("¥1,600")
+                Text("¥1,500")
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundStyle(Color.accentColor)
-                Text("月約133円・33%オフ")
+                Text("月約125円・37%オフ")
                     .font(.caption)
                     .foregroundStyle(.orange)
             }
@@ -192,7 +192,7 @@ struct PaywallView: View {
                 ) { viewModel.selectedProduct = monthly }
             }
             if planService.products.isEmpty {
-                PlanButton(title: "年額", price: "¥1,600", subtitle: "月約133円・33%オフ",
+                PlanButton(title: "年額", price: "¥1,500", subtitle: "月約125円・37%オフ",
                            badge: "おトク", isSelected: true) {}
                 PlanButton(title: "月額", price: "¥200", subtitle: "1日約7円",
                            badge: nil, isSelected: false) {}

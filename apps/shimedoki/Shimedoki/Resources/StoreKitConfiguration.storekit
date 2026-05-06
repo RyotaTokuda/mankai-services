@@ -71,19 +71,19 @@
           "codeOffers" : [
 
           ],
-          "displayPrice" : "1600",
+          "displayPrice" : "1500",
           "familyShareable" : false,
           "groupNumber" : 1,
           "internalID" : "shimedoki.plus.yearly",
           "introductoryOffer" : null,
           "localizations" : [
             {
-              "description" : "年額プラン。月あたり約133円。",
+              "description" : "年額プラン。月あたり約125円。",
               "displayName" : "しめどき Plus 年額",
               "locale" : "ja_JP"
             },
             {
-              "description" : "Yearly plan. Just ¥133/month.",
+              "description" : "Yearly plan. Just ¥125/month.",
               "displayName" : "Shimedoki Plus Yearly",
               "locale" : "en_US"
             }
