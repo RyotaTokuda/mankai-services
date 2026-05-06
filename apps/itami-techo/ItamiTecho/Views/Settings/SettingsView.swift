@@ -130,15 +130,15 @@ struct SettingsView: View {
                 SafariView(url: termsURL)
                     .ignoresSafeArea()
             }
-            .confirmationDialog(
-                S.Settings.deleteAllDataConfirm,
-                isPresented: $showingDeleteAllConfirm,
-                titleVisibility: .visible
-            ) {
-                Button(S.Settings.deleteAllDataButton, role: .destructive) {
-                    recordStore.deleteAll()
-                    customSymptomStore.deleteAll()
-                }
+        }
+        .confirmationDialog(
+            S.Settings.deleteAllDataConfirm,
+            isPresented: $showingDeleteAllConfirm,
+            titleVisibility: .visible
+        ) {
+            Button(S.Settings.deleteAllDataButton, role: .destructive) {
+                recordStore.deleteAll()
+                customSymptomStore.deleteAll()
             }
         }
     }
