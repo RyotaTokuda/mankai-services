@@ -15,11 +15,11 @@ struct OnboardingView: View {
     @State private var healthCompleted = false
     @State private var notificationCompleted = false
 
-    private let pages: [(title: String, body: String, icon: String)] = [
-        (S.Onboarding.step1Title, S.Onboarding.step1Body, "applewatch"),
-        (S.Onboarding.step2Title, S.Onboarding.step2Body, "cloud.sun"),
-        (S.Onboarding.step3Title, S.Onboarding.step3Body, "doc.text"),
-        (S.Onboarding.step4Title, S.Onboarding.step4Body, "checkmark.shield"),
+    private let pages: [(title: String, body: String, icons: [String])] = [
+        (S.Onboarding.step1Title, S.Onboarding.step1Body, ["iphone", "applewatch"]),
+        (S.Onboarding.step2Title, S.Onboarding.step2Body, ["cloud.sun"]),
+        (S.Onboarding.step3Title, S.Onboarding.step3Body, ["doc.text"]),
+        (S.Onboarding.step4Title, S.Onboarding.step4Body, ["checkmark.shield"]),
     ]
 
     var body: some View {
@@ -69,9 +69,13 @@ struct OnboardingView: View {
                     VStack(spacing: 24) {
                         Spacer()
 
-                        Image(systemName: pages[index].icon)
-                            .font(.system(size: 60))
-                            .foregroundStyle(Color.accentColor)
+                        HStack(spacing: 16) {
+                            ForEach(pages[index].icons, id: \.self) { icon in
+                                Image(systemName: icon)
+                                    .font(.system(size: 54))
+                                    .foregroundStyle(Color.accentColor)
+                            }
+                        }
 
                         Text(pages[index].title)
                             .font(.title2)

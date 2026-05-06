@@ -35,11 +35,11 @@
 
 | 商品 | Product ID | 種別 | 価格 | 説明 |
 |------|-----------|------|------|------|
-| Premium 月額 | itamitecho.premium.monthly | Auto-Renewable | ¥390/月 | 無制限履歴・高度分析・レポート出力 |
-| Premium 年額 | itamitecho.premium.yearly | Auto-Renewable | ¥3,900/年 | 10ヶ月分の価格・7日間無料トライアル付き |
+| Premium 月額 | itamitecho.premium.monthly | Auto-Renewable | ¥400/月 | 無制限履歴・高度分析・レポート出力 |
+| Premium 年額 | itamitecho.premium.yearly | Auto-Renewable | ¥4,000/年 | 10ヶ月分の価格（月換算¥333） |
 
 Subscription Group: `itamitecho.premium`
-無料トライアル: 7日間
+無料トライアル: なし
 
 ## スクリーンショット仕様
 
