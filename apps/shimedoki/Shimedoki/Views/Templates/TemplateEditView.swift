@@ -56,13 +56,22 @@ struct TemplateEditView: View {
                 }
 
                 // 触覚スタイル
-                Section("触覚の強さ") {
-                    Picker("スタイル", selection: $viewModel.hapticStyle) {
+                Section("触覚") {
+                    Picker("強さ", selection: $viewModel.hapticStyle) {
                         ForEach(HapticStyle.allCases) { style in
                             Text(style.displayName).tag(style)
                         }
                     }
                     .pickerStyle(.segmented)
+
+                    Stepper(value: $viewModel.hapticCount, in: 1...3) {
+                        HStack {
+                            Text("回数")
+                            Spacer()
+                            Text("\(viewModel.hapticCount)回")
+                                .foregroundStyle(.secondary)
+                        }
+                    }
                 }
 
                 // カラー

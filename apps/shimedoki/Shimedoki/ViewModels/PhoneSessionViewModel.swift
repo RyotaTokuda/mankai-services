@@ -151,7 +151,7 @@ final class PhoneSessionViewModel: Identifiable {
         if offset >= 300 {
             HapticService.warning()
         } else {
-            HapticService.tap(style: template.hapticStyle)
+            HapticService.tap(style: template.hapticStyle, count: template.hapticCount)
         }
     }
 

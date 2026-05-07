@@ -8,6 +8,8 @@ struct Template: Codable, Identifiable, Equatable {
     /// 終了何秒前に通知するか（例: [300, 60] = 残り5分, 残り1分）
     var alertOffsets: [Int]
     var hapticStyle: HapticStyle
+    /// 触覚の回数（1〜3）
+    var hapticCount: Int
     var colorHex: String
     var isPinned: Bool
     var createdAt: Date
@@ -22,6 +24,7 @@ struct Template: Codable, Identifiable, Equatable {
         category: TemplateCategory,
         alertOffsets: [Int] = [300, 60],
         hapticStyle: HapticStyle = .normal,
+        hapticCount: Int = 2,
         colorHex: String = "#1A6FD4",
         isPinned: Bool = false,
         createdAt: Date = Date(),
@@ -34,6 +37,7 @@ struct Template: Codable, Identifiable, Equatable {
         self.category = category
         self.alertOffsets = alertOffsets
         self.hapticStyle = hapticStyle
+        self.hapticCount = max(1, min(3, hapticCount))
         self.colorHex = colorHex
         self.isPinned = isPinned
         self.createdAt = createdAt

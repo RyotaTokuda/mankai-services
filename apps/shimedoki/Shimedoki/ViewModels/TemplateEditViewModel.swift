@@ -7,6 +7,7 @@ final class TemplateEditViewModel {
     var category: TemplateCategory
     var alertOffsets: [Int]
     var hapticStyle: HapticStyle
+    var hapticCount: Int
     var colorHex: String
     var isPinned: Bool
 
@@ -36,6 +37,7 @@ final class TemplateEditViewModel {
         self.category = template.category
         self.alertOffsets = template.alertOffsets
         self.hapticStyle = template.hapticStyle
+        self.hapticCount = template.hapticCount
         self.colorHex = template.colorHex
         self.isPinned = template.isPinned
     }
@@ -63,6 +65,7 @@ final class TemplateEditViewModel {
         t.category = category
         t.alertOffsets = alertOffsets
         t.hapticStyle = hapticStyle
+        t.hapticCount = hapticCount
         t.colorHex = colorHex
         t.isPinned = isPinned
         return t

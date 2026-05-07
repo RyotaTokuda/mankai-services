@@ -130,14 +130,14 @@ final class SessionViewModel {
         timer?.invalidate()
         timer = nil
         isFinished = true
-        WatchHapticService.playEnd(style: template.hapticStyle)
+        WatchHapticService.playEnd(style: template.hapticStyle, count: template.hapticCount)
     }
 
     private func playHaptic(for offset: Int) {
         if offset >= 300 {
-            WatchHapticService.playWarning(style: template.hapticStyle)
+            WatchHapticService.playWarning(style: template.hapticStyle, count: template.hapticCount)
         } else {
-            WatchHapticService.playUrgent(style: template.hapticStyle)
+            WatchHapticService.playUrgent(style: template.hapticStyle, count: template.hapticCount)
         }
     }
 

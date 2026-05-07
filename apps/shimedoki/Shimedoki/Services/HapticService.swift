@@ -6,11 +6,23 @@ enum HapticService {
     private static let heavyImpact = UIImpactFeedbackGenerator(style: .heavy)
     private static let notification = UINotificationFeedbackGenerator()
 
-    static func tap(style: HapticStyle = .normal) {
+    static func tap(style: HapticStyle = .normal, count: Int = 1) {
+        let generator: UIImpactFeedbackGenerator
         switch style {
-        case .gentle: lightImpact.impactOccurred()
-        case .normal: mediumImpact.impactOccurred()
-        case .strong: heavyImpact.impactOccurred()
+        case .gentle: generator = lightImpact
+        case .normal: generator = mediumImpact
+        case .strong: generator = heavyImpact
+        }
+        let clamped = max(1, min(3, count))
+        for i in 0..<clamped {
+            let delay = Double(i) * 0.25
+            if delay == 0 {
+                generator.impactOccurred()
+            } else {
+                DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                    generator.impactOccurred()
+                }
+            }
         }
     }
 
