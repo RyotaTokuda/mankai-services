@@ -72,6 +72,18 @@ struct TemplateEditView: View {
                                 .foregroundStyle(.secondary)
                         }
                     }
+
+                    Button {
+                        HapticService.tap(style: viewModel.hapticStyle, count: viewModel.hapticCount)
+                    } label: {
+                        HStack {
+                            Spacer()
+                            Label("テスト", systemImage: "hand.tap")
+                                .font(.subheadline)
+                                .fontWeight(.medium)
+                            Spacer()
+                        }
+                    }
                 }
 
                 // カラー
