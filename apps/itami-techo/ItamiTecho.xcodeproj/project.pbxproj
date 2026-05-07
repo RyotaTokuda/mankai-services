@@ -57,6 +57,7 @@
 		4CB181136F75684F279AD219 /* CustomSymptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE92063302087082890758C9 /* CustomSymptom.swift */; };
 		4D070095C5C3DE1578B5885C /* SourceDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F53DB6661EE5F379370BA /* SourceDevice.swift */; };
 		4EA5F153F08FA90F6EAE6BB7 /* AnalysisHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15543C82C90EEE37278B6DF8 /* AnalysisHelper.swift */; };
+		4FE748842B964DD7A304DDE7 /* ItamiTechoWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 20D3C5ED5C67B1D251D2814B /* ItamiTechoWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4FF68A409B03C85E945D5220 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D394BC8D752673B27E4A1380 /* InfoPlist.strings */; };
 		503B02E240483CE52477B312 /* SymptomRecord+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B73A3C17D5A33266222D9BB /* SymptomRecord+Display.swift */; };
 		510E4893007279B627770C00 /* PressureHistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E56852F3F8554D49B516A4 /* PressureHistoryStore.swift */; };
@@ -195,9 +196,27 @@
 			remoteGlobalIDString = D1EFB2CEB1327AE313949FED;
 			remoteInfo = ItamiTechoWatchWidgetExtension;
 		};
+		D4DD341408AC364DADA2ED2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1AA791E1C01CB500E5AA2458 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F182150731C48D69EA07C6A8;
+			remoteInfo = ItamiTechoWatch;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		CDDE9D7179118F8716589886 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				4FE748842B964DD7A304DDE7 /* ItamiTechoWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E6439172E328AB41DBEC776E /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -592,11 +611,13 @@
 				98139456975ABDDDAD5BDFFB /* Sources */,
 				33B1C3B610BFC69D3FB4D493 /* Resources */,
 				E6439172E328AB41DBEC776E /* Embed Foundation Extensions */,
+				CDDE9D7179118F8716589886 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				D575A39BEFC5D5E72E3C1021 /* PBXTargetDependency */,
+				CD65561B832031B4E6BE7145 /* PBXTargetDependency */,
 			);
 			name = ItamiTecho;
 			packageProductDependencies = (
@@ -955,6 +976,11 @@
 			target = D1EFB2CEB1327AE313949FED /* ItamiTechoWatchWidgetExtension */;
 			targetProxy = 996BD48036EB255B2F5A9925 /* PBXContainerItemProxy */;
 		};
+		CD65561B832031B4E6BE7145 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F182150731C48D69EA07C6A8 /* ItamiTechoWatch */;
+			targetProxy = D4DD341408AC364DADA2ED2D /* PBXContainerItemProxy */;
+		};
 		D38E1F2431CBCC124583CA4C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2E922794B359B0DE2BDD3581 /* ItamiTecho */;
@@ -996,6 +1022,7 @@
 				CODE_SIGN_ENTITLEMENTS = ItamiTechoWatch/ItamiTechoWatch.entitlements;
 				INFOPLIST_KEY_CFBundleDisplayName = "痛み手帳";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "不調記録と心拍の関係を振り返るために使用します。";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "不調記録をApple Healthに反映するために使用します。";
 				INFOPLIST_KEY_NSMotionUsageDescription = "記録時の気圧データを取得するために使用します。";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.mankai.itamitecho;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.itamitecho.watchkitapp;
@@ -1046,6 +1073,7 @@
 				CODE_SIGN_ENTITLEMENTS = ItamiTechoWatch/ItamiTechoWatch.entitlements;
 				INFOPLIST_KEY_CFBundleDisplayName = "痛み手帳";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "不調記録と心拍の関係を振り返るために使用します。";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "不調記録をApple Healthに反映するために使用します。";
 				INFOPLIST_KEY_NSMotionUsageDescription = "記録時の気圧データを取得するために使用します。";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.mankai.itamitecho;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mankai.itamitecho.watchkitapp;
@@ -1107,7 +1135,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = R7B3AEZ7TA;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1226,7 +1254,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = R7B3AEZ7TA;
 				ENABLE_NS_ASSERTIONS = NO;

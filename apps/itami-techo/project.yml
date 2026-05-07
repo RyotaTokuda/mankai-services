@@ -12,7 +12,7 @@ settings:
   base:
     SWIFT_VERSION: "5.9"
     MARKETING_VERSION: "1.0.0"
-    CURRENT_PROJECT_VERSION: 4
+    CURRENT_PROJECT_VERSION: 5
     DEVELOPMENT_TEAM: R7B3AEZ7TA
     GENERATE_INFOPLIST_FILE: true
     CODE_SIGN_STYLE: Automatic
@@ -50,6 +50,8 @@ targets:
           - group.com.mankai.itami-techo
     dependencies:
       - target: ItamiTechoWidgetExtension
+      - target: ItamiTechoWatch
+        embed: true
     scheme:
       storeKitConfiguration: ItamiTecho/Resources/StoreKitConfiguration.storekit
       testTargets:
@@ -67,6 +69,7 @@ targets:
         INFOPLIST_KEY_CFBundleDisplayName: 痛み手帳
         INFOPLIST_KEY_WKCompanionAppBundleIdentifier: com.mankai.itamitecho
         INFOPLIST_KEY_NSHealthShareUsageDescription: "不調記録と心拍の関係を振り返るために使用します。"
+        INFOPLIST_KEY_NSHealthUpdateUsageDescription: "不調記録をApple Healthに反映するために使用します。"
         INFOPLIST_KEY_NSMotionUsageDescription: "記録時の気圧データを取得するために使用します。"
     entitlements:
       path: ItamiTechoWatch/ItamiTechoWatch.entitlements
