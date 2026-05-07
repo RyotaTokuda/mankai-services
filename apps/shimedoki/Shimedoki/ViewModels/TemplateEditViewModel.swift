@@ -44,6 +44,18 @@ final class TemplateEditViewModel {
         !title.trimmingCharacters(in: .whitespaces).isEmpty && durationMinutes > 0
     }
 
+    func isPresetValid(_ preset: [Int]) -> Bool {
+        let totalSeconds = durationMinutes * 60
+        return (preset.max() ?? 0) < totalSeconds
+    }
+
+    func clearInvalidOffsets() {
+        let totalSeconds = durationMinutes * 60
+        if (alertOffsets.max() ?? 0) >= totalSeconds {
+            alertOffsets = []
+        }
+    }
+
     func toTemplate(original: Template) -> Template {
         var t = original
         t.title = title.trimmingCharacters(in: .whitespaces)

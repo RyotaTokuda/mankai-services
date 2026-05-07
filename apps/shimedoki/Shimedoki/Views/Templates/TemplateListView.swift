@@ -127,17 +127,18 @@ private struct TemplateRow: View {
             Button {
                 onStart()
             } label: {
-                Image(systemName: "play.circle.fill")
-                    .font(.title2)
+                Label("開始", systemImage: "play.fill")
+                    .font(.caption)
+                    .fontWeight(.semibold)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 7)
+                    .background(Color(hex: template.colorHex).opacity(0.15))
                     .foregroundStyle(Color(hex: template.colorHex))
+                    .clipShape(Capsule())
             }
             .buttonStyle(.plain)
-
-            Image(systemName: "chevron.right")
-                .font(.caption)
-                .foregroundStyle(.tertiary)
         }
-        .padding(.vertical, 4)
+        .padding(.vertical, 6)
     }
 }
 

@@ -33,6 +33,9 @@ struct TemplateEditView: View {
                             Text("\(min)分").tag(min)
                         }
                     }
+                    .onChange(of: viewModel.durationMinutes) {
+                        viewModel.clearInvalidOffsets()
+                    }
                 }
 
                 // 通知設定
@@ -124,13 +127,14 @@ struct TemplateEditView: View {
         let description = preset.map { offset in
             offset >= 60 ? "残り\(offset / 60)分" : "残り\(offset)秒"
         }.joined(separator: " + ")
+        let valid = viewModel.isPresetValid(preset)
 
         return Button {
             viewModel.alertOffsets = preset
         } label: {
             HStack {
                 Text(description)
-                    .foregroundStyle(.primary)
+                    .foregroundStyle(valid ? .primary : .tertiary)
                 Spacer()
                 if viewModel.alertOffsets == preset {
                     Image(systemName: "checkmark")
@@ -138,6 +142,7 @@ struct TemplateEditView: View {
                 }
             }
         }
+        .disabled(!valid)
     }
 
     private func save() {
