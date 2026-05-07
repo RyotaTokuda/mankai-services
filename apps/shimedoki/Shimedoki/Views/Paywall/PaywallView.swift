@@ -147,24 +147,24 @@ struct PaywallView: View {
                 BenefitRow(icon: "note.text",
                            color: .green,
                            text: S.Paywall.benefitNote,
-                           badge: nil)
+                           badge: "NEW")
                 Divider().padding(.vertical, 4)
                 BenefitRow(icon: "infinity",
                            color: .primary,
                            text: S.Paywall.benefitUnlimitedScenes,
-                           badge: nil)
+                           badge: "NEW")
                 BenefitRow(icon: "slider.horizontal.3",
                            color: .primary,
                            text: S.Paywall.benefitCustomAlert,
-                           badge: nil)
+                           badge: "NEW")
                 BenefitRow(icon: "clock.arrow.circlepath",
                            color: .primary,
                            text: S.Paywall.benefitHistory,
-                           badge: nil)
+                           badge: "NEW")
                 BenefitRow(icon: "calendar",
                            color: .primary,
                            text: S.Paywall.benefitCalendar,
-                           badge: nil)
+                           badge: "NEW")
             }
         }
     }
